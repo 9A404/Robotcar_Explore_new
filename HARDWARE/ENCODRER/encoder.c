@@ -101,7 +101,7 @@ void TIM1_UP_IRQHandler(void)
 
 void TIM1_CC_IRQHandler(void)
 {
-	Encoder_get_val(encoder_value);
+//	Encoder_get_val(encoder_value);
 //	 encoder_value[0]=100;
 }
 
