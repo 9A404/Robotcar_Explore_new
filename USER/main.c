@@ -335,6 +335,7 @@ int main(void)
 		{
 			displayOperation();
     //  speedAdjustment(-1452,-1500);
+			//////////////////
 		}
 		
 }
