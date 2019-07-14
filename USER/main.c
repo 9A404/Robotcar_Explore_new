@@ -333,7 +333,7 @@ int main(void)
 		
 		while(1)
 		{
-			displayOperation();
+//			displayOperation();
     //  speedAdjustment(-1452,-1500);
 		}
 		
