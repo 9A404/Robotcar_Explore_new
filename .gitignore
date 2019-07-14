@@ -1,0 +1,10 @@
+*
+!*/
+!*.h
+!*.c
+!*.s
+!*.gitignore
+!*.md
+!*.bat
+!*.dbgconf
+!*.uvprojx
