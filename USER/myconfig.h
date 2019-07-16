@@ -64,7 +64,8 @@
 #define NUM_OF_SENSOR 	12					//传感器个数
 #define USART3_MAX_SEND_LEN 200		 // 发送缓存大小
 
-
+extern s16	hall_L_counter;	//储存编码器计数值，对应TIM2计数值
+extern s16	hall_R_counter;//对应TIM3计数值
 extern unsigned short glsensor_ad_value[NUM_OF_SENSOR];       //传感器模拟量数组
 extern unsigned short glsensor_dig_value;									    //传感器数字量数组
 extern unsigned char 	USART3_TX_BUF[USART3_MAX_SEND_LEN];     //串口3发送缓存

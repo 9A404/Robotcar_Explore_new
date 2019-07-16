@@ -636,3 +636,25 @@ void flMethod_NFL_slow()
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);	
 }
+
+
+
+/*
+
+* 函数介绍：闭环编码器的使用示例
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：你猜
+
+*/
+void flMethod_Encoder()
+{
+	speedRec_Init(&glmotorSpeed,2000,2000);
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+
+
+
+

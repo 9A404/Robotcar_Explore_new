@@ -1,174 +1,287 @@
 #include "myconfig.h"
 #include "encoder.h"
 
+s16	hall_L_counter;	//储存编码器计数值，对应TIM2计数值
+s16	hall_R_counter;//对应TIM3计数值
+static s16 err_L_L,err_L_R,err_LL_L,err_LL_R,all_error_L,all_error_R;
+static s16 PWM_Increase_L,PWM_Increase_R;
+static s16 PWM_L = 0,PWM_R = 0;
+float Kp = 0.3;
+float Kd = 0.8;//3.5
+float Ki =0.05 ;
+/*
 
-TIM_ICInitTypeDef  TIM1_ICInitStructure;
-void TIM1_Cap_Config(u16 arr,u16 psc)//定时器1通道1\3输入捕获配置
-{	 
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-  NVIC_InitTypeDef NVIC_InitStructure;
+* 函数介绍：将TIM3配置为编码器接口模式
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void Encoder_Init_TIM3(void)
+{
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  
+  TIM_ICInitTypeDef TIM_ICInitStructure;  
+  GPIO_InitTypeDef GPIO_InitStructure;
 	
-		
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);	//使能TIM1时钟
- 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE|RCC_APB2Periph_AFIO, ENABLE);  //使能GPIOE复用功能以及时钟
-	GPIO_PinRemapConfig(GPIO_FullRemap_TIM1,ENABLE);		//重定义TIM1
-	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_9|GPIO_Pin_13;  //PE9、PE13 清除之前设置  
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //PE9、PE13 输入  
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_9|GPIO_Pin_13);						 //PE9、PE13 下拉
-	
-	//初始化定时器1 TIM1	 
-	TIM_TimeBaseStructure.TIM_Period = arr; //设定计数器自动重装值 
-	TIM_TimeBaseStructure.TIM_Prescaler =psc; 	//预分频器   
-	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1; //设置时钟分割:TDTS = Tck_tim
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM1向上计数模式
-	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure); //根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);   //使能定时器
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE);  //使能GPIOB复用功能以及时钟
+	GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);		//重定义TIM3
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5;  //PB4、PB5 
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_ResetBits(GPIOB,GPIO_Pin_4|GPIO_Pin_5);						 
+  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
   
-	//初始化TIM1通道1输入捕获参数
-	TIM1_ICInitStructure.TIM_Channel = TIM_Channel_1; // 	选择输入端 IC1映射到TI1上
-	TIM1_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;	//上升沿捕获
-	TIM1_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI; //映射到TI1上
-	TIM1_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;	 //配置输入分频,不分频 
-	TIM1_ICInitStructure.TIM_ICFilter = 0x0f;// 配置输入滤波器 滤波
-	TIM_ICInit(TIM1, &TIM1_ICInitStructure);
-	
-	//初始化TIM1通道3输入捕获参数
-	TIM1_ICInitStructure.TIM_Channel = TIM_Channel_3; //	选择输入端 IC3映射到TI1上
-	TIM1_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;	//上升沿捕获
-	TIM1_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI; //映射到TI1上
-	TIM1_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;	 //配置输入分频,不分频 
-	TIM1_ICInitStructure.TIM_ICFilter = 0x00;//配置输入滤波器 滤波
-	TIM_ICInit(TIM1, &TIM1_ICInitStructure);
-	
-	
-	//中断分组初始化
-	NVIC_InitStructure.NVIC_IRQChannel = TIM1_CC_IRQn;  //TIM1中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  //先占优先级0级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;  //从优先级0级
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道被使能
-	NVIC_Init(&NVIC_InitStructure);  //根据NVIC_InitStruct中指定的参数初始化外设NVIC寄存器 
-	
-	TIM_ITConfig(TIM1,TIM_IT_CC1,ENABLE);//允许CC1IE捕获中断，改为在更新中断函数里面允许
-	TIM_ITConfig(TIM1, TIM_IT_CC3, ENABLE);//允许CC3IE捕获中断
-	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);//允许更新中断
-	
-  TIM_Cmd(TIM1,ENABLE ); 	//使能定时器1
+  TIM_TimeBaseStructure.TIM_Prescaler = 0x0; 							// No prescaling     //不分频
+  TIM_TimeBaseStructure.TIM_Period = 0xffff;  //设定计数器自动重装值
+  TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1; //选择时钟分频：不分频
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; //TIM向上计数    
+  TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);  //初始化定时器
+  
+  TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3，下降沿捕获，TI1和TI2同时
+  TIM_ICStructInit(&TIM_ICInitStructure);		//
+  TIM_ICInitStructure.TIM_ICFilter = 0;
+  TIM_ICInit(TIM3, &TIM_ICInitStructure);
+  
+  TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM的更新标志位
+  TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+  TIM_Cmd(TIM3, ENABLE); 
 }
 
 /*
 
-* 函数介绍：编码器采样时间初始化，默认频率为1M
-* 输入参数：采样周期time/1000毫秒
+* 函数介绍：将TIM2配置为编码器接口模式
+* 输入参数：无
 * 输出参数：无
 * 返回值  ：无
+* 作者    ：panshao
 
 */
-//void encoderTime_Init(u16 time)//4000-1，72-1，频率为1M向上计数到4000，为4ms
-//{
-//	TIM1_Cap_Config(time-1,720-1);
-//	encoderStart(START);
-
-//}
-
-///*
-
-//* 函数介绍：采样启动/停止控制
-//* 输入参数：开始：newState==START，停止：newState==STOP
-//* 输出参数：无
-//* 返回值  ：无
-
-//*/
-//void encoderStart(SWITCHState newState)
-//{
-//	if(newState == START)
-//			TIM_Cmd(TIM1, ENABLE);  	//使能TIMx外设
-//	else if(newState == STOP)
-//			TIM_Cmd(TIM1, DISABLE);  //不使能TIMx外设
-//}
-
-void TIM1_UP_IRQHandler(void)
+void Encoder_Init_TIM2(void)
 {
-	 if(TIM_GetITStatus(TIM1,TIM_IT_Update)!=RESET)
-	 {
-		 TIM_ClearITPendingBit(TIM1,TIM_IT_Update);//清除中断标志位
-//		 TIM_ITConfig(TIM1,TIM_IT_CC1,ENABLE);//允许CC1IE捕获中断
-//		 TIM_ITConfig(TIM1, TIM_IT_CC3, ENABLE);//允许CC3IE捕获中断
-	 }
-}
-
-
-void TIM1_CC_IRQHandler(void)
-{
-//	Encoder_get_val(encoder_value);
-//	 encoder_value[0]=100;
-}
-
-void Encoder_get_val(u16 *data)
-{
-	static u8 CC1state=0;
-	static u8 CC3state=0;
-	static u16 CC1count1,CC1count2;
-	static u16 CC3count1,CC3count2;
-	if(TIM_GetITStatus(TIM1,TIM_IT_CC1)!=RESET)
-   {
-      TIM_ClearITPendingBit(TIM1, TIM_IT_CC1);    //清除中断标志位
-      if(0==CC1state)	//通道1第一次捕获到上升沿
-			{
-				CC1count1=TIM_GetCapture1(TIM1);
-				CC1state=1;
-			}
-      else if(1==CC1state)
-			{
-				CC1count2=TIM_GetCapture1(TIM1);
-				 if(CC1count1<CC1count2)
-				 {
-							 data[0]=CC1count2-CC1count1;           //两次上升沿的差值
-				 }
-				 else if(CC1count1>CC1count2)
-				 {
-							 data[0]=(4000-1-CC1count1)+CC1count2;  //两次上升沿的差值,注意计数总值要跟main函数对应
-				 }
-				 else
-				 {
-					 data[0]=0;
-				 }
-				CC1state=0;
-//				TIM_ITConfig(TIM1,TIM_IT_CC1,DISABLE);//不允许CC1IE捕获中断
-			}
-			
-   }
-	if(TIM_GetITStatus(TIM1,TIM_IT_CC3)!=RESET)
-   {
-      TIM_ClearITPendingBit(TIM1, TIM_IT_CC3);    //清除中断标志位
-      if(0==CC3state)	//通道3第一次捕获到上升沿
-			{
-				CC3count1=TIM_GetCapture3(TIM1);
-				CC3state=1;
-			}
-      else if(1==CC3state)
-			{
-				CC3count2=TIM_GetCapture3(TIM1);
-			if(CC3count1<CC3count2)
-			{
-				data[1]=CC3count2-CC3count1;           //两次上升沿的差值
-			}
-			else if(CC3count1>CC3count2)
-			{
-				data[0]=(4000-1-CC3count1)+CC3count2;  //两次上升沿的差值,注意计数总值要跟main函数对应
-			}
-			else
-			{
-				data[0]=0;
-			}
-				CC3state=0;
-//				TIM_ITConfig(TIM1,TIM_IT_CC3,DISABLE);//不允许CC1IE捕获中断
-			}
-			
-   }
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  
+  TIM_ICInitTypeDef TIM_ICInitStructure;  
+  GPIO_InitTypeDef GPIO_InitStructure;
 	
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);   //使能定时器
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOA|RCC_APB2Periph_AFIO, ENABLE);  //使能GPIOA和B复用功能时钟
+	GPIO_PinRemapConfig(GPIO_FullRemap_TIM2,ENABLE);		//重定义TIM2
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;  //PA15
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;  //PB3
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	
+	GPIO_ResetBits(GPIOA,GPIO_Pin_15);
+	GPIO_ResetBits(GPIOB,GPIO_Pin_3);
+  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+  
+  TIM_TimeBaseStructure.TIM_Prescaler = 0x0; 							// No prescaling     //不分频
+  TIM_TimeBaseStructure.TIM_Period = 0xffff;  //设定计数器自动重装值
+  TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1; //选择时钟分频：不分频
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; //TIM向上计数    
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);  //初始化定时器
+  
+  TIM_EncoderInterfaceConfig(TIM2, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3，下降沿捕获，TI1和TI2同时
+  TIM_ICStructInit(&TIM_ICInitStructure);		//
+  TIM_ICInitStructure.TIM_ICFilter = 0;
+  TIM_ICInit(TIM2, &TIM_ICInitStructure);
+  
+  TIM_ClearFlag(TIM2, TIM_FLAG_Update);//清除TIM的更新标志位
+  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+  TIM_Cmd(TIM2, ENABLE); 
 }
+
+/*
+
+* 函数介绍：单位时间读取编码器计数值
+* 输入参数：定时器的对应数字
+* 输出参数：无
+* 返回值  ：当前计数值
+* 作者    ：panshao
+
+*/
+
+s16 Read_Encoder(u8 TIMX)
+{
+   s16 Encoder_TIM;    
+   switch(TIMX)
+	 {
+	   case 2:  Encoder_TIM= (short)TIM2 -> CNT;  TIM2 -> CNT=0;break;   //读取编码器的数据并清零
+		 case 3:  Encoder_TIM= (short)TIM3 -> CNT;  TIM3 -> CNT=0;break;	 //读取编码器的数据并清零
+		 default:  Encoder_TIM=0;
+	 }
+		return Encoder_TIM;
+}
+
+
+/*
+
+* 函数介绍：用于定义读取编码器计数值的单位时间
+* 输入参数：单位时间(毫秒)
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void TIM1_Read_Time(u16 msec)
+{
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);  ///使能TIM1时钟
+	
+	TIM_TimeBaseInitStructure.TIM_Period = 10 * msec; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到500为500ms
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 7200-1; 											//设置用来作为TIMx时钟频率除数的预分频值  10Khz的计数频率  
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = 0; 									//设置时钟分割:TDTS = Tck_tim
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
+	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
+	
+	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE); 
+	NVIC_InitStructure.NVIC_IRQChannel=TIM1_UP_IRQn; //定时器2中断
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x01; //抢占优先级1
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x01; //子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	TIM_Cmd(TIM1, ENABLE);
+}
+
+
+
+/*
+
+* 函数介绍：电机速度闭环控制计算函数
+* 输入参数：电机转速的设定值，与我们巡线函数的速度值之间是线性相关关系并不是相等
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+
+
+void close_loop_PD_control(s16 V_set_L,s16 V_set_R)
+{
+		if(V_set_L>=0)
+	{
+		hall_L_counter = Read_Encoder(2);        //拿到测量返回值
+		
+	}
+	if(V_set_L<0)
+	{
+		
+		hall_L_counter = -Read_Encoder(2);        //拿到测量返回值	
+		V_set_L = -V_set_L;
+	}
+	if(V_set_R>=0)
+	{
+		hall_R_counter = Read_Encoder(3); 
+	}
+	if(V_set_R<0)
+	{
+		hall_R_counter = -Read_Encoder(3); 
+		V_set_R=-V_set_R;
+	}
+	err_L_L = V_set_L - hall_L_counter;       //误差等于设定速度减去测量速度
+	err_L_R = V_set_R - hall_R_counter;
+	PWM_Increase_L  = Kp * err_L_L +Kd * (err_L_L - err_LL_L);         //计算PWM应该修改的量
+	PWM_Increase_R  = Kp * err_L_R +Kd * (err_L_R - err_LL_R);
+	PWM_L += PWM_Increase_L;                 //计算PWM应该输出的量
+	PWM_R += PWM_Increase_R; 
+if(PWM_L>200)
+	{
+		PWM_L=200;
+	}
+		if(PWM_R>200)
+	{
+		PWM_R=200;
+	}
+	if(V_set_L>=0)
+	{	
+		TIM_SetCompare1(TIM5, (uint16_t)PWM_L);
+		TIM_SetCompare2(TIM5, 0);
+		}//根据计算值修改PWM占空比
+	if(V_set_L<0)
+	{	
+		TIM_SetCompare2(TIM5, (uint16_t)PWM_L);
+		TIM_SetCompare1(TIM5, 0);
+		}//根据计算值修改PWM占空比
+		if(V_set_R>=0)
+	{
+		TIM_SetCompare3(TIM5, (uint16_t)PWM_R);
+		TIM_SetCompare4(TIM5, 0);
+	}
+	if(V_set_R<0)
+	{
+		TIM_SetCompare4(TIM5, (uint16_t)PWM_R);
+		TIM_SetCompare3(TIM5, 0);
+	}
+		err_LL_L = err_L_L;                      //把上一次采样时的误差保存
+		err_LL_R = err_L_R;                      //把上一次采样时的误差保存
+}
+
+
+
+
+
+
+/*
+
+* 函数介绍：TIM2的中断服务函数，清除中断标志位
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void TIM2_IRQHandler(void)
+{ 		    		  			    
+	if(TIM2->SR&0X0001)//溢出中断
+	{    				   				     	    	
+	}				   
+	TIM2->SR&=~(1<<0);//清除中断标志位 	    
+}
+
+/*
+
+* 函数介绍：TIM1的中断服务函数,闭环电机控制
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void TIM3_IRQHandler(void)
+{ 		    		  			    
+	if(TIM3->SR&0X0001)//溢出中断
+	{    				   				     	    	
+	}				   
+	TIM3->SR&=~(1<<0);//清除中断标志位 	    
+}
+
+void TIM1_IRQHandler(void)
+{
+	if(TIM_GetFlagStatus(TIM1, TIM_FLAG_Update) != RESET)
+	{
+		TIM_Cmd(TIM1, DISABLE);
+		
+		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
+		
+		TIM_ClearITPendingBit(TIM1, TIM_FLAG_Update);
+		TIM_Cmd(TIM1, ENABLE);
+	}
+}
+
+
+
+
+
+
+
 
 
 
