@@ -123,7 +123,7 @@ void Fun_game(void)
 		if(keyFlag==KEY0_UP || keyFlag==KEY4_ESC)
 		{
 			speedAdjustment(0,0);
-			Time3(STOP);     //关闭定时器
+			Time7(STOP);     //关闭定时器
 			mpu6050_samping(STOP); //关闭mpu6050采样
 			/*软件复位*/
 			__set_FAULTMASK(1);  // 关闭所有中断
@@ -202,7 +202,7 @@ void Fun_SecondGameMethod1(void)
 		if(keyFlag==KEY0_UP || keyFlag==KEY4_ESC)
 		{
 			speedAdjustment(0,0);
-			Time3(STOP);     //关闭定时器
+			Time7(STOP);     //关闭定时器
 			mpu6050_samping(STOP); //关闭mpu6050采样
 			/*软件复位*/
 			__set_FAULTMASK(1);  // 关闭所有中断
@@ -271,7 +271,7 @@ void Fun_SecondGameMethod2(void)
 		if(keyFlag==KEY0_UP || keyFlag==KEY4_ESC)
 		{
 			speedAdjustment(0,0);
-			Time3(STOP);     //关闭定时器
+			Time7(STOP);     //关闭定时器
 			mpu6050_samping(STOP); //关闭mpu6050采样
 			/*软件复位*/
 			__set_FAULTMASK(1);  // 关闭所有中断
@@ -317,7 +317,7 @@ int main(void)
 		ADC_DMA_Init();        	//ADC&DMA初始化
 		sampingTime_Init(150);	//采样周期为15ms对应的值为150 
 //		mpu6050_sampingTime_Init(80);//mpu6050采样周期8ms
-		TIM3_Config(100-1,7200-1); // 定时器3定时周期为10ms
+		TIM7_Config(100-1,7200-1); // 定时器3定时周期为10ms
 		motor_PWM_Init();       //PWM初始化
 		uart_init(115200);			//串口1初始化	
 //		usart3_init(115200);			//串口DMA初始化函数		

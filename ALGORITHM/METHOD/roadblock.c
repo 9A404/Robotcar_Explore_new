@@ -163,7 +163,7 @@ u8 BlockHandleMethod_Brige()
 //     if(0 == flag)
 //	 { 
 //		 save = glHello_control.linkInform.findLineWays;
-//		 Time3(START);
+//		 Time7(START);
 //		 gl_time = 0;
 //      flag = 1;		 
 //	 }
@@ -191,11 +191,11 @@ u8 BlockHandleMethod_Brige()
 ////     	while(1);
 ////		delay_ms(500);
 //		flag=4;
-//		Time3(STOP);
+//		Time7(STOP);
 //	}
 //	else if( 4 == flag )  
 //	{
-//     Time3(START);
+//     Time7(START);
 //	 gl_time = 0;
 //     glHello_control.linkInform.findLineWays = FL_angle;
 //	 findLineFlag = 0; 
@@ -244,7 +244,7 @@ u8 BlockHandleMethod_DOOR(void)
 	DoorFlag=1;
 	if(0==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=1;
 	}
@@ -260,7 +260,7 @@ u8 BlockHandleMethod_DOOR(void)
 	}
 	if(1==flag && gl_time>Door_Time)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
@@ -286,7 +286,7 @@ u8 BlockHandleMethod_DOOR_2(void)
 
 	if(0==flag1)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag1=1;
 	}
@@ -303,7 +303,7 @@ u8 BlockHandleMethod_DOOR_2(void)
 	}
 	if(1==flag1 && gl_time>Door_Time_2)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
@@ -360,7 +360,7 @@ u8 BlockHandleMethod_down_27_26()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = FL_slow; 
 		findLineFlag = 0;
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=6;
 	}
@@ -370,7 +370,7 @@ u8 BlockHandleMethod_down_27_26()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = save; 
 		findLineFlag = 0;
-		Time3(STOP); //打开定时器
+		Time7(STOP); //打开定时器
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -417,13 +417,13 @@ float Monitor_ROLL()
   static u8 flag=0;
 	if(flag == 0)
 	{
-	  Time3(START);
+	  Time7(START);
 		gl_time = 0;
 		flag = 1;
 	}
 	else if(flag == 1 && gl_time>80)
 	{
-		Time3(STOP);
+		Time7(STOP);
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
@@ -454,7 +454,7 @@ float Monitor_ROLL()
 	if(0==flag)                //在找点任务中将车摆正后延时直走
 	{	
 //		speedAdjustment(2450,2200);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		glHello_control.linkInform.findLineWays = FL_angle;
     angle_flag = 0; 		
@@ -487,7 +487,7 @@ float Monitor_ROLL()
 
 //			//u3_printf("glPitch%0.2f\r\n",glPitch);
 //		}
-		Time3(STOP);
+		Time7(STOP);
 		speedAdjustment(0,0);
 		delay_ms(500);	
 //		led0_flash();
@@ -584,7 +584,7 @@ u8  BlockHandleMethod_Platform_37_15 ()
 	{
 		glHello_control.linkInform.findLineWays = save; 
 		findLineFlag = 0;
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=5;
 	}
@@ -599,7 +599,7 @@ u8  BlockHandleMethod_Platform_37_15 ()
 	{	
 		speedAdjustment(0,0);
 		delay_ms(500);
-		Time3(STOP);
+		Time7(STOP);
 		flag = 0;
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
@@ -638,13 +638,13 @@ u8 BlockHandleMethod_Slope ()
 	{
 		glHello_control.linkInform.findLineWays = FL_DownPlatform;   
 		findLineFlag = 0;
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=3;
 	}
 	else if(gl_time>260 && 3==flag)
 	{
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(1000);
@@ -761,13 +761,13 @@ u8 BlockHandleMethod_TIME()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > 50)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
@@ -794,13 +794,13 @@ u8 BlockHandleMethod_TIME_1()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > 200)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=0;
 		return 1;
@@ -825,13 +825,13 @@ u8 BlockHandleMethod_TIME_2()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(1==flag && gl_time > 200)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=2;
 	}
@@ -877,14 +877,14 @@ u8 BlockHandleMethod_TIME_44_43()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > 20)
 	{	
 		led1_flash();
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=0;
 		return 1;
@@ -911,7 +911,7 @@ u8 BlockHandleMethod_Trapezoid_1()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START);					 //打开定时器
+		Time7(START);					 //打开定时器
 		gl_time=0;
 		flag = 1;
 	}
@@ -932,7 +932,7 @@ u8 BlockHandleMethod_Trapezoid_1()
 	{
 		glHello_control.linkInform.findLineWays = FL_slow;
 	  findLineFlag = 0;
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag = 4;
 	}
@@ -962,7 +962,7 @@ u8 BlockHandleMethod_Trapezoid_2(void)
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
@@ -983,7 +983,7 @@ u8 BlockHandleMethod_Trapezoid_2(void)
 	{
 		glHello_control.linkInform.findLineWays = FL_slow;
 	  findLineFlag = 0;
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag = 4;
 	}
@@ -1013,13 +1013,13 @@ u8 BlockHandleMethod_Trapezoid_3()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		flag=1;
 		gl_time=0;
 	}
 	if(gl_time > 50)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=0;
 		return 1;
@@ -1072,14 +1072,14 @@ u8 BlockHandleMethod_GO_Tilt_R()
 	{
 		if(0==flag1)
 		{
-			Time3(START);
+			Time7(START);
 			gl_time=0;
 			flag1=1;
 		}
 		if(gl_time>30 &&1==flag1)
 		{
 			
-			Time3(STOP);
+			Time7(STOP);
 			gl_time=0;
 			flag=1;
 			flag1=0;
@@ -1154,14 +1154,14 @@ u8 BlockHandleMethod_GO_Tilt_L()
 //	{
 //		if(0==flag1)
 //		{
-//			Time3(START);
+//			Time7(START);
 //			gl_time=0;
 //			flag1=1;
 //		}
 //		if(gl_time>30 &&1==flag1)
 //		{
 //			
-//			Time3(STOP);
+//			Time7(STOP);
 //			gl_time=0;
 //			flag=1;
 //			flag1=0;
@@ -1196,14 +1196,14 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	{
 		if(0==flag1)
 		{
-			Time3(START);
+			Time7(START);
 			gl_time=0;
 			flag1=1;
 		}
 		if(gl_time>30 &&1==flag1)
 		{
 			
-			Time3(STOP);
+			Time7(STOP);
 			gl_time=0;
 			flag=1;
 			flag1=0;
@@ -1211,7 +1211,7 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	}
 	else if(1==flag && 1==PES_Platform)
 	{		
-    Time3(START);
+    Time7(START);
 		gl_time=0;
 		glHello_control.linkInform.findLineWays = FL_angle;
 		findLineFlag = 0;
@@ -1220,7 +1220,7 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	}
 	else if(2==flag && gl_time>12)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		rotAngle_UL(80);
 		speedAdjustment(2000,2000);
 		delay_ms(450);
@@ -1248,12 +1248,12 @@ u8 BlockHandleMethod_BACK_TILT_R()
 	if(0==flag && 0==PES_Platform)
 	{		
 		flag=1;
-		Time3(START);
+		Time7(START);
 		gl_time = 0 ;
 	}
 	else if(1==flag && 1==PES_Platform && gl_time > 30)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0 ;
 		speedAdjustment(2000,1950);
 		delay_ms(580);
@@ -1340,10 +1340,10 @@ u8 BlockHandleMethod_Crossing_All_TILT()
 	}     	
 	else if(1==flag && 1==PES_Platform)
 	{	
-		Time3(START);	//打开定时器
+		Time7(START);	//打开定时器
 		gl_time=0;
 //		led0_flash();
-//		Time3(STOP); 
+//		Time7(STOP); 
 		glHello_control.linkInform.findLineWays = FL_angle;
 		findLineFlag = 0;
 		angle_flag = 0;
@@ -1355,7 +1355,7 @@ u8 BlockHandleMethod_Crossing_All_TILT()
 //		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_slow;
 		findLineFlag = 0; 
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 
 //		speedAdjustment(0,0);
 //		while(1);
@@ -1444,7 +1444,7 @@ u8 BlockHandleMethod_downPlatform()
 		speedAdjustment(0,0);
 		delay_ms(200);
 	//	DangerFlag=1;            //将危险信号标志位置为1
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
@@ -1488,7 +1488,7 @@ u8 BlockHandleMethod_downPlatform()
 	{
 		if(1==danger24_23())
 		{
-			Time3(STOP); //关闭定时器
+			Time7(STOP); //关闭定时器
 			gl_time = 0;
 		}
 	}
@@ -1523,7 +1523,7 @@ u8 BlockHandleMethod_S_BOARD_1()
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=2;
 	}
@@ -1533,7 +1533,7 @@ u8 BlockHandleMethod_S_BOARD_1()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =FL_slow;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -1567,7 +1567,7 @@ u8 BlockHandleMethod_S_BOARD_2()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =FL_slow;
 		findLineFlag = 0;
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag = 3;
 	}
@@ -1577,7 +1577,7 @@ u8 BlockHandleMethod_S_BOARD_2()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =FL_default;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -1610,7 +1610,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=2;
 	}
@@ -1620,7 +1620,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =save;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -1649,7 +1649,7 @@ u8 BlockHandleMethod_26_27()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time = 0;
 		save = glHello_control.linkInform.findLineWays;
 		flag = 1;
@@ -1659,11 +1659,11 @@ u8 BlockHandleMethod_26_27()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays =FL_slowest;
 		findLineFlag = 0;
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag = 3;
 	}
@@ -1674,7 +1674,7 @@ u8 BlockHandleMethod_26_27()
 //		led0_flash();
 		glHello_control.linkInform.findLineWays =FL_slowest;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=4;
 	}
@@ -1745,13 +1745,13 @@ u8 BlockHandleMethod_TIME_45_46()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > 80)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=0;
 		#ifdef LED_Debug

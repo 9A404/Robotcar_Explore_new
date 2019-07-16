@@ -185,14 +185,14 @@ u8 seekNodeMethod_pesPlatform()
   static u8 flag=0;	
 	if(flag==0)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=1;
 	}	
 	if (1==flag&&PES_Platform==0) flag = 2;
 	else if (2==flag&&1==PES_Platform&&gl_time>10) 
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		glHello_control.linkInform.findLineWays = FL_UpPlatform;
 	  findLineFlag = 0;
@@ -318,7 +318,7 @@ u8 seekNodeMethod_SeeSaw()
 	static u8 flag=0;
 	if(flag==0)
 	{
-	    Time3(START);
+	    Time7(START);
       gl_time=0;
 		  glHello_control.linkInform.findLineWays =FL_left; 
 		  findLineFlag = 0;

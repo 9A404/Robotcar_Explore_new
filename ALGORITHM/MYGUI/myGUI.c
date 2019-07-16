@@ -1078,7 +1078,7 @@ void Fun_roadDebug()
 				if(keyFlag==KEY4_ESC)
 				{
 					speedAdjustment(0,0);
-					Time3(STOP);    			 //关闭定时器
+					Time7(STOP);    			 //关闭定时器
 					mpu6050_samping(STOP); //关闭mpu6050采样
 					Lcd_Clear_partial(0,105,128,160,WHITE);  //局部清屏
 					break;
@@ -1097,7 +1097,7 @@ void Fun_roadDebug()
 					{
 						speedAdjustment(0,0);
 						Lcd_Clear_partial(0,105,128,160,WHITE);  //局部清屏
-						Time3(STOP);    			 //关闭定时器
+						Time7(STOP);    			 //关闭定时器
 						mpu6050_samping(STOP); //关闭mpu6050采样
 						break;
 					}

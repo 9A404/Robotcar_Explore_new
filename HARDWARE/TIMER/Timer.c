@@ -5,29 +5,29 @@
 
 /*
 
-* 函数介绍：配置TIM2
+* 函数介绍：配置TIM6
 * 输入参数：arr(自动重载值),psc(预分频系数)
 * 输出参数：无
 * 返回值  ：无
 
 */
-static void TIM2_Config(u16 arr,u16 psc)
+static void TIM6_Config(u16 arr,u16 psc)
 {
   TIM_TimeBaseInitTypeDef  	TIM_TimeBaseStructure;
 	NVIC_InitTypeDef 					NVIC_InitStructure;
 
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE); 							//时钟使能
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE); 							//时钟使能
 
 	TIM_TimeBaseStructure.TIM_Period = arr; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到5000为500ms
 	TIM_TimeBaseStructure.TIM_Prescaler =psc; 											//设置用来作为TIMx时钟频率除数的预分频值  10Khz的计数频率  
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0; 									//设置时钟分割:TDTS = Tck_tim
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
 	
-	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure); 						//根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
+	TIM_TimeBaseInit(TIM6, &TIM_TimeBaseStructure); 						//根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
  
-	TIM_ITConfig(TIM2 , TIM_IT_Update , ENABLE);							//使能TIM2的更新中断
+	TIM_ITConfig(TIM6 , TIM_IT_Update , ENABLE);							//使能TIM6的更新中断
 	
-	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;  							//TIM2中断
+	NVIC_InitStructure.NVIC_IRQChannel = TIM6_IRQn;  							//TIM6中断
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; 	 //抢占优先级1级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;  				//响应优先级0级
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;							//IRQ通道被使能
@@ -48,7 +48,7 @@ static void TIM2_Config(u16 arr,u16 psc)
 */
 void sampingTime_Init(u16 time)
 {
-	TIM2_Config(time-1,7200-1);
+	TIM6_Config(time-1,7200-1);
 	sampingStart(START);
 
 }
@@ -64,25 +64,25 @@ void sampingTime_Init(u16 time)
 void sampingStart(SWITCHState newState)
 {
 	if(newState == START)
-			TIM_Cmd(TIM2, ENABLE);  	//使能TIMx外设
+			TIM_Cmd(TIM6, ENABLE);  	//使能TIMx外设
 	else if(newState == STOP)
-			TIM_Cmd(TIM2, DISABLE);  //不使能TIMx外设
+			TIM_Cmd(TIM6, DISABLE);  //不使能TIMx外设
 }
 
 /*
 
-* 函数介绍：TIM2中断处理函数
+* 函数介绍：TIM6中断处理函数
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：无
 * 其他：中断一次就更新一次glsensor_ad_value[NUM_OF_SENSOR]
 */
-void TIM2_IRQHandler(void)
+void TIM6_IRQHandler(void)
 {
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)  //检查TIM2更新中断发生与否
+	if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  //检查TIM6更新中断发生与否
     {
 			ADC_ConvertOnce();	
-      TIM_ClearITPendingBit(TIM2, TIM_IT_Update);  //清除TIMx更新中断标志 
+      TIM_ClearITPendingBit(TIM6, TIM_IT_Update);  //清除TIMx更新中断标志 
     }
 }
 
@@ -221,29 +221,29 @@ void mpu6050_sampingTime_Init(u16 time)
 
 /*
 
-* 函数介绍：配置TIM3
+* 函数介绍：配置TIM7
 * 输入参数：arr(自动重载值),psc(预分频系数)
 * 输出参数：无
 * 返回值  ：无
 
 */
-void TIM3_Config(u16 arr,u16 psc)
+void TIM7_Config(u16 arr,u16 psc)
 {
   TIM_TimeBaseInitTypeDef  	TIM_TimeBaseStructure;
 	NVIC_InitTypeDef 					NVIC_InitStructure;
 
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); 							//时钟使能
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE); 							//时钟使能
 
 	TIM_TimeBaseStructure.TIM_Period = arr; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到5000为500ms
 	TIM_TimeBaseStructure.TIM_Prescaler =psc; 											//设置用来作为TIMx时钟频率除数的预分频值  10Khz的计数频率  
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0; 									//设置时钟分割:TDTS = Tck_tim
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
 	
-	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure); 						//根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
+	TIM_TimeBaseInit(TIM7, &TIM_TimeBaseStructure); 						//根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
  
-	TIM_ITConfig(TIM3 , TIM_IT_Update , ENABLE);							//使能TIM2的更新中断
+	TIM_ITConfig(TIM7 , TIM_IT_Update , ENABLE);							//使能TIM6的更新中断
 	
-	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;  							//TIM2中断
+	NVIC_InitStructure.NVIC_IRQChannel = TIM7_IRQn;  							//TIM2中断
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; 	 //抢占优先级1级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;  				//响应优先级2级
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;							//IRQ通道被使能
@@ -254,36 +254,36 @@ void TIM3_Config(u16 arr,u16 psc)
 
 /*
 
-* 函数介绍：TIM3中断处理函数
+* 函数介绍：TIM7中断处理函数
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：无
 * 其他：中断一次就更新一次glsensor_ad_value[NUM_OF_SENSOR]
 */
-void TIM3_IRQHandler(void)
+void TIM7_IRQHandler(void)
 {
-	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)  //检查TIM2更新中断发生与否
+	if (TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET)  //检查TIM2更新中断发生与否
     {
 			gl_time++;
-      TIM_ClearITPendingBit(TIM3, TIM_IT_Update);  //清除TIMx更新中断标志 
+      TIM_ClearITPendingBit(TIM7, TIM_IT_Update);  //清除TIMx更新中断标志 
     }
 }
 
 
 /*
 
-* 函数介绍：定时器3开关
+* 函数介绍：定时器7开关
 * 输入参数：开始：newState==START，停止：newState==STOP
 * 输出参数：无
 * 返回值  ：无
 
 */
-void Time3(SWITCHState newState)
+void Time7(SWITCHState newState)
 {
 	if(newState == START)
-			TIM_Cmd(TIM3, ENABLE);  	//使能TIMx外设
+			TIM_Cmd(TIM7, ENABLE);  	//使能TIMx外设
 	else if(newState == STOP)
-			TIM_Cmd(TIM3, DISABLE);  //不使能TIMx外设
+			TIM_Cmd(TIM7, DISABLE);  //不使能TIMx外设
 }
 
 

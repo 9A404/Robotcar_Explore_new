@@ -40,7 +40,7 @@ u8 Speed_downMethod(u16 time){
 	}
 	else if(5==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=6;
 	}
@@ -53,7 +53,7 @@ u8 Speed_downMethod(u16 time){
 	}	
 	else if(7 == flag && gl_time > time)
 	{	
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays = save;  //切换到缺省巡线
 		findLineFlag = 0;
@@ -78,7 +78,7 @@ u8 Speed_commonMethod(u16 time){
 	static u8 flag=0;
 	if(flag==0)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=1;
 	}
@@ -91,7 +91,7 @@ u8 Speed_commonMethod(u16 time){
 	}
 	else if(2==flag && gl_time > time)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays = FL_slow;
 		findLineFlag = 0;
@@ -116,13 +116,13 @@ u8 Take_up_time(u16 time){
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //打开定时器
+		Time7(START); //打开定时器
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > time)
 	{	
-		Time3(STOP); //关闭定时器
+		Time7(STOP); //关闭定时器
 		gl_time = 0;
 		flag=0;
 		return 1;
