@@ -158,71 +158,6 @@ u8 BlockHandleMethod_Brige()
 	}
 	
 	return 0;
-//static findLine save;
-//	static u8 flag=0;
-//     if(0 == flag)
-//	 { 
-//		 save = glHello_control.linkInform.findLineWays;
-//		 Time7(START);
-//		 gl_time = 0;
-//      flag = 1;		 
-//	 }
-//	else if(1==flag && gl_time > 40)         //μ?′???í·μ×2?
-//	{   
-////		speedAdjustment(0,0);
-////		while(1);
-//	//	delay_ms(500);
-//		glHello_control.linkInform.findLineWays = FL_angle; 
-//		findLineFlag = 0;
-//		angle_flag = 0;
-//		flag = 2;
-//	}
-//	else if(2==flag && gl_time > 140 )          //?ú??í·??é?
-//	{
-//		
-////	k 
-//		glHello_control.linkInform.findLineWays = FL_brige; 
-//		findLineFlag = 0;
-//		flag=3;
-//	}
-//	else if(3==flag && gl_time > 255)          //?ú??í·?￥2?
-//	{
-////		speedAdjustment(0,0);
-////     	while(1);
-////		delay_ms(500);
-//		flag=4;
-//		Time7(STOP);
-//	}
-//	else if( 4 == flag )  
-//	{
-//     Time7(START);
-//	 gl_time = 0;
-//     glHello_control.linkInform.findLineWays = FL_angle;
-//	 findLineFlag = 0; 
-//     angle_flag = 0;
-//	 flag = 5; 
-//	}
-//  	//?ú??é?
-//	else if(5==flag && gl_time > 105)             //?ú???2?￥2?
-//	{
-////	    speedAdjustment(0,0);
-////     	while(1);
-//		glHello_control.linkInform.findLineWays = save;
-//	    findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//		
-//	}
-////	if(6==flag && 0==PES_Platform)  flag=6;
-////	if(6==flag && 1==PES_Platform)        //?ú???2μ×2?
-////	{
-////		glHello_control.linkInform.findLineWays = save;
-////	  findLineFlag = 0;
-////		flag=0;
-////		return 1;
-////	}
-////	
-//	return 0;
 }
 /************************************************桥***********************************************************/
 
@@ -251,8 +186,15 @@ u8 BlockHandleMethod_DOOR(void)
 	if(1==flag && 0 == PES_H)
 	{
 		rotAngle_Right(180);
-		runMethodUpdate(runMethod,0,runMethodTableDoorAuto);   //39门关闭进行第一次更新路线
-		DoorFlag_2=1;
+		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto);   
+		if(1 == DoorFlag_2)
+		{
+			DoorFlag_2=2;
+		}
+		if(0 == DoorFlag_2)
+		{
+			DoorFlag_2=1;
+		}
 		Control_Init(&glHello_control,runMethod);     //初始化控制台
 		runStateInit(&glrunState,&glHello_control);		//根据控制台起始路段初始化运行状态
 		flag=0;
@@ -262,7 +204,7 @@ u8 BlockHandleMethod_DOOR(void)
 	{
 		Time7(STOP);
 		gl_time = 0;
-		led1_flash();
+//		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
 		findLineFlag = 0;
 		flag=0;
@@ -1692,6 +1634,8 @@ u8 BlockHandleMethod_26_27()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
+		glHello_control.linkInform.findLineWays =save;
+		findLineFlag = 0;
 		flag=0;
 		return 1;
 	}

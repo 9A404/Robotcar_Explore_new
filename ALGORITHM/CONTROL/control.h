@@ -8,7 +8,9 @@
 
 
 /*巡线方法*/
-typedef enum {FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_default,FL_middle,FL_brige,FL_brigeup,FL_brigedown,FL_slow,FL_slowest,FL_quick,FL_stop,FL_quickest,FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
+typedef enum {FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_default,FL_middle,	\
+							FL_brige,FL_brigeup,FL_brigedown,FL_slow,FL_slowest,FL_quick,FL_stop,FL_quickest,	\
+							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
 
 /*路障类型*/
 typedef enum {DOOR2,FREE,ANGLE,BRIGE,DOOR,S_BOARD_1,S_BOARD_2,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
@@ -21,13 +23,18 @@ typedef enum {DOOR2,FREE,ANGLE,BRIGE,DOOR,S_BOARD_1,S_BOARD_2,S_BOARD_DOUBLE,SEE
 typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//下台加速，普通加速，不加速，占时间（用于处理复杂节点)			
 
 /*找节点方法*/
-typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back}seekNodeWay;
+typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,	\
+							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back}seekNodeWay;
 
 /*停车方法*/
-typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,PARK_default,PARK_pesL,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,PARK_PesPlatform,PARK_Door,PARK_start,PARK_pesR_45,PARK_pesL_45,PARK_pesR_No,PARK_pesL_No,PARK_pesL_back,PARK_pesR_back}carPark;
+typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\
+							PARK_default,PARK_pesL,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,	\
+							PARK_PesPlatform,PARK_Door,PARK_start,PARK_pesR_45,PARK_pesL_45,PARK_pesR_No,PARK_pesL_No,PARK_pesL_back,PARK_pesR_back}carPark;
 
 /*车头旋转角度*/
-typedef enum {HR_120_F,HR_135_F,HL_180_F,HL_185,HL_180,HL_145,HL_135,HL_110,HL_120,HL_105,HL_90,HL_80,HL_60,HL_45,HL_35,HN_Rotate,HR_35,HR_45,HR_60,HR_80,HR_90,HR_110,HR_120,HR_135,HR_145,HR_150,HR_160,HR_170,HR_180,HR_180_F,rot_LFL,rot_RFL,rot_UL,rot_UR,Sensor_L90,Sensor_R90}carRotAngle;
+typedef enum {HR_120_F,HR_135_F,HL_180_F,HL_185,HL_180,HL_145,HL_135,HL_110,HL_120,HL_105,HL_90,	\
+							HL_80,HL_60,HL_45,HL_35,HN_Rotate,HR_35,HR_45,HR_60,HR_80,HR_90,HR_110,HR_120,HR_135,	\
+							HR_145,HR_150,HR_160,HR_170,HR_180,HR_180_F,rot_LFL,rot_RFL,rot_UL,rot_UR,Sensor_L90,Sensor_R90}carRotAngle;
 
 /*状态信号*/
 typedef enum {NTBE,EIC,STANDBY}updataState;		//需要执行 执行完成 待命

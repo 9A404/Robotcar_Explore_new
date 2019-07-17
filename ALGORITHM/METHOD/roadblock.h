@@ -22,11 +22,6 @@ u8 BlockHandleMethod_down_27_26(void);
 u8 BlockHandleMethod_S_BOARD_Double(void);
 
 
-u8 BlockHandleMethod_TIME(void);			 //复杂景点
-u8 BlockHandleMethod_TIME_1(void);
-u8 BlockHandleMethod_TIME_2(void);
-u8 BlockHandleMethod_TIME_44_43(void);
-u8 BlockHandleMethod_TIME_45_46();
 
 u8 BlockHandleMethod_Trapezoid_1(void);
 u8 BlockHandleMethod_Trapezoid_2(void);	 //梯形景点
@@ -40,23 +35,6 @@ u8 BlockHandleMethod_BACK_TILT_L(void);		//返回左转斜坡
 u8 BlockHandleMethod_Crossing_All_TILT(void); //穿过整个斜坡
 u8 BlockHandleMethod_Slope (void);
 
-u8 BlockHandleMethod_speedtime_8_6(void);  //加速时间
-u8 BlockHandleMethod_speedtime_11_10(void);  //加速时间
-u8 BlockHandleMethod_speedtime_7_12(void);  //加速时间
-u8 BlockHandleMethod_speedtime_36_17(void);
-u8 BlockHandleMethod_speedtime_17_37(void);
-u8 BlockHandleMethod_speedtime_14_37(void);
-u8 BlockHandleMethod_speedtime_38_37(void);
-u8 BlockHandleMethod_speedtime_10_12(void);
-u8 BlockHandleMethod_speedtime_6_7(void);
-u8 BlockHandleMethod_speedtime_15_37(void);
-u8 BlockHandleMethod_speedtime_44_37(void);
-u8 BlockHandleMethod_speedtime_36_37(void);
-u8 BlockHandleMethod_speedtime_14_44(void);
-u8 BlockHandleMethod_PESR(void);
-u8 BlockHandleMethod_speedtime_9_30(void);
-u8 BlockHandleMethod_speedtime_39_30(void);
-u8 BlockHandleMethod_Platform_37_15(void);
 #endif
 
 

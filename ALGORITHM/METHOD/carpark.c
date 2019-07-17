@@ -13,7 +13,7 @@
 
 u8 parkMethod_default()
 {
-	delay_ms(520);
+	delay_ms(510);
 	return 1;	
 }
 
@@ -207,14 +207,11 @@ u8 parkMethod_pesL_Delay(int time)
 	}
 	if(0==PES_L && 1==flag)
 	{	
-//		speedAdjustment(-2000,-2000); 
-//		delay_ms(15);
-		speedAdjustment(1200,1200); 
+		glHello_control.linkInform.findLineWays = NFL;
+		findLineFlag = 0; 
 		delay_ms(time);
-		speedAdjustment(0,0);
 		flag = 0;
-			
-		return 1;
+		return 1 ;
 	}
 	
 	return 0;	
@@ -241,9 +238,9 @@ u8 parkMethod_pesR_Delay(int time)
 	}
 	if(0==PES_R && 1==flag)
 	{
-		speedAdjustment(1200,1200); 
+		glHello_control.linkInform.findLineWays = NFL;
+		findLineFlag = 0; 
 		delay_ms(time);
-		speedAdjustment(0,0);
 		flag = 0;
 		return 1 ;
 	}
