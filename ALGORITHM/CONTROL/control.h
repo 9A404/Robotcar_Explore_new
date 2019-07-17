@@ -13,7 +13,7 @@ typedef enum {FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_de
 							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
 
 /*¬∑’œ¿‡–Õ*/
-typedef enum {FREE,ANGLE,BRIGE,DOOR,S_BOARD,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
+typedef enum {FREE,ANGLE,BRIGE,DOOR,DOOR_CLICK,S_BOARD,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
 							BACK_TILT_R,BACK_TILT_L,SLOPE,PLATFORM,PLATFORM_1,Peak,TRAPEZOID_1,TRAPEZOID_2,TRAPEZOID_3,\
 							TIME,TIME_1,TIME_2,DOWNPLATFORM,ALL_TILT,\
 							DOWN27_26,Block_PESR,Platform_37_15,		

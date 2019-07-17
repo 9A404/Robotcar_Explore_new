@@ -358,6 +358,17 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 											u3_printf("DOOR_EIC\r\n");
 											#endif
 									}break; 
+									
+			case DOOR_CLICK	:if(1 == BlockHandleMethod_DOOR_Click())
+									{
+											runState->F_RoadBlockState = EIC;												
+											#ifdef _DEBUG_
+											led1_flash();
+											#endif
+											#ifdef _DEBUG_U3_P
+											u3_printf("DOOR_EIC\r\n");
+											#endif
+									}break; 						
 			case S_BOARD:	if(1==BlockHandleMethod_S_BOARD())	
 									{
 											runState->F_RoadBlockState = EIC;												

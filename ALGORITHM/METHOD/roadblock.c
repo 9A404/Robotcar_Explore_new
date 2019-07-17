@@ -164,7 +164,7 @@ u8 BlockHandleMethod_Brige()
 /***************************************************门********************************************************/
 /*
 
-* 函数介绍：过门处理函数
+* 函数介绍：过门处理函数（开门状态不需要撞）
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：1(门开或者更新了线路)0（门关且没有更新线路）
@@ -174,7 +174,7 @@ u8 BlockHandleMethod_Brige()
 */
 u8 BlockHandleMethod_DOOR(void)
 {
-	static u8 flag=0;     //门开标志位  
+	static u8 flag=0;     
 
 	DoorFlag=1;
 	if(0==flag)
@@ -212,6 +212,72 @@ u8 BlockHandleMethod_DOOR(void)
 	}
 	return 0;
 }
+
+/*
+
+* 函数介绍：过门处理函数（开门状态需要撞）
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(门开或者更新了线路)0（门关且没有更新线路）
+* 其他		：
+* 作者    ：@panshao
+
+*/
+u8 BlockHandleMethod_DOOR_Click(void)
+{
+	static u8 flag =0;
+	DoorFlag = 1;
+	if(0==flag && 0 == PES_H)
+	{
+		glHello_control.linkInform.findLineWays = FL_stop;
+		findLineFlag = 0;
+		flag = 1;
+	}
+	if(1==flag && 1==Collision)
+	{
+		Time7(START);
+		gl_time = 0;
+		flag = 2;
+	}
+	if(2==flag && gl_time>1000 && 0==PES_H)	//门未被撞开
+	{
+		Time7(STOP);
+		gl_time = 0;
+		glHello_control.linkInform.findLineWays = BACK_NFL;
+	  findLineFlag = 0;
+		
+		delay_ms(200);
+		rotAngle_Right(180);
+		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto); 
+		if(1 == DoorFlag_2)
+		{
+			DoorFlag_2=2;
+		}
+		if(0 == DoorFlag_2)
+		{
+			DoorFlag_2=1;
+		}
+		Control_Init(&glHello_control,runMethod);     //初始化控制台
+		runStateInit(&glrunState,&glHello_control);		//根据控制台起始路段初始化运行状态
+		flag=0;
+		return 1;
+	}
+	if(2==flag && gl_time>1000 && 1==PES_H)	//门被撞开
+	{
+		Time7(STOP);
+		gl_time = 0;
+//		led1_flash();
+		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
+		findLineFlag = 0;
+		flag=0;
+		return 1;
+	}
+	
+}
+
+
+
+
 
 /***************************************************门********************************************************/
 

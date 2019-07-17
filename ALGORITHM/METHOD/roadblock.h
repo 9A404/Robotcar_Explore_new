@@ -4,7 +4,8 @@
 #include "myconfig.h"
 
 u8 BlockHandleMethod_Brige(void);      //过桥处理
-u8 BlockHandleMethod_DOOR(void);      //过门1处理
+u8 BlockHandleMethod_DOOR(void);      //过门处理(门开状态不需要撞)
+u8 BlockHandleMethod_DOOR_Click(void);//过门处理（门开状态需要撞）
 u8 BlockHandleMethod_Platform (void);	 //平台景点
 u8 BlockHandleMethod_Platform_1 (void); //起点
 u8 BlockHandleMethod_Peak(void); //上珠峰景点

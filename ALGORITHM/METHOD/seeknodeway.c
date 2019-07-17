@@ -267,7 +267,8 @@ u8 seekNodeMethod_Collision()
 	
 	if(1==flag && 1==Collision)
 	{
-		speedAdjustment(-1400,-1400);
+		glHello_control.linkInform.findLineWays = BACK_NFL;
+	  findLineFlag = 0;
 		delay_ms(200);
     flag=0;
 		return 1;	
