@@ -358,17 +358,7 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 											u3_printf("DOOR_EIC\r\n");
 											#endif
 									}break; 
-			case DOOR2	:if(1 == BlockHandleMethod_DOOR_2())
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("DOOR_EIC\r\n");
-											#endif
-									}break; 
-			case S_BOARD_1:	if(1==BlockHandleMethod_S_BOARD_1())	
+			case S_BOARD:	if(1==BlockHandleMethod_S_BOARD())	
 									{
 											runState->F_RoadBlockState = EIC;												
 											#ifdef _DEBUG_
@@ -377,18 +367,8 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 											#ifdef _DEBUG_U3_P
 											u3_printf("S_BOARD_1_EIC\r\n");
 											#endif
-									}break; 
-			case S_BOARD_2:	if(1==BlockHandleMethod_S_BOARD_2())						
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("S_BOARD_2_EIC\r\n");
-											#endif
-									}break; 
-			case S_BOARD_26_27:	if(1==BlockHandleMethod_26_27())					
+									}break; 					
+			case UP_26_27:	if(1==BlockHandleMethod_26_27())					
 									{
 											runState->F_RoadBlockState = EIC;												
 											#ifdef _DEBUG_
@@ -518,70 +498,7 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 											#ifdef _DEBUG_U3_P
 											u3_printf("DOWN27_26_EIC\r\n");
 											#endif
-									}break; 
-			
-			case TRAPEZOID_1:if(1 == BlockHandleMethod_Trapezoid_1())						
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TRAPEZOID_1_EIC\r\n");
-											#endif
-									}break; 
-			case TRAPEZOID_2:if(1 == BlockHandleMethod_Trapezoid_2())				
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TRAPEZOID_2_EIC\r\n");
-											#endif
-									}break; 
-			case TRAPEZOID_3:if(1 == BlockHandleMethod_Trapezoid_3())								
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TRAPEZOID_3_EIC\r\n");
-											#endif
-									}break; 
-			
-			case TIME				:if(1 == BlockHandleMethod_TIME ())							
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TIME_EIC\r\n");
-											#endif
-									}break; 
-			case TIME_1			:if(1 == BlockHandleMethod_TIME_1 ())								
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TIME_1_EIC\r\n");
-											#endif
-									}break; 
-			case TIME_2			:if(1 == BlockHandleMethod_TIME_2 ())		 								
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("TIME_2_EIC\r\n");
-											#endif
-									}break; 
-		
+									}break; 	
 			case SEESAW:	if(1==BlockHandleMethod_Seesaw())
 										{
 											runState->F_RoadBlockState = EIC;
@@ -589,18 +506,6 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 												u3_printf("SEESAW_EIC\r\n");
 											#endif
 										}break;
-			
-			case Block_PESR:if(1 == BlockHandleMethod_PESR())
-									{
-											runState->F_RoadBlockState = EIC;												
-											#ifdef _DEBUG_
-											led1_flash();
-											#endif
-											#ifdef _DEBUG_U3_P
-											u3_printf("SPEEDTIME_44_37\r\n");
-											#endif
-									}break;
-
 			case ANGLE:if(1 == Angle_read())										
 							{		runState->F_RoadBlockState = EIC;												
 									#ifdef _DEBUG_
@@ -610,21 +515,6 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 									u3_printf("Angle_read_EIC\r\n");
 									#endif
 									}break; 
-			case Platform_37_15:		
-										if(1 == BlockHandleMethod_Platform_37_15())
-										{
-											runState->carParkState = EIC;
-											#ifdef _DEBUG_U3_P
-											u3_printf("PARK_pesR_EIC\r\n");
-											#endif
-										}break;
-			case TIME_45_46:if(1 == BlockHandleMethod_TIME_45_46 ())		 
-								{
-									runState->F_RoadBlockState = EIC;
-									#ifdef BlueTooth_Debug
-										u3_printf("TIME_EIC_3\r\n");
-									#endif
-								}break;
 			default:  			break;
 		}
 	}

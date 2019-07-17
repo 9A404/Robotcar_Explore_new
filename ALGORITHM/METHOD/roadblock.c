@@ -212,55 +212,13 @@ u8 BlockHandleMethod_DOOR(void)
 	}
 	return 0;
 }
-/*
 
-* 函数介绍：过门处理函数
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(门开或者更新了线路)0（门关且没有更新线路）
-* 其他		：
-* 作者    ：@陈
-
-*/
-u8 BlockHandleMethod_DOOR_2(void)
-{
-	static u8 flag1=0;     //门开标志位  
-
-	if(0==flag1)
-	{
-		Time7(START);
-		gl_time=0;
-		flag1=1;
-	}
-	if(1==flag1 && 0 == PES_H)
-	{
-		rotAngle_Right(180);
-		runMethodUpdate(runMethod,1,runMethodTableDoorAuto);  //40门关闭进行第二次更新路线
-		DoorFlag_2=2;
-		Control_Init(&glHello_control,runMethod);     //初始化控制台
-		runStateInit(&glrunState,&glHello_control);		//根据控制台起始路段初始化运行状态
-		flag1=0;
-		return 1;
-
-	}
-	if(1==flag1 && gl_time>Door_Time_2)
-	{
-		Time7(STOP);
-		gl_time = 0;
-		led1_flash();
-		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
-		findLineFlag = 0;
-		flag1=0;
-		return 1;
-	}
-	return 0;
-}
 /***************************************************门********************************************************/
 
 /**************************************************平台********************************************************/
 /*
 
-* 函数介绍：处理7号平台
+* 函数介绍：从27到26
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：1(完成)0（未完成）
@@ -502,55 +460,6 @@ u8 BlockHandleMethod_Platform ()
 
 }
 
-
-u8  BlockHandleMethod_Platform_37_15 ()
-{
-		static findLine save;
-	static u8 flag=0;
-	
-	if(flag == 0)
-	{
-		save = glHello_control.linkInform.findLineWays;
-		glHello_control.linkInform.findLineWays =NFL;
-		flag = 1;
-	}
-	else if(1==flag&&1==PES_Platform)
-	{
-		glHello_control.linkInform.findLineWays = FL_DownPlatform; 
-		findLineFlag = 0;
-		flag=2;
-	}
-	else if(2==flag&&0==PES_Platform)  flag=3;
-	else if(3==flag&&1==PES_Platform)  flag=4;
-	else if(0==PES_Platform && 4==flag)
-	{
-		glHello_control.linkInform.findLineWays = save; 
-		findLineFlag = 0;
-		Time7(START);
-		gl_time=0;
-		flag=5;
-	}
-	else if(5 == flag && gl_time > 20)
-	{
-		flag = 6;
-		gl_time=0;
-		glHello_control.linkInform.findLineWays = FL_quickest;  //切换到超高速巡线
-		findLineFlag = 0;
-	}
-	else if(6 == flag && gl_time > 70)
-	{	
-		speedAdjustment(0,0);
-		delay_ms(500);
-		Time7(STOP);
-		flag = 0;
-		gl_time = 0;
-		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
-		findLineFlag = 0;
-		return 1;
-	}	
-		return 0;
-
-}
 /*
 
 * 函数介绍：过山丘方法
@@ -687,289 +596,6 @@ u8 BlockHandleMethod_Platform_1 ()
 }
 /**********************************************起点挡板*****************************************************/
 
-/************************************************定时********************************************************/
-/*
-
-* 函数介绍：定时(复杂节点处理方法)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_TIME()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 50)
-	{	
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-
-/*
-
-* 函数介绍：定时(用于2-5减速板)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_TIME_1()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 200)
-	{	
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-
-/*
-
-* 函数介绍：定时(用于26-27减速板)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_TIME_2()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(1==flag && gl_time > 200)
-	{	
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag=2;
-	}
-	if(2==flag && 0==PES_Platform) 
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=3;
-	}
-	if(3==flag &&1==PES_Platform)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays=FL_upPeak;
-		findLineFlag = 0;
-		flag=4;
-	}
-	if(4==flag && 0==PES_Platform) flag=5;
-	if(5==flag && 1==PES_Platform) 
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-
-/*
-
-* 函数介绍：定时(备用)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_TIME_44_43()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 20)
-	{	
-		led1_flash();
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-/************************************************定时********************************************************/
-
-/**************************************************梯形景点**************************************************/
-/*
-
-* 函数介绍：01梯形景点处理方法
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_Trapezoid_1()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START);					 //打开定时器
-		gl_time=0;
-		flag = 1;
-	}
-	
-	if(1==flag && gl_time>30)
-	{
-		flag = 2;
-		gl_time = 0;
-	}
-	
-	else if(2 == flag)
-	{
-		glHello_control.linkInform.findLineWays = FL_quickest; 
-		findLineFlag = 0;
-		flag = 3;
-	}
-	else if(3==flag && gl_time>S_TIME_6_8)  //加速时间
-	{
-		glHello_control.linkInform.findLineWays = FL_slow;
-	  findLineFlag = 0;
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag = 4;
-	}
-	else if(4==flag && 0==PES_H)
-	{
-		glHello_control.linkInform.findLineWays = FL_stop;
-	  findLineFlag = 0;
-		flag = 0;
-		return 1;	
-	}
-	return 0;
-}
-	
-
-/*
-
-* 函数介绍：02梯形景点处理方法
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_Trapezoid_2(void)
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(1==flag && gl_time>20)
-	{
-		flag = 2;
-		gl_time = 0;
-	}
-	
-	else if(2 == flag)
-	{
-		glHello_control.linkInform.findLineWays = FL_quickest; 
-		findLineFlag = 0;
-		flag = 3;	
-
-	}
-	else if(3==flag && gl_time>S_TIME_10_11)
-	{
-		glHello_control.linkInform.findLineWays = FL_slow;
-	  findLineFlag = 0;
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag = 4;
-	}
-	else if(4==flag && 0==PES_H)
-	{
-		glHello_control.linkInform.findLineWays = FL_stop;
-	  findLineFlag = 0;
-		flag = 0;
-		return 1;	
-	}
-	return 0;
-}
-
-
-/*
-
-* 函数介绍：05、06、07、08梯形景点处理方法
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_Trapezoid_3()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		flag=1;
-		gl_time=0;
-	}
-	if(gl_time > 50)
-	{	
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}		
-	return 0;
-}
-
-/**************************************************梯形景点**************************************************/
 
 /*****************************************************斜坡***************************************************/
 
@@ -1052,33 +678,6 @@ u8 BlockHandleMethod_GO_Tilt_R()
 	}
 	return 0;
 }
-//	static u8 flag;
-//	if(0==flag && 0==PES_Platform)  flag=1;
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-//		speedAdjustment(2000,2000);
-//		delay_ms(280);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(0,0);
-//		delay_ms(50);
-//		rotAngle_UR(80);
-//		speedAdjustment(2000,2000);
-//		delay_ms(450);
-//		speedAdjustment(0,0);
-//		flag=3;
-//	}	
-//	else if(3==flag && 0==PES_Platform)
-//	{
-//		glHello_control.linkInform.findLineWays = FL_slow;
-//		findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
-
 
 /*
 * 函数介绍：左转倾斜路面路障处理方法(前往)
@@ -1091,48 +690,7 @@ u8 BlockHandleMethod_GO_Tilt_R()
 */
 u8 BlockHandleMethod_GO_Tilt_L()
 {
-//	static u8 flag,flag1=0;
-//	if(0==flag && 0==PES_Platform)  
-//	{
-//		if(0==flag1)
-//		{
-//			Time7(START);
-//			gl_time=0;
-//			flag1=1;
-//		}
-//		if(gl_time>30 &&1==flag1)
-//		{
-//			
-//			Time7(STOP);
-//			gl_time=0;
-//			flag=1;
-//			flag1=0;
-//		}
-//	}
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-//		speedAdjustment(2000,1950);
-//		delay_ms(260);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(0,0);
-//		delay_ms(50);
-//		rotAngle_UL(90);
-//		speedAdjustment(2000,2000);
-//		delay_ms(450);
-//		speedAdjustment(0,0);
-//		flag=3;
-//	}	
-//	else if(3==flag && 0==PES_Platform)
-//	{
-//		glHello_control.linkInform.findLineWays = FL_default;
-//		findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
+
 	static u8 flag,flag1=0;
 	if(0==flag && 0==PES_Platform)  
 	{
@@ -1248,33 +806,6 @@ u8 BlockHandleMethod_BACK_TILT_L()
 */
 u8 BlockHandleMethod_Crossing_All_TILT()
 {
-//	if(1 == PES_Platform)
-//	{
-//		speedAdjustment(2000,2000);
-//		delay_ms(1000);
-//		delay_ms(400);
-//		return 1;
-//	}
-//		return 0;
-//	static u8 flag;
-//	if(0==flag && 0==PES_Platform)  flag=1;
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-////		speedAdjustment(0,0);
-////		delay_ms(500);
-//		speedAdjustment(2000,2000);
-//		delay_ms(550);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(2000,2000);
-//		delay_ms(1000);
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
-
 	static u8 flag;
 	if(0==flag && 0==PES_Platform)  
 	{
@@ -1442,7 +973,7 @@ u8 BlockHandleMethod_downPlatform()
 //***************************************************减速板****************************************//
 /*
 
-* 函数介绍：过减速板1(用底下光电开关)
+* 函数介绍：过减速板1个(用底下光电开关)
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：1(检测到)0（未检测到）
@@ -1450,7 +981,7 @@ u8 BlockHandleMethod_downPlatform()
 * 作者    ：@林
 
 */
-u8 BlockHandleMethod_S_BOARD_1()
+u8 BlockHandleMethod_S_BOARD()
 {
 	static findLine save;
 	static u8 flag=0;
@@ -1485,56 +1016,12 @@ u8 BlockHandleMethod_S_BOARD_1()
 
 /*
 
-* 函数介绍：过减速板2(用底下光电开关)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(检测到)0（未检测到）
-* 其他		：
-* 作者    ：@林
-
-*/
-u8 BlockHandleMethod_S_BOARD_2()
-{
-//	static findLine save;
-	static u8 flag=0;
-	if(0==flag)
-	{
-	//	save = glHello_control.linkInform.findLineWays;
-		flag = 1;
-	}
-	if(1==flag&&0==PES_Platform) flag=2;
-	if(2==flag&&1==PES_Platform)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays =FL_slow;
-		findLineFlag = 0;
-		Time7(START);
-		gl_time=0;
-		flag = 3;
-	}
-	if(3==flag&&gl_time>150)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays =FL_default;
-		findLineFlag = 0;
-		Time7(STOP);
-		gl_time=0;
-		flag=0;
-		return 1;
-	}
-	return 0;
-}
-
-/*
-
 * 函数介绍：过双重减速板(用底下光电开关)
 * 输入参数：无
 * 输出参数：无
 * 返回值  ：1(检测到)0（未检测到）
 * 其他		：
-* 作者    ：@林
+* 作者    ：panshao
 
 */
 u8 BlockHandleMethod_S_BOARD_Double()
@@ -1569,11 +1056,6 @@ u8 BlockHandleMethod_S_BOARD_Double()
 	}
 	return 0;
 }
-
-
-
-
-
 
 /*
 
@@ -1641,73 +1123,6 @@ u8 BlockHandleMethod_26_27()
 	}
 	return 0;
 }
-/*
-* 函数介绍：仅用在43-44这个地方，右边传感器找点
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@陈hzihaio
-
-*/
-u8 BlockHandleMethod_PESR(void)
-	{
-//		static u8 flag=0;
-//	if(0 == flag)
-//	{
-//		pes_R=0;
-//	//	pesRSwitch(START);//开中断
-//		//glHello_control.linkInform.findLineWays = FL_stop;
-//		flag = 1;
-//	}
-//	if(1==pes_R && 1==flag)
-//	{	
-//	//	pesRSwitch(STOP);//关中断
-//		//speedAdjustment(0,0);
-//		pes_R=0;
-//		flag = 0;	
-//		return 1;
-//	}
-//		
-//	return 0;
-		if(1==PES_R)	return 1;
-		return 0;
-}
-
-/*
-
-* 函数介绍：定时(备用)
-* 输入参数：无
-* 输出参数：无
-* 返回值  ：1(路障解决)0（路障未解决）
-* 其他		：
-* 作者    ：@断忆
-
-*/
-u8 BlockHandleMethod_TIME_45_46()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time7(START); //打开定时器
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 80)
-	{	
-		Time7(STOP); //关闭定时器
-		gl_time = 0;
-		flag=0;
-		#ifdef LED_Debug
-		led_flash();
-		#endif
-		return 1;
-	}
-		
-	return 0;
-
-}
-
 
 
 

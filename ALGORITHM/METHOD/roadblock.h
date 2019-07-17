@@ -5,15 +5,12 @@
 
 u8 BlockHandleMethod_Brige(void);      //过桥处理
 u8 BlockHandleMethod_DOOR(void);      //过门1处理
-u8 BlockHandleMethod_DOOR_2(void);
-//u8 BlockHandleMethod_DOORBack(void);   //回家过门处理
 u8 BlockHandleMethod_Platform (void);	 //平台景点
 u8 BlockHandleMethod_Platform_1 (void); //起点
 u8 BlockHandleMethod_Peak(void); //上珠峰景点
 u8 BlockHandleMethod_downPlatform(void);//下珠峰
-u8 BlockHandleMethod_S_BOARD_1(void);//减速板1
-u8 BlockHandleMethod_S_BOARD_2(void);//减速板2
-u8 BlockHandleMethod_S_BOARD_Double(void);
+u8 BlockHandleMethod_S_BOARD(void);//减速板1个
+u8 BlockHandleMethod_S_BOARD_Double(void);//减速板2个
 u8 BlockHandleMethod_26_27(void);//26到27节点
 u8 Angle_read(void);
 u8 BlockHandleMethod_Seesaw(void);

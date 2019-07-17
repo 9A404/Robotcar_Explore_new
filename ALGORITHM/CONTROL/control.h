@@ -13,11 +13,11 @@ typedef enum {FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_de
 							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
 
 /*路障类型*/
-typedef enum {DOOR2,FREE,ANGLE,BRIGE,DOOR,S_BOARD_1,S_BOARD_2,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
+typedef enum {FREE,ANGLE,BRIGE,DOOR,S_BOARD,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
 							BACK_TILT_R,BACK_TILT_L,SLOPE,PLATFORM,PLATFORM_1,Peak,TRAPEZOID_1,TRAPEZOID_2,TRAPEZOID_3,\
 							TIME,TIME_1,TIME_2,DOWNPLATFORM,ALL_TILT,\
 							DOWN27_26,Block_PESR,Platform_37_15,		
-							S_BOARD_26_27,TIME_45_46}typeRoadblock;	//无障碍、桥、门、减速带、跷跷板、倾斜路面、斜坡、平台景点、梯形景点、复杂节点定时                                                                                                                                  
+							UP_26_27,TIME_45_46}typeRoadblock;	//无障碍、桥、门、减速带、跷跷板、倾斜路面、斜坡、平台景点、梯形景点、复杂节点定时                                                                                                                                  
 
 /*加速类型*/
 typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//下台加速，普通加速，不加速，占时间（用于处理复杂节点)			
