@@ -82,8 +82,8 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 						{31,32,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR_90},	
 					},
 
-/*16节点*/{	{17,18,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL_90},{44,45,FL_16_44,FREE,NOSPEED,0,SEEK_SeeSaw,NOTPARK,HN_Rotate},	\
-						{17,20,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL_90}
+/*16节点*/{	{17,18,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL_90},{44,45,FL_16_44,FREE,NOSPEED,0,SEEK_SeeSaw,NOTPARK,HN_Rotate},	\
+						{17,20,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL_90}
 						
 					},
 	
@@ -130,7 +130,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 					
 					},
 
-/*28节点*/{	{25,26,FL_slow,SLOPE,NOSPEED,40,SEEK4,PARK_pesL,HL_90},	{50,49,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL_35},  \
+/*28节点*/{	{25,26,FL_slow,SLOPE,NOSPEED,0,SEEK4,PARK_pesL,HL_90},	{50,49,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL_35},  \
            },
 
 /*29节点*/{	{36,37,},	},
