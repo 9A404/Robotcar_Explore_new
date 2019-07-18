@@ -6,11 +6,11 @@
 const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 /*节点*/	{	{0,0,},			},//没有用到	
 
-/*1节点*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate},{2,3,FL_default,PLATFORM_1,COMMON_SPEED,20,NOTSEEK,NOTPARK,HN_Rotate},	\
+/*1节点*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate},{2,3,FL_default,PLATFORM_1,COMMON_SPEED,30,NOTSEEK,NOTPARK,HN_Rotate},	\
 						{2,5,FL_default,PLATFORM_1,NOSPEED,0,SEEK_default,NOTPARK,rot_LFL},	
 					},	
 
-/*2节点*/	{	{1,2,FL_slow,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_default,HL_180_F},{3,4,FL_slow,BRIGE,COMMON_SPEED,30,NOTSEEK,NOTPARK,HN_Rotate},	\
+/*2节点*/	{	{1,2,FL_slow,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_default,HL_180_F},{3,4,FL_slow,BRIGE,COMMON_SPEED,28,NOTSEEK,NOTPARK,HN_Rotate},	\
 						{5,9,FL_default,S_BOARD,NOSPEED,0,SEEK_default,PARK_pesL,HL_120},{5,6,FL_default,S_BOARD,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate},	
 					},		
 
