@@ -243,8 +243,7 @@ u8 BlockHandleMethod_DOOR_Click(void)
 	{
 		Time7(STOP);
 		gl_time = 0;
-		glHello_control.linkInform.findLineWays = BACK_NFL;
-	  findLineFlag = 0;
+		speedAdjustment(-1500,-1500);
 		
 		delay_ms(200);
 		rotAngle_Right(180);
@@ -300,6 +299,7 @@ u8 BlockHandleMethod_down_27_26()
 	if(flag == 0)
 	{
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag && 1==PES_Platform)
@@ -428,7 +428,7 @@ float Monitor_ROLL()
 //		led0_flash();
 		flag=1;
 	}
-	else if(1==flag&&gl_time>100)         
+	else if(1==flag&&gl_time>120)         
 	{
 //		temp = Monitor_ROLL();
 //		if( temp > -10)               //如果车在跷跷板的另外一端则继续盲走后置flag=2
@@ -463,7 +463,7 @@ float Monitor_ROLL()
 		findLineFlag = 0;
 		if(temp>-10)
 		{
-			speedAdjustment(2000,2000);
+			speedAdjustment(1690,1800);
 			flag=2;
 		}
 			
@@ -505,6 +505,7 @@ u8 BlockHandleMethod_Platform ()
 	{
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag&&1==PES_Platform)
@@ -640,6 +641,7 @@ u8 BlockHandleMethod_Platform_1 ()
 		//u3_printf("Baffle+NFL");
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag&&1==PES_Platform)
@@ -987,6 +989,7 @@ u8 BlockHandleMethod_downPlatform()
 		gl_time=0;
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag && 1==PES_Platform)
@@ -1003,6 +1006,7 @@ u8 BlockHandleMethod_downPlatform()
 //		speedAdjustment(0,0);
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = NFL; 
+		findLineFlag = 0;
 		flag = 4;
 
 	}

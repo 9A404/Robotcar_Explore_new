@@ -637,7 +637,63 @@ void flMethod_NFL_slow()
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);	
 }
 
+/*
 
+* 函数介绍：不巡线（）
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void No_flMethod()
+{
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,1690,1800);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+/*
+
+* 函数介绍：不巡线（慢速）
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void No_flMethod_Slow()
+{
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,1300,1320);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+/*
+
+* 函数介绍：不巡线（后退）
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：无
+* 作者    ：panshao
+
+*/
+void No_flMethod_Back()
+{
+	
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,-1500,-1500);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
 
 /*
 

@@ -250,15 +250,10 @@ u8 seekNodeMethod_10()
 */
 
 u8 seekNodeMethod_Collision()
-{
-//	if(1==Collision) return 1;
-//	return 0;
-  
+{  
   static u8 flag=0;
 	if(0==flag && 0==PES_H)
 	{
-//    speedAdjustment(-0,-0);
-//		delay_ms(200);
     glHello_control.linkInform.findLineWays = FL_stop;
 	  findLineFlag = 0;
     
@@ -267,8 +262,8 @@ u8 seekNodeMethod_Collision()
 	
 	if(1==flag && 1==Collision)
 	{
-		glHello_control.linkInform.findLineWays = BACK_NFL;
-	  findLineFlag = 0;
+		
+		speedAdjustment(-1500,-1500);
 		delay_ms(200);
     flag=0;
 		return 1;	
@@ -370,7 +365,7 @@ u8 seekNodeMethod_SeeSaw()
 
 u8 seekNodeMethod_digL()
 {
-	if(glsensor_dig_value&0x800)
+	if(0xC00==(glsensor_dig_value&0xC00))//1100 0000 0000 == 0xC00
 	{
 		return 1;
 	}
@@ -390,7 +385,7 @@ u8 seekNodeMethod_digL()
 
 u8 seekNodeMethod_digR()
 {
-	if(glsensor_dig_value&0x001)
+	if(0x003==(glsensor_dig_value&0x003))
 	{
 		return 1;
 	}

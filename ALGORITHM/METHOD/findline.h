@@ -26,6 +26,9 @@ void flMethod_circular(void);      //圆边巡线方法
 void flMethod_NFL(void);        //循角度方法
 void flMethod_NFL_slow(void);        //循角度方法
 void flMethod_Encoder(void);
+void No_flMethod(void);
+void No_flMethod_Slow(void);
+void No_flMethod_Back(void);
 #endif
 
 
