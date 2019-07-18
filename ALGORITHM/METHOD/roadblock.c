@@ -235,17 +235,21 @@ u8 BlockHandleMethod_DOOR_Click(void)
 	}
 	if(1==flag && 1==Collision)
 	{
-		Time7(START);
-		gl_time = 0;
+		speedAdjustment(-1500,-1500);
+		delay_ms(200);
+		speedAdjustment(0,0);
+		delay_ms(1000);
+//		Time7(START);
+//		gl_time = 0;
 		flag = 2;
 	}
-	if(2==flag && gl_time>1000 && 0==PES_H)	//门未被撞开
+	if(2==flag && 0==PES_H)	//门未被撞开
 	{
-		Time7(STOP);
-		gl_time = 0;
-		speedAdjustment(-1500,-1500);
-		
-		delay_ms(200);
+//		Time7(STOP);
+//		gl_time = 0;
+//		speedAdjustment(-1500,-1500);
+//		
+//		delay_ms(200);
 		rotAngle_Right(180);
 		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto); 
 		if(1 == DoorFlag_2)
@@ -261,17 +265,17 @@ u8 BlockHandleMethod_DOOR_Click(void)
 		flag=0;
 		return 1;
 	}
-	if(2==flag && gl_time>1000 && 1==PES_H)	//门被撞开
+	if(2==flag && 1==PES_H)	//门被撞开
 	{
-		Time7(STOP);
-		gl_time = 0;
+//		Time7(STOP);
+//		gl_time = 0;
 //		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_default;  //切换到缺省巡线
 		findLineFlag = 0;
 		flag=0;
 		return 1;
 	}
-	
+	return 0;
 }
 
 
