@@ -4,7 +4,7 @@
 /*通过一个表示出地图  巡线方法 路障类型  加速方法  加速时间 找节点方法 停车方法 车头旋转角度*/
 
 const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
-/*节点*/	{	{0,0,},			},//没有用到	
+/*节点*/	{	{0,0,},			},//没有用到	1
 
 /*1节点*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate},{2,3,FL_default,PLATFORM_1,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate},	\
 						{2,5,FL_default,PLATFORM_1,NOSPEED,0,SEEK_default,NOTPARK,rot_LFL},	
