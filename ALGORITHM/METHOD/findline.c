@@ -168,7 +168,7 @@ void flMethod_quickest()
 			PID_Init(&glsensorPID,20,2500,200,0,200);																					//对速度PID的参数进行初始化设置
 			speedRec_Init(&glmotorSpeed,2090,2200); 																				//对初始速度进行设定
 		#else
-			PID_Init(&glsensorPID,20,5500,250,0,2800);																					//对速度PID的参数进行初始化设置
+			PID_Init(&glsensorPID,20,5500,250,0,2950);																					//对速度PID的参数进行初始化设置
 			speedRec_Init(&glmotorSpeed,6500,6500); 																				//对初始速度进行设定
 		#endif
 		
