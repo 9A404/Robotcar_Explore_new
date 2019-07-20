@@ -272,9 +272,9 @@ int sensorDigitalRank(u16 digitalValue)
 		case 0x1C0: temp=16;break;    // 0001 1100 0000
 		case 0x0C0: temp=18;break;    // 0000 1100 0000 
 		
-		case 0x0E0: temp=19;break;    // 0000 1110 0000 中间
+		case 0x080: temp=19;break;    // 0000 0100 0000 中间
 		case 0x060: temp=20;break;    // 0000 0110 0000 中间
-		case 0x070: temp=21;break;    // 0000 0111 0000 中间
+		case 0x020: temp=21;break;    // 0000 0010 0000 中间
 		
 		case 0x030: temp=22;break;    // 0000 0011 0000 
 		case 0x038: temp=24;break;    // 0000 0011 1000

@@ -207,7 +207,7 @@ u8 seekNodeMethod_pesPlatform()
 	{
 		glHello_control.linkInform.findLineWays = NFL;
 		flag=0;
-		delay_ms(200);
+		delay_ms(100);
 		return 1;
 	}		
 	return 0;

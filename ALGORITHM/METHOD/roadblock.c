@@ -1109,7 +1109,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 	}
 	else if(1==flag&&1==PES_Platform) 
 	{
-		glHello_control.linkInform.findLineWays =FL_slowest;
+		glHello_control.linkInform.findLineWays =FL_slow;
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);

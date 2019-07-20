@@ -17,7 +17,7 @@ typedef struct{
 	
 	int limit;		//限制值
 	
-}PIDTypeDef;
+ }PIDTypeDef;
 
 void PID_Init(PIDTypeDef *pidRegulator,int setVaule,int limit,int kp,int ki,int kd);
 int incrementalPIDcalc(PIDTypeDef *p,int nextVaule);	//增量式PID
