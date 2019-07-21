@@ -2,9 +2,8 @@
 
 
 /*全局变量*/
-
-const u16  basic_sensorThreshold[NUM_OF_SENSOR] = {3900,3900,3900,3900 ,3900,3900,3900,3900,3900,3900,3900,3900 };
-const u16  brige_sensorThreshold[NUM_OF_SENSOR] = {800,800,800,800,800,800,800,800,800,800,800,800};
+const u16  basic_sensorThreshold[NUM_OF_SENSOR] = {3800,3800,3800,3800 ,3800,3800,3800,3800,3800,3800,3800,3800 };
+const u16  brige_sensorThreshold[NUM_OF_SENSOR] = {1500,900,900,900,900,900,900,900,900,900,900,900 };
 
  
 
