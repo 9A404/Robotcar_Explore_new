@@ -270,6 +270,7 @@ void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 				case FL_downPeak	:flMethod_downPeak();break;
 				case FL_left			:flMethod_left();break;
 				case FL_Right			:flMethod_right();break;
+				case FL_sword			:flMethod_sword();break;
 				case NFL: 			 No_flMethod();break;
 				case FL_angle:   flMethod_NFL();break;
 				case FL_angle_slow:  flMethod_NFL_slow();break;
@@ -526,6 +527,15 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 									u3_printf("Angle_read_EIC\r\n");
 									#endif
 									}break; 
+			case SWORD:if(1 == BlockHandleMethod_Sword())										
+							{		runState->F_RoadBlockState = EIC;												
+									#ifdef _DEBUG_
+									led1_flash();
+									#endif
+									#ifdef _DEBUG_U3_P
+									u3_printf("Angle_read_EIC\r\n");
+									#endif
+									}break;
 			default:  			break;
 		}
 	}

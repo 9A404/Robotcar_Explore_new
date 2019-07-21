@@ -531,6 +531,33 @@ u8 BlockHandleMethod_Platform ()
 
 }
 
+
+
+/*
+
+* 函数介绍：过刀山方法
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(路障解决)0（路障未解决）
+* 其他		：无
+* 作者    ：panshao
+
+*/
+u8 BlockHandleMethod_Sword ()
+{
+	if(calculateNum(glsensor_dig_value) == 0)
+	{
+		speedAdjustment(1310,2500);
+		delay_ms(300);
+		glHello_control.linkInform.findLineWays = FL_default;   
+			findLineFlag = 0;
+		return 1;
+	}
+		return 0;
+}
+
+
+
 /*
 
 * 函数介绍：过山丘方法
