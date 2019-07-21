@@ -85,7 +85,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 					},
 
 /*16½Úµã*/{	{17,18,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL_90},{44,45,FL_16_44,FREE,NOSPEED,0,SEEK_SeeSaw,NOTPARK,HN_Rotate},	\
-						{17,20,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL_90}
+						{17,20,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL_90},
 						
 					},
 	

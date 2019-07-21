@@ -293,6 +293,54 @@ int sensorDigitalRank(u16 digitalValue)
 }
 
 
+
+/*
+
+* 函数介绍：传感器数字量划分等级(过刀山用)
+* 输入参数：digitalValue（传感器的数字量）
+* 输出参数：
+* 返回值  ：根据规则计算后的等级
+* 其他    ：根据传感器来调整数值   
+
+*/
+int sensorDigitalRank_Sword(u16 digitalValue)
+{
+	int temp;
+	static int save=20;//保存当前值，以便下次使用
+	switch(digitalValue)
+	{
+		case 0x800: temp=16;break;    // 1000 0000 0000
+		case 0xC00: temp=18;break;		// 1100 0000 0000
+		case 0xE00: temp=19;break;		// 1110 0000 0000	中间
+		case 0x600: temp=20;break;    // 0110 0000 0000	中间
+		case 0x700: temp=21;break;    // 0111 0000 0000	中间
+		case 0x300: temp=22;break;    // 0011 0000 0000
+		case 0x380: temp=24;break;    // 0011 1000 0000
+		case 0x180: temp=26;break;    // 0001 1000 0000
+		case 0x1C0: temp=28;break;    // 0001 1100 0000
+		case 0x0C0: temp=30;break;    // 0000 1100 0000 
+		
+		case 0x0E0: temp=32;break;    // 0000 1110 0000 
+		case 0x060: temp=34;break;    // 0000 0110 0000 
+		case 0x070: temp=36;break;    // 0000 0111 0000 
+		
+//		case 0x030: temp=22;break;    // 0000 0011 0000 
+//		case 0x038: temp=24;break;    // 0000 0011 1000
+//		case 0x018: temp=26;break;    // 0000 0001 1000
+//		case 0x01C: temp=28;break;    // 0000 0001 1100
+//		case 0x00C: temp=30;break;    // 0000 0000 1100
+//		case 0x00E: temp=32;break;    // 0000 0000 1110
+//		case 0x006: temp=34;break;    // 0000 0000 0110
+//		case 0x007: temp=36;break;    // 0000 0000 0111
+//		case 0x003: temp=38;break;    // 0000 0000 0011
+//		case 0x001: temp=40;break;    // 0000 0000 0001
+		default   : temp = save; break;//读到其他值的时候采用上次的值
+	}
+		save = temp;
+	return temp;
+}
+
+
 /*
 
 * 函数介绍：过桥传感器数字量划分等级

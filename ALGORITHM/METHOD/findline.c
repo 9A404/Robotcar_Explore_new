@@ -336,6 +336,35 @@ void flMethod_stop()
 
 }
 
+
+/*
+
+* 函数介绍：过刀山巡线方法
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：
+* 其他    ：每个方法最主要的区别：1、glmotorSpeed初始速度 2、glsensorPID的P I D三个参数
+* 作者    ：@断忆
+
+*/
+void flMethod_sword()
+{
+	int rank;
+	if(findLineFlag == 0)//保证每个路段初始化一次
+	{
+		PID_Init(&glsensorPID,20,1000,100,0,0);																					//对速度PID的参数进行初始化设置
+		speedRec_Init(&glmotorSpeed,1310,1400); 																				//对初始速度进行设定
+		findLineFlag=1;
+	}
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	rank=sensorDigitalRank_Sword(glsensor_dig_value);                                    //分级
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
+
+}
+
+
+
 /*
 
 * 函数介绍：上珠峰巡线方法()
@@ -636,6 +665,10 @@ void flMethod_NFL_slow()
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);	
 }
+
+
+
+
 
 /*
 
