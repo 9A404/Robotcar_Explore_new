@@ -35,7 +35,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 
 						
 /*7节点*/	{	{12,11,FL_default,PLATFORM,COMMON_SPEED,330,SEEK_PesPlatform,PARK_PesPlatform,HN_Rotate},{6,14,FL_default,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesR,HR_90},	\
-						{12,10,FL_slow,PLATFORM,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_180_F},{6,42,FL_default,PLATFORM,NOSPEED,0,SEEK4,PARK_pesR,HR_90},\
+						{12,10,FL_slow,PLATFORM,COMMON_SPEED,240,SEEK_PesPlatform,PARK_PesPlatform,HL_180_F},{6,42,FL_default,PLATFORM,NOSPEED,0,SEEK4,PARK_pesR,HR_90},\
 					},
 	
 /*8节点*/ {	{6,7,FL_slow,FREE,COMMON_SPEED,50,SEEK_default,PARK_pesR_250,HR_135_F},
