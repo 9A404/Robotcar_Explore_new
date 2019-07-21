@@ -2,7 +2,7 @@
 
 
 /*全局变量*/
-const u16  basic_sensorThreshold[NUM_OF_SENSOR] = {3800,3800,3500,3500,3800,3500,2500,2500,2500,3500,2500,2500 };
+const u16  basic_sensorThreshold[NUM_OF_SENSOR] = {2500,3800,3500,3500,3500,3500,2500,3500,3500,3500,3500,3500 };
 const u16  brige_sensorThreshold[NUM_OF_SENSOR] = {650,500,800,550,900,800,600,300,250,350,350,250 };
  
 
@@ -336,6 +336,7 @@ int main(void)
 		while(1)
 		{
 			displayOperation();
+		//	speedAdjustment(2150,2200);
 		}
 		
 }
