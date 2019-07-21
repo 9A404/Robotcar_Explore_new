@@ -324,8 +324,8 @@ int sensorDigitalRank_Sword(u16 digitalValue)
 		case 0x060: temp=34;break;    // 0000 0110 0000 
 		case 0x070: temp=36;break;    // 0000 0111 0000 
 		
-//		case 0x030: temp=22;break;    // 0000 0011 0000 
-//		case 0x038: temp=24;break;    // 0000 0011 1000
+		case 0x030: temp=38;break;    // 0000 0011 0000 
+		case 0x038: temp=40;break;    // 0000 0011 1000
 //		case 0x018: temp=26;break;    // 0000 0001 1000
 //		case 0x01C: temp=28;break;    // 0000 0001 1100
 //		case 0x00C: temp=30;break;    // 0000 0000 1100

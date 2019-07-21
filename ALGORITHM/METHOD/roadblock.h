@@ -14,6 +14,7 @@ u8 BlockHandleMethod_S_BOARD(void);//减速板1个
 u8 BlockHandleMethod_S_BOARD_Double(void);//减速板2个
 u8 BlockHandleMethod_26_27(void);//26到27节点
 u8 Angle_read(void);
+u8 BlockHandleMethod_Sword (void);
 u8 BlockHandleMethod_Seesaw(void);
 u8 BlockHandleMethod_Slope(void);      //山丘
 u8 BlockHandleMethod_down_27_26(void);

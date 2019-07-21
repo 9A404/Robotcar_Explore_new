@@ -29,6 +29,7 @@ void flMethod_Encoder(void);
 void No_flMethod(void);
 void No_flMethod_Slow(void);
 void No_flMethod_Back(void);
+void flMethod_sword(void);
 #endif
 
 
