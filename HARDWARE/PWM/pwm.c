@@ -174,25 +174,25 @@ void speedAdjustment(int lspeed,int rspeed)
 {
 	  if(rspeed>0)   
 	{
-		TIM4->CCR3 = 0;         // PB9
-		TIM4->CCR4 = rspeed;	  // PB8          
+		TIM4->CCR4 = 0;         // PB9
+		TIM4->CCR3 = rspeed;	  // PB8          
 
 	}
 	else
 	{ 
-	  TIM4->CCR4 = 0;
-		TIM4->CCR3 = -rspeed;              
+	  TIM4->CCR3 = 0;
+		TIM4->CCR4 = -rspeed;              
 	}
 	
 	if(lspeed>0)
  	{		
-		TIM4->CCR1 = lspeed;	   			//PB7
-		TIM4->CCR2 = 0;	  //PB6     
+		TIM4->CCR2 = lspeed;	   			//PB7
+		TIM4->CCR1 = 0;	  //PB6     
 	}
 		else
 		{
-	  TIM4->CCR2 = -lspeed;
-		TIM4->CCR1 = 0;	         
+	  TIM4->CCR1 = -lspeed;
+		TIM4->CCR2 = 0;	         
 		}
 	
 }
