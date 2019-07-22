@@ -1,13 +1,13 @@
 /******************************************************************************
-//æœ¬ç¨‹åºé€‚ç”¨ä¸STM32F103RB
-//              GND   ç”µæºåœ°
-//              VCC   æ¥5Væˆ–3.3vç”µæº
-//              SCL   æ¥PB13ï¼ˆSCLï¼‰
-//              SDA   æ¥PB15ï¼ˆSDAï¼‰
-//              RES   æ¥PD15
-//              DC    æ¥PD14
-//              CS    æ¥PD13 
-//							BL		æ¥(æš‚æ—¶æ¥vcc)
+//±¾³ÌĞòÊÊÓÃÓëSTM32F103RB
+//              GND   µçÔ´µØ
+//              VCC   ½Ó5V»ò3.3vµçÔ´
+//              SCL   ½ÓPB13£¨SCL£©
+//              SDA   ½ÓPB15£¨SDA£©
+//              RES   ½ÓPD15
+//              DC    ½ÓPD14
+//              CS    ½ÓPD13 
+//							BL		½Ó(ÔİÊ±½Óvcc)
 *******************************************************************************/
 
 #ifndef _LCD_H_
@@ -15,22 +15,22 @@
 
 #include "myconfig.h"
 
-/*å±å¹•åˆ†è¾¨ç‡*/
+/*ÆÁÄ»·Ö±æÂÊ*/
 #define X_MAX_PIXEL	        128
 #define Y_MAX_PIXEL	        160
 
-/*å±å¹•é¢œè‰²*/
+/*ÆÁÄ»ÑÕÉ«*/
 #define RED  		0x001f
 #define GREEN		0x07e0
 #define BLUE 		0xf800
 #define WHITE		0xffff
 #define BLACK		0x0000
 #define YELLOW  0xFFE0
-#define GRAY0   0xEF7D   			//ç°è‰²0 31650 011000 1011 00101
-#define GRAY1   0x8410      	//ç°è‰²1 00000 000000 00000
-#define GRAY2   0x4208      	//ç°è‰²2 11111 111110 11111
+#define GRAY0   0xEF7D   			//»ÒÉ«0 31650 011000 1011 00101
+#define GRAY1   0x8410      	//»ÒÉ«1 00000 000000 00000
+#define GRAY2   0x4208      	//»ÒÉ«2 11111 111110 11111
 
-/*ioå£*/
+/*io¿Ú*/
 #define LCD_SCL        	GPIO_Pin_13	 
 #define LCD_SDA        	GPIO_Pin_15	
 #define LCD_CS        	GPIO_Pin_13  
@@ -40,7 +40,7 @@
 
 //#define LCD_CS_SET(x) LCD_CTRL->ODR=(LCD_CTRL->ODR&~LCD_CS)|(x ? LCD_CS:0)
 
-/*æ¶²æ™¶æ§åˆ¶å£ç½®1æ“ä½œè¯­å¥å®å®šä¹‰*/
+/*Òº¾§¿ØÖÆ¿ÚÖÃ1²Ù×÷Óï¾äºê¶¨Òå*/
 #define	LCD_SCL_SET  	GPIOB->BSRR=LCD_SCL    
 #define	LCD_SDA_SET  	GPIOB->BSRR=LCD_SDA   
 #define	LCD_CS_SET  	GPIOD->BSRR=LCD_CS   
@@ -48,7 +48,7 @@
 #define	LCD_RS_SET  	GPIOD->BSRR=LCD_RS 
 #define	LCD_RST_SET  	GPIOD->BSRR=LCD_RST 
 
-/*æ¶²æ™¶æ§åˆ¶å£ç½®0æ“ä½œè¯­å¥å®å®šä¹‰*/
+/*Òº¾§¿ØÖÆ¿ÚÖÃ0²Ù×÷Óï¾äºê¶¨Òå*/
 #define	LCD_SCL_CLR  	GPIOB->BRR=LCD_SCL  
 #define	LCD_SDA_CLR  	GPIOB->BRR=LCD_SDA 
 #define	LCD_CS_CLR  	GPIOD->BRR=LCD_CS     
@@ -57,8 +57,8 @@
 #define	LCD_RS_CLR  	GPIOD->BRR=LCD_RS 
 
 
-#define LCD_DATAOUT(x) LCD_DATA->ODR=x; //æ•°æ®è¾“å‡º
-#define LCD_DATAIN     LCD_DATA->IDR;   //æ•°æ®è¾“å…¥
+#define LCD_DATAOUT(x) LCD_DATA->ODR=x; //Êı¾İÊä³ö
+#define LCD_DATAIN     LCD_DATA->IDR;   //Êı¾İÊäÈë
 
 #define LCD_WR_DATA(data){\
 LCD_RS_SET;\
