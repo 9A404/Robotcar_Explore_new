@@ -62,7 +62,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 						{10,6,FL_default,FREE,COMMON_SPEED,50,SEEK_PESL,NOTPARK,HR,35},
 					},
 
-/*12节点*/{	{10,9,FL_default,PLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL_250,HR,120},	\
+/*12节点*/{	{10,9,FL_default,PLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL_250,HR,135},	\
 						
 						
 					},
