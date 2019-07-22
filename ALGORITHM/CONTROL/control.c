@@ -1150,7 +1150,7 @@ void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState)
 										u3_printf("HR_135_EIC\r\n ");
 										#endif
 									}break;
-			case HR_145:if(1 == rotAngle_Right(150))
+			case HR_145:if(1 == rotAngle_Right(145))
 									{
 										runState->RotangleState=EIC;
 										runState->F_LineState=EIC;

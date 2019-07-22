@@ -121,8 +121,8 @@ u8 parkMethod_pesL()
 	}
 	if(0==PES_L && 1==flag)
 	{	
-//		speedAdjustment(-2000,-2000); 
-//		delay_ms(15);
+		speedAdjustment(-1000,-1000); 
+		delay_ms(30);
 		
 		flag = 0;
 			
@@ -461,8 +461,8 @@ u8 parkMethod_pesL_noline()
 	if(0==PES_L && 1==flag)
 	{
 		/*Í£³µ*/
-		speedAdjustment(-3500,-3500); 
-		delay_ms(15);
+		speedAdjustment(-2000,-2000); 
+		delay_ms(45);
 //		speedAdjustment(0,0);
 		flag = 0;
 		return 1 ;
