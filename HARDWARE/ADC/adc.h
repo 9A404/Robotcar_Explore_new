@@ -3,11 +3,11 @@
 
 #include "sys.h"
 
-/*·Ö¼¶¼ÇÂ¼±í*/
+/*åˆ†çº§è®°å½•è¡¨*/
 typedef	struct{
 
-	u16 digitalValue;    //Êı×ÖÁ¿
-	int	proportion  ;    //Êı×ÖÁ¿¶ÔÓ¦µÄ·İ¶î
+	u16 digitalValue;    //æ•°å­—é‡
+	int	proportion  ;    //æ•°å­—é‡å¯¹åº”çš„ä»½é¢
 }rankTypeDef;
 
 	

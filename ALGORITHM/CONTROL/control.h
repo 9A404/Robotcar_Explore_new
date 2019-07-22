@@ -4,119 +4,119 @@
 #include "sys.h"
 
 
-#define NODEFORKNUM  	15			//µØÍ¼ÖĞÏÂÒ»½Úµã²íµÀ×î¶àµÄÊıÄ¿ * ÏÂÏÂ½Úµã²íµÀ×î¶àµÄÊıÄ¿
+#define NODEFORKNUM  	15			//åœ°å›¾ä¸­ä¸‹ä¸€èŠ‚ç‚¹å²”é“æœ€å¤šçš„æ•°ç›® * ä¸‹ä¸‹èŠ‚ç‚¹å²”é“æœ€å¤šçš„æ•°ç›®
 
 
-/*Ñ²Ïß·½·¨*/
+/*å·¡çº¿æ–¹æ³•*/
 typedef enum {FL_sword,FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_default,FL_middle,	\
 							FL_brige,FL_brigeup,FL_brigedown,FL_slow,FL_slowest,FL_quick,FL_stop,FL_quickest,	\
 							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
 
-/*Â·ÕÏÀàĞÍ*/
+/*è·¯éšœç±»å‹*/
 typedef enum {SWORD,FREE,ANGLE,BRIGE,DOOR,DOOR_CLICK,S_BOARD,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
 							BACK_TILT_R,BACK_TILT_L,SLOPE,PLATFORM,PLATFORM_1,Peak,TRAPEZOID_1,TRAPEZOID_2,TRAPEZOID_3,\
 							TIME,TIME_1,TIME_2,DOWNPLATFORM,ALL_TILT,\
 							DOWN27_26,Block_PESR,Platform_37_15,		
-							UP_26_27,TIME_45_46}typeRoadblock;	//ÎŞÕÏ°­¡¢ÇÅ¡¢ÃÅ¡¢¼õËÙ´ø¡¢õÎõÎ°å¡¢ÇãĞ±Â·Ãæ¡¢Ğ±ÆÂ¡¢Æ½Ì¨¾°µã¡¢ÌİĞÎ¾°µã¡¢¸´ÔÓ½Úµã¶¨Ê±                                                                                                                                  
+							UP_26_27,TIME_45_46}typeRoadblock;	//æ— éšœç¢ã€æ¡¥ã€é—¨ã€å‡é€Ÿå¸¦ã€è··è··æ¿ã€å€¾æ–œè·¯é¢ã€æ–œå¡ã€å¹³å°æ™¯ç‚¹ã€æ¢¯å½¢æ™¯ç‚¹ã€å¤æ‚èŠ‚ç‚¹å®šæ—¶                                                                                                                                  
 
-/*¼ÓËÙÀàĞÍ*/
-typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//ÏÂÌ¨¼ÓËÙ£¬ÆÕÍ¨¼ÓËÙ£¬²»¼ÓËÙ£¬Õ¼Ê±¼ä£¨ÓÃÓÚ´¦Àí¸´ÔÓ½Úµã)			
+/*åŠ é€Ÿç±»å‹*/
+typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//ä¸‹å°åŠ é€Ÿï¼Œæ™®é€šåŠ é€Ÿï¼Œä¸åŠ é€Ÿï¼Œå æ—¶é—´ï¼ˆç”¨äºå¤„ç†å¤æ‚èŠ‚ç‚¹)			
 
-/*ÕÒ½Úµã·½·¨*/
+/*æ‰¾èŠ‚ç‚¹æ–¹æ³•*/
 typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,	\
 							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back}seekNodeWay;
 
-/*Í£³µ·½·¨*/
+/*åœè½¦æ–¹æ³•*/
 typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\
 							PARK_default,PARK_pesL,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,	\
 							PARK_PesPlatform,PARK_Door,PARK_start,PARK_pesR_45,PARK_pesL_45,PARK_pesR_No,PARK_pesL_No,PARK_pesL_back,PARK_pesR_back}carPark;
 
-/*³µÍ·Ğı×ª·½·¨*/
+/*è½¦å¤´æ—‹è½¬æ–¹æ³•*/
 typedef enum {HR,HL,HR_F,HL_F,HN_Rotate,rot_LFL,rot_RFL,rot_UL,rot_UR,Sensor_L90,Sensor_R90}carRotWays;
 
-/*×´Ì¬ĞÅºÅ*/
-typedef enum {NTBE,EIC,STANDBY}updataState;		//ĞèÒªÖ´ĞĞ Ö´ĞĞÍê³É ´ıÃü
+/*çŠ¶æ€ä¿¡å·*/
+typedef enum {NTBE,EIC,STANDBY}updataState;		//éœ€è¦æ‰§è¡Œ æ‰§è¡Œå®Œæˆ å¾…å‘½
 
 
-/*¶ÔÂ·¶ÎĞÅÏ¢½øĞĞ¼ÇÂ¼*/
+/*å¯¹è·¯æ®µä¿¡æ¯è¿›è¡Œè®°å½•*/
 typedef	struct{
 
-	u8	nextNode;										//ÏÂÒ»¸ö½Úµã
-	u8	nnNode;											//ÏÂÏÂ¸ö½Úµã
-	findLine      findLineWays;			//Ñ²Ïß·½·¨
-	typeRoadblock	typeRoadblock;		//Â·ÕÏÀàĞÍ
-	typeSpeed typeSpeed; 				//¼ÓËÙÀàĞÍ
-	u16 speedTime;						//¼ÓËÙÊ±¼ä
-	seekNodeWay   seekways;					//ÕÒµã·½·¨
-	carPark  			parkways;					//Í£³µ·½·¨
-	carRotWays 	rotateWays;			//µ±Ç°³µÍ·Î»ÖÃ»ù´¡ÉÏÔÙĞı×ª½Ç¶È
+	u8	nextNode;										//ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	u8	nnNode;											//ä¸‹ä¸‹ä¸ªèŠ‚ç‚¹
+	findLine      findLineWays;			//å·¡çº¿æ–¹æ³•
+	typeRoadblock	typeRoadblock;		//è·¯éšœç±»å‹
+	typeSpeed typeSpeed; 				//åŠ é€Ÿç±»å‹
+	u16 speedTime;						//åŠ é€Ÿæ—¶é—´
+	seekNodeWay   seekways;					//æ‰¾ç‚¹æ–¹æ³•
+	carPark  			parkways;					//åœè½¦æ–¹æ³•
+	carRotWays 	rotateWays;			//å½“å‰è½¦å¤´ä½ç½®åŸºç¡€ä¸Šå†æ—‹è½¬è§’åº¦
 	float rotAngle;
 }linkInforTypeDef;
 
-/*¶ÔµØÍ¼Â·¶ÎĞÅÏ¢½øĞĞ¼ÇÂ¼*/
+/*å¯¹åœ°å›¾è·¯æ®µä¿¡æ¯è¿›è¡Œè®°å½•*/
 typedef	struct{
 
-	u8	map_nextNode;										//µØÍ¼ÏÂÒ»¸ö½Úµã
-	u8	map_nnNode;											//µØÍ¼ÏÂÏÂ¸ö½Úµã
-	findLine      map_findLineWays;			//µØÍ¼Ñ²Ïß·½·¨
-	typeRoadblock	map_typeRoadblock;		//µØÍ¼Â·ÕÏÀàĞÍ
-	typeSpeed map_typeSpeed; 				//µØÍ¼¼ÓËÙÀàĞÍ
-	u16 map_speedTime;						//µØÍ¼¼ÓËÙÊ±¼ä
-	seekNodeWay   map_seekways;					//µØÍ¼ÕÒµã·½·¨
-	carPark  			map_parkways;					//µØÍ¼Í£³µ·½·¨
-	carRotWays 	map_rotateWays;			//µØÍ¼³µÍ·Ğı×ª·½Ïò
+	u8	map_nextNode;										//åœ°å›¾ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	u8	map_nnNode;											//åœ°å›¾ä¸‹ä¸‹ä¸ªèŠ‚ç‚¹
+	findLine      map_findLineWays;			//åœ°å›¾å·¡çº¿æ–¹æ³•
+	typeRoadblock	map_typeRoadblock;		//åœ°å›¾è·¯éšœç±»å‹
+	typeSpeed map_typeSpeed; 				//åœ°å›¾åŠ é€Ÿç±»å‹
+	u16 map_speedTime;						//åœ°å›¾åŠ é€Ÿæ—¶é—´
+	seekNodeWay   map_seekways;					//åœ°å›¾æ‰¾ç‚¹æ–¹æ³•
+	carPark  			map_parkways;					//åœ°å›¾åœè½¦æ–¹æ³•
+	carRotWays 	map_rotateWays;			//åœ°å›¾è½¦å¤´æ—‹è½¬æ–¹å‘
 	u8 map_rotAngle;
 }map_linkInforTypeDef;
 
 
 
-/*¶Ô¿ØÖÆÖĞĞÄ×´Ì¬½øĞĞ¼ÇÂ¼*/
+/*å¯¹æ§åˆ¶ä¸­å¿ƒçŠ¶æ€è¿›è¡Œè®°å½•*/
 typedef	struct{
 
-	u8  curNode;								//µ±Ç°½Úµã
-	u8	nextNode;								//ÏÂÒ»¸ö½Úµã
-	u8	nnNode;									//ÏÂÏÂ¸ö½Úµã
-	u8	nodeNum;								//½ÚµãÊı
-	linkInforTypeDef	linkInform;//Â·¶ÎĞÅÏ¢
-	updataState	update;						//×´Ì¬ĞÅºÅ
+	u8  curNode;								//å½“å‰èŠ‚ç‚¹
+	u8	nextNode;								//ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	u8	nnNode;									//ä¸‹ä¸‹ä¸ªèŠ‚ç‚¹
+	u8	nodeNum;								//èŠ‚ç‚¹æ•°
+	linkInforTypeDef	linkInform;//è·¯æ®µä¿¡æ¯
+	updataState	update;						//çŠ¶æ€ä¿¡å·
 		
 
 }controlCenterTypeDef;
 
 
-/*¶ÔÔËĞĞ×´Ì¬½øĞĞ¼ÇÂ¼,ÈÃÃ¿¸öÂ·¶Î¸ù¾İ×´Ì¬ÓĞĞò½øĞĞ*/
-/*Ë¼Â·£º
-Ã¿¸öÁ¿ÓĞÈıÖÖ×´Ì¬
-1¡¢NTBE£¨ĞèÒªÖ´ĞĞ£©£º
-2¡¢EIC£¨Ö´ĞĞÍê³É£©£º
-3¡¢STANDBY£¨´ıÃü£©£ºÒâÎ¶×ÅĞèÒªÆäËû×´Ì¬Á¿À´´¥·¢£¬´¥·¢ºó×´Ì¬½«±ä³É£¨NTBE£©
-ÀıÈç£ºÕÒµãĞèÒªÂ·ÕÏ×´Ì¬µÄ´¥·¢¡¢Í£³µĞèÒªÕÒµã×´Ì¬µÄ´¥·¢¡¢×ªÍäĞèÒªÕÒµã×´Ì¬´¥·¢
+/*å¯¹è¿è¡ŒçŠ¶æ€è¿›è¡Œè®°å½•,è®©æ¯ä¸ªè·¯æ®µæ ¹æ®çŠ¶æ€æœ‰åºè¿›è¡Œ*/
+/*æ€è·¯ï¼š
+æ¯ä¸ªé‡æœ‰ä¸‰ç§çŠ¶æ€
+1ã€NTBEï¼ˆéœ€è¦æ‰§è¡Œï¼‰ï¼š
+2ã€EICï¼ˆæ‰§è¡Œå®Œæˆï¼‰ï¼š
+3ã€STANDBYï¼ˆå¾…å‘½ï¼‰ï¼šæ„å‘³ç€éœ€è¦å…¶ä»–çŠ¶æ€é‡æ¥è§¦å‘ï¼Œè§¦å‘åçŠ¶æ€å°†å˜æˆï¼ˆNTBEï¼‰
+ä¾‹å¦‚ï¼šæ‰¾ç‚¹éœ€è¦è·¯éšœçŠ¶æ€çš„è§¦å‘ã€åœè½¦éœ€è¦æ‰¾ç‚¹çŠ¶æ€çš„è§¦å‘ã€è½¬å¼¯éœ€è¦æ‰¾ç‚¹çŠ¶æ€è§¦å‘
 */
 typedef	struct{
 
-	updataState	F_LineState;					//Ñ²Ïß×´Ì¬
-	updataState	F_RoadBlockState;			//ÕÒÕÏ°­×´Ì¬
-	updataState speedState;					//¼ÓËÙ×´Ì¬
-	updataState seekNodeState;				//ÕÒµã×´Ì¬
-	updataState carParkState;					//Í£³µ×´Ì¬
-	updataState	RotangleState;				//×ªÍä×´Ì¬
+	updataState	F_LineState;					//å·¡çº¿çŠ¶æ€
+	updataState	F_RoadBlockState;			//æ‰¾éšœç¢çŠ¶æ€
+	updataState speedState;					//åŠ é€ŸçŠ¶æ€
+	updataState seekNodeState;				//æ‰¾ç‚¹çŠ¶æ€
+	updataState carParkState;					//åœè½¦çŠ¶æ€
+	updataState	RotangleState;				//è½¬å¼¯çŠ¶æ€
 	
 }runStateTypeDef;
 
-void Control_Init(controlCenterTypeDef *controlp,u8*runMethod);//¿ØÖÆÖĞĞÄ³õÊ¼»¯º¯Êı
-void updataState_Reset(controlCenterTypeDef *p,updataState state);//¸ü¸Ä¿ØÖÆÖĞĞÄ×´Ì¬ĞÅºÅ
-unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const u8 *runMethod,const map_linkInforTypeDef(*p)[NODEFORKNUM] );//¸üĞÂ¿ØÖÆÖĞĞÄ£¨controlCenterTypeDef½á¹¹Ìå£©µÄ²ÎÊı
-void runStateInit(runStateTypeDef *runState,const controlCenterTypeDef *controlp);//¸ù¾İ¿ØÖÆÌ¨ÆğÊ¼Â·¶Î³õÊ¼»¯ÔËĞĞ×´Ì¬
-void runStateReset(runStateTypeDef *runState,const controlCenterTypeDef *controlp);//¸ù¾İ¿ØÖÆÌ¨ÅĞ¶ÏÊÇ·ñÀ´µ½ĞÂµÄÂ·¶Î£¬È»ºóÖØĞÂÉèÖÃÔËĞĞ×´Ì¬
-void runMethodReset(u8 runMethod[],const u8 runMethod_2[]); //¸üĞÂÂ·Ïß
-//void DoorMethodUpdate(controlCenterTypeDef *controlp,u8 runMethod[],u8 DoorFlag,const u8 runMethodTableDoorAuto[][100]);   //×Ô¶¯ÇĞ»»¹ıÃÅÏßÂ·º¯Êı
-void runMethodUpdate(u8 runMethod[],u8 runMethodNum, const u8 runMethodTab[][100]); //´Ó±í¸ñÖĞ¸üĞÂÂ·Ïß
+void Control_Init(controlCenterTypeDef *controlp,u8*runMethod);//æ§åˆ¶ä¸­å¿ƒåˆå§‹åŒ–å‡½æ•°
+void updataState_Reset(controlCenterTypeDef *p,updataState state);//æ›´æ”¹æ§åˆ¶ä¸­å¿ƒçŠ¶æ€ä¿¡å·
+unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const u8 *runMethod,const map_linkInforTypeDef(*p)[NODEFORKNUM] );//æ›´æ–°æ§åˆ¶ä¸­å¿ƒï¼ˆcontrolCenterTypeDefç»“æ„ä½“ï¼‰çš„å‚æ•°
+void runStateInit(runStateTypeDef *runState,const controlCenterTypeDef *controlp);//æ ¹æ®æ§åˆ¶å°èµ·å§‹è·¯æ®µåˆå§‹åŒ–è¿è¡ŒçŠ¶æ€
+void runStateReset(runStateTypeDef *runState,const controlCenterTypeDef *controlp);//æ ¹æ®æ§åˆ¶å°åˆ¤æ–­æ˜¯å¦æ¥åˆ°æ–°çš„è·¯æ®µï¼Œç„¶åé‡æ–°è®¾ç½®è¿è¡ŒçŠ¶æ€
+void runMethodReset(u8 runMethod[],const u8 runMethod_2[]); //æ›´æ–°è·¯çº¿
+//void DoorMethodUpdate(controlCenterTypeDef *controlp,u8 runMethod[],u8 DoorFlag,const u8 runMethodTableDoorAuto[][100]);   //è‡ªåŠ¨åˆ‡æ¢è¿‡é—¨çº¿è·¯å‡½æ•°
+void runMethodUpdate(u8 runMethod[],u8 runMethodNum, const u8 runMethodTab[][100]); //ä»è¡¨æ ¼ä¸­æ›´æ–°è·¯çº¿
 
-void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);         //Ñ²ÏßÈÎÎñ
-void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);//ÕÏ°­´¦ÀíÈÎÎñ
-void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);       // ÕÒµãÈÎÎñ
-void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);       // Í£³µÈÎÎñ
-void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState);           //  ×ªÍäÈÎÎñ
+void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);         //å·¡çº¿ä»»åŠ¡
+void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);//éšœç¢å¤„ç†ä»»åŠ¡
+void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);       // æ‰¾ç‚¹ä»»åŠ¡
+void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);       // åœè½¦ä»»åŠ¡
+void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState);           //  è½¬å¼¯ä»»åŠ¡
 void speed_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState);
 
 

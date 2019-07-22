@@ -3,11 +3,11 @@
 
 /*
 
-* º¯Êý½éÉÜ£ºµÚ¶þÂÖ×Ô¶¯ÖØÖÃ±¼ÅÜÂ·Ïß£¬Èç¹ûµÚÒ»ÂÖ±¼ÅÜÂ·ÏßÎª¹ýÃÅ²¢ÇÒµÚ¶þÂÖ±¼ÅÜÂ·ÏßÖÐ´æÔÚ´óÓÚ»òÕßµÈÓÚ39µÄ½ÚµãÔò±íÃ÷µÚ¶þÂÖÂ·Ïß¹ýÃÅ
-* ÊäÈë²ÎÊý£ºrunMethod_2£¨µÚ¶þÂÖ±¼ÅÜµÄÂ·Ïß£©
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@³Â
+* å‡½æ•°ä»‹ç»ï¼šç¬¬äºŒè½®è‡ªåŠ¨é‡ç½®å¥”è·‘è·¯çº¿ï¼Œå¦‚æžœç¬¬ä¸€è½®å¥”è·‘è·¯çº¿ä¸ºè¿‡é—¨å¹¶ä¸”ç¬¬äºŒè½®å¥”è·‘è·¯çº¿ä¸­å­˜åœ¨å¤§äºŽæˆ–è€…ç­‰äºŽ39çš„èŠ‚ç‚¹åˆ™è¡¨æ˜Žç¬¬äºŒè½®è·¯çº¿è¿‡é—¨
+* è¾“å…¥å‚æ•°ï¼šrunMethod_2ï¼ˆç¬¬äºŒè½®å¥”è·‘çš„è·¯çº¿ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@é™ˆ
 
 */
 u8 runMethodDoorSecondCheck(u8 runMethod[],const u8 runMethod_2[])
@@ -28,24 +28,24 @@ u8 runMethodDoorSecondCheck(u8 runMethod[],const u8 runMethod_2[])
 }
 /*
 
-* º¯Êý½éÉÜ£ºµÚ¶þÂÖ×Ô¶¯ÖØÖÃ±¼ÅÜÂ·Ïß
-* ÊäÈë²ÎÊý£ºrunMethod_2£¨ÔÚÆÁÄ»ÖÐÑ¡ÔñµÄµÚ¶þÂÖ¹ýÃÅÂ·Ïß  DoorFlag(ÃÅ¿ª±êÖ¾Î»£¬¼ÇÂ¼ÄÇ¸öÃÅ´¦ÓÚ¿ªÆô×´Ì¬    runMethodTableDoorAuto(¹ýÃÅÂ·Ïß±í))£©
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@³Â
+* å‡½æ•°ä»‹ç»ï¼šç¬¬äºŒè½®è‡ªåŠ¨é‡ç½®å¥”è·‘è·¯çº¿
+* è¾“å…¥å‚æ•°ï¼šrunMethod_2ï¼ˆåœ¨å±å¹•ä¸­é€‰æ‹©çš„ç¬¬äºŒè½®è¿‡é—¨è·¯çº¿  DoorFlag(é—¨å¼€æ ‡å¿—ä½ï¼Œè®°å½•é‚£ä¸ªé—¨å¤„äºŽå¼€å¯çŠ¶æ€    runMethodTableDoorAuto(è¿‡é—¨è·¯çº¿è¡¨))ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@é™ˆ
 
 */
 void runMethodResetDoorSecond(u8 runMethod_2[],u8 doorflag,const u8 runMethodTableDoorAuto[][100])
 {
 	u8 i=0;
 	
-	/*Êý×éÇåÁã*/
+	/*æ•°ç»„æ¸…é›¶*/
 	while(runMethod_2[i]!= 0)
 	{
 		runMethod_2[i]= 0;
 		i++;
 	}
-	/*¸üÐÂÂ·Ïß*/
+	/*æ›´æ–°è·¯çº¿*/
 	i=0;
 	while(runMethodTableDoorAuto[doorflag+3][i] != 0)
 	{

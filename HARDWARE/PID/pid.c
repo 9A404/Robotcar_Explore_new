@@ -5,24 +5,24 @@
 
 /*
 
-* º¯Êı½éÉÜ£ºĞı×ªÎ»ÖÃÊ½PID¼ÆËã
-* ÊäÈë²ÎÊı£ºp£¨PIDµ÷½ÚÆ÷²ÎÊı£©err£¨Îó²îÖµ£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º
+* å‡½æ•°ä»‹ç»ï¼šæ—‹è½¬ä½ç½®å¼PIDè®¡ç®—
+* è¾“å…¥å‚æ•°ï¼špï¼ˆPIDè°ƒèŠ‚å™¨å‚æ•°ï¼‰errï¼ˆè¯¯å·®å€¼ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼š
 
 */
 int positionPIDCalc_rotAngle(PIDTypeDef *p,int err)
 {
 	int derror,error;
 	int out;
-	error = err;													//Æ«²î
-	p->sumerror += error;									//»ı·Ö
-	derror = p->lastError - p->prevError;	//µ±Ç°Î¢·Ö
-	p->prevError = p->lastError;					//¸üĞÂerror[-1]µÄÖµ
-	p->lastError = error;									//¸üĞÂerror[-2]µÄÖµ
-	out = 	p->kp * error								//±ÈÀıÏî
-				+	p->ki * p->sumerror					//»ı·ÖÏî
-				+ p->kd * derror			;				//Î¢·ÖÏî
+	error = err;													//åå·®
+	p->sumerror += error;									//ç§¯åˆ†
+	derror = p->lastError - p->prevError;	//å½“å‰å¾®åˆ†
+	p->prevError = p->lastError;					//æ›´æ–°error[-1]çš„å€¼
+	p->lastError = error;									//æ›´æ–°error[-2]çš„å€¼
+	out = 	p->kp * error								//æ¯”ä¾‹é¡¹
+				+	p->ki * p->sumerror					//ç§¯åˆ†é¡¹
+				+ p->kd * derror			;				//å¾®åˆ†é¡¹
 	
 	out=limit(out,-p->limit,p->limit);
 	
@@ -34,24 +34,24 @@ int positionPIDCalc_rotAngle(PIDTypeDef *p,int err)
 
 /*
 
-* º¯Êı½éÉÜ£ºÎ»ÖÃÊ½PID¼ÆËã
-* ÊäÈë²ÎÊı£ºp£¨PIDµ÷½ÚÆ÷²ÎÊı£©nextVaule£¨²ÉÑùÖµ£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º
+* å‡½æ•°ä»‹ç»ï¼šä½ç½®å¼PIDè®¡ç®—
+* è¾“å…¥å‚æ•°ï¼špï¼ˆPIDè°ƒèŠ‚å™¨å‚æ•°ï¼‰nextVauleï¼ˆé‡‡æ ·å€¼ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼š
 
 */
 int positionPIDCalc(PIDTypeDef *p,int nextVaule)
 {
 	int derror,error;
 	int out;
-	error = p->setVaule - nextVaule;			//Æ«²î
-	p->sumerror += error;									//»ı·Ö
-	derror = p->lastError - p->prevError;	//µ±Ç°Î¢·Ö
-	p->prevError = p->lastError;					//¸üĞÂerror[-1]µÄÖµ
-	p->lastError = error;									//¸üĞÂerror[-2]µÄÖµ
-	out = 	p->kp * error								//±ÈÀıÏî
-				+	p->ki * p->sumerror					//»ı·ÖÏî
-				+ p->kd * derror			;				//Î¢·ÖÏî
+	error = p->setVaule - nextVaule;			//åå·®
+	p->sumerror += error;									//ç§¯åˆ†
+	derror = p->lastError - p->prevError;	//å½“å‰å¾®åˆ†
+	p->prevError = p->lastError;					//æ›´æ–°error[-1]çš„å€¼
+	p->lastError = error;									//æ›´æ–°error[-2]çš„å€¼
+	out = 	p->kp * error								//æ¯”ä¾‹é¡¹
+				+	p->ki * p->sumerror					//ç§¯åˆ†é¡¹
+				+ p->kd * derror			;				//å¾®åˆ†é¡¹
 	
 	out=limit(out,-p->limit,p->limit);
 	
@@ -62,10 +62,10 @@ int positionPIDCalc(PIDTypeDef *p,int nextVaule)
 
 /*
 
-* º¯Êı½éÉÜ£ºÔöÁ¿Ê½PID¼ÆËã
-* ÊäÈë²ÎÊı£ºp£¨PIDµ÷½ÚÆ÷²ÎÊı£©nextVaule£¨²ÉÑùÖµ£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º
+* å‡½æ•°ä»‹ç»ï¼šå¢é‡å¼PIDè®¡ç®—
+* è¾“å…¥å‚æ•°ï¼špï¼ˆPIDè°ƒèŠ‚å™¨å‚æ•°ï¼‰nextVauleï¼ˆé‡‡æ ·å€¼ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼š
 
 */
 int incrementalPIDcalc(PIDTypeDef *p,int nextVaule)
@@ -73,17 +73,17 @@ int incrementalPIDcalc(PIDTypeDef *p,int nextVaule)
 	int error;
 	int ep,ei,ed;
 	int out;
-	error = p->setVaule - nextVaule;				//Æ«²î
+	error = p->setVaule - nextVaule;				//åå·®
 	ep = error - p->lastError;
 	ei = error; 
 	ed = error - 2*p->lastError + p->prevError;
 	
-	p->prevError = p->lastError;					//¸üĞÂerror[-1]µÄÖµ
-	p->lastError = error;									//¸üĞÂerror[-2]µÄÖµ
+	p->prevError = p->lastError;					//æ›´æ–°error[-1]çš„å€¼
+	p->lastError = error;									//æ›´æ–°error[-2]çš„å€¼
 	
-	out = 	p->kp * ep				//±ÈÀıÏî
-				+	p->ki * ei				//»ı·ÖÏî
-				+ p->kd * ed	;			//Î¢·ÖÏî
+	out = 	p->kp * ep				//æ¯”ä¾‹é¡¹
+				+	p->ki * ei				//ç§¯åˆ†é¡¹
+				+ p->kd * ed	;			//å¾®åˆ†é¡¹
 	
 	out=limit(out,-p->limit,p->limit);
 	
@@ -94,10 +94,10 @@ int incrementalPIDcalc(PIDTypeDef *p,int nextVaule)
 
 ///*
 
-//* º¯Êı½éÉÜ£º¶ÔPID½á¹¹ÌåÇåÁã
-//* ÊäÈë²ÎÊı£ºp£¨PIDµ÷½ÚÆ÷²ÎÊı£©nextVaule£¨²ÉÑùÖµ£©
-//* Êä³ö²ÎÊı£º
-//* ·µ»ØÖµ  £º
+//* å‡½æ•°ä»‹ç»ï¼šå¯¹PIDç»“æ„ä½“æ¸…é›¶
+//* è¾“å…¥å‚æ•°ï¼špï¼ˆPIDè°ƒèŠ‚å™¨å‚æ•°ï¼‰nextVauleï¼ˆé‡‡æ ·å€¼ï¼‰
+//* è¾“å‡ºå‚æ•°ï¼š
+//* è¿”å›å€¼  ï¼š
 
 //*/
 //static void PID_Reset(PIDTypeDef *p)
@@ -108,15 +108,15 @@ int incrementalPIDcalc(PIDTypeDef *p,int nextVaule)
 
 /*
 
-* º¯Êı½éÉÜ£º¶ÔPIDµ÷½ÚÆ÷²ÎÊı½øĞĞÉèÖÃ
-* ÊäÈë²ÎÊı£ºpidRegulator(´ıÉèÖÃµÄPIDµ÷½ÚÆ÷),setVaule(ÆÚÍûÖµ),limit(¶ÔÊä³öµÄÖµ½øĞĞÏŞ¶¨),kp(±ÈÀıÏµÊı),ki(»ı·ÖÏµÊı),kd(Î¢·ÖÏµÊı)
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º
-* ÆäËû		£ºÀıÈçlimit = 100Ôò´ú±íÊä³öÖµµÄ·¶Î§ÔÚ+-100Ö®¼ä£¬ÒâÎ¶×Å×óÓÒÁ½ÂÖµÄPWMÏà²î²»ÄÜ³¬¹ı1000
+* å‡½æ•°ä»‹ç»ï¼šå¯¹PIDè°ƒèŠ‚å™¨å‚æ•°è¿›è¡Œè®¾ç½®
+* è¾“å…¥å‚æ•°ï¼špidRegulator(å¾…è®¾ç½®çš„PIDè°ƒèŠ‚å™¨),setVaule(æœŸæœ›å€¼),limit(å¯¹è¾“å‡ºçš„å€¼è¿›è¡Œé™å®š),kp(æ¯”ä¾‹ç³»æ•°),ki(ç§¯åˆ†ç³»æ•°),kd(å¾®åˆ†ç³»æ•°)
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–		ï¼šä¾‹å¦‚limit = 100åˆ™ä»£è¡¨è¾“å‡ºå€¼çš„èŒƒå›´åœ¨+-100ä¹‹é—´ï¼Œæ„å‘³ç€å·¦å³ä¸¤è½®çš„PWMç›¸å·®ä¸èƒ½è¶…è¿‡1000
 */
 void PID_Init(PIDTypeDef *pidRegulator,int setVaule,int limit,int kp,int ki,int kd)
 {
-	memset(pidRegulator,0,sizeof(PIDTypeDef));//¶ÔPID½á¹¹ÌåÇåÁã
+	memset(pidRegulator,0,sizeof(PIDTypeDef));//å¯¹PIDç»“æ„ä½“æ¸…é›¶
 	
 	pidRegulator->setVaule = setVaule;
 	pidRegulator->limit = limit;

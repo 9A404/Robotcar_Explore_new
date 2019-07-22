@@ -5,60 +5,60 @@
 
 /*
 
-* º¯Êı½éÉÜ£ºadcÓÃµ½µÄGPIO³õÊ¼»¯³ÉÄ£ÄâÊäÈëÄ£Ê½
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šadcç”¨åˆ°çš„GPIOåˆå§‹åŒ–æˆæ¨¡æ‹Ÿè¾“å…¥æ¨¡å¼
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 static void ADC_GPIO_Config(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE );	//PA¡¢PB¡¢PCÊ±ÖÓÊ¹ÄÜ
-	/*ÅäÖÃPA*/
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE );	//PAã€PBã€PCæ—¶é’Ÿä½¿èƒ½
+	/*é…ç½®PA*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//Ä£ÄâÊäÈëÒı½Å
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//æ¨¡æ‹Ÿè¾“å…¥å¼•è„š
 	GPIO_Init(GPIOA, &GPIO_InitStructure);	
 	
-	/*ÅäÖÃPB*/
+	/*é…ç½®PB*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//Ä£ÄâÊäÈëÒı½Å
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//æ¨¡æ‹Ÿè¾“å…¥å¼•è„š
 	GPIO_Init(GPIOB, &GPIO_InitStructure);	
 	
-	/*ÅäÖÃPC*/
+	/*é…ç½®PC*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1  | GPIO_Pin_5;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//Ä£ÄâÊäÈëÒı½Å
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		//æ¨¡æ‹Ÿè¾“å…¥å¼•è„š
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 	
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºÅäÖÃadc1¿ØÖÆÆ÷µÄÍ¨µÀ¹æÔò
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šé…ç½®adc1æ§åˆ¶å™¨çš„é€šé“è§„åˆ™
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 static void ADC_Multichannel_Config(void)
 {
 	ADC_InitTypeDef   ADC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE); 	//Ê¹ÄÜADC1Ê±ÖÓ
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE); 	//ä½¿èƒ½ADC1æ—¶é’Ÿ
 	
-	/*ÅäÖÃADC·ÖÆµÏµÊı&¸´Î»*/
-	RCC_ADCCLKConfig(RCC_PCLK2_Div6);	//ÉèÖÃADC·ÖÆµÒò×Ó6 £»72M/6=12,ADC×î´óÊ±¼ä²»ÄÜ³¬¹ı14M
-	ADC_DeInit(ADC1);  								//¸´Î»ADC1,½«ÍâÉè ADC1 µÄÈ«²¿¼Ä´æÆ÷ÖØÉèÎªÈ±Ê¡Öµ
+	/*é…ç½®ADCåˆ†é¢‘ç³»æ•°&å¤ä½*/
+	RCC_ADCCLKConfig(RCC_PCLK2_Div6);	//è®¾ç½®ADCåˆ†é¢‘å› å­6 ï¼›72M/6=12,ADCæœ€å¤§æ—¶é—´ä¸èƒ½è¶…è¿‡14M
+	ADC_DeInit(ADC1);  								//å¤ä½ADC1,å°†å¤–è®¾ ADC1 çš„å…¨éƒ¨å¯„å­˜å™¨é‡è®¾ä¸ºç¼ºçœå€¼
 	
-	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;										//ADC¹¤×÷Ä£Ê½:ADC1ºÍADC2¹¤×÷ÔÚ¶ÀÁ¢Ä£Ê½
-	ADC_InitStructure.ADC_ScanConvMode = ENABLE;													//Ä£Êı×ª»»¹¤×÷ÔÚÉ¨ÃèÄ£Ê½
-	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;										//Ä£Êı×ª»»²»¹¤×÷ÔÚÁ¬Ğø×ª»»Ä£Ê½
-	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;		//×ª»»ÓÉÈí¼ş¶ø²»ÊÇÍâ²¿´¥·¢Æô¶¯
-	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;								//ADCÊı¾İÓÒ¶ÔÆë
-	ADC_InitStructure.ADC_NbrOfChannel = NUM_OF_SENSOR;										//Ë³Ğò½øĞĞ¹æÔò×ª»»µÄADCÍ¨µÀµÄÊıÄ¿
+	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;										//ADCå·¥ä½œæ¨¡å¼:ADC1å’ŒADC2å·¥ä½œåœ¨ç‹¬ç«‹æ¨¡å¼
+	ADC_InitStructure.ADC_ScanConvMode = ENABLE;													//æ¨¡æ•°è½¬æ¢å·¥ä½œåœ¨æ‰«ææ¨¡å¼
+	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;										//æ¨¡æ•°è½¬æ¢ä¸å·¥ä½œåœ¨è¿ç»­è½¬æ¢æ¨¡å¼
+	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;		//è½¬æ¢ç”±è½¯ä»¶è€Œä¸æ˜¯å¤–éƒ¨è§¦å‘å¯åŠ¨
+	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;								//ADCæ•°æ®å³å¯¹é½
+	ADC_InitStructure.ADC_NbrOfChannel = NUM_OF_SENSOR;										//é¡ºåºè¿›è¡Œè§„åˆ™è½¬æ¢çš„ADCé€šé“çš„æ•°ç›®
 	
-	ADC_Init(ADC1, &ADC_InitStructure);																		//¸ù¾İADC_InitStructÖĞÖ¸¶¨µÄ²ÎÊı³õÊ¼»¯ÍâÉèADCxµÄ¼Ä´æÆ÷   
+	ADC_Init(ADC1, &ADC_InitStructure);																		//æ ¹æ®ADC_InitStructä¸­æŒ‡å®šçš„å‚æ•°åˆå§‹åŒ–å¤–è®¾ADCxçš„å¯„å­˜å™¨   
 
-	/*sÉèÖÃÖÆ¶¨ADC¹æÔòÍ¨µÀ£¬ÉèÖÃËüÃÇµÄ×ª»¯Ë³ĞòºÍ²ÉÑùÊ±¼ä*/
+	/*sè®¾ç½®åˆ¶å®šADCè§„åˆ™é€šé“ï¼Œè®¾ç½®å®ƒä»¬çš„è½¬åŒ–é¡ºåºå’Œé‡‡æ ·æ—¶é—´*/
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_0  , 1 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_1  , 2 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_2  , 3 , ADC_SampleTime_239Cycles5);
@@ -76,54 +76,54 @@ static void ADC_Multichannel_Config(void)
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_14 ,15 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_15 ,16 , ADC_SampleTime_239Cycles5);
 	
-	/*¿ªÆôADCµÄDMAÖ§³Ö*/
+	/*å¼€å¯ADCçš„DMAæ”¯æŒ*/
 	ADC_DMACmd(ADC1,ENABLE);
 	
-	/*ADCÊ¹ÄÜ&Ğ£×¼*/
-	ADC_Cmd(ADC1, ENABLE);											//Ê¹ÄÜÖ¸¶¨µÄADC1
-	ADC_ResetCalibration(ADC1);									//Ê¹ÄÜ¸´Î»Ğ£×¼  
-	while(ADC_GetResetCalibrationStatus(ADC1));	//µÈ´ı¸´Î»Ğ£×¼½áÊø
-	ADC_StartCalibration(ADC1);	 								//¿ªÆôADĞ£×¼
-	while(ADC_GetCalibrationStatus(ADC1));	 	//µÈ´ıĞ£×¼½áÊø
+	/*ADCä½¿èƒ½&æ ¡å‡†*/
+	ADC_Cmd(ADC1, ENABLE);											//ä½¿èƒ½æŒ‡å®šçš„ADC1
+	ADC_ResetCalibration(ADC1);									//ä½¿èƒ½å¤ä½æ ¡å‡†  
+	while(ADC_GetResetCalibrationStatus(ADC1));	//ç­‰å¾…å¤ä½æ ¡å‡†ç»“æŸ
+	ADC_StartCalibration(ADC1);	 								//å¼€å¯ADæ ¡å‡†
+	while(ADC_GetCalibrationStatus(ADC1));	 	//ç­‰å¾…æ ¡å‡†ç»“æŸ
 }
 
 /*
 
-* º¯Êı½éÉÜ£º³õÊ¼»¯DMA1µÄÍ¨µÀ1
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šåˆå§‹åŒ–DMA1çš„é€šé“1
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 static void ADC_DMA_Config(void)
 {
 	DMA_InitTypeDef   DMA_InitStructure;
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);			//DMA1Ê±ÖÓÊ¹ÄÜ
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);			//DMA1æ—¶é’Ÿä½¿èƒ½
 
-	/*ÅäÖÃDMAÍ¨µÀ*/  
-    DMA_DeInit(DMA1_Channel1);																					//½«DMAµÄÍ¨µÀ1¼Ä´æÆ÷ÖØÉèÎªÈ±Ê¡Öµ    
-    DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->DR;	//ÍâÉèµØÖ·     
-    DMA_InitStructure.DMA_MemoryBaseAddr =(u32)glsensor_ad_value;  		//DMAÄÚ´æ»ùµØÖ·  
-    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;  							//dma´«Êä·½Ïò  
-    DMA_InitStructure.DMA_BufferSize = NUM_OF_SENSOR;  								//DMAÍ¨µÀµÄDMA»º´æµÄ´óĞ¡
-    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; //ÍâÉèµØÖ·¼Ä´æÆ÷²»±ä
-    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;					//ÉèÖÃDMAµÄÄÚ´æµİÔöÄ£Ê½   
-    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//ÍâÉèÊı¾İ×Ö³¤   
-    DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord; //ÄÚ´æÊı¾İ×Ö³¤   
-    DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;  									//¹¤×÷ÔÚÑ­»·»º´æÄ£Ê½   
-    DMA_InitStructure.DMA_Priority = DMA_Priority_High;								//ÉèÖÃDMAµÄÓÅÏÈ¼¶±ğ     
-    DMA_InitStructure.DMA_Mode = DMA_M2M_Disable;      								//·ÇÄÚ´æµ½ÄÚ´æ´«Êä
+	/*é…ç½®DMAé€šé“*/  
+    DMA_DeInit(DMA1_Channel1);																					//å°†DMAçš„é€šé“1å¯„å­˜å™¨é‡è®¾ä¸ºç¼ºçœå€¼    
+    DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->DR;	//å¤–è®¾åœ°å€     
+    DMA_InitStructure.DMA_MemoryBaseAddr =(u32)glsensor_ad_value;  		//DMAå†…å­˜åŸºåœ°å€  
+    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;  							//dmaä¼ è¾“æ–¹å‘  
+    DMA_InitStructure.DMA_BufferSize = NUM_OF_SENSOR;  								//DMAé€šé“çš„DMAç¼“å­˜çš„å¤§å°
+    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; //å¤–è®¾åœ°å€å¯„å­˜å™¨ä¸å˜
+    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;					//è®¾ç½®DMAçš„å†…å­˜é€’å¢æ¨¡å¼   
+    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//å¤–è®¾æ•°æ®å­—é•¿   
+    DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord; //å†…å­˜æ•°æ®å­—é•¿   
+    DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;  									//å·¥ä½œåœ¨å¾ªç¯ç¼“å­˜æ¨¡å¼   
+    DMA_InitStructure.DMA_Priority = DMA_Priority_High;								//è®¾ç½®DMAçš„ä¼˜å…ˆçº§åˆ«     
+    DMA_InitStructure.DMA_Mode = DMA_M2M_Disable;      								//éå†…å­˜åˆ°å†…å­˜ä¼ è¾“
 		
-		DMA_Init(DMA1_Channel1,&DMA_InitStructure);                      //¸ù¾İDMA_InitStructureÖĞÖ¸¶¨µÄ²ÎÊı³õÊ¼»¯Í¨µÀ
+		DMA_Init(DMA1_Channel1,&DMA_InitStructure);                      //æ ¹æ®DMA_InitStructureä¸­æŒ‡å®šçš„å‚æ•°åˆå§‹åŒ–é€šé“
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºÆô¶¯DMAÍ¨µÀ1
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šå¯åŠ¨DMAé€šé“1
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 static void DMA_Start()
@@ -133,10 +133,10 @@ static void DMA_Start()
 
 /*
 
-* º¯Êı½éÉÜ£ºadcµÄdma³õÊ¼»¯
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šadcçš„dmaåˆå§‹åŒ–
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 void ADC_DMA_Init(void)
@@ -149,33 +149,33 @@ void ADC_DMA_Init(void)
 
 /*
 
-* º¯Êı½éÉÜ£º½øĞĞÒ»´Îadc×ª»¯
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
+* å‡½æ•°ä»‹ç»ï¼šè¿›è¡Œä¸€æ¬¡adcè½¬åŒ–
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
 
 */
 void ADC_ConvertOnce(void)
 {
-	DMA_Cmd(DMA1_Channel1,DISABLE);												//¹Ø±ÕDMA
-	DMA_SetCurrDataCounter(DMA1_Channel1,NUM_OF_SENSOR );//ÉèÖÃDMAÍ¨µÀÒÔ¼°»º´æ´óĞ¡
-	DMA_Cmd(DMA1_Channel1,ENABLE);											//´ò¿ªDMA
+	DMA_Cmd(DMA1_Channel1,DISABLE);												//å…³é—­DMA
+	DMA_SetCurrDataCounter(DMA1_Channel1,NUM_OF_SENSOR );//è®¾ç½®DMAé€šé“ä»¥åŠç¼“å­˜å¤§å°
+	DMA_Cmd(DMA1_Channel1,ENABLE);											//æ‰“å¼€DMA
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
 }
 
 /*
 
-* º¯Êı½éÉÜ£º¼ì²â²ÉÑùÊÇ·ñÍê³É
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨Íê³É£©£¬0£¨Ã»ÓĞ£©
+* å‡½æ•°ä»‹ç»ï¼šæ£€æµ‹é‡‡æ ·æ˜¯å¦å®Œæˆ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆå®Œæˆï¼‰ï¼Œ0ï¼ˆæ²¡æœ‰ï¼‰
 
 */
 unsigned char sampingStatus(void)
 {
-	if(DMA_GetFlagStatus(DMA1_FLAG_TC1)!=RESET) //²é¿´DMA1Í¨µÀ1ÊÇ·ñÍê³É´«Êä
+	if(DMA_GetFlagStatus(DMA1_FLAG_TC1)!=RESET) //æŸ¥çœ‹DMA1é€šé“1æ˜¯å¦å®Œæˆä¼ è¾“
 	{
-		DMA_ClearFlag(DMA1_FLAG_TC1|DMA1_FLAG_HT1|DMA1_FLAG_GL1);             //Çå³ıDMA1Í¨µÀ1Íê³É±êÖ¾
+		DMA_ClearFlag(DMA1_FLAG_TC1|DMA1_FLAG_HT1|DMA1_FLAG_GL1);             //æ¸…é™¤DMA1é€šé“1å®Œæˆæ ‡å¿—
 		return 1;
 	}
 	
@@ -184,11 +184,11 @@ unsigned char sampingStatus(void)
 
 /*
 
-* º¯Êı½éÉÜ£º´«¸ĞÆ÷Ä£ÄâÁ¿×ª»¯ÎªÊı×ÖÁ¿
-* ÊäÈë²ÎÊı£ºsourceAnalog(ĞèÒª×ª»¯³ÉÊı×ÖÁ¿µÄÄ£ÄâÖµ)£¬thresholdAnalog£¨Ä£ÄâÁ¿ãĞÖµ£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º12¸ö´«¸ĞÆ÷¶ÔÓ¦µÄÊı×ÖÁ¿
-* ÆäËû    £º·µ»ØµÄÊı×ÖÁ¿¸ñÊ½ÎªÓÒ¶ÔÆë£¬¸ß×Ö½ÚµÄ¸ßËÄÎ»Ã»ÓÃÉÏ 0000 1010 1010 1010   
+* å‡½æ•°ä»‹ç»ï¼šä¼ æ„Ÿå™¨æ¨¡æ‹Ÿé‡è½¬åŒ–ä¸ºæ•°å­—é‡
+* è¾“å…¥å‚æ•°ï¼šsourceAnalog(éœ€è¦è½¬åŒ–æˆæ•°å­—é‡çš„æ¨¡æ‹Ÿå€¼)ï¼ŒthresholdAnalogï¼ˆæ¨¡æ‹Ÿé‡é˜ˆå€¼ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š12ä¸ªä¼ æ„Ÿå™¨å¯¹åº”çš„æ•°å­—é‡
+* å…¶ä»–    ï¼šè¿”å›çš„æ•°å­—é‡æ ¼å¼ä¸ºå³å¯¹é½ï¼Œé«˜å­—èŠ‚çš„é«˜å››ä½æ²¡ç”¨ä¸Š 0000 1010 1010 1010   
 */
 u16 sensorAD(u16 *sourceAnalog,const u16 *thresholdAnalog )
 {
@@ -209,16 +209,16 @@ u16 sensorAD(u16 *sourceAnalog,const u16 *thresholdAnalog )
 }
 
 /*
-* º¯Êı½éÉÜ:¿¨½Ç¶ÈÅÜ·¨£¬½Ç¶È·Ö¼¶
-* ÊäÈë²ÎÊı£ºµ±Ç°½Ç¶È
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû  £º¸ù¾İ½Ç¶ÈÀ´µ÷Õû
+* å‡½æ•°ä»‹ç»:å¡è§’åº¦è·‘æ³•ï¼Œè§’åº¦åˆ†çº§
+* è¾“å…¥å‚æ•°ï¼šå½“å‰è§’åº¦
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–  ï¼šæ ¹æ®è§’åº¦æ¥è°ƒæ•´
 */
 int rotangle_run(float angle)
 {
 	int temp=18;
-	static int save=18;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=18;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
   static float angle_temp[19]={-12.6,-11.2,-9.8,-8.4,-7.0,-5.6,-4.2,-2.8,-1.4,0,1.4,2.8,4.2,5.6,7.0,8.4,9.8,11.2,12.6};
 
 	if(angle_temp[0]>=angle ) temp = 38;
@@ -248,17 +248,17 @@ int rotangle_run(float angle)
 
 /*
 
-* º¯Êı½éÉÜ£º´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank(u16 digitalValue)
 {
 	int temp;
-	static int save=20;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=20;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0x800: temp=0;break;     // 1000 0000 0000
@@ -272,9 +272,9 @@ int sensorDigitalRank(u16 digitalValue)
 		case 0x1C0: temp=16;break;    // 0001 1100 0000
 		case 0x0C0: temp=18;break;    // 0000 1100 0000 
 		
-		case 0x0E0: temp=19;break;    // 0000 1110 0000 ÖĞ¼ä
-		case 0x060: temp=20;break;    // 0000 0110 0000 ÖĞ¼ä
-		case 0x070: temp=21;break;    // 0000 0111 0000 ÖĞ¼ä
+		case 0x0E0: temp=19;break;    // 0000 1110 0000 ä¸­é—´
+		case 0x060: temp=20;break;    // 0000 0110 0000 ä¸­é—´
+		case 0x070: temp=21;break;    // 0000 0111 0000 ä¸­é—´
 		
 		case 0x030: temp=22;break;    // 0000 0011 0000 
 		case 0x038: temp=24;break;    // 0000 0011 1000
@@ -286,7 +286,7 @@ int sensorDigitalRank(u16 digitalValue)
 		case 0x007: temp=36;break;    // 0000 0000 0111
 		case 0x003: temp=38;break;    // 0000 0000 0011
 		case 0x001: temp=40;break;    // 0000 0000 0001
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 		save = temp;
 	return temp;
@@ -296,24 +296,24 @@ int sensorDigitalRank(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£º´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶(¹ıµ¶É½ÓÃ)
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§(è¿‡åˆ€å±±ç”¨)
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_Sword(u16 digitalValue)
 {
 	int temp;
-	static int save=20;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=20;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0x800: temp=16;break;    // 1000 0000 0000
 		case 0xC00: temp=18;break;		// 1100 0000 0000
-		case 0xE00: temp=19;break;		// 1110 0000 0000	ÖĞ¼ä
-		case 0x600: temp=20;break;    // 0110 0000 0000	ÖĞ¼ä
-		case 0x700: temp=21;break;    // 0111 0000 0000	ÖĞ¼ä
+		case 0xE00: temp=19;break;		// 1110 0000 0000	ä¸­é—´
+		case 0x600: temp=20;break;    // 0110 0000 0000	ä¸­é—´
+		case 0x700: temp=21;break;    // 0111 0000 0000	ä¸­é—´
 		case 0x300: temp=22;break;    // 0011 0000 0000
 		case 0x380: temp=24;break;    // 0011 1000 0000
 		case 0x180: temp=26;break;    // 0001 1000 0000
@@ -334,7 +334,7 @@ int sensorDigitalRank_Sword(u16 digitalValue)
 //		case 0x007: temp=36;break;    // 0000 0000 0111
 //		case 0x003: temp=38;break;    // 0000 0000 0011
 //		case 0x001: temp=40;break;    // 0000 0000 0001
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 		save = temp;
 	return temp;
@@ -343,17 +343,17 @@ int sensorDigitalRank_Sword(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£º¹ıÇÅ´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šè¿‡æ¡¥ä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_Brige(u16 digitalValue)
 {
 	int temp;
-	static int save=14;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=14;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0xff:  temp=0;break;			// 000011111111
@@ -364,7 +364,7 @@ int sensorDigitalRank_Brige(u16 digitalValue)
 		case 0xc3f: temp=7;break;     // 110000111111
 		case 0xe3f: temp=10;break;    // 111000111111
 		case 0xe1f: temp=12;break;    // 111000011111
-		case 0xf0f: temp=14;break;    // 111100001111	ÖĞ¼ä
+		case 0xf0f: temp=14;break;    // 111100001111	ä¸­é—´
 		case 0xf87: temp=16;break;		// 111110000111
 		case 0xfc7: temp=18;break;    // 111111000111
 		case 0xfc3: temp=21;break;    // 111111000011
@@ -373,7 +373,7 @@ int sensorDigitalRank_Brige(u16 digitalValue)
 		case 0xfe1: temp=25;break;		// 111111100001
 		case 0xff1: temp=27;break;		// 111111110001
 		case 0xff0: temp=28;break;		// 111111110000
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 	
 	save = temp;
@@ -382,17 +382,17 @@ int sensorDigitalRank_Brige(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÇÅ´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šä¸Šæ¡¥ä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_Brige_Up(u16 digitalValue)
 {
 	int temp;
-	static int save=14;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=14;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0xff:  temp=0;break;			// 000011111111
@@ -403,7 +403,7 @@ int sensorDigitalRank_Brige_Up(u16 digitalValue)
 		case 0xc3f: temp=7;break;     // 110000111111
 		case 0xe3f: temp=10;break;    // 111000111111
 		case 0xe1f: temp=12;break;    // 111000011111
-		case 0xf0f: temp=14;break;    // 111100001111	ÖĞ¼ä
+		case 0xf0f: temp=14;break;    // 111100001111	ä¸­é—´
 		case 0xf87: temp=16;break;		// 111110000111
 		case 0xfc7: temp=18;break;    // 111111000111
 		case 0xfc3: temp=21;break;    // 111111000011
@@ -412,7 +412,7 @@ int sensorDigitalRank_Brige_Up(u16 digitalValue)
 		case 0xfe1: temp=25;break;		// 111111100001
 		case 0xff1: temp=27;break;		// 111111110001
 		case 0xff0: temp=28;break;		// 111111110000
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 	
 	save = temp;
@@ -421,17 +421,17 @@ int sensorDigitalRank_Brige_Up(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÇÅ´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šä¸‹æ¡¥ä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_Brige_Down(u16 digitalValue)
 {
 	int temp;
-	static int save=14;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=14;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0xff:  temp=0;break;			// 000011111111
@@ -442,7 +442,7 @@ int sensorDigitalRank_Brige_Down(u16 digitalValue)
 		case 0xc3f: temp=7;break;     // 110000111111
 		case 0xe3f: temp=10;break;    // 111000111111
 		case 0xe1f: temp=12;break;    // 111000011111
-		case 0xf0f: temp=14;break;    // 111100001111	ÖĞ¼ä
+		case 0xf0f: temp=14;break;    // 111100001111	ä¸­é—´
 		case 0xf87: temp=16;break;		// 111110000111
 		case 0xfc7: temp=18;break;    // 111111000111
 		case 0xfc3: temp=21;break;    // 111111000011
@@ -451,7 +451,7 @@ int sensorDigitalRank_Brige_Down(u16 digitalValue)
 		case 0xfe1: temp=25;break;		// 111111100001
 		case 0xff1: temp=27;break;		// 111111110001
 		case 0xff0: temp=28;break;		// 111111110000
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 	
 	save = temp;
@@ -460,17 +460,17 @@ int sensorDigitalRank_Brige_Down(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÖé·å´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šä¸Šç å³°ä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_Peak(u16 digitalValue)
 {
 	int temp;
-	static int save=16;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=16;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0xe00: temp=0;break;     // 111000000000
@@ -484,7 +484,7 @@ int sensorDigitalRank_Peak(u16 digitalValue)
 		case 0x0c0: temp=14;break;    // 000011000000
 		
 		case 0x0e0: temp=16;break;    // 000011100000
-		case 0x060: temp=16;break;    // 000001100000	ÖĞ¼ä 
+		case 0x060: temp=16;break;    // 000001100000	ä¸­é—´ 
 		case 0x070: temp=16;break;    // 000001110000
 		
 		case 0x030: temp=18;break;    // 000000110000
@@ -497,7 +497,7 @@ int sensorDigitalRank_Peak(u16 digitalValue)
 		case 0x006: temp=30;break;    // 000000000110
 		case 0x007: temp=32;break;    // 000000000111
 		
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 		save = temp;
 	return temp;
@@ -505,17 +505,17 @@ int sensorDigitalRank_Peak(u16 digitalValue)
 
 /*
 
-* º¯Êı½éÉÜ£ºÓÒ×ª90´«¸ĞÆ÷Êı×ÖÁ¿»®·ÖµÈ¼¶
-* ÊäÈë²ÎÊı£ºdigitalValue£¨´«¸ĞÆ÷µÄÊı×ÖÁ¿£©
-* Êä³ö²ÎÊı£º
-* ·µ»ØÖµ  £º¸ù¾İ¹æÔò¼ÆËãºóµÄµÈ¼¶
-* ÆäËû    £º¸ù¾İ´«¸ĞÆ÷À´µ÷ÕûÊıÖµ   
+* å‡½æ•°ä»‹ç»ï¼šå³è½¬90ä¼ æ„Ÿå™¨æ•°å­—é‡åˆ’åˆ†ç­‰çº§
+* è¾“å…¥å‚æ•°ï¼šdigitalValueï¼ˆä¼ æ„Ÿå™¨çš„æ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›å€¼  ï¼šæ ¹æ®è§„åˆ™è®¡ç®—åçš„ç­‰çº§
+* å…¶ä»–    ï¼šæ ¹æ®ä¼ æ„Ÿå™¨æ¥è°ƒæ•´æ•°å€¼   
 
 */
 int sensorDigitalRank_HR90(u16 digitalValue)
 {
 	int temp;
-	static int save=22;//±£´æµ±Ç°Öµ£¬ÒÔ±ãÏÂ´ÎÊ¹ÓÃ
+	static int save=22;//ä¿å­˜å½“å‰å€¼ï¼Œä»¥ä¾¿ä¸‹æ¬¡ä½¿ç”¨
 	switch(digitalValue)
 	{
 		case 0x800: temp=-6;break;     // 1000 0000 0000
@@ -528,8 +528,8 @@ int sensorDigitalRank_HR90(u16 digitalValue)
 		case 0x180: temp=8;break;    // 0001 1000 0000
 		case 0x1C0: temp=10;break;    // 0001 1100 0000
 		case 0x0C0: temp=12;break;    // 0000 1100 0000  
-		case 0x0E0: temp=14;break;    // 0000 1110 0000 ÖĞ¼ä
-		case 0x060: temp=22;break;    // 0000 0110 0000 ÖĞ¼ä
+		case 0x0E0: temp=14;break;    // 0000 1110 0000 ä¸­é—´
+		case 0x060: temp=22;break;    // 0000 0110 0000 ä¸­é—´
 		case 0x030: temp=30;break;    // 0000 0011 0000
 		case 0x038: temp=32;break;    // 0000 0011 1000
 		case 0x018: temp=34;break;    // 0000 0001 1000
@@ -541,7 +541,7 @@ int sensorDigitalRank_HR90(u16 digitalValue)
 		case 0x003: temp=46;break;    // 0000 0000 0011
 		case 0x001: temp=48;break;    // 0000 0000 0001
 	
-		default   : temp = save; break;//¶Áµ½ÆäËûÖµµÄÊ±ºò²ÉÓÃÉÏ´ÎµÄÖµ
+		default   : temp = save; break;//è¯»åˆ°å…¶ä»–å€¼çš„æ—¶å€™é‡‡ç”¨ä¸Šæ¬¡çš„å€¼
 	}
 	save = temp;
 	return temp;

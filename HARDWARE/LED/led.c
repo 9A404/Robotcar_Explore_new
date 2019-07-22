@@ -3,24 +3,24 @@
 
 /*
 
-* º¯Êý½éÉÜ£ºLEDµÆGPIOÅäÖÃ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šLEDç¯GPIOé…ç½®
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void ledInit()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);
-	/*ÅäÖÃGPIOE*/
+	/*é…ç½®GPIOE*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //ÉèÖÃ³ÉÍÆÍìÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //è®¾ç½®æˆæŽ¨æŒ½è¾“å…¥
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOE, &GPIO_InitStructure);	
 	
-	/*Ä¬ÈÏ²»ÁÁ*/
+	/*é»˜è®¤ä¸äº®*/
 	LED0=1;
 	LED1=1;
 	LED2=1;
@@ -29,11 +29,11 @@ void ledInit()
 
 /*
 
-* º¯Êý½éÉÜ£ºLEDµÆÁÁÃðN´Î
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šLEDç¯äº®ç­Næ¬¡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void led_light(u8 n)
@@ -54,11 +54,11 @@ void led_light(u8 n)
 
 /*
 
-* º¯Êý½éÉÜ£ºLED0ÉÁË¸Ò»´Î
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šLED0é—ªçƒä¸€æ¬¡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void led0_flash()
@@ -70,11 +70,11 @@ void led0_flash()
 
 /*
 
-* º¯Êý½éÉÜ£ºLED1ÉÁË¸Ò»´Î
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šLED1é—ªçƒä¸€æ¬¡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void led1_flash()
@@ -89,35 +89,35 @@ void led1_flash()
 
 /*
 
-* º¯Êý½éÉÜ£º·äÃùÆ÷GPIOÅäÖÃ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šèœ‚é¸£å™¨GPIOé…ç½®
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void buzzerInit()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);
-	/*ÅäÖÃGPIOE*/
+	/*é…ç½®GPIOE*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_14;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //ÉèÖÃ³ÉÍÆÍìÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //è®¾ç½®æˆæŽ¨æŒ½è¾“å…¥
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOE, &GPIO_InitStructure);	
 	
-	/*Ä¬ÈÏ²»Ïì*/
+	/*é»˜è®¤ä¸å“*/
 	BEEP=1;
 }
 
 
 /*
 
-* º¯Êý½éÉÜ£º·äÃùÆ÷ÏìÆð1´Î
-* ÊäÈë²ÎÊý£º
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šèœ‚é¸£å™¨å“èµ·1æ¬¡
+* è¾“å…¥å‚æ•°ï¼š
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void buzzer_beep()

@@ -1,7 +1,7 @@
 #ifndef _COMMON_VAL_H_
 #define _COMMON_VAL_H_
 /*
-* ×÷Õß    £º@PcDack1
+* Ð·Ñ—ÐµÐ¿    ÐƒÐš@PcDack1
 */
 #define COMMON_TIME   30
 

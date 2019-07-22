@@ -11,11 +11,11 @@ extern const map_linkInforTypeDef mapInformation[][NODEFORKNUM];
 
 /*
 
-* º¯Êı½éÉÜ£º¸ü¸Ä¿ØÖÆÖĞĞÄ×´Ì¬ĞÅºÅ
-* ÊäÈë²ÎÊı£ºp(¿ØÖÆÖĞĞÄÃû×Ö)	updataState£¨ÊäÈë×´Ì¬ĞÅºÅ£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ›´æ”¹æ§åˆ¶ä¸­å¿ƒçŠ¶æ€ä¿¡å·
+* è¾“å…¥å‚æ•°ï¼šp(æ§åˆ¶ä¸­å¿ƒåå­—)	updataStateï¼ˆè¾“å…¥çŠ¶æ€ä¿¡å·ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void	updataState_Reset(controlCenterTypeDef *p,updataState state)
@@ -28,11 +28,11 @@ void	updataState_Reset(controlCenterTypeDef *p,updataState state)
 
 /*
 
-* º¯Êı½éÉÜ£º½«Â·¶ÎĞÅÏ¢¸üĞÂµ½¿ØÖÆÖĞĞÄ
-* ÊäÈë²ÎÊı£ºcontrolp(¸üĞÂµÄ¿ØÖÆÖĞĞÄÃû×Ö)p(µØÍ¼¹æÔò±í)
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå°†è·¯æ®µä¿¡æ¯æ›´æ–°åˆ°æ§åˆ¶ä¸­å¿ƒ
+* è¾“å…¥å‚æ•°ï¼šcontrolp(æ›´æ–°çš„æ§åˆ¶ä¸­å¿ƒåå­—)p(åœ°å›¾è§„åˆ™è¡¨)
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 static void	linkInformUpdate(controlCenterTypeDef *controlp,const map_linkInforTypeDef(*p)[NODEFORKNUM])
@@ -63,16 +63,16 @@ static void	linkInformUpdate(controlCenterTypeDef *controlp,const map_linkInforT
 
 /*
 
-* º¯Êı½éÉÜ£º¿ØÖÆÖĞĞÄ³õÊ¼»¯º¯Êı
-* ÊäÈë²ÎÊı£ºcontrolp(¸üĞÂµÄ¿ØÖÆÖĞĞÄÃû×Ö)curNode(µ±Ç°½Úµã±àºÅ)nextNode£¨ÏÂÒ»½Úµã±àºÅ£©nnNode£¨ÏÂÏÂ½Úµã±àºÅ£©nodeNum£¨Â·ÏßÖĞ´ıÅÜ±àºÅµÄÎ»ÖÃ£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ§åˆ¶ä¸­å¿ƒåˆå§‹åŒ–å‡½æ•°
+* è¾“å…¥å‚æ•°ï¼šcontrolp(æ›´æ–°çš„æ§åˆ¶ä¸­å¿ƒåå­—)curNode(å½“å‰èŠ‚ç‚¹ç¼–å·)nextNodeï¼ˆä¸‹ä¸€èŠ‚ç‚¹ç¼–å·ï¼‰nnNodeï¼ˆä¸‹ä¸‹èŠ‚ç‚¹ç¼–å·ï¼‰nodeNumï¼ˆè·¯çº¿ä¸­å¾…è·‘ç¼–å·çš„ä½ç½®ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Control_Init(controlCenterTypeDef *controlp,u8*runMethod)
 {
-	memset(controlp,0,sizeof(controlCenterTypeDef));//¶Ô¿ØÖÆÖĞĞÄ½á¹¹ÌåÇåÁã
+	memset(controlp,0,sizeof(controlCenterTypeDef));//å¯¹æ§åˆ¶ä¸­å¿ƒç»“æ„ä½“æ¸…é›¶
 	
 	controlp->curNode =	runMethod[0];
 	controlp->nextNode = runMethod[1];
@@ -87,11 +87,11 @@ void Control_Init(controlCenterTypeDef *controlp,u8*runMethod)
 
 /*
 
-* º¯Êı½éÉÜ£º¸üĞÂ¿ØÖÆÖĞĞÄ£¨controlCenterTypeDef½á¹¹Ìå£©µÄ²ÎÊı¡£×¢Òâ£ºÖ»ÓĞµ±µ½´ïĞÂ½ÚµãµÄÊ±ºò²Å»á¸üĞÂ
-* ÊäÈë²ÎÊı£ºcontrolp£¨¿ØÖÆÖĞĞÄ£©¡¢nodeLength£¨Â·Ïß½Úµã×Ü¸öÊı£©runMethod£¨Â·ÏßÊı×é£©p£¨µØÍ¼¹æÔò£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¸üĞÂ³É¹¦)0(¸üĞÂÊ§°Ü)
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ›´æ–°æ§åˆ¶ä¸­å¿ƒï¼ˆcontrolCenterTypeDefç»“æ„ä½“ï¼‰çš„å‚æ•°ã€‚æ³¨æ„ï¼šåªæœ‰å½“åˆ°è¾¾æ–°èŠ‚ç‚¹çš„æ—¶å€™æ‰ä¼šæ›´æ–°
+* è¾“å…¥å‚æ•°ï¼šcontrolpï¼ˆæ§åˆ¶ä¸­å¿ƒï¼‰ã€nodeLengthï¼ˆè·¯çº¿èŠ‚ç‚¹æ€»ä¸ªæ•°ï¼‰runMethodï¼ˆè·¯çº¿æ•°ç»„ï¼‰pï¼ˆåœ°å›¾è§„åˆ™ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(æ›´æ–°æˆåŠŸ)0(æ›´æ–°å¤±è´¥)
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const u8 *runMethod,const map_linkInforTypeDef(*p)[NODEFORKNUM] )
@@ -99,10 +99,10 @@ unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const 
 	if(controlp->update == EIC)
 	{
 				
-		/*ÕÒ³ö½ÓÏÂÀ´Ñ°¼£µÄÂ·¶Î²¢½«ĞÅÏ¢¸üĞÂµ½¿ØÖÆÖĞĞÄ*/
+		/*æ‰¾å‡ºæ¥ä¸‹æ¥å¯»è¿¹çš„è·¯æ®µå¹¶å°†ä¿¡æ¯æ›´æ–°åˆ°æ§åˆ¶ä¸­å¿ƒ*/
 		linkInformUpdate(controlp,p);
 			
-		/*¸üĞÂ¿ØÖÆÖĞĞÄcurNode¡¢nextNode¡¢nnNode*/
+		/*æ›´æ–°æ§åˆ¶ä¸­å¿ƒcurNodeã€nextNodeã€nnNode*/
 		if(controlp->nodeNum < nodeLength)
 		{
 			controlp->curNode = controlp->nextNode;
@@ -116,7 +116,7 @@ unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const 
 			controlp->nextNode = controlp->nnNode;
 		}
 		
-				/*½«¿ØÖÆÖĞĞÄµÄ×´Ì¬±êÖ¾Î»ÉèÖÃ³ÉNTBE*/
+				/*å°†æ§åˆ¶ä¸­å¿ƒçš„çŠ¶æ€æ ‡å¿—ä½è®¾ç½®æˆNTBE*/
 		updataState_Reset(controlp,NTBE);
 		
 		return 1;
@@ -126,21 +126,21 @@ unsigned char control_Update(controlCenterTypeDef *controlp,u8 nodeLength,const 
 
 /*
 
-* º¯Êı½éÉÜ£º¸ù¾İ¿ØÖÆÌ¨ÆğÊ¼Â·¶Î³õÊ¼»¯ÔËĞĞ×´Ì¬
-* ÊäÈë²ÎÊı£ºrunState(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷µÄµØÖ·) controlp£¨¿ØÖÆÌ¨µÄµØÖ·£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ ¹æ®æ§åˆ¶å°èµ·å§‹è·¯æ®µåˆå§‹åŒ–è¿è¡ŒçŠ¶æ€
+* è¾“å…¥å‚æ•°ï¼šrunState(è¿è¡ŒçŠ¶æ€è®°å½•å™¨çš„åœ°å€) controlpï¼ˆæ§åˆ¶å°çš„åœ°å€ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */	
 void runStateInit(runStateTypeDef *runState,const controlCenterTypeDef *controlp)
 {
-		runState->F_LineState = NTBE;					//ĞèÒªÖ´ĞĞ	
-		runState->F_RoadBlockState = (controlp->linkInform.typeRoadblock==FREE)?EIC:NTBE; //Ã»ÓĞÂ·ÕÏµÄÊ±ºò¾Í£¨Ö´ĞĞÍê³É£©£¬ÓĞÂ·ÕÏ¾Í£¨ĞèÒªÖ´ĞĞ£©
-    runState->speedState = STANDBY;			//´ıÃü×´Ì¬µÈ´ıÂ·ÕÏÀ´´¥·¢
-		runState->seekNodeState = STANDBY;		//´ıÃü×´Ì¬µÈ´ıÂ·ÕÏÀ´´¥·¢
-		runState->carParkState = STANDBY;			//´ıÃü×´Ì¬µÈ´ı¡°ÕÒµã´¦ÓÚEIC¡±´¥·¢
-		runState->RotangleState = STANDBY;		//´ıÃü×´Ì¬µÈ´ı¡°Í£³µ´¦ÓÚEIC¡±´¥·¢
+		runState->F_LineState = NTBE;					//éœ€è¦æ‰§è¡Œ	
+		runState->F_RoadBlockState = (controlp->linkInform.typeRoadblock==FREE)?EIC:NTBE; //æ²¡æœ‰è·¯éšœçš„æ—¶å€™å°±ï¼ˆæ‰§è¡Œå®Œæˆï¼‰ï¼Œæœ‰è·¯éšœå°±ï¼ˆéœ€è¦æ‰§è¡Œï¼‰
+    runState->speedState = STANDBY;			//å¾…å‘½çŠ¶æ€ç­‰å¾…è·¯éšœæ¥è§¦å‘
+		runState->seekNodeState = STANDBY;		//å¾…å‘½çŠ¶æ€ç­‰å¾…è·¯éšœæ¥è§¦å‘
+		runState->carParkState = STANDBY;			//å¾…å‘½çŠ¶æ€ç­‰å¾…â€œæ‰¾ç‚¹å¤„äºEICâ€è§¦å‘
+		runState->RotangleState = STANDBY;		//å¾…å‘½çŠ¶æ€ç­‰å¾…â€œåœè½¦å¤„äºEICâ€è§¦å‘
 }	
 	
 	
@@ -149,45 +149,45 @@ void runStateInit(runStateTypeDef *runState,const controlCenterTypeDef *controlp
 	
 /*
 
-* º¯Êı½éÉÜ£º¸ù¾İ¿ØÖÆÌ¨ÅĞ¶ÏÊÇ·ñÀ´µ½ĞÂµÄÂ·¶Î£¬È»ºóÖØĞÂÉèÖÃÔËĞĞ×´Ì¬
-* ÊäÈë²ÎÊı£ºrunState(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷µÄµØÖ·) controlp£¨¿ØÖÆÌ¨µÄµØÖ·£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ ¹æ®æ§åˆ¶å°åˆ¤æ–­æ˜¯å¦æ¥åˆ°æ–°çš„è·¯æ®µï¼Œç„¶åé‡æ–°è®¾ç½®è¿è¡ŒçŠ¶æ€
+* è¾“å…¥å‚æ•°ï¼šrunState(è¿è¡ŒçŠ¶æ€è®°å½•å™¨çš„åœ°å€) controlpï¼ˆæ§åˆ¶å°çš„åœ°å€ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 
 void runStateReset(runStateTypeDef *runState,const controlCenterTypeDef *controlp)
 {
-		runState->F_LineState = ((controlp->curNode==controlp->nextNode)&&(controlp->nextNode==controlp->nnNode))?EIC:NTBE;						//ĞèÒªÖ´ĞĞ		
-		runState->F_RoadBlockState = (controlp->linkInform.typeRoadblock==FREE)?EIC:NTBE; //Ã»ÓĞÂ·ÕÏµÄÊ±ºò¾Í£¨Ö´ĞĞÍê³É£©£¬ÓĞÂ·ÕÏ¾Í£¨ĞèÒªÖ´ĞĞ£©
-    runState->speedState = STANDBY;			//´ıÃü×´Ì¬µÈ´ıÂ·ÕÏÀ´´¥·¢
-		runState->seekNodeState = STANDBY;	//´ıÃü×´Ì¬µÈ´ıÂ·ÕÏÀ´´¥·¢
-		runState->carParkState = STANDBY;//´ıÃü×´Ì¬µÈ´ı¡°ÕÒµã´¦ÓÚEIC¡±´¥·¢
-		runState->RotangleState = STANDBY;//´ıÃü×´Ì¬µÈ´ı¡°Í£³µ´¦ÓÚEIC¡±´¥·¢
+		runState->F_LineState = ((controlp->curNode==controlp->nextNode)&&(controlp->nextNode==controlp->nnNode))?EIC:NTBE;						//éœ€è¦æ‰§è¡Œ		
+		runState->F_RoadBlockState = (controlp->linkInform.typeRoadblock==FREE)?EIC:NTBE; //æ²¡æœ‰è·¯éšœçš„æ—¶å€™å°±ï¼ˆæ‰§è¡Œå®Œæˆï¼‰ï¼Œæœ‰è·¯éšœå°±ï¼ˆéœ€è¦æ‰§è¡Œï¼‰
+    runState->speedState = STANDBY;			//å¾…å‘½çŠ¶æ€ç­‰å¾…è·¯éšœæ¥è§¦å‘
+		runState->seekNodeState = STANDBY;	//å¾…å‘½çŠ¶æ€ç­‰å¾…è·¯éšœæ¥è§¦å‘
+		runState->carParkState = STANDBY;//å¾…å‘½çŠ¶æ€ç­‰å¾…â€œæ‰¾ç‚¹å¤„äºEICâ€è§¦å‘
+		runState->RotangleState = STANDBY;//å¾…å‘½çŠ¶æ€ç­‰å¾…â€œåœè½¦å¤„äºEICâ€è§¦å‘
 
 }
 
 
 /*
 
-* º¯Êı½éÉÜ£ºÖØÖÃ±¼ÅÜÂ·Ïß
-* ÊäÈë²ÎÊı£ºrunMethod(´¢´æ±»Ìæ»»±¼ÅÜÂ·Ïß) runMethod_2£¨´æ´¢Ìæ»»µÄ±¼ÅÜµÄÂ·Ïß£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šé‡ç½®å¥”è·‘è·¯çº¿
+* è¾“å…¥å‚æ•°ï¼šrunMethod(å‚¨å­˜è¢«æ›¿æ¢å¥”è·‘è·¯çº¿) runMethod_2ï¼ˆå­˜å‚¨æ›¿æ¢çš„å¥”è·‘çš„è·¯çº¿ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void runMethodReset(u8 runMethod[],const u8 runMethod_2[])
 {
 	u8 i=0;
-	/*Êı×éÇåÁã*/
+	/*æ•°ç»„æ¸…é›¶*/
 	while(runMethod[i]!= 0)
 	{
 		runMethod[i]= 0;
 		i++;
 	}
-	/*¸üĞÂÂ·Ïß*/
+	/*æ›´æ–°è·¯çº¿*/
 	i=0;
 	while(runMethod_2[i] != 0)
 	{
@@ -200,23 +200,23 @@ void runMethodReset(u8 runMethod[],const u8 runMethod_2[])
 
 /*
 
-* º¯Êı½éÉÜ£º´Ó±¼ÅÜÂ·Ïß±í¸ñÖĞÑ¡Ôñ±¼ÅÜÂ·Ïß
-* ÊäÈë²ÎÊı£ºrunMethod(´¢´æ±»Ìæ»»±¼ÅÜÂ·Ïß) runMethodNum(µÚ¼¸ÌõÂ·Ïß)runMethodTab£¨Â·Ïß±í£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä»å¥”è·‘è·¯çº¿è¡¨æ ¼ä¸­é€‰æ‹©å¥”è·‘è·¯çº¿
+* è¾“å…¥å‚æ•°ï¼šrunMethod(å‚¨å­˜è¢«æ›¿æ¢å¥”è·‘è·¯çº¿) runMethodNum(ç¬¬å‡ æ¡è·¯çº¿)runMethodTabï¼ˆè·¯çº¿è¡¨ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void runMethodUpdate(u8 runMethod[],u8 runMethodNum, const u8 runMethodTab[][100])
 {
 	u8 i=0;
-	/*Êı×éÇåÁã*/
+	/*æ•°ç»„æ¸…é›¶*/
 	while(runMethod[i]!= 0)
 	{
 		runMethod[i]= 0;
 		i++;
 	}
-	/*¸üĞÂÂ·Ïß*/
+	/*æ›´æ–°è·¯çº¿*/
 	i=0;
 	while(runMethodTab[runMethodNum][i] != 0)
 	{
@@ -236,12 +236,12 @@ void runMethodUpdate(u8 runMethod[],u8 runMethodNum, const u8 runMethodTab[][100
 
 /*
 
-* º¯Êı½éÉÜ£ºÑ²ÏßÈÎÎñ
-* ÊäÈë²ÎÊı£ºcontrolp£¨¿ØÖÆÌ¨µÄµØÖ·£© runState(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷µÄµØÖ·)
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû		£º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄÑ²Ïß·½·¨Ö´ĞĞÏàÓ¦·½·¨,¸ù¾İÔËĞĞ×´Ì¬¾ö¶¨ÊÇ·ñÔËĞĞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå·¡çº¿ä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šcontrolpï¼ˆæ§åˆ¶å°çš„åœ°å€ï¼‰ runState(è¿è¡ŒçŠ¶æ€è®°å½•å™¨çš„åœ°å€)
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–		ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„å·¡çº¿æ–¹æ³•æ‰§è¡Œç›¸åº”æ–¹æ³•,æ ¹æ®è¿è¡ŒçŠ¶æ€å†³å®šæ˜¯å¦è¿è¡Œ
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState)
@@ -288,17 +288,17 @@ void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 //					delay_ms(1000);
 //					delay_ms(1000);
 					runTimes = 1;
-					speedAdjustment(0,0);  //Í£³µ
+					speedAdjustment(0,0);  //åœè½¦
 				}
 				
 				else if(4 == runTimes)
 				{
-					speedAdjustment(0,0);  //Í£³µ
+					speedAdjustment(0,0);  //åœè½¦
 					runTimes = 5;
 					Gui_DrawFont_GBK16(0,80,RED,WHITE,"Finish");
 					while(1)
 					{
-						/*µ±ÓĞ°´¼ü°´ÏÂ¾ÍÌø³ö*/
+						/*å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º*/
 						keyFlag = keyScan(0);
 						if(keyFlag==KEY4_ESC)
 						{
@@ -317,15 +317,15 @@ void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 
 /*
 
-* º¯Êı½éÉÜ£ºÂ·ÕÏ½â¾öÈÎÎñ
-* ÊäÈë²ÎÊı£ºrunStateconst(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷) controlp£¨¿ØÖÆÌ¨£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû		£º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄÂ·ÕÏÀàĞÍÅĞ¶Ï³öÂ·ÕÏ²¢Ö´ĞĞ´¦Àí·½·¨£¬
-* ×÷Õß    £º@¶ÏÒä|@³Â
+* å‡½æ•°ä»‹ç»ï¼šè·¯éšœè§£å†³ä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šrunStateconst(è¿è¡ŒçŠ¶æ€è®°å½•å™¨) controlpï¼ˆæ§åˆ¶å°ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–		ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„è·¯éšœç±»å‹åˆ¤æ–­å‡ºè·¯éšœå¹¶æ‰§è¡Œå¤„ç†æ–¹æ³•ï¼Œ
+* ä½œè€…    ï¼š@æ–­å¿†|@é™ˆ
 
 */
-void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState) //Ê¶±ğµ½Â·ÕÏºó£¬Ö´ĞĞÂ·ÕÏ´¦Àíº¯Êı£¬´¦ÀíÍêºó½«"F_RoadBlockState"±êÖ¾³ÉÖ´ĞĞÍê³É
+void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState) //è¯†åˆ«åˆ°è·¯éšœåï¼Œæ‰§è¡Œè·¯éšœå¤„ç†å‡½æ•°ï¼Œå¤„ç†å®Œåå°†"F_RoadBlockState"æ ‡å¿—æˆæ‰§è¡Œå®Œæˆ
 {
 	if((runState->F_RoadBlockState==NTBE) && (runState->F_LineState != EIC))
 	{
@@ -544,12 +544,12 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 }
 /*
 
-* º¯Êı½éÉÜ£º¼ÓËÙÈÎÎñ
-* ÊäÈë²ÎÊı£ºrunStateconst(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷) controlp£¨¿ØÖÆÌ¨£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû	  £º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄÕÒµã·½·¨Ö´ĞĞÏàÓ¦·½·¨
-* ×÷Õß    £º@Ô¬è÷´Ï
+* å‡½æ•°ä»‹ç»ï¼šåŠ é€Ÿä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šrunStateconst(è¿è¡ŒçŠ¶æ€è®°å½•å™¨) controlpï¼ˆæ§åˆ¶å°ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–	  ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„æ‰¾ç‚¹æ–¹æ³•æ‰§è¡Œç›¸åº”æ–¹æ³•
+* ä½œè€…    ï¼š@è¢æ¢“èª
 
 */
 void speed_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState){
@@ -621,12 +621,12 @@ void speed_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState){
 
 /*
 
-* º¯Êı½éÉÜ£ºÕÒµãÈÎÎñ
-* ÊäÈë²ÎÊı£ºrunStateconst(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷) controlp£¨¿ØÖÆÌ¨£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû	  £º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄÕÒµã·½·¨Ö´ĞĞÏàÓ¦·½·¨
-* ×÷Õß    £º@¶ÏÒä|@³Â
+* å‡½æ•°ä»‹ç»ï¼šæ‰¾ç‚¹ä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šrunStateconst(è¿è¡ŒçŠ¶æ€è®°å½•å™¨) controlpï¼ˆæ§åˆ¶å°ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–	  ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„æ‰¾ç‚¹æ–¹æ³•æ‰§è¡Œç›¸åº”æ–¹æ³•
+* ä½œè€…    ï¼š@æ–­å¿†|@é™ˆ
 
 */
 void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState)
@@ -826,12 +826,12 @@ void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 
 /*
 
-* º¯Êı½éÉÜ£ºÍ£³µÈÎÎñ
-* ÊäÈë²ÎÊı£ºrunStateconst(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷) controlp£¨¿ØÖÆÌ¨£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû		£º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄÍ£³µ·½·¨Ö´ĞĞÏàÓ¦·½·¨
-* ×÷Õß    £º@¶ÏÒä|@³Â
+* å‡½æ•°ä»‹ç»ï¼šåœè½¦ä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šrunStateconst(è¿è¡ŒçŠ¶æ€è®°å½•å™¨) controlpï¼ˆæ§åˆ¶å°ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–		ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„åœè½¦æ–¹æ³•æ‰§è¡Œç›¸åº”æ–¹æ³•
+* ä½œè€…    ï¼š@æ–­å¿†|@é™ˆ
 
 */
 void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState)
@@ -1036,12 +1036,12 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 
 /*
 
-* º¯Êı½éÉÜ£º×ªÍäÈÎÎñ
-* ÊäÈë²ÎÊı£ºrunStateconst(ÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷) controlp£¨¿ØÖÆÌ¨£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû		£º¸ù¾İ¿ØÖÆÌ¨µÄÂ·¶ÎĞÅÏ¢µÄ×ªÍä·½·¨Ö´ĞĞÏàÓ¦·½·¨
-* ×÷Õß    £º@¶ÏÒä|@³Â
+* å‡½æ•°ä»‹ç»ï¼šè½¬å¼¯ä»»åŠ¡
+* è¾“å…¥å‚æ•°ï¼šrunStateconst(è¿è¡ŒçŠ¶æ€è®°å½•å™¨) controlpï¼ˆæ§åˆ¶å°ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–		ï¼šæ ¹æ®æ§åˆ¶å°çš„è·¯æ®µä¿¡æ¯çš„è½¬å¼¯æ–¹æ³•æ‰§è¡Œç›¸åº”æ–¹æ³•
+* ä½œè€…    ï¼š@æ–­å¿†|@é™ˆ
 
 */
 void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState)

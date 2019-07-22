@@ -1,32 +1,32 @@
 #include "control.h"
 #include "myconfig.h"
 
-/*Õ®π˝“ª∏ˆ±Ì æ≥ˆµÿÕº  —≤œﬂ∑Ω∑® ¬∑’œ¿‡–Õ  º”ÀŸ∑Ω∑®  º”ÀŸ ±º‰ ’“Ω⁄µ„∑Ω∑® Õ£≥µ∑Ω∑® ≥µÕ∑–˝◊™Ω«∂»*/
+/*ÈÄöËøá‰∏Ä‰∏™Ë°®Á§∫Âá∫Âú∞Âõæ  Â∑°Á∫øÊñπÊ≥ï Ë∑ØÈöúÁ±ªÂûã  Âä†ÈÄüÊñπÊ≥ï  Âä†ÈÄüÊó∂Èó¥ ÊâæËäÇÁÇπÊñπÊ≥ï ÂÅúËΩ¶ÊñπÊ≥ï ËΩ¶Â§¥ÊóãËΩ¨ËßíÂ∫¶*/
 
 const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
-/*Ω⁄µ„*/	{	{0,0,},			},//√ª”–”√µΩ	1
+/*ËäÇÁÇπ*/	{	{0,0,},			},//Ê≤°ÊúâÁî®Âà∞	1
 
-/*1Ω⁄µ„*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate,0},{2,3,FL_default,PLATFORM_1,COMMON_SPEED,30,NOTSEEK,NOTPARK,HN_Rotate,0},	\
+/*1ËäÇÁÇπ*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate,0},{2,3,FL_default,PLATFORM_1,COMMON_SPEED,30,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{2,5,FL_default,PLATFORM_1,NOSPEED,0,SEEK_default,NOTPARK,rot_LFL,0},	
 					},	
 
-/*2Ω⁄µ„*/	{	{1,2,FL_slow,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_default,HL_F,180},{3,4,FL_slow,BRIGE,COMMON_SPEED,28,NOTSEEK,NOTPARK,HN_Rotate,0},	\
+/*2ËäÇÁÇπ*/	{	{1,2,FL_slow,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_default,HL_F,180},{3,4,FL_slow,BRIGE,COMMON_SPEED,28,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{5,9,FL_default,S_BOARD,NOSPEED,0,SEEK_default,PARK_pesL,HL,120},{5,6,FL_default,S_BOARD,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	
 					},		
 
-/*3Ω⁄µ„*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate,0},{4,3,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},	\
+/*3ËäÇÁÇπ*/	{	{2,1,FL_brige,FREE,NOSPEED,0,SEEK_default,PARK_default,HN_Rotate,0},{4,3,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},	\
 						{5,9,FL_slow,SLOPE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{5,6,FL_slow,SLOPE,NOSPEED,0,SEEK_default,PARK_pesR_200,HR,135},	
 					},		
 	
-/*4Ω⁄µ„*/	{	{3,5,FL_default,PLATFORM,NOSPEED,0,SEEK_default,NOTPARK,rot_RFL,0},	
+/*4ËäÇÁÇπ*/	{	{3,5,FL_default,PLATFORM,NOSPEED,0,SEEK_default,NOTPARK,rot_RFL,0},	
 					},
 
-/*5Ω⁄µ„*/	{	{2,1,FL_slow,S_BOARD,NOSPEED,0,SEEK_default,NOTPARK,HN_Rotate,0},{6,7,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
+/*5ËäÇÁÇπ*/	{	{2,1,FL_slow,S_BOARD,NOSPEED,0,SEEK_default,NOTPARK,HN_Rotate,0},{6,7,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
 						{6,8,FL_default,FREE,COMMON_SPEED,40,SEEK_default,NOTPARK,rot_RFL,0},{9,10,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},	\
 						{6,42,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_45,HL,90},{6,14,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_200,HL,90},
 					},      
 
-/*6Ω⁄µ„*/	{	{7,6,FL_default,FREE,COMMON_SPEED,50,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{8,6,FL_default,FREE,COMMON_SPEED,60,SEEK_Collision,NOTPARK,HL_F,180},	\
+/*6ËäÇÁÇπ*/	{	{7,6,FL_default,FREE,COMMON_SPEED,50,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{8,6,FL_default,FREE,COMMON_SPEED,60,SEEK_Collision,NOTPARK,HL_F,180},	\
 						{14,15,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},{5,2,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,rot_LFL,0},	\
 						{7,12,FL_default,FREE,COMMON_SPEED,50,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{14,16,FL_default,FREE,COMMON_SPEED,60,SEEK4,PARK_pesR,HR,90},\
 						{42,14,FL_slow,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},{14,35,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
@@ -34,14 +34,14 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 					},                 
 
 						
-/*7Ω⁄µ„*/	{	{12,11,FL_default,PLATFORM,COMMON_SPEED,330,SEEK_PesPlatform,PARK_PesPlatform,HN_Rotate,0},{6,14,FL_default,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesR,HR,90},	\
+/*7ËäÇÁÇπ*/	{	{12,11,FL_default,PLATFORM,COMMON_SPEED,330,SEEK_PesPlatform,PARK_PesPlatform,HN_Rotate,0},{6,14,FL_default,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesR,HR,90},	\
 						{12,10,FL_slow,PLATFORM,COMMON_SPEED,330,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{6,42,FL_default,PLATFORM,NOSPEED,0,SEEK4,PARK_pesR,HR,90},\
 					},
 	
-/*8Ω⁄µ„*/ {	{6,7,FL_slow,FREE,COMMON_SPEED,80,SEEK_default,PARK_pesR_250,HR_F,135},
+/*8ËäÇÁÇπ*/ {	{6,7,FL_slow,FREE,COMMON_SPEED,80,SEEK_default,PARK_pesR_250,HR_F,135},
 					},
 
-/*9Ω⁄µ„*/	{	{10,12,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,rot_LFL,0},	\
+/*9ËäÇÁÇπ*/	{	{10,12,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,rot_LFL,0},	\
 						{5,6,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},{39,15,FL_slow,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{5,2,FL_default,FREE,COMMON_SPEED,10,SEEK_DIGR,PARK_pesR_200,HR_F,135},{39,9,FL_slow,FREE,NOSPEED,0,SEEK_Collision,PARK_Door,HL,180}, \
 						{40,14,FL_slow,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},{40,9,FL_slow,FREE,NOSPEED,0,SEEK_Collision,PARK_Door,HL,180},	\
@@ -51,27 +51,27 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 						
 					},
 
-/*10Ω⁄µ„*/{	{12,10,FL_default,PLATFORM,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{9,5,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},	\
+/*10ËäÇÁÇπ*/{	{12,10,FL_default,PLATFORM,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{9,5,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},	\
 						{9,40,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesL,HL,45},{9,39,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesL,HL,90},	\
 						{9,15,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesL,HL,90},{9,14,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesL,HL,45},	\
 						{11,10,FL_default,FREE,COMMON_SPEED,50,SEEK_Collision,NOTPARK,HL_F,180},{9,31,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesL,HL,90},	\
 						{6,14,FL_default,FREE,COMMON_SPEED,120,SEEK_DIGL,PARK_pesL_300,HL,90},
 					},         
 
-/*11Ω⁄µ„*/{	{10,9,FL_default,FREE,COMMON_SPEED,50,SEEK_PESL,NOTPARK,HR,35},{10,12,FL_slow,FREE,NOSPEED,0,SEEK_default,PARK_pesL_250,HL,120},	\
+/*11ËäÇÁÇπ*/{	{10,9,FL_default,FREE,COMMON_SPEED,50,SEEK_PESL,NOTPARK,HR,35},{10,12,FL_slow,FREE,NOSPEED,0,SEEK_default,PARK_pesL_250,HL,120},	\
 						{10,6,FL_default,FREE,COMMON_SPEED,50,SEEK_PESL,NOTPARK,HR,35},
 					},
 
-/*12Ω⁄µ„*/{	{10,9,FL_default,PLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_default,PLATFORM,COMMON_SPEED,30,SEEK_default,PARK_pesL,HR,135},	\
+/*12ËäÇÁÇπ*/{	{10,9,FL_default,PLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{10,11,FL_default,PLATFORM,COMMON_SPEED,30,SEEK_default,PARK_pesL,HR,135},	\
 						
 						
 					},
 
-/*13Ω⁄µ„*/{	{14,35,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_45,HL,45},{9,5,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,135}, \
+/*13ËäÇÁÇπ*/{	{14,35,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_45,HL,45},{9,5,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,135}, \
 						{14,17,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_45,HR,45},{40,9,FL_default,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 					},
 
-/*14Ω⁄µ„*/{	{15,9,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},{37,36,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL,180},	\
+/*14ËäÇÁÇπ*/{	{15,9,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},{37,36,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL,180},	\
 						{16,17,FL_quick,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},{44,16,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
 						{35,36,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},{42,6,FL_default,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{44,43,FL_middle,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},{6,5,FL_default,FREE,COMMON_SPEED,60,SEEK_default,PARK_pesL,HR,90},	\
@@ -80,143 +80,143 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 						{9,5,FL_default,FREE,COMMON_SPEED,120,SEEK4,PARK_pesR_200,HL,135},
 					},	
 
-/*15Ω⁄µ„*/{	{9,5,FL_default,FREE,COMMON_SPEED,50,SEEK4,PARK_pesR,HL,90},{39,9,FL_default,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
+/*15ËäÇÁÇπ*/{	{9,5,FL_default,FREE,COMMON_SPEED,50,SEEK4,PARK_pesR,HL,90},{39,9,FL_default,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{31,32,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},	
 					},
 
-/*16Ω⁄µ„*/{	{17,18,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL,90},{44,45,FL_16_44,FREE,NOSPEED,0,SEEK_SeeSaw,NOTPARK,HN_Rotate,0},	\
+/*16ËäÇÁÇπ*/{	{17,18,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL,90},{44,45,FL_16_44,FREE,NOSPEED,0,SEEK_SeeSaw,NOTPARK,HN_Rotate,0},	\
 						{17,20,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL_No,HL,90},
 						
 					},
 	
-/*17Ω⁄µ„*/{	{18,20,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{18,19,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90}, \
+/*17ËäÇÁÇπ*/{	{18,20,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{18,19,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90}, \
             {14,34,FL_default,FREE,COMMON_SPEED,90,SEEK_DIGR,PARK_pesR,HR,90},{43,44,FL_default,FREE,NOSPEED,0,SEEK_default,NOTPARK,HN_Rotate,0}, \
 						{43,16,FL_slow,ANGLE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{20,21,FL_default,FREE,COMMON_SPEED,80,SEEK4,PARK_pesL_No,HL,90},
 					},
 
-/*18Ω⁄µ„*/{	{20,21,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesL_No,HL,90},{19,18,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},	\
+/*18ËäÇÁÇπ*/{	{20,21,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesL_No,HL,90},{19,18,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},	\
             {17,43,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR_No,HR,90},{17,14,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR_No,HR,90},	\
 						{17,37,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR_No,HR,90},
 					},
 
-/*19Ω⁄µ„*/{	{18,17,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},{18,20,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HR,90},	\
+/*19ËäÇÁÇπ*/{	{18,17,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},{18,20,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HR,90},	\
 					},
 
-/*20Ω⁄µ„*/{	{21,22,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesL_No,HL,90},{18,17,FL_default,FREE,COMMON_SPEED,45,SEEK4,NOTPARK,HN_Rotate,0},		\
+/*20ËäÇÁÇπ*/{	{21,22,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesL_No,HL,90},{18,17,FL_default,FREE,COMMON_SPEED,45,SEEK4,NOTPARK,HN_Rotate,0},		\
             {17,14,FL_default,FREE,COMMON_SPEED,70,SEEK4,PARK_pesR_No,HR,90},{18,19,FL_default,FREE,COMMON_SPEED,45,SEEK4,PARK_pesR,HR,90},
 					},
 
 					
-/*21Ω⁄µ„*/{	{22,23,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesR_200,HR_F,120},{20,18,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesR_No,HR,90},	\
+/*21ËäÇÁÇπ*/{	{22,23,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesR_200,HR_F,120},{20,18,FL_default,FREE,COMMON_SPEED,30,SEEK_default,PARK_pesR_No,HR,90},	\
 					},
 
-/*22Ω⁄µ„*/{	{23,24,FL_slow,FREE,COMMON_SPEED,70,SEEK_default,PARK_pesR_250,HR,135},{21,20,FL_default,FREE,COMMON_SPEED,35,SEEK4,PARK_pesR_No,HR,90},
+/*22ËäÇÁÇπ*/{	{23,24,FL_slow,FREE,COMMON_SPEED,70,SEEK_default,PARK_pesR_250,HR,135},{21,20,FL_default,FREE,COMMON_SPEED,35,SEEK4,PARK_pesR_No,HR,90},
 					},
 
-/*23Ω⁄µ„*/{	{24,23,FL_default,Peak,NOSPEED,0,NOTSEEK,PARK_PesPlatform,HL_F,180},{25,26,FL_sword,SWORD,NOSPEED,0,SEEK4,PARK_pesR,HR,90},\
+/*23ËäÇÁÇπ*/{	{24,23,FL_default,Peak,NOSPEED,0,NOTSEEK,PARK_PesPlatform,HL_F,180},{25,26,FL_sword,SWORD,NOSPEED,0,SEEK4,PARK_pesR,HR,90},\
 						{22,21,FL_default,FREE,COMMON_SPEED,60,SEEK_default,PARK_pesL_200,HL,120},
 					},
 	
-/*24Ω⁄µ„*/{	{23,25,FL_default,DOWNPLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{23,22,FL_default,DOWNPLATFORM,NOSPEED,0,SEEK_default,PARK_pesL_200,HL,135},	\
+/*24ËäÇÁÇπ*/{	{23,25,FL_default,DOWNPLATFORM,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{23,22,FL_default,DOWNPLATFORM,NOSPEED,0,SEEK_default,PARK_pesL_200,HL,135},	\
 						
 					},
 
-/*25Ω⁄µ„*/{	{26,27,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},{28,50,FL_slow,SLOPE,NOSPEED,20,SEEK4,PARK_pesL,HL,90},	\
+/*25ËäÇÁÇπ*/{	{26,27,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},{28,50,FL_slow,SLOPE,NOSPEED,20,SEEK4,PARK_pesL,HL,90},	\
 
 					},
 
-/*26Ω⁄µ„*/{	{27,26,FL_default,UP_26_27,NOSPEED,0,NOTSEEK,PARK_PesPlatform,HL_F,180},{25,28,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},
+/*26ËäÇÁÇπ*/{	{27,26,FL_default,UP_26_27,NOSPEED,0,NOTSEEK,PARK_PesPlatform,HL_F,180},{25,28,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},
 					},
 
-/*27Ω⁄µ„*/{	{26,25,FL_default,DOWN27_26,NOSPEED,20,SEEK4,PARK_pesR,HR,90},		\
+/*27ËäÇÁÇπ*/{	{26,25,FL_default,DOWN27_26,NOSPEED,20,SEEK4,PARK_pesR,HR,90},		\
 					
 					},
 
-/*28Ω⁄µ„*/{	{25,26,FL_slow,SLOPE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},	{50,49,FL_default,FREE,COMMON_SPEED,10,SEEK4,PARK_pesL,HL,35},  \
+/*28ËäÇÁÇπ*/{	{25,26,FL_slow,SLOPE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},	{50,49,FL_default,FREE,COMMON_SPEED,10,SEEK4,PARK_pesL,HL,35},  \
            },
 
-/*29Ω⁄µ„*/{	{36,37,},	},
+/*29ËäÇÁÇπ*/{	{36,37,},	},
 
-/*30Ω⁄µ„*/{	{34,35,FL_slow,S_BOARD_DOUBLE,COMMON_SPEED,20,SEEK4,PARK_pesR,HR,90},{50,28,FL_slow,SLOPE,NOSPEED,0,SEEK_DIGR,PARK_pesR_No,HR,90},	\
+/*30ËäÇÁÇπ*/{	{34,35,FL_slow,S_BOARD_DOUBLE,COMMON_SPEED,20,SEEK4,PARK_pesR,HR,90},{50,28,FL_slow,SLOPE,NOSPEED,0,SEEK_DIGR,PARK_pesR_No,HR,90},	\
 					},
 
-/*31Ω⁄µ„*/{	{32,31,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},{30,34,FL_slow,FREE,NOSPEED,0,SEEK_default,PARK_pesR_No,HR,90},	\
+/*31ËäÇÁÇπ*/{	{32,31,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},{30,34,FL_slow,FREE,NOSPEED,0,SEEK_default,PARK_pesR_No,HR,90},	\
 						
 					},
 
-/*32Ω⁄µ„*/{	{31,30,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},
+/*32ËäÇÁÇπ*/{	{31,30,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},
 					},
 
-/*33Ω⁄µ„*/{	{33,33,},
+/*33ËäÇÁÇπ*/{	{33,33,},
 					},
 
-/*34Ω⁄µ„*/{	{35,36,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},{30,50,FL_slow,S_BOARD_DOUBLE,COMMON_SPEED,50,NOTSEEK,NOTPARK,HN_Rotate,0},	\
+/*34ËäÇÁÇπ*/{	{35,36,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},{30,50,FL_slow,S_BOARD_DOUBLE,COMMON_SPEED,50,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 					},
 
-/*35Ω⁄µ„*/{	{36,35,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},{14,37,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HR,90},	\
+/*35ËäÇÁÇπ*/{	{36,35,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},{14,37,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesL,HR,90},	\
 						{14,42,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},{14,17,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},	\
 						{14,16,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesL,HL,90},{14,44,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},	\
 						{14,6,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},	{14,9,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,45},	\
 						{6,5,FL_default,FREE,COMMON_SPEED,100,SEEK_default,PARK_pesL,HR,90},
 					},
 
-/*36Ω⁄µ„*/{	{35,14,BACK_NFL,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HR,90},{35,34,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},	\
+/*36ËäÇÁÇπ*/{	{35,14,BACK_NFL,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HR,90},{35,34,BACK_NFL,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HL,90},	\
 						{35,6,BACK_NFL,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HR,90},
 						
 					},
 
 						
-/*37Ω⁄µ„*/{	{15,9,FL_quickest,PLATFORM,COMMON_SPEED,60,SEEK4,PARK_pesL,HR,90},{49,15,FL_default,PLATFORM,COMMON_SPEED,20,SEEK_PESL,NOTPARK,HN_Rotate,0},	\
+/*37ËäÇÁÇπ*/{	{15,9,FL_quickest,PLATFORM,COMMON_SPEED,60,SEEK4,PARK_pesL,HR,90},{49,15,FL_default,PLATFORM,COMMON_SPEED,20,SEEK_PESL,NOTPARK,HN_Rotate,0},	\
 						{15,31,FL_quickest,PLATFORM,COMMON_SPEED,60,SEEK4,PARK_pesL,HL,90},
 					},
 
-/*38Ω⁄µ„*/{	{33,23,},{15,9,FL_quickest,Platform_37_15,NOSPEED,0,SEEK4,PARK_pesL,HR,90},	\
+/*38ËäÇÁÇπ*/{	{33,23,},{15,9,FL_quickest,Platform_37_15,NOSPEED,0,SEEK4,PARK_pesL,HR,90},	\
 					},
 
-/*39Ω⁄µ„*/	{ {15,31,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0}, {9,5,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90}, \
+/*39ËäÇÁÇπ*/	{ {15,31,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0}, {9,5,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90}, \
 							{9,40,FL_slow,FREE,NOSPEED,0,SEEK4,PARK_pesR_No,HL,120},
 						},
 
-/*40Ω⁄µ„*/  {	{13,14,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{9,6,FL_slow,FREE,NOSPEED,0,SEEK_DIGL,PARK_pesR_No,HL,120},	\
+/*40ËäÇÁÇπ*/  {	{13,14,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{9,6,FL_slow,FREE,NOSPEED,0,SEEK_DIGL,PARK_pesR_No,HL,120},	\
 							{9,5,FL_slow,FREE,NOSPEED,0,SEEK_DIGL,PARK_pesL_No,HL,135},{14,17,FL_default,FREE,COMMON_SPEED,80,SEEK4,PARK_pesR,HR,35},	\
 						},
 
-/*41Ω⁄µ„*/  { {13,15,},
+/*41ËäÇÁÇπ*/  { {13,15,},
 						},
 
-/*42Ω⁄µ„*/  {	{14,35,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},{14,37,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},	\
+/*42ËäÇÁÇπ*/  {	{14,35,FL_default,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},{14,37,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HL,90},	\
 							{6,5,FL_default,FREE,NOSPEED,0,SEEK_default,PARK_pesL,HR,90},{14,44,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},	\
 							{14,17,FL_default,FREE,COMMON_SPEED,40,SEEK4,PARK_pesR,HR,90},
 						},
 
-/*43Ω⁄µ„*/  {	{44,14,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{16,44,FL_slow,FREE,NOSPEED,0,NOTSEEK,NOTPARK,rot_LFL,0},	\
+/*43ËäÇÁÇπ*/  {	{44,14,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},{16,44,FL_slow,FREE,NOSPEED,0,NOTSEEK,NOTPARK,rot_LFL,0},	\
 							{17,18,FL_default,FREE,NOSPEED,0,SEEK_default,PARK_pesL,HL,90},{44,37,FL_default,FREE,NOSPEED,0,SEEK_PESL,NOTPARK,HN_Rotate,0},	\
 						  {37,36,FL_slow,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL,180},{16,17,FL_circular,FREE,NOSPEED,0,SEEK_default,PARK_pesR_250,HR,145},
 						},
 
-/*44Ω⁄µ„*/  {	{14,38,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},{45,46,FL_slow,SEESAW,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
+/*44ËäÇÁÇπ*/  {	{14,38,FL_default,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},{45,46,FL_slow,SEESAW,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 							{37,36,FL_quickest,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL,180},{43,17,FL_node,FREE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
 						},
 
-/*45Ω⁄µ„*/  {{46,47,FL_circular,FREE,NOSPEED,0,SEEK_default,PARK_pesL,HL,90},
+/*45ËäÇÁÇπ*/  {{46,47,FL_circular,FREE,NOSPEED,0,SEEK_default,PARK_pesL,HL,90},
 						},
 
-/*46Ω⁄µ„*/  {	{47,46,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},	{43,16,FL_circular,BRIGE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
+/*46ËäÇÁÇπ*/  {	{47,46,FL_default,FREE,NOSPEED,0,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},	{43,16,FL_circular,BRIGE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},	\
 							{43,44,FL_circular,BRIGE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},{43,37,FL_circular,BRIGE,NOSPEED,0,SEEK_PESR,NOTPARK,HN_Rotate,0},
 							{48,43,FL_circular,FREE,NOSPEED,0,SEEK_SeeSaw_back,NOTPARK,HN_Rotate,0},
 						},
 
-/*47Ω⁄µ„*/  {	{46,43,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL,HL,105},
+/*47ËäÇÁÇπ*/  {	{46,43,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL,HL,105},
               {46,48,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL,HL,90},
 						},
 
-/*48Ω⁄µ„*/  {	{46,43,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL,HL,105},{43,16,FL_slow,SEESAW,NOSPEED,0,SEEK_default,NOTPARK,HN_Rotate,0},
+/*48ËäÇÁÇπ*/  {	{46,43,FL_slow,PLATFORM,NOSPEED,0,SEEK_default,PARK_pesL,HL,105},{43,16,FL_slow,SEESAW,NOSPEED,0,SEEK_default,NOTPARK,HN_Rotate,0},
 						},
 
-/*49Ω⁄µ„*/  {	{37,15,FL_default,FREE,COMMON_SPEED,30,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{15,9,FL_default,FREE,COMMON_SPEED,20,SEEK4,PARK_pesL,HR,90},	\
+/*49ËäÇÁÇπ*/  {	{37,15,FL_default,FREE,COMMON_SPEED,30,SEEK_PesPlatform,PARK_PesPlatform,HL_F,180},{15,9,FL_default,FREE,COMMON_SPEED,20,SEEK4,PARK_pesL,HR,90},	\
 						},
 
-/*50Ω⁄µ„*/  {	{28,25,FL_default,FREE,COMMON_SPEED,10,SEEK4,PARK_pesR_No,HR,90},{49,37,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesR_200,HR,120},
+/*50ËäÇÁÇπ*/  {	{28,25,FL_default,FREE,COMMON_SPEED,10,SEEK4,PARK_pesR_No,HR,90},{49,37,FL_default,FREE,COMMON_SPEED,30,SEEK4,PARK_pesR_200,HR,120},
 						},
 
 

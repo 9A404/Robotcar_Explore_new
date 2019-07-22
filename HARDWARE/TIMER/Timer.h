@@ -5,14 +5,14 @@
 
 typedef enum {STOP = 0, START = !DISABLE} SWITCHState;
 
-void sampingTime_Init(u16 time);				  //adc²ÉÑùÖÜÆÚ
-void sampingStart(SWITCHState newState);  //adc²ÉÑù¿ª¹Øº¯Êı
+void sampingTime_Init(u16 time);				  //adcé‡‡æ ·å‘¨æœŸ
+void sampingStart(SWITCHState newState);  //adcé‡‡æ ·å¼€å…³å‡½æ•°
 
-void mpu6050_sampingTime_Init(u16 time);  	//mpu6050²ÉÑùÖÜÆÚ
-void mpu6050_samping(SWITCHState newState); // mpu6050²ÉÑù¿ª¹Ø
+void mpu6050_sampingTime_Init(u16 time);  	//mpu6050é‡‡æ ·å‘¨æœŸ
+void mpu6050_samping(SWITCHState newState); // mpu6050é‡‡æ ·å¼€å…³
 
-void TIM7_Config(u16 arr,u16 psc);   //¶¨Ê±Æ÷7³õÊ¼»¯
-void Time7(SWITCHState newState);    //¶¨Ê±Æ÷7¿ª¹Ø
+void TIM7_Config(u16 arr,u16 psc);   //å®šæ—¶å™¨7åˆå§‹åŒ–
+void Time7(SWITCHState newState);    //å®šæ—¶å™¨7å¼€å…³
 
 
 

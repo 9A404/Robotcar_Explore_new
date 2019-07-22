@@ -2,11 +2,11 @@
 
 /*
 
-* �������ܣ�������������1����
-* ���������digital�����������������
-* �����������
-* ����ֵ  ��1�ĸ���
-* ����    ��@����
+* 函数介绍：计算数字量中1个数
+* 输入参数：digital（待计算的数字量）
+* 输出参数：无
+* 返回值  ：1的个数
+* 作者    ：@断忆
 
 */
 
@@ -24,13 +24,13 @@ static u8 calculateNum(u16 digital)
 
 /*
 
-* �������ܣ�ȱʡ�ҵ㷽��
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·����1���ĸ���Ϊ4ʱ��flag��1��
-													��һ�μ�⵽��1���ĸ���Ϊ5ʱ���ж�Ϊ�˴�Ϊ�ڵ� 
-* ����    ��@����
+* 函数介绍：缺省找点方法
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：“1”的个数为4时将flag置1，
+													下一次检测到“1”的个数为5时候判断为此处为节点 
+* 作者    ：@断忆
 
 */
 
@@ -46,12 +46,12 @@ u8 seekNodeMethod_default()
 
 /*
 
-* �������ܣ���߹���ҵ㷽��(һ��Ҫ���жϣ���Ȼ�м���©��)
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·��������߹�紫�����жϽڵ�
-* ����    ��@����
+* 函数介绍：左边光电找点方法(一定要用中断，不然有几率漏点)
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：根据左边光电传感器判断节点
+* 作者    ：@断忆
 
 */
 
@@ -61,13 +61,13 @@ u8 seekNodeMethod_pesL()
 //	if(0 == flag)
 //	{
 //		pes_L=0;
-//		//pesLSwitch(START);//���ж�
+//		//pesLSwitch(START);//开中断
 //		//glHello_control.linkInform.findLineWays = FL_stop;
 //		flag = 1;
 //	}
 //	if(1==pes_L && 1==flag)
 //	{	
-//		//pesLSwitch(STOP);//���ж�
+//		//pesLSwitch(STOP);//关中断
 //		//speedAdjustment(0,0);
 //		pes_L=0;
 //		flag = 0;	
@@ -85,12 +85,12 @@ u8 seekNodeMethod_pesL()
 
 /*
 
-* �������ܣ��ұ߹���ҵ㷽��(һ��Ҫ���жϣ���Ȼ�м���©��)
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·�������ұ߹�紫�����жϽڵ�
-* ����    ��@����
+* 函数介绍：右边光电找点方法(一定要用中断，不然有几率漏点)
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：根据右边光电传感器判断节点
+* 作者    ：@断忆
 
 */
 
@@ -100,13 +100,13 @@ u8 seekNodeMethod_pesR()
 //	if(0 == flag)
 //	{
 //		pes_R=0;
-//	//	pesRSwitch(START);//���ж�
+//	//	pesRSwitch(START);//开中断
 //		//glHello_control.linkInform.findLineWays = FL_stop;
 //		flag = 1;
 //	}
 //	if(1==pes_R && 1==flag)
 //	{	
-//	//	pesRSwitch(STOP);//���ж�
+//	//	pesRSwitch(STOP);//关中断
 //		//speedAdjustment(0,0);
 //		pes_R=0;
 //		flag = 0;	
@@ -125,12 +125,12 @@ u8 seekNodeMethod_pesR()
 
 /*
 
-* �������ܣ�4�ڵ��ҵ㷽��(��̨)
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@����
+* 函数介绍：4节点找点方法(上台)
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@断忆
 
 */
 
@@ -139,7 +139,7 @@ u8 seekNodeMethod_4()
 	static u8 flag=0;
 	if(mpu6050_flag == 0 && 0==flag)
 	{	
-		U_Dswitch = 1;//��־�ж�������̨����
+		U_Dswitch = 1;//标志中断运行上台程序
 		mpu6050_samping(START);
 		flag=1;
 		//u3_printf("1\n");
@@ -150,7 +150,7 @@ u8 seekNodeMethod_4()
 	{
 		flag=2;
 		//u3_printf("2\n");
-		//sgAngleControl(R_ARM,DOWM);//���¶��	
+		//sgAngleControl(R_ARM,DOWM);//放下舵机	
 		glHello_control.linkInform.findLineWays = NFL;
 	}
 	if(mpu6050_flag == 2&&flag==2)
@@ -158,11 +158,11 @@ u8 seekNodeMethod_4()
 		flag=0;
 		//u3_printf("3\n");
 		mpu6050_flag = 0;
-		U_Dswitch = 0;//����̨��������
+		U_Dswitch = 0;//让上台程序不运行
 		mpu6050_samping(STOP);
 		//u3_printf ("\na %0.2f\n",glPitch-glPitchbuff[0]);
 		
-		//delay_ms(10);  //��֤������̨��
+		//delay_ms(10);  //保证车子在台中
 		return 1;
 	}
 	return 0;
@@ -171,12 +171,12 @@ u8 seekNodeMethod_4()
 
 /*
 
-* �������ܣ��ҵ㷽��(��̨):���ù�翪����̨
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@����
+* 函数介绍：找点方法(上台):利用光电开关上台
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@断忆
 
 */
 
@@ -217,12 +217,12 @@ u8 seekNodeMethod_pesPlatform()
 
 /*
 
-* �������ܣ�10�ڵ��ҵ㷽��
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@����
+* 函数介绍：10节点找点方法
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@断忆
 
 */
 
@@ -240,12 +240,12 @@ u8 seekNodeMethod_10()
 
 /*
 
-* �������ܣ�	���ξ����ҵ㷽����������ײ���⣩
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@����
+* 函数介绍：	梯形景点找点方法（利用碰撞开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@断忆
 
 */
 
@@ -275,12 +275,12 @@ u8 seekNodeMethod_Collision()
 
 /*
 
-* �������ܣ�	���ξ����ҵ㷽����������ײ���⣩
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@����
+* 函数介绍：	梯形景点找点方法（利用碰撞开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@断忆
 
 */
 
@@ -299,12 +299,12 @@ u8 seekNodeMethod_H()
 }
 /*
 
-* �������ܣ����ΰ��ҵ㣨���������翪�⣩
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@��
+* 函数介绍：跷跷板找点（利用下面光电开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@林
 
 */
 
@@ -331,7 +331,7 @@ u8 seekNodeMethod_SeeSaw()
 	 {
 			speedAdjustment(0,0);
 			delay_ms(200);
-			PID_Init(&glrotAnglePID,0,0,0,0,0);//��ת��PID�Ĳ������г�ʼ�����ã���תPIDֱ�Ӵ����ֵ
+			PID_Init(&glrotAnglePID,0,0,0,0,0);//对转弯PID的参数进行初始化设置，旋转PID直接传误差值
 			err=errCalculation(glYaw,angle_read);
 			if(err<0)err=-err;
 			while(err > 2)
@@ -339,7 +339,7 @@ u8 seekNodeMethod_SeeSaw()
 				MPU6050_Pose_usart();
 				err = errCalculation(glYaw,angle_read);
 				if(err<0)err=-err;
-				speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //�ٶ�λ��ʽPID���,ֱ�Ӵ���������
+				speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
 				speedAdjustment(0,speed+2500);
 			}
 			angle_read = 0;
@@ -354,12 +354,12 @@ u8 seekNodeMethod_SeeSaw()
 
 /*
 
-* �������ܣ�������������ҵ�
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·�����������ҵ�Ϊ1ʱΪ�ҵ���
-* ����    ��@Ԭ����
+* 函数介绍：传感器最左边找点
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：传感器最右的为1时为找到点
+* 作者    ：@袁梓聪
 
 */
 
@@ -374,12 +374,12 @@ u8 seekNodeMethod_digL()
 
 /*
 
-* �������ܣ����������ұ��ҵ�
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·�����������ҵ�Ϊ1ʱΪ�ҵ���
-* ����    ��@Ԭ����
+* 函数介绍：传感器最右边找点
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：传感器最右的为1时为找到点
+* 作者    ：@袁梓聪
 
 */
 
@@ -394,12 +394,12 @@ u8 seekNodeMethod_digR()
 
 /*
 
-* �������ܣ����ΰ��ȥ�ҵ㣨���������翪�⣩
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@Ԭ����
+* 函数介绍：跷跷板回去找点（利用下面光电开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@袁梓聪
 
 */
 
@@ -421,7 +421,7 @@ u8 seekNodeMethod_SeeSaw_back()
 	   {
 		speedAdjustment(0,0);
 		delay_ms(200);
-		PID_Init(&glrotAnglePID,0,0,0,0,0);//��ת��PID�Ĳ������г�ʼ�����ã���תPIDֱ�Ӵ����ֵ
+		PID_Init(&glrotAnglePID,0,0,0,0,0);//对转弯PID的参数进行初始化设置，旋转PID直接传误差值
 		err=errCalculation(glYaw,angle_read_back);
 		if(err<0)err=-err;
 		while(err > 2)
@@ -434,7 +434,7 @@ u8 seekNodeMethod_SeeSaw_back()
 		    err = errCalculation(glYaw,angle_read_back);
 		    if(err<0)err=-err;
 		
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //�ٶ�λ��ʽPID���,ֱ�Ӵ���������
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
 		speedAdjustment(0,speed+2500);
 		}
 //		speedAdjustment(0,0);
@@ -448,12 +448,12 @@ u8 seekNodeMethod_SeeSaw_back()
 
 /*
 
-* �������ܣ����ΰ��ҵ㣨���������翪�⣩
-* ���������
-* ���������
-* ����ֵ  ��1(�ҵ��ڵ�)0��û���ҵ��ڵ㣩
-* ����		���ҵ㷽��˼·������ϵ�ƽ̨��Ϊ����ڵ�
-* ����    ��@��
+* 函数介绍：跷跷板找点（利用下面光电开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@林
 
 */
 
@@ -475,7 +475,7 @@ u8 seekNodeMethod_SeeSaw_2019()
 	   {
 		speedAdjustment(0,0);
 		delay_ms(200);
-		PID_Init(&glrotAnglePID,0,0,0,0,0);//��ת��PID�Ĳ������г�ʼ�����ã���תPIDֱ�Ӵ����ֵ
+		PID_Init(&glrotAnglePID,0,0,0,0,0);//对转弯PID的参数进行初始化设置，旋转PID直接传误差值
 		err=errCalculation(glYaw,angle_read);
 		if(err<0)err=-err;
 		while(err > 2)
@@ -488,7 +488,7 @@ u8 seekNodeMethod_SeeSaw_2019()
 		    err = errCalculation(glYaw,angle_read);
 		    if(err<0)err=-err;
 		
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //�ٶ�λ��ʽPID���,ֱ�Ӵ���������
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
 		speedAdjustment(0,speed+2500);
 		}
 //		speedAdjustment(0,0);

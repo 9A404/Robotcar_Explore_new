@@ -3,11 +3,11 @@
 
 /*
 
-* º¯Êı½éÉÜ£º¼ÆËã³öÆ«º½½ÇÉè¶¨Öµ
-* ÊäÈë²ÎÊı£ºcurYaw(µ±Ç°Æ«º½½Ç) rad£¨×ª¹ı½Ç¶È²î£©(+)´ú±íÓÒ×ª¡¢£¨-£©´ú±í×ó×ª
-* Êä³ö²ÎÊı£ºÉè¶¨Öµ
-* ·µ»ØÖµ  £º
-* ×÷Õß    £º@Î»Ê¤
+* å‡½æ•°ä»‹ç»ï¼šè®¡ç®—å‡ºåèˆªè§’è®¾å®šå€¼
+* è¾“å…¥å‚æ•°ï¼šcurYaw(å½“å‰åèˆªè§’) radï¼ˆè½¬è¿‡è§’åº¦å·®ï¼‰(+)ä»£è¡¨å³è½¬ã€ï¼ˆ-ï¼‰ä»£è¡¨å·¦è½¬
+* è¾“å‡ºå‚æ•°ï¼šè®¾å®šå€¼
+* è¿”å›å€¼  ï¼š
+* ä½œè€…    ï¼š@ä½èƒœ
 
 */
 float setYaw(float curYaw,float rad)
@@ -20,10 +20,10 @@ float setYaw(float curYaw,float rad)
 			temp = -180+rad-(180-curYaw);
 	else
 			temp = curYaw + rad;
-//	/*ÓÒ×ªÇÒÉè¶¨ÖµÂäÔÚÕıÊıÇøÓò(rad>0.0) && (temp>0.0)*/
+//	/*å³è½¬ä¸”è®¾å®šå€¼è½åœ¨æ­£æ•°åŒºåŸŸ(rad>0.0) && (temp>0.0)*/
 //	if((temp>0)&&(rad<0))		
 //		temp= temp - 360;	
-//	/*×ó×ªÇÒÉè¶¨ÖµÂäÔÚ¸ºÊıÇøÓò*/
+//	/*å·¦è½¬ä¸”è®¾å®šå€¼è½åœ¨è´Ÿæ•°åŒºåŸŸ*/
 //	else if((temp<0) && (rad>0))  
 //		temp = temp+360;
 	
@@ -32,12 +32,12 @@ float setYaw(float curYaw,float rad)
 
 /*
 
-* º¯Êı½éÉÜ£ºµ±Ç°ÖµÓëÉè¶¨ÖµµÄÎó²î¼ÆËã
-* ÊäÈë²ÎÊı£ºcurYaw£¨µ±Ç°µÄÆ«º½½Ç£©setYaw£¨Éè¶¨µÄÆ«º½½Ç£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºerr(µ±Ç°ÖµÓëÉè¶¨ÖµµÄÆ«²î)
-* ÆäËû    £º×óÓÒ×ªµÄÆ«²î¼ÆËã·½·¨²»Í¬
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå½“å‰å€¼ä¸è®¾å®šå€¼çš„è¯¯å·®è®¡ç®—
+* è¾“å…¥å‚æ•°ï¼šcurYawï¼ˆå½“å‰çš„åèˆªè§’ï¼‰setYawï¼ˆè®¾å®šçš„åèˆªè§’ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šerr(å½“å‰å€¼ä¸è®¾å®šå€¼çš„åå·®)
+* å…¶ä»–    ï¼šå·¦å³è½¬çš„åå·®è®¡ç®—æ–¹æ³•ä¸åŒ
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 
@@ -55,12 +55,12 @@ float  errCalculation(float curYaw,float setYaw)
 
 /*
 
-* º¯Êı½éÉÜ£ºÏòÓÒĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å³æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_Right(float angle)
@@ -68,7 +68,7 @@ u8 rotAngle_Right(float angle)
 	int err,speed;
 	float set;
 	u8 i;
-	//sgAngleControl(R_ARM,UP);//ÊÕÆğ¶æ»ú
+	//sgAngleControl(R_ARM,UP);//æ”¶èµ·èˆµæœº
 	speedAdjustment(0,0);
 	#ifdef _NEW_MPU6050_
 	MPU6050_Pose_usart();
@@ -81,19 +81,19 @@ u8 rotAngle_Right(float angle)
 	err=errCalculation(glYaw,set);
 	if(err<0)err=-err;
 	#ifdef _NEW_MPU6050_
-	PID_Init(&glrotAnglePID,0,4000,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4000,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{
 		MPU6050_Pose_usart();
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
-	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{ 
 		for(i=0;i<50;i++)
@@ -101,7 +101,7 @@ u8 rotAngle_Right(float angle)
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
@@ -113,12 +113,12 @@ u8 rotAngle_Right(float angle)
 
 /*
 
-* º¯Êı½éÉÜ£ºÏò×óĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å·¦æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_Left(float angle)
@@ -126,7 +126,7 @@ u8 rotAngle_Left(float angle)
 	int err,speed;
 	float set;
 	u8 i;
-	//sgAngleControl(R_ARM,UP);//ÊÕÆğ¶æ»ú
+	//sgAngleControl(R_ARM,UP);//æ”¶èµ·èˆµæœº
 	speedAdjustment(0,0);
 	#ifdef _NEW_MPU6050_
 	MPU6050_Pose_usart();
@@ -140,19 +140,19 @@ u8 rotAngle_Left(float angle)
 	if(err<0)err=-err;
 	
     #ifdef _NEW_MPU6050_
-	PID_Init(&glrotAnglePID,0,4000,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4000,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{
 		MPU6050_Pose_usart();
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(-speed-1000,speed+1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
-	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{ 
 		for(i=0;i<50;i++)
@@ -160,7 +160,7 @@ u8 rotAngle_Left(float angle)
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
@@ -170,12 +170,12 @@ u8 rotAngle_Left(float angle)
 }
 /*
 
-* º¯Êı½éÉÜ£ºÏòÓÒĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å³æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_Right_F(float angle)
@@ -183,7 +183,7 @@ u8 rotAngle_Right_F(float angle)
 	int err,speed;
 	float set;
 	u8 i;
-	//sgAngleControl(R_ARM,UP);//ÊÕÆğ¶æ»ú
+	//sgAngleControl(R_ARM,UP);//æ”¶èµ·èˆµæœº
 	speedAdjustment(0,0);
 	#ifdef _NEW_MPU6050_
 	MPU6050_Pose_usart();
@@ -196,19 +196,19 @@ u8 rotAngle_Right_F(float angle)
 	err=errCalculation(glYaw,set);
 	if(err<0)err=-err;
 	#ifdef _NEW_MPU6050_
-	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{
 		MPU6050_Pose_usart();
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1200,-speed-1200);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
-	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{ 
 		for(i=0;i<50;i++)
@@ -216,7 +216,7 @@ u8 rotAngle_Right_F(float angle)
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
@@ -228,12 +228,12 @@ u8 rotAngle_Right_F(float angle)
 
 /*
 
-* º¯Êı½éÉÜ£ºÏò×óĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å·¦æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_Left_F(float angle)
@@ -241,7 +241,7 @@ u8 rotAngle_Left_F(float angle)
 	int err,speed;
 	float set;
 	u8 i;
-	//sgAngleControl(R_ARM,UP);//ÊÕÆğ¶æ»ú
+	//sgAngleControl(R_ARM,UP);//æ”¶èµ·èˆµæœº
 	speedAdjustment(0,0);
 	#ifdef _NEW_MPU6050_
 	MPU6050_Pose_usart();
@@ -255,19 +255,19 @@ u8 rotAngle_Left_F(float angle)
 	if(err<0)err=-err;
 	
     #ifdef _NEW_MPU6050_
-	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{
 		MPU6050_Pose_usart();
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(-speed-1200,speed+1200);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
-	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{ 
 		for(i=0;i<50;i++)
@@ -275,7 +275,7 @@ u8 rotAngle_Left_F(float angle)
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
@@ -285,11 +285,11 @@ u8 rotAngle_Left_F(float angle)
 }
 /*
 
-* º¯Êı½éÉÜ£ºÏòÓÒ¹Õ35½Ç¶È
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å³æ‹35è§’åº¦
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngleMethod_R35()
@@ -303,11 +303,11 @@ u8 rotAngleMethod_R35()
 
 /*
 
-* º¯Êı½éÉÜ£ºÏòÓÒ¹Õ90½Ç¶È
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £º´Ë×ªÍäĞèÔÚÊ®×ÖÂ·¿Ú²ÅÄÜ×ª
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å³æ‹90è§’åº¦
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ­¤è½¬å¼¯éœ€åœ¨åå­—è·¯å£æ‰èƒ½è½¬
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngleMethod_R90()
@@ -317,7 +317,7 @@ u8 rotAngleMethod_R90()
 	int rank;
 	if(1==sampingStatus())
 	{
-		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  		//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
+		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  		//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
 		if(flag!=2 && flag!=3)
 		{
 			speedAdjustment(4000,-4000);
@@ -334,15 +334,15 @@ u8 rotAngleMethod_R90()
 		{
 			if(2 == flag)
 			{
-				PID_Init(&glsensorPID,22,8000,500,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
+				PID_Init(&glsensorPID,22,8000,500,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
 				speedRec_Init(&glmotorSpeed,0,0);
 				flag = 3;
 			}
-			rank=sensorDigitalRank_HR90(glsensor_dig_value);		//·Ö¼¶
-			gldSpeed=positionPIDCalc(&glsensorPID,rank);   			//ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-			positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
-		//sensorBit_u3printf(glsensor_dig_value);//´®¿Ú3°´Î»Êä³öÊı×ÖÁ¿
-		//u3_printf("ds:%d  ",gldSpeed);//´®¿Ú3Êä³öÊı×ÖÁ¿
+			rank=sensorDigitalRank_HR90(glsensor_dig_value);		//åˆ†çº§
+			gldSpeed=positionPIDCalc(&glsensorPID,rank);   			//é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+			positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
+		//sensorBit_u3printf(glsensor_dig_value);//ä¸²å£3æŒ‰ä½è¾“å‡ºæ•°å­—é‡
+		//u3_printf("ds:%d  ",gldSpeed);//ä¸²å£3è¾“å‡ºæ•°å­—é‡
 		if(rank==22)
 		{
 			times++;
@@ -363,11 +363,11 @@ u8 rotAngleMethod_R90()
 
 /*
 
-* º¯Êı½éÉÜ£º×ó¹ÕÑ²Ïß
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå·¦æ‹å·¡çº¿
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngleMethod_LFL()
@@ -398,11 +398,11 @@ u8 rotAngleMethod_LFL()
 
 /*
 
-* º¯Êı½éÉÜ£ºÓÒ¹ÕÑ²Ïß
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå³æ‹å·¡çº¿
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngleMethod_RFL()
@@ -434,12 +434,12 @@ u8 rotAngleMethod_RFL()
 
 /*
 
-* º¯Êı½éÉÜ£ºÏòÓÒµ¥±ßĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å³å•è¾¹æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_UR(float angle)
@@ -447,7 +447,7 @@ u8 rotAngle_UR(float angle)
 	int err,speed;
 	float set;
 	u8 i;
-	//sgAngleControl(R_ARM,UP);//ÊÕÆğ¶æ»ú
+	//sgAngleControl(R_ARM,UP);//æ”¶èµ·èˆµæœº
 	speedAdjustment(0,0);
 	#ifdef _NEW_MPU6050_
 	MPU6050_Pose_usart();
@@ -461,19 +461,19 @@ u8 rotAngle_UR(float angle)
 	if(err<0)err=-err;
 	
     #ifdef _NEW_MPU6050_
-	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4700,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{
 		MPU6050_Pose_usart();
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(-speed,speed+2400);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
-	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,4200,60,0,160);																	//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 	while(err > 5)
 	{ 
 		for(i=0;i<50;i++)
@@ -481,7 +481,7 @@ u8 rotAngle_UR(float angle)
 		err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
@@ -493,12 +493,12 @@ u8 rotAngle_UR(float angle)
 
 /*
 
-* º¯Êı½éÉÜ£ºÏò×óµ¥±ßĞı×ªÈÎÒâ½Ç¶Èº¯Êı£¨0-180£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å·¦å•è¾¹æ—‹è½¬ä»»æ„è§’åº¦å‡½æ•°ï¼ˆ0-180ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngle_UL(float angle)
@@ -518,7 +518,7 @@ u8 rotAngle_UL(float angle)
 	err=errCalculation(glYaw,set);
 	if(err<0)err=-err;
 	
-	PID_Init(&glrotAnglePID,0,3500,0,0,0);//¶Ô×ªÍäPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ£¬Ğı×ªPIDÖ±½Ó´«Îó²îÖµ
+	PID_Init(&glrotAnglePID,0,3500,0,0,0);//å¯¹è½¬å¼¯PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®ï¼Œæ—‹è½¬PIDç›´æ¥ä¼ è¯¯å·®å€¼
 
 	while(err>5)
 	{
@@ -531,7 +531,7 @@ u8 rotAngle_UL(float angle)
 			err = errCalculation(glYaw,set);
 		if(err<0)err=-err;
 		
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö,Ö±½Ó´«ÈëÎó²î²ÎÊı
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º,ç›´æ¥ä¼ å…¥è¯¯å·®å‚æ•°
 		speedAdjustment(0,speed+2500);
 		
 	}
@@ -540,12 +540,12 @@ u8 rotAngle_UL(float angle)
 }
 /*
 
-* º¯Êı½éÉÜ£ºÓÒĞı×ªº¯Êı£¨µ¥±ßÉ²³µ°æ_³£¹æÊ®×ÖÂ·¿Ú£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £ºÎ»Ê¤
+* å‡½æ•°ä»‹ç»ï¼šå³æ—‹è½¬å‡½æ•°ï¼ˆå•è¾¹åˆ¹è½¦ç‰ˆ_å¸¸è§„åå­—è·¯å£ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼šä½èƒœ
 
 */
 u8 rotAngle_UR_crossroad()
@@ -573,12 +573,12 @@ u8 rotAngle_UR_crossroad()
 
 /*
 
-* º¯Êı½éÉÜ£º×óĞı×ªº¯Êı£¨µ¥±ßÉ²³µ°æ_³£¹æÊ®×ÖÂ·¿Ú£©
-* ÊäÈë²ÎÊı£ºangle£¨Ğı×ª½Ç¶È£©
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £ºÎ»Ê¤
+* å‡½æ•°ä»‹ç»ï¼šå·¦æ—‹è½¬å‡½æ•°ï¼ˆå•è¾¹åˆ¹è½¦ç‰ˆ_å¸¸è§„åå­—è·¯å£ï¼‰
+* è¾“å…¥å‚æ•°ï¼šangleï¼ˆæ—‹è½¬è§’åº¦ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼šä½èƒœ
 
 */
 u8 rotAngle_UL_crossroad()
@@ -604,14 +604,14 @@ u8 rotAngle_UL_crossroad()
 }
 
 
-/*********************************************×ó×ªº¯Êı*********************************************************/
+/*********************************************å·¦è½¬å‡½æ•°*********************************************************/
 /*
 
-* º¯Êı½éÉÜ£ºÏò×ó¹Õ35½Ç¶È
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ÆäËû    £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå‘å·¦æ‹35è§’åº¦
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* å…¶ä»–    ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 rotAngleMethod_L35()

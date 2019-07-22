@@ -1,7 +1,7 @@
-/*************±¾ÎÄ¼şµÄ´úÂë¾ùÎª²âÊÔÓÃÍ¼*****************/
+/*************æœ¬æ–‡ä»¶çš„ä»£ç å‡ä¸ºæµ‹è¯•ç”¨å›¾*****************/
 
 /*2017-7-10*/
-/*²âÊÔ¶æ»úÓÃÍ¼£º
+/*æµ‹è¯•èˆµæœºç”¨å›¾ï¼š
 				sgAngleControl(HEAD,L_90);
 				delay_ms(500);
 				sgAngleControl(HEAD,R_90);
@@ -12,21 +12,21 @@
 
 if(sampingStatus() == 1)
 			{
-				//array_u3printf(glsensor_ad_value);//´®¿Ú3Êä³öÄ£ÄâÁ¿
-				//arrayPrintf(glsensor_ad_value,12); //´®¿Ú1Êä³öÄ£ÄâÁ¿
-				glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  //½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
+				//array_u3printf(glsensor_ad_value);//ä¸²å£3è¾“å‡ºæ¨¡æ‹Ÿé‡
+				//arrayPrintf(glsensor_ad_value,12); //ä¸²å£1è¾“å‡ºæ¨¡æ‹Ÿé‡
+				glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  //å°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
 				//u3_printf("%d\r\n",sensorDigitalRank(glsensor_dig_value));
-				u3_printf("%d \r\n",glsensor_dig_value);//´®¿Ú3Êä³öÊı×ÖÁ¿
-				//sensorBit_u3printf(glsensor_dig_value);//´®¿Ú3°´Î»Êä³öÊı×ÖÁ¿
+				u3_printf("%d \r\n",glsensor_dig_value);//ä¸²å£3è¾“å‡ºæ•°å­—é‡
+				//sensorBit_u3printf(glsensor_dig_value);//ä¸²å£3æŒ‰ä½è¾“å‡ºæ•°å­—é‡
 				
-				//sensorBitPrintf(glsensor_dig_value);	//´®¿Ú1°´Î»Êä³öÊı×ÖÁ¿																										//½«Êı×ÖÁ¿°´Î»Êä³ö
+				//sensorBitPrintf(glsensor_dig_value);	//ä¸²å£1æŒ‰ä½è¾“å‡ºæ•°å­—é‡																										//å°†æ•°å­—é‡æŒ‰ä½è¾“å‡º
 
-				//dSpeed=incrementalPIDcalc(&sensorPID,sensorDigitalRank(glsensor_dig_value));//ÔöÁ¿Ê½PIDÊä³ö
-				dSpeed=positionPIDCalc(&sensorPID,sensorDigitalRank(glsensor_dig_value));   //Î»ÖÃÊ½PIDÊä³ö
+				//dSpeed=incrementalPIDcalc(&sensorPID,sensorDigitalRank(glsensor_dig_value));//å¢é‡å¼PIDè¾“å‡º
+				dSpeed=positionPIDCalc(&sensorPID,sensorDigitalRank(glsensor_dig_value));   //ä½ç½®å¼PIDè¾“å‡º
 				//printf("dSpedd:%d \r\n ",dSpeed);
 				//printf("%f  ",sensorPID.setVaule);
 				//printf("%f  ",sensorPID.kp);
-				 //incrementalSpeedOut(&motorSpeed,dSpeed);	//ÔÚµ±Ç°µÄËÙ¶ÈÉÏµş¼ÓËÙ¶È
+				 //incrementalSpeedOut(&motorSpeed,dSpeed);	//åœ¨å½“å‰çš„é€Ÿåº¦ä¸Šå åŠ é€Ÿåº¦
 				 positionSpeedOut(motorSpeed.leftSpeed,motorSpeed.rightSpeed,dSpeed);
 				 //u3_printf(" %d ds:%d left:%d right:%d \r\n",sensorDigitalRank(glsensor_dig_value),dSpeed,motorSpeed.leftSpeed,motorSpeed.rightSpeed);
 				//u3_printf("ds:%d\r\n",dSpeed);

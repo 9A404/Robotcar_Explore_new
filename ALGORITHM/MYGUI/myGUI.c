@@ -2,17 +2,17 @@
 
 extern const unsigned char bootLogo[32768];
 
-u8 keyFun=0;        //×°ÔØ²Ëµ¥Ë÷Òý
-void (*keyFunPt)(); //Ö¸Õëº¯Êý
-u8 keyFlag=0;				//¼ÇÔØ¼üÖµ
+u8 keyFun=0;        //è£…è½½èœå•ç´¢å¼•
+void (*keyFunPt)(); //æŒ‡é’ˆå‡½æ•°
+u8 keyFlag=0;				//è®°è½½é”®å€¼
 
 /*
 
-* º¯Êý½éÉÜ£ºÍ¼Æ¬ÏÔÊ¾(È¡Ä£·½Ê½ Ë®Æ½É¨Ãè ´Ó×óµ½ÓÒ µÍÎ»ÔÚÇ°)
-* ÊäÈë²ÎÊý£ºx(Í¼Æ¬¿ªÊ¼ÏÔÊ¾x×ø±ê)y(Í¼Æ¬¿ªÊ¼ÏÔÊ¾y×ø±ê)xMax£¨Í¼Æ¬¿í¶È£©yMax£¨Í¼Æ¬³¤¶È£©image£¨Í¼Æ¬µØÖ·£©
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå›¾ç‰‡æ˜¾ç¤º(å–æ¨¡æ–¹å¼ æ°´å¹³æ‰«æ ä»Žå·¦åˆ°å³ ä½Žä½åœ¨å‰)
+* è¾“å…¥å‚æ•°ï¼šx(å›¾ç‰‡å¼€å§‹æ˜¾ç¤ºxåæ ‡)y(å›¾ç‰‡å¼€å§‹æ˜¾ç¤ºyåæ ‡)xMaxï¼ˆå›¾ç‰‡å®½åº¦ï¼‰yMaxï¼ˆå›¾ç‰‡é•¿åº¦ï¼‰imageï¼ˆå›¾ç‰‡åœ°å€ï¼‰
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 static void showImage(u16 x,u16 y,u8 xMax,u8 yMax,const u8 *image)
@@ -20,9 +20,9 @@ static void showImage(u16 x,u16 y,u8 xMax,u8 yMax,const u8 *image)
 	int i;
 	u16 date;
 	
-	Lcd_Clear(WHITE); //ÇåÆÁ 
+	Lcd_Clear(WHITE); //æ¸…å± 
 
-	Lcd_SetRegion(x,y,x+xMax-1,y+yMax-1);		//×ø±êÉèÖÃ	
+	Lcd_SetRegion(x,y,x+xMax-1,y+yMax-1);		//åæ ‡è®¾ç½®	
 	for(i=0;i<xMax*yMax;i++)
 	{
 			date = image[i*2+1];
@@ -38,18 +38,18 @@ static void showImage(u16 x,u16 y,u8 xMax,u8 yMax,const u8 *image)
 
 /*
 
-* º¯Êý½éÉÜ£º¿ª»ú½çÃæÏÔÊ¾
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå¼€æœºç•Œé¢æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void bootDisplay(void)
 {
 	Lcd_Clear(WHITE);
 	showImage(13,0,99,100,bootLogo);
-	Gui_DrawFont_GBK16(17,110,BLUE,WHITE,"»úÆ÷ÈËÊµÑéÊÒ");
+	Gui_DrawFont_GBK16(17,110,BLUE,WHITE,"æœºå™¨äººå®žéªŒå®¤");
 	Gui_DrawFont_GBK16(40,130,RED,WHITE,"R U N"); 
 //DisplayButtonUp(27,128,95,145);
 	
@@ -57,11 +57,11 @@ void bootDisplay(void)
 
 /*
 
-* º¯Êý½éÉÜ£º¿ØÖÆ×´Ì¬ÏÔÊ¾
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæŽ§åˆ¶çŠ¶æ€æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void displayControl(controlCenterTypeDef *controlp)
@@ -95,26 +95,26 @@ void displayControl(controlCenterTypeDef *controlp)
 }
 
 /************************************************************************************************************************/
-/******************************************¶ÔÓ¦½çÃæÖ´ÐÐº¯Êý**************************************************************/
+/******************************************å¯¹åº”ç•Œé¢æ‰§è¡Œå‡½æ•°**************************************************************/
 /************************************************************************************************************************/
 
 /*
 
-* º¯Êý½éÉÜ£º²Ëµ¥ÏÔÊ¾£¨Ä£Ê½Ñ¡Ôñ£©
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šèœå•æ˜¾ç¤ºï¼ˆæ¨¡å¼é€‰æ‹©ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_menuDisplay(void)
 {
 	Lcd_Clear(WHITE);
-	Gui_DrawFont_GBK16(30,10,RED,WHITE,"Ä£Ê½Ñ¡Ôñ");
-	Gui_DrawFont_GBK16(0,40,BLUE,WHITE,"±ÈÈü");
-	Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"Â·¶Îµ÷ÊÔ");
-	Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"¹âÃô´«¸ÐÆ÷");
-	Gui_DrawFont_GBK16(0,130,BLUE,WHITE,"ÍÓÂÝÒÇ");
+	Gui_DrawFont_GBK16(30,10,RED,WHITE,"æ¨¡å¼é€‰æ‹©");
+	Gui_DrawFont_GBK16(0,40,BLUE,WHITE,"æ¯”èµ›");
+	Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"è·¯æ®µè°ƒè¯•");
+	Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"å…‰æ•ä¼ æ„Ÿå™¨");
+	Gui_DrawFont_GBK16(0,130,BLUE,WHITE,"é™€èžºä»ª");
 	while(1)
 	{
 		keyFlag = keyScan(0);
@@ -124,104 +124,104 @@ void Fun_menuDisplay(void)
 
 /*
 
-* º¯Êý½éÉÜ£º¾ºÈü¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šç«žèµ›å…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_compCursor(void)
 {
-	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  "); //Çå³ýµ÷ÊÔ¹â±ê
+	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  "); //æ¸…é™¤è°ƒè¯•å…‰æ ‡
 	Gui_DrawFont_GBK16(100,40,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN || keyFlag==KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN || keyFlag==KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£ºµÚÒ»ÂÖÂ·ÏßÑ¡Ôñ½çÃæ(ÊÇ·ñ¹ýÃÅ)
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©ç•Œé¢(æ˜¯å¦è¿‡é—¨)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_RouteSelectionInterfaceFirst(void)
 {
 		Lcd_Clear(WHITE);
-		Gui_DrawFont_GBK16(30,10,RED,WHITE,"Ò»ÂÖÂ·Ïß");      //µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ
-		Gui_DrawFont_GBK16(30,40,RED,WHITE,"ÊÇ·ñ¹ýÃÅ");   //ÊÇ·ñ¹ýÃÅ
-		Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"·ñ");            //²»¹ýÃÅ
-		Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"ÊÇ");          //¹ýÃÅ
+		Gui_DrawFont_GBK16(30,10,RED,WHITE,"ä¸€è½®è·¯çº¿");      //ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©
+		Gui_DrawFont_GBK16(30,40,RED,WHITE,"æ˜¯å¦è¿‡é—¨");   //æ˜¯å¦è¿‡é—¨
+		Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"å¦");            //ä¸è¿‡é—¨
+		Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"æ˜¯");          //è¿‡é—¨
 		while(1)
 		{
 			keyFlag = keyScan(0);
-			if(keyFlag==KEY0_UP||keyFlag==KEY1_DOWN||keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø
+			if(keyFlag==KEY0_UP||keyFlag==KEY1_DOWN||keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³
 		}
 }
 /*
 
-* º¯Êý½éÉÜ£ºµÚ¶þÂÖÂ·ÏßÑ¡Ôñ½çÃæ(ÊÇ·ñ¹ýÃÅ)
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šç¬¬äºŒè½®è·¯çº¿é€‰æ‹©ç•Œé¢(æ˜¯å¦è¿‡é—¨)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_RouteSelectionInterfaceSecond(void)
 {
 		Lcd_Clear(WHITE);
-		Gui_DrawFont_GBK16(30,10,RED,WHITE,"¶þÂÖÂ·Ïß");      //µÚ¶þÂÖÂ·ÏßÑ¡Ôñ
-		Gui_DrawFont_GBK16(30,40,RED,WHITE,"ÊÇ·ñ¹ýÃÅ");   //ÊÇ·ñ¹ýÃÅ
-		Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"·ñ");            //²»¹ýÃÅ
-		Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"ÊÇ");          //¹ýÃÅ
+		Gui_DrawFont_GBK16(30,10,RED,WHITE,"äºŒè½®è·¯çº¿");      //ç¬¬äºŒè½®è·¯çº¿é€‰æ‹©
+		Gui_DrawFont_GBK16(30,40,RED,WHITE,"æ˜¯å¦è¿‡é—¨");   //æ˜¯å¦è¿‡é—¨
+		Gui_DrawFont_GBK16(0,70,BLUE,WHITE,"å¦");            //ä¸è¿‡é—¨
+		Gui_DrawFont_GBK16(0,100,BLUE,WHITE,"æ˜¯");          //è¿‡é—¨
 		while(1)
 		{
 			keyFlag = keyScan(0);
-			if(keyFlag==KEY0_UP||keyFlag==KEY1_DOWN||keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø
+			if(keyFlag==KEY0_UP||keyFlag==KEY1_DOWN||keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³
 		}
 }
 /*
 
-* º¯Êý½éÉÜ£º¹ýÃÅ¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡é—¨å…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_EnterDoor(void)
 {
-	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  "); //Çå³ý²»¹ýÃÅ¹â±ê
+	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  "); //æ¸…é™¤ä¸è¿‡é—¨å…‰æ ‡
 	Gui_DrawFont_GBK16(100,100,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN|| keyFlag==KEY0_UP  || keyFlag==KEY2_ENTER||keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN|| keyFlag==KEY0_UP  || keyFlag==KEY2_ENTER||keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 /*
 
-* º¯Êý½éÉÜ£º²»¹ýÃÅ¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šä¸è¿‡é—¨å…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_DontEnterDoor(void)
 {
-	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  "); //Çå³ý¹ýÃÅ¹â±ê¹â±ê
+	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  "); //æ¸…é™¤è¿‡é—¨å…‰æ ‡å…‰æ ‡
 	Gui_DrawFont_GBK16(100,70,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN|| keyFlag==KEY0_UP  || keyFlag==KEY2_ENTER||keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN|| keyFlag==KEY0_UP  || keyFlag==KEY2_ENTER||keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
@@ -229,86 +229,86 @@ void Fun_DontEnterDoor(void)
 
 /*
 
-* º¯Êý½éÉÜ£ºÂ·¶Îµ÷ÊÔ¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè·¯æ®µè°ƒè¯•å…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_debugCursor(void)
 {
-	Gui_DrawFont_GBK16(100,40,RED,WHITE,"  "); //Çå³ý¾ºÈü¹â±ê
-	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  ");//Çå³ý¹âÃô¹â±ê
+	Gui_DrawFont_GBK16(100,40,RED,WHITE,"  "); //æ¸…é™¤ç«žèµ›å…‰æ ‡
+	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  ");//æ¸…é™¤å…‰æ•å…‰æ ‡
 	Gui_DrawFont_GBK16(100,70,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN || keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN || keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£º¹âÃô´«¸ÐÆ÷¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå…‰æ•ä¼ æ„Ÿå™¨å…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_sensorCursor(void)
 {
-	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  ");//Çå³ýÂ·¶Îµ÷ÊÔ¹â±ê
-	Gui_DrawFont_GBK16(100,130,RED,WHITE,"  ");//Çå³ýÍÓÂÝÒÇ¹â±ê
+	Gui_DrawFont_GBK16(100,70,RED,WHITE,"  ");//æ¸…é™¤è·¯æ®µè°ƒè¯•å…‰æ ‡
+	Gui_DrawFont_GBK16(100,130,RED,WHITE,"  ");//æ¸…é™¤é™€èžºä»ªå…‰æ ‡
 	Gui_DrawFont_GBK16(100,100,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN || keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN || keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£ºÍÓÂÝÒÇ¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šé™€èžºä»ªå…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_gyroCursor(void)
 {
-	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  ");//Çå³ý¹âÃô´«¸ÐÆ÷¹â±ê
+	Gui_DrawFont_GBK16(100,100,RED,WHITE,"  ");//æ¸…é™¤å…‰æ•ä¼ æ„Ÿå™¨å…‰æ ‡
 	Gui_DrawFont_GBK16(100,130,RED,WHITE,"<-");
 	
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY0_UP || keyFlag == KEY2_ENTER || keyFlag == KEY1_DOWN)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY0_UP || keyFlag == KEY2_ENTER || keyFlag == KEY1_DOWN)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£ºÂ·ÏßÏÔÊ¾¹â±ê
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè·¯çº¿æ˜¾ç¤ºå…‰æ ‡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_runMethodCursor(void)
 {
 	Lcd_Clear(WHITE);
-	Gui_DrawFont_GBK16(30,10,RED,WHITE,"Ä£Ê½Ñ¡Ôñ");
-	Gui_DrawFont_GBK16(0,40,BLUE,WHITE,"Â·¶Î_Show");
+	Gui_DrawFont_GBK16(30,10,RED,WHITE,"æ¨¡å¼é€‰æ‹©");
+	Gui_DrawFont_GBK16(0,40,BLUE,WHITE,"è·¯æ®µ_Show");
 	Gui_DrawFont_GBK16(100,40,RED,WHITE,"<-");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY0_UP || keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 	}
 }
 
@@ -319,11 +319,11 @@ void Fun_runMethodCursor(void)
 
 /*
 
-* º¯Êý½éÉÜ£º½«Êý×ÖÁ¿×ª»¯³É¶þ½øÖÆ×Ö·û´®
-* ÊäÈë²ÎÊý£º£¨buff£©´¢´æ×Ö·û´®value£¨Êý×ÖÁ¿£©
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå°†æ•°å­—é‡è½¬åŒ–æˆäºŒè¿›åˆ¶å­—ç¬¦ä¸²
+* è¾“å…¥å‚æ•°ï¼šï¼ˆbuffï¼‰å‚¨å­˜å­—ç¬¦ä¸²valueï¼ˆæ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 static void dig_Binary(u8 *buff,u16 value)
@@ -342,29 +342,29 @@ static void dig_Binary(u8 *buff,u16 value)
 
 /*
 
-* º¯Êý½éÉÜ£ºÂÌÌºÊý×ÖÁ¿°´Î»ÏÔÊ¾
-* ÊäÈë²ÎÊý£ºvalue£¨Êý×ÖÁ¿£©
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šç»¿æ¯¯æ•°å­—é‡æŒ‰ä½æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼švalueï¼ˆæ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_sensorBitDisplay(void)
 {
 	u8 buff[12];
 	u16 temp_dig_value;
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	Gui_DrawFont_GBK16(0,0,RED,WHITE,"GreenCarpetÊý×ÖÁ¿:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	Gui_DrawFont_GBK16(0,0,RED,WHITE,"GreenCarpetæ•°å­—é‡:");
 	Gui_DrawFont_GBK16(0,40,RED,WHITE,"Hex:0x");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY0_UP || keyFlag == KEY4_ESC ||keyFlag == KEY1_DOWN)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY0_UP || keyFlag == KEY4_ESC ||keyFlag == KEY1_DOWN)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 		
 		if(sampingStatus() == 1)
 		{
-			temp_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãÐÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊý×ÖÁ¿
-			dig_Binary(buff,temp_dig_value) ;    //×ª»¯³É2½øÖÆ´¢´æÔÚbuffÖÐ
+			temp_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸Žé˜ˆå€¼æ¯”è¾ƒåŽå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+			dig_Binary(buff,temp_dig_value) ;    //è½¬åŒ–æˆ2è¿›åˆ¶å‚¨å­˜åœ¨buffä¸­
 			Gui_DrawFont_GBK16(0,20,BLUE,WHITE,(const char*)buff);
 			
 			Lcd_Clear_partial(49,40,128,60,WHITE);
@@ -384,29 +384,29 @@ void Fun_sensorBitDisplay(void)
 
 /*
 
-* º¯Êý½éÉÜ£ºÇÅÊý×ÖÁ¿°´Î»ÏÔÊ¾
-* ÊäÈë²ÎÊý£ºvalue£¨Êý×ÖÁ¿£©
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ¡¥æ•°å­—é‡æŒ‰ä½æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼švalueï¼ˆæ•°å­—é‡ï¼‰
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_sensorBitDisplay_brige(void)
 {
 	u8 buff[12];
 	u16 temp_dig_value;
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	Gui_DrawFont_GBK16(0,0,RED,WHITE,"BrigeÊý×ÖÁ¿:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	Gui_DrawFont_GBK16(0,0,RED,WHITE,"Brigeæ•°å­—é‡:");
 	Gui_DrawFont_GBK16(0,40,RED,WHITE,"Hex:0x");
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY0_UP || keyFlag == KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY0_UP || keyFlag == KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 		
 		if(sampingStatus() == 1)
 		{
-			temp_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ÓëãÐÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊý×ÖÁ¿
-			dig_Binary(buff,temp_dig_value) ;    //×ª»¯³É2½øÖÆ´¢´æÔÚbuffÖÐ
+			temp_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ä¸Žé˜ˆå€¼æ¯”è¾ƒåŽå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+			dig_Binary(buff,temp_dig_value) ;    //è½¬åŒ–æˆ2è¿›åˆ¶å‚¨å­˜åœ¨buffä¸­
 			Gui_DrawFont_GBK16(0,20,BLUE,WHITE,(const char*)buff);
 			
 			Lcd_Clear_partial(49,40,128,60,WHITE);
@@ -426,26 +426,26 @@ void Fun_sensorBitDisplay_brige(void)
 
 /*
 
-* º¯Êý½éÉÜ£ºÄ£ÄâÁ¿ÏÔÊ¾
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ¨¡æ‹Ÿé‡æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_analogDisplay(void)
 {
 	u8 buff[4];
 	u8 i;
-	Lcd_Clear(WHITE); //ÇåÆÁ
+	Lcd_Clear(WHITE); //æ¸…å±
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY1_DOWN || keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY1_DOWN || keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 		
 		if(sampingStatus() == 1)
 		{
-			Gui_DrawFont_GBK16(0,0,RED,WHITE,"Ä£ÄâÁ¿:");
+			Gui_DrawFont_GBK16(0,0,RED,WHITE,"æ¨¡æ‹Ÿé‡:");
 			for(i=0;i<12;i++)
 			{
 				sprintf((char *)buff,"%d",glsensor_ad_value[i]);
@@ -482,44 +482,44 @@ void Fun_analogDisplay(void)
 
 /*
 
-* º¯Êý½éÉÜ£ºÅ·À­½ÇÏÔÊ¾
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ¬§æ‹‰è§’æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_groyDisplay(void)
 {
 	u8 buff[7];
 	u8 i;
-	Lcd_Clear(WHITE); //ÇåÆÁ
+	Lcd_Clear(WHITE); //æ¸…å±
 	Gui_DrawFont_GBK16(0,20,RED,WHITE,"MPU6050_Init...");
-	MPU6050_Init();		        //MPU6050³õÊ¼»¯
+	MPU6050_Init();		        //MPU6050åˆå§‹åŒ–
     Gui_DrawFont_GBK16(0,20,RED,WHITE,"               ");
 
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY4_ESC)break; //µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö
+		if(keyFlag==KEY4_ESC)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º
 		#ifdef _NEW_MPU6050_
-		/*¶à´ÎÑ­»·±£Ö¤ÓÐÊý¾Ý£¬µ¥´Î¶ÁÈ¡Ã»ÓÐÊý¾ÝÊä³ö*/
-			MPU6050_Pose_usart();			//¸üÐÂÅ·À­½Ç
+		/*å¤šæ¬¡å¾ªçŽ¯ä¿è¯æœ‰æ•°æ®ï¼Œå•æ¬¡è¯»å–æ²¡æœ‰æ•°æ®è¾“å‡º*/
+			MPU6050_Pose_usart();			//æ›´æ–°æ¬§æ‹‰è§’
 		#else
 			for(i=0;i<20;i++)
-			MPU6050_Pose();				//¸üÐÂÅ·À­½Ç
+			MPU6050_Pose();				//æ›´æ–°æ¬§æ‹‰è§’
 	   #endif
-		/*Æ«º½½Ç*/
+		/*åèˆªè§’*/
 		sprintf((char *)buff,"%0.1f",glYaw);
 		Gui_DrawFont_GBK16(0,0,RED,WHITE,"glYAW:");
 		Gui_DrawFont_GBK16(70,0,BLUE,WHITE,"      ");
 		Gui_DrawFont_GBK16(70,0,BLUE,WHITE,(const char*)buff);
-		/*¸©Ñö½Ç*/
+		/*ä¿¯ä»°è§’*/
 		sprintf((char *)buff,"%0.1f",glPitch);
 		Gui_DrawFont_GBK16(0,30,RED,WHITE,"glPitch:");
 		Gui_DrawFont_GBK16(70,30,BLUE,WHITE,"      ");
 		Gui_DrawFont_GBK16(70,30,BLUE,WHITE,(const char*)buff);
-		/*·­¹ö½Ç*/
+		/*ç¿»æ»šè§’*/
 		sprintf((char *)buff,"%0.1f",glRoll);
 		Gui_DrawFont_GBK16(0,60,RED,WHITE,"glRoll:");
 		Gui_DrawFont_GBK16(70,60,BLUE,WHITE,"      ");
@@ -529,23 +529,23 @@ void Fun_groyDisplay(void)
 }
 /*
 
-* º¯Êý½éÉÜ£º²»¹ýÃÅµÚÒ»ÂÖ±ÈÈüÂ·ÏßÑ¡Ôñ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šä¸è¿‡é—¨ç¬¬ä¸€è½®æ¯”èµ›è·¯çº¿é€‰æ‹©
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_runMethodSelectionFirst()
 {
 	u8 run_1=0;
 	char buff[2];
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	Gui_DrawFont_GBK16(10,20,RED,WHITE,"Ò»ÂÖÂ·Ïß²»¹ýÃÅ");
-	Gui_DrawFont_GBK16(0,60,RED,WHITE,"Â·Ïß:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	Gui_DrawFont_GBK16(10,20,RED,WHITE,"ä¸€è½®è·¯çº¿ä¸è¿‡é—¨");
+	Gui_DrawFont_GBK16(0,60,RED,WHITE,"è·¯çº¿:");
 	sprintf(buff,"%d",run_1);
 	Gui_DrawFont_GBK16(60,60,BLUE,WHITE,buff);
-	/*µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ*/
+	/*ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©*/
 	while(1)
 	{
 		keyFlag = keyScan(0);
@@ -569,37 +569,37 @@ void Fun_runMethodSelectionFirst()
 		if(keyFlag == KEY2_ENTER)
 		{
 			keyFlag = 0;
-			runMethodUpdate(runMethod,run_1,runMethodTable);//½«Â·Ïß±íÖÐµÄÂ·Ïß¸üÐÂµ½µÚÒ»ÂÖµÄÅÜ·¨ÖÐ
-			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"È·¶¨?");
+			runMethodUpdate(runMethod,run_1,runMethodTable);//å°†è·¯çº¿è¡¨ä¸­çš„è·¯çº¿æ›´æ–°åˆ°ç¬¬ä¸€è½®çš„è·‘æ³•ä¸­
+			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"ç¡®å®š?");
 			break;
 		}
 	}
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ
+		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹
 	}
 	
 }
 /*
 
-* º¯Êý½éÉÜ£º²»¹ýÃÅµÚ¶þÂÖ±ÈÈüÂ·ÏßÑ¡Ôñ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šä¸è¿‡é—¨ç¬¬äºŒè½®æ¯”èµ›è·¯çº¿é€‰æ‹©
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_runMethodSelectionSecond()
 {
 	u8 run_2=0;
 	char buff[2];
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	Gui_DrawFont_GBK16(10,20,RED,WHITE,"¶þÂÖÂ·Ïß²»¹ýÃÅ");
-	Gui_DrawFont_GBK16(0,60,RED,WHITE,"Â·Ïß:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	Gui_DrawFont_GBK16(10,20,RED,WHITE,"äºŒè½®è·¯çº¿ä¸è¿‡é—¨");
+	Gui_DrawFont_GBK16(0,60,RED,WHITE,"è·¯çº¿:");
 	sprintf(buff,"%d",run_2);
 	Gui_DrawFont_GBK16(60,60,BLUE,WHITE,buff);
-	/*µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ*/
+	/*ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©*/
 	while(1)
 	{
 		keyFlag = keyScan(0);
@@ -623,36 +623,36 @@ void Fun_runMethodSelectionSecond()
 		if(keyFlag == KEY2_ENTER)
 		{
 			keyFlag = 0;
-			runMethodUpdate(runMethod_2,run_2,runMethodTable);//½«Â·Ïß±íÖÐµÄÂ·Ïß¸üÐÂµ½µÚÒ»ÂÖµÄÅÜ·¨ÖÐ
-			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"È·¶¨?");
+			runMethodUpdate(runMethod_2,run_2,runMethodTable);//å°†è·¯çº¿è¡¨ä¸­çš„è·¯çº¿æ›´æ–°åˆ°ç¬¬ä¸€è½®çš„è·‘æ³•ä¸­
+			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"ç¡®å®š?");
 			break;
 		}
 	}
 	while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ
+		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹
 	}
 	
 }
 
 /*
 
-* º¯Êý½éÉÜ£º¹ýÃÅµÚÒ»ÂÖ±ÈÈüÂ·ÏßÑ¡Ôñ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡é—¨ç¬¬ä¸€è½®æ¯”èµ›è·¯çº¿é€‰æ‹©
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_runDoorMethodSelectionFirst()
 {
 	u8 run_1=0;
 	char buff[2];
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	/*µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ*/
-	Gui_DrawFont_GBK16(10,20,RED,WHITE,"Ò»ÂÖÂ·Ïß¹ýÃÅ");
-	Gui_DrawFont_GBK16(0,60,RED,WHITE,"Â·Ïß:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	/*ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©*/
+	Gui_DrawFont_GBK16(10,20,RED,WHITE,"ä¸€è½®è·¯çº¿è¿‡é—¨");
+	Gui_DrawFont_GBK16(0,60,RED,WHITE,"è·¯çº¿:");
 	sprintf(buff,"%d",run_1);
 	Gui_DrawFont_GBK16(60,60,BLUE,WHITE,buff);
 		while(1)
@@ -678,8 +678,8 @@ void Fun_runDoorMethodSelectionFirst()
 		if(keyFlag == KEY2_ENTER)
 		{
 			keyFlag = 0;
-			runMethodUpdate(runMethod,run_1,runMethodTableDoor);//½«Â·Ïß±íÖÐµÄÂ·Ïß¸üÐÂµ½µÚÒ»ÂÖµÄÅÜ·¨ÖÐ
-			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"È·¶¨?");
+			runMethodUpdate(runMethod,run_1,runMethodTableDoor);//å°†è·¯çº¿è¡¨ä¸­çš„è·¯çº¿æ›´æ–°åˆ°ç¬¬ä¸€è½®çš„è·‘æ³•ä¸­
+			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"ç¡®å®š?");
 			break;
 		}
 
@@ -687,27 +687,27 @@ void Fun_runDoorMethodSelectionFirst()
 		while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ
+		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£º¹ýÃÅµÚ¶þÂÖ±ÈÈüÂ·ÏßÑ¡Ôñ
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡é—¨ç¬¬äºŒè½®æ¯”èµ›è·¯çº¿é€‰æ‹©
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æž—
 
 */
 void Fun_runDoorMethodSelectionSecond()
 {
 	u8 run_2=0;
 	char buff[2];
-	Lcd_Clear(WHITE); //ÇåÆÁ
-	/*µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ*/
-	Gui_DrawFont_GBK16(10,20,RED,WHITE,"¶þÂÖÂ·Ïß¹ýÃÅ");
-	Gui_DrawFont_GBK16(0,60,RED,WHITE,"Â·Ïß:");
+	Lcd_Clear(WHITE); //æ¸…å±
+	/*ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©*/
+	Gui_DrawFont_GBK16(10,20,RED,WHITE,"äºŒè½®è·¯çº¿è¿‡é—¨");
+	Gui_DrawFont_GBK16(0,60,RED,WHITE,"è·¯çº¿:");
 	sprintf(buff,"%d",run_2);
 	Gui_DrawFont_GBK16(60,60,BLUE,WHITE,buff);
 		while(1)
@@ -733,8 +733,8 @@ void Fun_runDoorMethodSelectionSecond()
 		if(keyFlag == KEY2_ENTER)
 		{
 			keyFlag = 0;
-			runMethodUpdate(runMethod_2,run_2,runMethodTableDoor);//½«Â·Ïß±íÖÐµÄÂ·Ïß¸üÐÂµ½µÚÒ»ÂÖµÄÅÜ·¨ÖÐ
-			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"È·¶¨?");
+			runMethodUpdate(runMethod_2,run_2,runMethodTableDoor);//å°†è·¯çº¿è¡¨ä¸­çš„è·¯çº¿æ›´æ–°åˆ°ç¬¬ä¸€è½®çš„è·‘æ³•ä¸­
+			Gui_DrawFont_GBK16(40,100,BLUE,WHITE,"ç¡®å®š?");
 			break;
 		}
 
@@ -742,17 +742,17 @@ void Fun_runDoorMethodSelectionSecond()
 		while(1)
 	{
 		keyFlag = keyScan(0);
-		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //µ±ÓÐ°´¼ü°´ÏÂ
+		if(keyFlag==KEY4_ESC||keyFlag == KEY2_ENTER)break; //å½“æœ‰æŒ‰é”®æŒ‰ä¸‹
 	}
 }
 
 /*
 
-* º¯Êý½éÉÜ£ºÒÑÓÐÅÜ·¨ÏÔÊ¾
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå·²æœ‰è·‘æ³•æ˜¾ç¤º
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void  runMethodDisplay()
@@ -761,7 +761,7 @@ void  runMethodDisplay()
 	u8 tempRunMethod[100];
 	char buff[2];
 	u8 i=0,j=0,k=0;
-	Lcd_Clear(WHITE); //ÇåÆÁ
+	Lcd_Clear(WHITE); //æ¸…å±
 	Gui_DrawFont_GBK16(0,0,RED,WHITE,"Total_Methods:");
 	sprintf(buff,"%d",runMethodNum);
 	Gui_DrawFont_GBK16(110,0,BLUE,WHITE,buff);
@@ -779,7 +779,7 @@ void  runMethodDisplay()
 			Gui_DrawFont_GBK16(60,20,RED,WHITE,buff);
 			
 			runMethodUpdate(tempRunMethod,temp,runMethodTable);
-			Lcd_Clear_partial(0,40,128,160,WHITE);    //¾Ö²¿ÇåÆÁ
+			Lcd_Clear_partial(0,40,128,160,WHITE);    //å±€éƒ¨æ¸…å±
 			while(tempRunMethod[i]!=0)
 			{
 				sprintf(buff,"%d",tempRunMethod[i]);
@@ -826,11 +826,11 @@ void  runMethodDisplay()
 
 /*
 
-* º¯Êý½éÉÜ£ºÑ¡Ôñµ÷ÊÔµÄÏßÂ·
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šé€‰æ‹©è°ƒè¯•çš„çº¿è·¯
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_debug()
@@ -839,7 +839,7 @@ void Fun_debug()
 	u8 tempRunMethod[100];
 	char buff[2];
 	u8 i=0,j=0,k=0;
-	Lcd_Clear(WHITE); //ÇåÆÁ
+	Lcd_Clear(WHITE); //æ¸…å±
 	Gui_DrawFont_GBK16(60,0,RED,WHITE,"debug");
 	Gui_DrawFont_GBK16(0,18,RED,WHITE,"chose Method:");
 	sprintf(buff,"%d",temp);
@@ -857,7 +857,7 @@ void Fun_debug()
 		if(j==0)
 				k++;
 	}
-	/*Ñ¡Ôñµ÷ÊÔµÄÂ·Ïß*/
+	/*é€‰æ‹©è°ƒè¯•çš„è·¯çº¿*/
 	while(1)
 	{
 		keyFlag = keyScan(0);
@@ -869,7 +869,7 @@ void Fun_debug()
 			Gui_DrawFont_GBK16(105,20,RED,WHITE,buff);
 			
 			runMethodUpdate(tempRunMethod,temp,runMethodTableDebug);
-			Lcd_Clear_partial(0,34,128,160,WHITE);    //¾Ö²¿ÇåÆÁ
+			Lcd_Clear_partial(0,34,128,160,WHITE);    //å±€éƒ¨æ¸…å±
 			while(tempRunMethod[i]!=0)
 			{
 				sprintf(buff,"%d",tempRunMethod[i]);
@@ -892,7 +892,7 @@ void Fun_debug()
 			Gui_DrawFont_GBK16(105,20,RED,WHITE,buff);
 			
 			runMethodUpdate(tempRunMethod,temp,runMethodTableDebug);
-			Lcd_Clear_partial(0,34,128,160,WHITE);    //¾Ö²¿ÇåÆÁ
+			Lcd_Clear_partial(0,34,128,160,WHITE);    //å±€éƒ¨æ¸…å±
 			while(tempRunMethod[i]!=0)
 			{
 				sprintf(buff,"%d",tempRunMethod[i]);
@@ -953,7 +953,7 @@ void Fun_debug()
 		}
 		else if(keyFlag == KEY2_ENTER)
 		{
-			runMethodUpdate(runMethod,temp,runMethodTableDebug);  //½«Â·Ïß±íÖÐµÄÂ·Ïß¸üÐÂµ½runMethod
+			runMethodUpdate(runMethod,temp,runMethodTableDebug);  //å°†è·¯çº¿è¡¨ä¸­çš„è·¯çº¿æ›´æ–°åˆ°runMethod
 			Gui_DrawFont_GBK16(60,140,BLUE,WHITE,"OK");
 			delay_ms(500);
 			break;
@@ -971,11 +971,11 @@ void Fun_debug()
 
 /*
 
-* º¯Êý½éÉÜ£ºÑ¡Ôñµ÷ÊÔµÄÏßÂ·µÄµ÷ÊÔÂ·¶Î
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šé€‰æ‹©è°ƒè¯•çš„çº¿è·¯çš„è°ƒè¯•è·¯æ®µ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_roadDebug()
@@ -1015,7 +1015,7 @@ void Fun_roadDebug()
 			runMethod_Test[3]=runMethod[Num+3];
 		//	runMethod_Test[4]=runMethod[Num+4];
 			
-			Lcd_Clear_partial(80,20,128,100,WHITE); //¾Ö²¿ÇåÆÁ
+			Lcd_Clear_partial(80,20,128,100,WHITE); //å±€éƒ¨æ¸…å±
 			
 			sprintf(buff,"%d",runMethod_Test[0]);
 			Gui_DrawFont_GBK16(80,20,BLUE,WHITE,buff);
@@ -1038,7 +1038,7 @@ void Fun_roadDebug()
 			runMethod_Test[3]=runMethod[Num+3];
 		//	runMethod_Test[4]=runMethod[Num+4];
 			
-			Lcd_Clear_partial(80,20,128,100,WHITE); //¾Ö²¿ÇåÆÁ
+			Lcd_Clear_partial(80,20,128,100,WHITE); //å±€éƒ¨æ¸…å±
 			
 			sprintf(buff,"%d",runMethod_Test[0]);
 			Gui_DrawFont_GBK16(80,20,BLUE,WHITE,buff);
@@ -1057,57 +1057,57 @@ void Fun_roadDebug()
 		{
 			Gui_DrawFont_GBK16(20,105,RED,WHITE,"debug_start");
 			Gui_DrawFont_GBK16(0,130,RED,WHITE,"MPU6050_Init...");
-			MPU6050_Init();		        //MPU6050³õÊ¼»¯
+			MPU6050_Init();		        //MPU6050åˆå§‹åŒ–
 			Gui_DrawFont_GBK16(0,130,RED,WHITE,"               ");
 			Gui_DrawFont_GBK16(0,130,RED,WHITE,"Start...");
 		
-			/*****Èí¼þÂß¼­²ã³õÊ¼»¯²¿·Ö*****/
-			Control_Init(&glHello_control,runMethod_Test);     //³õÊ¼»¯¿ØÖÆÌ¨
-			runStateInit(&glrunState,&glHello_control);		//¸ù¾Ý¿ØÖÆÌ¨ÆðÊ¼Â·¶Î³õÊ¼»¯ÔËÐÐ×´Ì¬
+			/*****è½¯ä»¶é€»è¾‘å±‚åˆå§‹åŒ–éƒ¨åˆ†*****/
+			Control_Init(&glHello_control,runMethod_Test);     //åˆå§‹åŒ–æŽ§åˆ¶å°
+			runStateInit(&glrunState,&glHello_control);		//æ ¹æ®æŽ§åˆ¶å°èµ·å§‹è·¯æ®µåˆå§‹åŒ–è¿è¡ŒçŠ¶æ€
 		
-			/*ÖØÐÂ³õÊ¼»¯*/
-			runTimes = 0;						//¼ÇÂ¼±¼ÅÜ´ÎÊý
-			gl_time=0;							//¶¨Ê±Æ÷3±êÖ¾
-			mpu6050_flag=0;					//±êÖ¾ÉÏÏÂÌ¨
-			findLineFlag=0;					//Ñ²Ïß·½·¨³õÊ¼»¯±êÖ¾Î»
+			/*é‡æ–°åˆå§‹åŒ–*/
+			runTimes = 0;						//è®°å½•å¥”è·‘æ¬¡æ•°
+			gl_time=0;							//å®šæ—¶å™¨3æ ‡å¿—
+			mpu6050_flag=0;					//æ ‡å¿—ä¸Šä¸‹å°
+			findLineFlag=0;					//å·¡çº¿æ–¹æ³•åˆå§‹åŒ–æ ‡å¿—ä½
 			
 			while(1)
 			{
-				/*µ±ÓÐ°´¼ü°´ÏÂ¾ÍÌø³ö*/
+				/*å½“æœ‰æŒ‰é”®æŒ‰ä¸‹å°±è·³å‡º*/
 				keyFlag = keyScan(0);
 				if(keyFlag==KEY4_ESC)
 				{
 					speedAdjustment(0,0);
-					Time7(STOP);    			 //¹Ø±Õ¶¨Ê±Æ÷
-					mpu6050_samping(STOP); //¹Ø±Õmpu6050²ÉÑù
-					Lcd_Clear_partial(0,105,128,160,WHITE);  //¾Ö²¿ÇåÆÁ
+					Time7(STOP);    			 //å…³é—­å®šæ—¶å™¨
+					mpu6050_samping(STOP); //å…³é—­mpu6050é‡‡æ ·
+					Lcd_Clear_partial(0,105,128,160,WHITE);  //å±€éƒ¨æ¸…å±
 					break;
 				} 
-				/*ÅÜÍêÒ»¸öÂ·¶Î²Å¸üÐÂÒ»´Î*/
-				if(control_Update(&glHello_control,strlen((const char*)runMethod_Test),runMethod_Test,mapInformation))//µ±¼ì²âµ½½Úµãºó¾Í»á¸üÐÂ¿ØÖÆÌ¨µÄÊý¾Ý//sizeof(runMethod)/sizeof(runMethod[0])
+				/*è·‘å®Œä¸€ä¸ªè·¯æ®µæ‰æ›´æ–°ä¸€æ¬¡*/
+				if(control_Update(&glHello_control,strlen((const char*)runMethod_Test),runMethod_Test,mapInformation))//å½“æ£€æµ‹åˆ°èŠ‚ç‚¹åŽå°±ä¼šæ›´æ–°æŽ§åˆ¶å°çš„æ•°æ®//sizeof(runMethod)/sizeof(runMethod[0])
 				{
-					runStateReset(&glrunState,&glHello_control);//ÖØÖÃÔËÐÐ×´Ì¬
+					runStateReset(&glrunState,&glHello_control);//é‡ç½®è¿è¡ŒçŠ¶æ€
 					findLineFlag=0;
 					//controlCenter_u3printf(runMethod_Test,&glHello_control);
 				}
-				/*²ÉÑùÍê³ÉÒ»´Î¾Í½øÐÐÒ»´Î´¦Àí*/
+				/*é‡‡æ ·å®Œæˆä¸€æ¬¡å°±è¿›è¡Œä¸€æ¬¡å¤„ç†*/
 				if(sampingStatus() == 1) 
 				{	
 						if(glrunState.F_LineState == EIC)
 					{
 						speedAdjustment(0,0);
-						Lcd_Clear_partial(0,105,128,160,WHITE);  //¾Ö²¿ÇåÆÁ
-						Time7(STOP);    			 //¹Ø±Õ¶¨Ê±Æ÷
-						mpu6050_samping(STOP); //¹Ø±Õmpu6050²ÉÑù
+						Lcd_Clear_partial(0,105,128,160,WHITE);  //å±€éƒ¨æ¸…å±
+						Time7(STOP);    			 //å…³é—­å®šæ—¶å™¨
+						mpu6050_samping(STOP); //å…³é—­mpu6050é‡‡æ ·
 						break;
 					}
 					
-					findLine_Task(&glHello_control,&glrunState);        	 // Ñ²ÏßÈÎÎñ
-					roadBlocksHandle_Task(&glHello_control,&glrunState);	 // ÕÏ°­´¦ÀíÈÎÎñ
-          speed_Task(&glHello_control,&glrunState);			      	//¼ÓËÙÈÎÎñ
-					seekNode_Task(&glHello_control,&glrunState);      		 // ÕÒµãÈÎÎñ
-					carPark_Task(&glHello_control, &glrunState);       		 // Í£³µÈÎÎñ
-					rotAngle_Task(&glHello_control,&glrunState);           // ×ªÍäÈÎÎñ
+					findLine_Task(&glHello_control,&glrunState);        	 // å·¡çº¿ä»»åŠ¡
+					roadBlocksHandle_Task(&glHello_control,&glrunState);	 // éšœç¢å¤„ç†ä»»åŠ¡
+          speed_Task(&glHello_control,&glrunState);			      	//åŠ é€Ÿä»»åŠ¡
+					seekNode_Task(&glHello_control,&glrunState);      		 // æ‰¾ç‚¹ä»»åŠ¡
+					carPark_Task(&glHello_control, &glrunState);       		 // åœè½¦ä»»åŠ¡
+					rotAngle_Task(&glHello_control,&glrunState);           // è½¬å¼¯ä»»åŠ¡
 				}
 					
 				else if(keyFlag == KEY4_ESC)
@@ -1130,11 +1130,11 @@ void Fun_roadDebug()
 
 /*
 
-* º¯Êý½éÉÜ£ºÏÔÊ¾µ÷ÊÔµÄÂ·¶Î
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ˜¾ç¤ºè°ƒè¯•çš„è·¯æ®µ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void Fun_debugDisplay()
@@ -1143,7 +1143,7 @@ void Fun_debugDisplay()
 	u8 j=0;
 	u8 k=0;
 	char buff[2];
-	Lcd_Clear(WHITE); //ÇåÆÁ
+	Lcd_Clear(WHITE); //æ¸…å±
 	Gui_DrawFont_GBK16(2,0,RED,WHITE,"debug runMethod");
 	while(runMethod[i]!=0)
 	{
@@ -1169,43 +1169,43 @@ void Fun_debugDisplay()
 
 
 /******************************************************************************************************************/
-	/*²Ëµ¥·Ö4¼¶£¬¹²10¸ö½çÃæ*/
-	/*µ±Ç°¡¢ÏÂ¡¢ÉÏ¡¢½øÈë¡¢·µ»Ø*/
-// µ±Ç°½çÃæË÷Òý
-// ÏòÏÂ°´¼üÐèÒªÌø×ªµÄË÷Òý
-// ÏòÉÏ°´¼üÐèÒªÌø×ªµÄË÷Òý
-// È·ÈÏ°´¼üÐèÒªÌø×ªµÄË÷Òý
-// ·µ»Ø°´¼üÐèÒªÌø×ªµÄË÷Òý
+	/*èœå•åˆ†4çº§ï¼Œå…±10ä¸ªç•Œé¢*/
+	/*å½“å‰ã€ä¸‹ã€ä¸Šã€è¿›å…¥ã€è¿”å›ž*/
+// å½“å‰ç•Œé¢ç´¢å¼•
+// å‘ä¸‹æŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+// å‘ä¸ŠæŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+// ç¡®è®¤æŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+// è¿”å›žæŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
 myGUIIndexTypeDef const keyTab[GUI_NUM]={
-	{0,1,0,25,26,(*Fun_menuDisplay)	},   //²Ëµ¥ÏÔÊ¾£¨Ä£Ê½Ñ¡Ôñ£©
-	{1,2,1,8,1,(*Fun_compCursor)	},  //¾ºÈü¹â±ê
-	{2,3,1,7,2,(*Fun_debugCursor)	},  //Â·¶Îµ÷ÊÔ¹â±ê
-	{3,4,2,6,3,(*Fun_sensorCursor)},  //¹âÃô´«¸ÐÆ÷¹â±ê
-	{4,11,3,5,4,(*Fun_gyroCursor)	},  //ÍÓÂÝÒÇ¹â±ê
-	{5,5,5,5,0,(*Fun_groyDisplay)	},  //Å·À­½ÇÏÔÊ¾
-	{6,9,6,6,0,(*Fun_analogDisplay)},  //Ä£ÄâÁ¿ÏÔÊ¾
-	{7,7,7,13,0,(*Fun_debug)},        //Ñ¡Ôñµ÷ÊÔµÄÏßÂ·
-	{8,17,16,8,0,(*Fun_RouteSelectionInterfaceFirst)},  //µÚÒ»ÂÖÂ·ÏßÑ¡Ôñ£¬ÊÇ·ñ¹ýÃÅ
-	{9,15,6,9,0,(*Fun_sensorBitDisplay)},   //ÂÌÌºÊý×ÖÁ¿°´Î»ÏÔÊ¾
-	{10,10,8,10,0,(*Fun_game)},     //±ÈÈü
-	{11,11,0,12,11,(*Fun_runMethodCursor)},  //Â·ÏßÏÔÊ¾¹â±ê
-	{12,12,12,12,0,(*runMethodDisplay)},   //ÒÑÓÐÅÜ·¨ÏÔÊ¾
-	{13,14,13,13,14,(*Fun_roadDebug)},    //Ñ¡Ôñµ÷ÊÔµÄÏßÂ·µÄµ÷ÊÔÂ·¶Î
-	{14,13,14,13,0,(*Fun_debugDisplay)},    //ÏÔÊ¾µ÷ÊÔµÄÂ·¶Î
-	{15,15,9,15,0,(*Fun_sensorBitDisplay_brige)},   //ÇÅÊý×ÖÁ¿°´Î»ÏÔÊ¾
+	{0,1,0,25,26,(*Fun_menuDisplay)	},   //èœå•æ˜¾ç¤ºï¼ˆæ¨¡å¼é€‰æ‹©ï¼‰
+	{1,2,1,8,1,(*Fun_compCursor)	},  //ç«žèµ›å…‰æ ‡
+	{2,3,1,7,2,(*Fun_debugCursor)	},  //è·¯æ®µè°ƒè¯•å…‰æ ‡
+	{3,4,2,6,3,(*Fun_sensorCursor)},  //å…‰æ•ä¼ æ„Ÿå™¨å…‰æ ‡
+	{4,11,3,5,4,(*Fun_gyroCursor)	},  //é™€èžºä»ªå…‰æ ‡
+	{5,5,5,5,0,(*Fun_groyDisplay)	},  //æ¬§æ‹‰è§’æ˜¾ç¤º
+	{6,9,6,6,0,(*Fun_analogDisplay)},  //æ¨¡æ‹Ÿé‡æ˜¾ç¤º
+	{7,7,7,13,0,(*Fun_debug)},        //é€‰æ‹©è°ƒè¯•çš„çº¿è·¯
+	{8,17,16,8,0,(*Fun_RouteSelectionInterfaceFirst)},  //ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©ï¼Œæ˜¯å¦è¿‡é—¨
+	{9,15,6,9,0,(*Fun_sensorBitDisplay)},   //ç»¿æ¯¯æ•°å­—é‡æŒ‰ä½æ˜¾ç¤º
+	{10,10,8,10,0,(*Fun_game)},     //æ¯”èµ›
+	{11,11,0,12,11,(*Fun_runMethodCursor)},  //è·¯çº¿æ˜¾ç¤ºå…‰æ ‡
+	{12,12,12,12,0,(*runMethodDisplay)},   //å·²æœ‰è·‘æ³•æ˜¾ç¤º
+	{13,14,13,13,14,(*Fun_roadDebug)},    //é€‰æ‹©è°ƒè¯•çš„çº¿è·¯çš„è°ƒè¯•è·¯æ®µ
+	{14,13,14,13,0,(*Fun_debugDisplay)},    //æ˜¾ç¤ºè°ƒè¯•çš„è·¯æ®µ
+	{15,15,9,15,0,(*Fun_sensorBitDisplay_brige)},   //æ¡¥æ•°å­—é‡æŒ‰ä½æ˜¾ç¤º
 	
 	
-	{16,17,17,18,0,(*Fun_EnterDoor)},               //¹ýÃÅ¹â±ê
-	{17,16,16,19,0,(*Fun_DontEnterDoor)},           //²»¹ýÃÅ¹â±ê
-	{18,18,18,20,0,(*Fun_runDoorMethodSelectionFirst)},      //¹ýÃÅµÄµÚÒ»ÂÖÂ·ÏßÑ¡Ôñ
-	{19,19,19,20,0,(*Fun_runMethodSelectionFirst)},       //²»¹ýÃÅµÄµÚÒ»ÂÖÂ·ÏßÑ¡Ôñ
+	{16,17,17,18,0,(*Fun_EnterDoor)},               //è¿‡é—¨å…‰æ ‡
+	{17,16,16,19,0,(*Fun_DontEnterDoor)},           //ä¸è¿‡é—¨å…‰æ ‡
+	{18,18,18,20,0,(*Fun_runDoorMethodSelectionFirst)},      //è¿‡é—¨çš„ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©
+	{19,19,19,20,0,(*Fun_runMethodSelectionFirst)},       //ä¸è¿‡é—¨çš„ç¬¬ä¸€è½®è·¯çº¿é€‰æ‹©
 	
 	
-	{20,22,21,20,0,(*Fun_RouteSelectionInterfaceSecond)},         //µÚ¶þÂÖÂ·ÏßÑ¡Ôñ£¬ÊÇ·ñ¹ýÃÅ
-	{21,22,22,23,0,(*Fun_EnterDoor)},                 //¹ýÃÅ¹â±ê
-	{22,21,21,24,0,(*Fun_DontEnterDoor)},                         //²»¹ýÃÅ¹â±ê
-	{23,23,23,10,0,(*Fun_runDoorMethodSelectionSecond)},                      //¹ýÃÅµÄµÚ¶þÂÖÂ·ÏßÑ¡Ôñ
-	{24,24,24,10,0,(*Fun_runMethodSelectionSecond)},                      //²»¹ýÃÅµÄµÚ¶þÂÖÂ·ÏßÑ¡Ôñ
+	{20,22,21,20,0,(*Fun_RouteSelectionInterfaceSecond)},         //ç¬¬äºŒè½®è·¯çº¿é€‰æ‹©ï¼Œæ˜¯å¦è¿‡é—¨
+	{21,22,22,23,0,(*Fun_EnterDoor)},                 //è¿‡é—¨å…‰æ ‡
+	{22,21,21,24,0,(*Fun_DontEnterDoor)},                         //ä¸è¿‡é—¨å…‰æ ‡
+	{23,23,23,10,0,(*Fun_runDoorMethodSelectionSecond)},                      //è¿‡é—¨çš„ç¬¬äºŒè½®è·¯çº¿é€‰æ‹©
+	{24,24,24,10,0,(*Fun_runMethodSelectionSecond)},                      //ä¸è¿‡é—¨çš„ç¬¬äºŒè½®è·¯çº¿é€‰æ‹©
 	{25,0,0,0,0,(*Fun_SecondGameMethod1)},
 	{26,0,0,0,0,(*Fun_SecondGameMethod2)},
 };
@@ -1213,11 +1213,11 @@ myGUIIndexTypeDef const keyTab[GUI_NUM]={
 
 /*
 
-* º¯Êý½éÉÜ£º½çÃæ²Ù×÷
-* ÊäÈë²ÎÊý£ºÎÞ
-* Êä³ö²ÎÊý£ºÎÞ
-* ·µ»ØÖµ  £ºÎÞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šç•Œé¢æ“ä½œ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›žå€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void displayOperation(void)
@@ -1233,7 +1233,7 @@ void displayOperation(void)
 		default:break;
 	}
 		keyFunPt = keyTab[keyFun].function;
-		(*keyFunPt)();                     //Ö´ÐÐµ±Ç°°´¼ü¹¦ÄÜ
+		(*keyFunPt)();                     //æ‰§è¡Œå½“å‰æŒ‰é”®åŠŸèƒ½
 }
 
 

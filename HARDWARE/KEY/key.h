@@ -3,17 +3,17 @@
 #include "myconfig.h"
 
 
-#define KEY0  GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_0)		//¶ÁÈ¡°´¼ü0
-#define KEY1  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_12)	//¶ÁÈ¡°´¼ü1
-#define KEY2  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13)	//¶ÁÈ¡°´¼ü2 
-#define KEY3  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_11)	//¶ÁÈ¡°´¼ü3
-#define KEY4  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_10)	//¶ÁÈ¡°´¼ü4
+#define KEY0  GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_0)		//è¯»å–æŒ‰é”®0
+#define KEY1  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_12)	//è¯»å–æŒ‰é”®1
+#define KEY2  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13)	//è¯»å–æŒ‰é”®2 
+#define KEY3  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_11)	//è¯»å–æŒ‰é”®3
+#define KEY4  GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_10)	//è¯»å–æŒ‰é”®4
 
-#define KEY0_UP			1			//¼Ó 
-#define KEY1_DOWN		2		  //¼õ 
-#define KEY2_ENTER	3		  //È·ÈÏ  
-#define KEY3_MENU		4		  //²Ëµ¥  
-#define KEY4_ESC		5		  //·µ»Ø 
+#define KEY0_UP			1			//åŠ  
+#define KEY1_DOWN		2		  //å‡ 
+#define KEY2_ENTER	3		  //ç¡®è®¤  
+#define KEY3_MENU		4		  //èœå•  
+#define KEY4_ESC		5		  //è¿”å› 
 
 #define Collision   GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_15)
 

@@ -9,12 +9,12 @@
 #define BEEP PEout(14)	// PE14
 
 
-void ledInit(void);     //led³õÊ¼»¯
-void led_light(u8 n);   //µãÁÁled
-void buzzerInit(void);  //·äÃùÆ÷³õÊ¼»¯
-void buzzer_beep(void); //·äÃùÆ÷ÏìÆğ
-void led0_flash(void);      //led0ÉÁË¸
-void led1_flash(void);			//led1ÉÁË¸
+void ledInit(void);     //ledåˆå§‹åŒ–
+void led_light(u8 n);   //ç‚¹äº®led
+void buzzerInit(void);  //èœ‚é¸£å™¨åˆå§‹åŒ–
+void buzzer_beep(void); //èœ‚é¸£å™¨å“èµ·
+void led0_flash(void);      //led0é—ªçƒ
+void led1_flash(void);			//led1é—ªçƒ
 
 #endif
 

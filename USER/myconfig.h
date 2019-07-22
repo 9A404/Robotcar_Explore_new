@@ -28,13 +28,13 @@
 #include "speed.h"
 
 //#define _DEBUG_
-//#define _DEBUG_U3_P		//µ÷ÊÔ´®¿ÚÈıÀ¶ÑÀ´òÓ¡
-//#define _LED_CONTROL_		//Ò»ĞÍÉÁµÆ
-#define _DJ_CONTROL_ 	//¶şĞÍ¶æ»ú
-//#define _FINDLINE_DEBUG_//µ÷ÊÔÂıËÙ¶È
-#define _NEW_MPU6050_//ĞÂ°æÍÓÂİÒÇ
+//#define _DEBUG_U3_P		//è°ƒè¯•ä¸²å£ä¸‰è“ç‰™æ‰“å°
+//#define _LED_CONTROL_		//ä¸€å‹é—ªç¯
+#define _DJ_CONTROL_ 	//äºŒå‹èˆµæœº
+//#define _FINDLINE_DEBUG_//è°ƒè¯•æ…¢é€Ÿåº¦
+#define _NEW_MPU6050_//æ–°ç‰ˆé™€èºä»ª
 
-//¼ÓËÙÊ±¼ä
+//åŠ é€Ÿæ—¶é—´
 
 #define Door_Time 		120
 #define Door_Time_2 	100
@@ -61,73 +61,73 @@
 #define min(a,b)			(a<b ? a:b)
 #define limit(x,a,b)	(min(max(x,a) , b))	
 
-#define NUM_OF_SENSOR 	12					//´«¸ĞÆ÷¸öÊı
-#define USART3_MAX_SEND_LEN 200		 // ·¢ËÍ»º´æ´óĞ¡
+#define NUM_OF_SENSOR 	12					//ä¼ æ„Ÿå™¨ä¸ªæ•°
+#define USART3_MAX_SEND_LEN 200		 // å‘é€ç¼“å­˜å¤§å°
 
-extern s16	hall_L_counter;	//´¢´æ±àÂëÆ÷¼ÆÊıÖµ£¬¶ÔÓ¦TIM2¼ÆÊıÖµ
-extern s16	hall_R_counter;//¶ÔÓ¦TIM3¼ÆÊıÖµ
-extern unsigned short glsensor_ad_value[NUM_OF_SENSOR];       //´«¸ĞÆ÷Ä£ÄâÁ¿Êı×é
-extern unsigned short glsensor_dig_value;									    //´«¸ĞÆ÷Êı×ÖÁ¿Êı×é
-extern unsigned char 	USART3_TX_BUF[USART3_MAX_SEND_LEN];     //´®¿Ú3·¢ËÍ»º´æ
-extern unsigned char  USART1_RX_BUF[66];											//´®¿Ú1 DMA»º´æÇø
-/********************************´«¸ĞÆ÷ãĞÖµ******************************************************************/
-extern const unsigned short int  basic_sensorThreshold[NUM_OF_SENSOR]; //´«¸ĞÆ÷ãĞÖµ
-extern const  u16  brige_sensorThreshold[NUM_OF_SENSOR];//¹ıÇÅãĞÖµ
+extern s16	hall_L_counter;	//å‚¨å­˜ç¼–ç å™¨è®¡æ•°å€¼ï¼Œå¯¹åº”TIM2è®¡æ•°å€¼
+extern s16	hall_R_counter;//å¯¹åº”TIM3è®¡æ•°å€¼
+extern unsigned short glsensor_ad_value[NUM_OF_SENSOR];       //ä¼ æ„Ÿå™¨æ¨¡æ‹Ÿé‡æ•°ç»„
+extern unsigned short glsensor_dig_value;									    //ä¼ æ„Ÿå™¨æ•°å­—é‡æ•°ç»„
+extern unsigned char 	USART3_TX_BUF[USART3_MAX_SEND_LEN];     //ä¸²å£3å‘é€ç¼“å­˜
+extern unsigned char  USART1_RX_BUF[66];											//ä¸²å£1 DMAç¼“å­˜åŒº
+/********************************ä¼ æ„Ÿå™¨é˜ˆå€¼******************************************************************/
+extern const unsigned short int  basic_sensorThreshold[NUM_OF_SENSOR]; //ä¼ æ„Ÿå™¨é˜ˆå€¼
+extern const  u16  brige_sensorThreshold[NUM_OF_SENSOR];//è¿‡æ¡¥é˜ˆå€¼
 
-/*******************************³£Á¿±í*******************************************************************/
-extern const map_linkInforTypeDef mapInformation[][NODEFORKNUM]; //µØÍ¼ĞÅÏ¢Êı×Ö»¯±í
-extern const rankTypeDef rankInformation_FL[22];                   //Ñ²Ïß·Ö¼¶±í
+/*******************************å¸¸é‡è¡¨*******************************************************************/
+extern const map_linkInforTypeDef mapInformation[][NODEFORKNUM]; //åœ°å›¾ä¿¡æ¯æ•°å­—åŒ–è¡¨
+extern const rankTypeDef rankInformation_FL[22];                   //å·¡çº¿åˆ†çº§è¡¨
 
 extern float glPitchbuff[2];
 extern float gldif_Pitch;
 extern u8 mpu6050_flag;
-extern u8 U_Dswitch;                                //ÉÏÏÂÌ¨¿ØÖÆ¿ª¹Ø 1´ú±íÉÏÌ¨£¬2´ú±íÏÂÌ¨
-extern float gldYaw;																//´¢´æÆ«º½½ÇPIDÊä³ö
-extern float glPitch,glRoll,glYaw;							  //Å·À­½Ç
-extern float glsetYaw;																		//´¢´æÉè¶¨µÄÆ«º½½Ç
-extern int gldSpeed;															//´¢´æËÙ¶ÈPIDÊä³ö
+extern u8 U_Dswitch;                                //ä¸Šä¸‹å°æ§åˆ¶å¼€å…³ 1ä»£è¡¨ä¸Šå°ï¼Œ2ä»£è¡¨ä¸‹å°
+extern float gldYaw;																//å‚¨å­˜åèˆªè§’PIDè¾“å‡º
+extern float glPitch,glRoll,glYaw;							  //æ¬§æ‹‰è§’
+extern float glsetYaw;																		//å‚¨å­˜è®¾å®šçš„åèˆªè§’
+extern int gldSpeed;															//å‚¨å­˜é€Ÿåº¦PIDè¾“å‡º
 extern float angle_read_temp[5];
 extern float angle_read;
-extern u8 findLineFlag;														//Ñ²Ïß·½·¨³õÊ¼»¯±êÖ¾Î»
-extern u8 rotAngleFlag;                         //Ğı×ª·½·¨³õÊ¼»¯±êÖ¾Î»
+extern u8 findLineFlag;														//å·¡çº¿æ–¹æ³•åˆå§‹åŒ–æ ‡å¿—ä½
+extern u8 rotAngleFlag;                         //æ—‹è½¬æ–¹æ³•åˆå§‹åŒ–æ ‡å¿—ä½
 
-extern u8 key0_Flag;																//°´¼ü0±êÖ¾Î»
-extern u16 gl_time;														 		 //¶¨Ê±Æ÷3±êÖ¾
-extern u8 runTimes;																//¼ÇÂ¼±¼ÅÜ´ÎÊı
-extern float angle_read;			//¼ÇÂ¼µÚÒ»¸öÇÌ°å×ªÍäµÄ½Ç¶È
-extern float angle_read_back;		//¼ÇÂ¼µÚ¶ş¸öÇÌ°å×ªÍäµÄ½Ç¶È
+extern u8 key0_Flag;																//æŒ‰é”®0æ ‡å¿—ä½
+extern u16 gl_time;														 		 //å®šæ—¶å™¨3æ ‡å¿—
+extern u8 runTimes;																//è®°å½•å¥”è·‘æ¬¡æ•°
+extern float angle_read;			//è®°å½•ç¬¬ä¸€ä¸ªç¿˜æ¿è½¬å¼¯çš„è§’åº¦
+extern float angle_read_back;		//è®°å½•ç¬¬äºŒä¸ªç¿˜æ¿è½¬å¼¯çš„è§’åº¦
 extern float glsensor_angle;
 extern  u8 angle_flag;
-/********************************Âß¼­²ã¿ØÖÆÆ÷**************************************************/
-extern PIDTypeDef glsensorPID;										//¶¨ÒåÒ»¸ö´«¸ĞÆ÷PIDµ÷½ÚÆ÷
-extern PIDTypeDef glrotAnglePID;									//¶¨ÒåÒ»¸ö×ª½ÇPIDµ÷½ÚÆ÷
-extern motorSpeedTypeDef glmotorSpeed;				  	//¶¨ÒåÒ»¸öËÙ¶È¼ÇÂ¼Æ÷
-//extern rankTypeDef glrankInformation[50];				//¶¨ÒåÒ»¸ö·Ö¼¶±í±äÁ¿ 
-extern controlCenterTypeDef glHello_control;			//¶¨ÒåÒ»¸ö¿ØÖÆÌ¨
-extern runStateTypeDef		glrunState;							//¶¨ÒåÒ»¸öÔËĞĞ×´Ì¬¼ÇÂ¼Æ÷
+/********************************é€»è¾‘å±‚æ§åˆ¶å™¨**************************************************/
+extern PIDTypeDef glsensorPID;										//å®šä¹‰ä¸€ä¸ªä¼ æ„Ÿå™¨PIDè°ƒèŠ‚å™¨
+extern PIDTypeDef glrotAnglePID;									//å®šä¹‰ä¸€ä¸ªè½¬è§’PIDè°ƒèŠ‚å™¨
+extern motorSpeedTypeDef glmotorSpeed;				  	//å®šä¹‰ä¸€ä¸ªé€Ÿåº¦è®°å½•å™¨
+//extern rankTypeDef glrankInformation[50];				//å®šä¹‰ä¸€ä¸ªåˆ†çº§è¡¨å˜é‡ 
+extern controlCenterTypeDef glHello_control;			//å®šä¹‰ä¸€ä¸ªæ§åˆ¶å°
+extern runStateTypeDef		glrunState;							//å®šä¹‰ä¸€ä¸ªè¿è¡ŒçŠ¶æ€è®°å½•å™¨
 
 void Fun_game(void);															//
 void Fun_SecondGameMethod1(void);
 void Fun_SecondGameMethod2(void);
-extern const u8  runMethodTable[][100];						//²»¹ıÃÅ±¼ÅÜÂ·Ïß±í¸ñ
+extern const u8  runMethodTable[][100];						//ä¸è¿‡é—¨å¥”è·‘è·¯çº¿è¡¨æ ¼
 extern const u8  runMethodTableDoor[][100];
 extern const u8  runMethodTableDoorAuto[][100]; 
 
-extern const u8  runMethodTableDebug[][100];						//ËùÓĞÂ·Ïßµ÷ÊÔ±í¸ñ
+extern const u8  runMethodTableDebug[][100];						//æ‰€æœ‰è·¯çº¿è°ƒè¯•è¡¨æ ¼
 extern u8 runMethodNum;
 extern u8 runMethodNumDebug;
-extern u8 runMethodNumDoor;                       //ÓÃÓÚ¼ÇÂ¼39ÃÅ¿ªµÄ±¼ÅÜÌõÊı
-extern u8 DoorFlag;                         //ÓÃÓÚµ±ÃÅ¹ØÇĞ»»Â·ÏßµÄ´ÎÊı£¬¼´×Ô¶¯ÇĞ»»Â·Ïß±êÖ¾Î»   
-extern u8 DoorFlag_2;                               //Á½´ÎÑ¡Ôñ¹ıÃÅ±êÖ¾Î»£¬ÎªÁËÈÃµÚ¶şÂÖ±¼ÅÜ²»ÔÚÑ°ÕÒÄÄ¸öÃÅÊÇ¿ªµÄ
-extern u8 runMethod[100];													//´¢´æµÚÒ»´Î±¼ÅÜÂ·Ïß
-extern u8 runMethod_2[100];                       //´¢´æµÚ¶ş´Î±¼ÅÜÂ·Ïß
+extern u8 runMethodNumDoor;                       //ç”¨äºè®°å½•39é—¨å¼€çš„å¥”è·‘æ¡æ•°
+extern u8 DoorFlag;                         //ç”¨äºå½“é—¨å…³åˆ‡æ¢è·¯çº¿çš„æ¬¡æ•°ï¼Œå³è‡ªåŠ¨åˆ‡æ¢è·¯çº¿æ ‡å¿—ä½   
+extern u8 DoorFlag_2;                               //ä¸¤æ¬¡é€‰æ‹©è¿‡é—¨æ ‡å¿—ä½ï¼Œä¸ºäº†è®©ç¬¬äºŒè½®å¥”è·‘ä¸åœ¨å¯»æ‰¾å“ªä¸ªé—¨æ˜¯å¼€çš„
+extern u8 runMethod[100];													//å‚¨å­˜ç¬¬ä¸€æ¬¡å¥”è·‘è·¯çº¿
+extern u8 runMethod_2[100];                       //å‚¨å­˜ç¬¬äºŒæ¬¡å¥”è·‘è·¯çº¿
 
-extern u8 pes_L;																		//×ó±ß¹âµç´«¸ĞÆ÷×´Ì¬
-extern u8 pes_R;																		//ÓÒ±ß¹âµç´«¸ĞÆ÷×´Ì¬
+extern u8 pes_L;																		//å·¦è¾¹å…‰ç”µä¼ æ„Ÿå™¨çŠ¶æ€
+extern u8 pes_R;																		//å³è¾¹å…‰ç”µä¼ æ„Ÿå™¨çŠ¶æ€
 
-extern u8 SecondGameNum1;														//Ò»¼üÇĞ»»µÚ¶ş±éÂ·Ïß1£¨±£ÊØÂ·Ïß£©
-extern u8 SecondGameNum2;														//Ò»¼üÇĞ»»µÚ¶ş±éÂ·Ïß2£¨¸ß·ÖÂ·Ïß£©
-//extern u8 DangerFlag;                         //Î£ÏÕ±êÖ¾Î»
+extern u8 SecondGameNum1;														//ä¸€é”®åˆ‡æ¢ç¬¬äºŒéè·¯çº¿1ï¼ˆä¿å®ˆè·¯çº¿ï¼‰
+extern u8 SecondGameNum2;														//ä¸€é”®åˆ‡æ¢ç¬¬äºŒéè·¯çº¿2ï¼ˆé«˜åˆ†è·¯çº¿ï¼‰
+//extern u8 DangerFlag;                         //å±é™©æ ‡å¿—ä½
 
 
 
