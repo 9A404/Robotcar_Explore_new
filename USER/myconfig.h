@@ -34,28 +34,28 @@
 //#define _FINDLINE_DEBUG_//调试慢速度
 #define _NEW_MPU6050_//新版陀螺仪
 
-//加速时间
+////加速时间
 
-#define Door_Time 		120
-#define Door_Time_2 	100
+//#define Door_Time 		120
+//#define Door_Time_2 	100
 
-#define S_TIME_6_8 		80
-#define S_TIME_8_6 		80
-#define S_TIME_6_7 		70
-#define S_TIME_7_12 	280
-#define S_TIME_10_11 	60
-#define S_TIME_11_10 	45
-#define S_TIME_10_12 	90
-#define S_TIME_36_37 	50
-#define S_TIME_38_37 	100
-#define S_TIME_14_37 	160
-#define S_TIME_44_37 	250
-#define S_TIME_17_37 	280
-#define S_TIME_15_37 	120
-#define S_TIME_36_17 	200
-#define S_TIME_14_44 	110
-#define S_TIME_9_30 	90
-#define S_TIME_39_30 	50
+//#define S_TIME_6_8 		80
+//#define S_TIME_8_6 		80
+//#define S_TIME_6_7 		70
+//#define S_TIME_7_12 	280
+//#define S_TIME_10_11 	60
+//#define S_TIME_11_10 	45
+//#define S_TIME_10_12 	90
+//#define S_TIME_36_37 	50
+//#define S_TIME_38_37 	100
+//#define S_TIME_14_37 	160
+//#define S_TIME_44_37 	250
+//#define S_TIME_17_37 	280
+//#define S_TIME_15_37 	120
+//#define S_TIME_36_17 	200
+//#define S_TIME_14_44 	110
+//#define S_TIME_9_30 	90
+//#define S_TIME_39_30 	50
 
 #define max(a,b)			(a>b ? a:b)
 #define min(a,b)			(a<b ? a:b)

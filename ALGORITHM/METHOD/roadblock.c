@@ -200,7 +200,7 @@ u8 BlockHandleMethod_DOOR(void)
 		flag=0;
 		return 1;
 	}
-	if(1==flag && gl_time>Door_Time)
+	if(1==flag && gl_time>120)
 	{
 		Time7(STOP);
 		gl_time = 0;
