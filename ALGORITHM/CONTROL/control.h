@@ -31,10 +31,10 @@ typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,
 							PARK_default,PARK_pesL,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,	\
 							PARK_PesPlatform,PARK_Door,PARK_start,PARK_pesR_45,PARK_pesL_45,PARK_pesR_No,PARK_pesL_No,PARK_pesL_back,PARK_pesR_back}carPark;
 
-/*车头旋转角度*/
-typedef enum {HR_120_F,HR_135_F,HL_180_F,HL_185,HL_180,HL_145,HL_135,HL_110,HL_120,HL_105,HL_90,	\
+/*车头旋转方法*/
+typedef enum {HR,HL,HR_F,HL_F,HR_120_F,HR_135_F,HL_180_F,HL_185,HL_180,HL_145,HL_135,HL_110,HL_120,HL_105,HL_90,	\
 							HL_80,HL_60,HL_45,HL_35,HN_Rotate,HR_35,HR_45,HR_60,HR_80,HR_90,HR_110,HR_120,HR_135,	\
-							HR_145,HR_150,HR_160,HR_170,HR_180,HR_180_F,rot_LFL,rot_RFL,rot_UL,rot_UR,Sensor_L90,Sensor_R90}carRotAngle;
+							HR_145,HR_150,HR_160,HR_170,HR_180,HR_180_F,rot_LFL,rot_RFL,rot_UL,rot_UR,Sensor_L90,Sensor_R90}carRotWays;
 
 /*状态信号*/
 typedef enum {NTBE,EIC,STANDBY}updataState;		//需要执行 执行完成 待命
@@ -51,8 +51,8 @@ typedef	struct{
 	u16 speedTime;						//加速时间
 	seekNodeWay   seekways;					//找点方法
 	carPark  			parkways;					//停车方法
-	carRotAngle 	rotateAngle;			//当前车头位置基础上再旋转角度
-	
+	carRotWays 	rotateWays;			//当前车头位置基础上再旋转角度
+	float rotAngle;
 }linkInforTypeDef;
 
 /*对地图路段信息进行记录*/
@@ -66,8 +66,8 @@ typedef	struct{
 	u16 map_speedTime;						//地图加速时间
 	seekNodeWay   map_seekways;					//地图找点方法
 	carPark  			map_parkways;					//地图停车方法
-	carRotAngle 	map_rotateAngle;			//地图车头旋转方向
-	
+	carRotWays 	map_rotateWays;			//地图车头旋转方向
+	u8 map_rotAngle;
 }map_linkInforTypeDef;
 
 

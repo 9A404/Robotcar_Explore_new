@@ -50,7 +50,8 @@ static void	linkInformUpdate(controlCenterTypeDef *controlp,const map_linkInforT
 						controlp->linkInform.speedTime = (*(p+controlp->curNode)+i)->map_speedTime;
 						controlp->linkInform.seekways = (*(p+controlp->curNode)+i)->map_seekways;
 						controlp->linkInform.parkways = (*(p+controlp->curNode)+i)->map_parkways;
-						controlp->linkInform.rotateAngle = (*(p+controlp->curNode)+i)->map_rotateAngle;
+						controlp->linkInform.rotateWays = (*(p+controlp->curNode)+i)->map_rotateWays;
+						controlp->linkInform.rotAngle = (*(p+controlp->curNode)+i)->map_rotAngle;
 						break;
 					}
 				}
@@ -1047,7 +1048,7 @@ void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState)
 {
 	if(runState->RotangleState == NTBE)
 	{
-		switch(controlp->linkInform.rotateAngle)
+		switch(controlp->linkInform.rotateWays)
 		{
 			case HN_Rotate:
 									if(1)
@@ -1059,6 +1060,43 @@ void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState)
 										u3_printf("HN_Rotate_EIC\r\n ");
 										#endif
 									}break;
+			case HR:	if(1 == rotAngle_Right(controlp->linkInform.rotAngle)) 
+									{
+										runState->RotangleState=EIC;
+										runState->F_LineState=EIC;
+										updataState_Reset(controlp,EIC);
+										#ifdef _DEBUG_U3_P
+										u3_printf("HR_45_EIC\r\n ");
+										#endif
+									}break;						
+			case HL :if(1 == rotAngle_Left(controlp->linkInform.rotAngle))
+									{
+										runState->RotangleState=EIC;
+										runState->F_LineState=EIC;
+										updataState_Reset(controlp,EIC);
+										#ifdef _DEBUG_U3_P
+										u3_printf("HL_35_EIC\r\n ");
+										#endif
+									}break;						
+			case HR_F:if(1 == rotAngle_Right_F(controlp->linkInform.rotAngle))
+									{
+										runState->RotangleState=EIC;
+										runState->F_LineState=EIC;
+										updataState_Reset(controlp,EIC);
+										#ifdef _DEBUG_U3_P
+										u3_printf("HR_180_EIC\r\n ");
+										#endif
+									}break;			
+			case HL_F:if(1 == rotAngle_Left_F(controlp->linkInform.rotAngle))
+									{
+										runState->RotangleState=EIC;
+										runState->F_LineState=EIC;
+										updataState_Reset(controlp,EIC);
+                                      
+										#ifdef _DEBUG_U3_P
+										u3_printf("HL_180_EIC\r\n ");
+										#endif
+									}break;										
 			case HR_35:	
 									if(1 == rotAngleMethod_R35())
 									{
