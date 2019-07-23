@@ -863,6 +863,22 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 											u3_printf("PARK_pesR_EIC\r\n");
 											#endif
 										}break;
+				case PARK_pesR_50:		
+										if(1 == parkMethod_pesR_Delay(50))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;						
+				case PARK_pesR_100:		
+										if(1 == parkMethod_pesR_Delay(100))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;						
 				case PARK_pesR_150:		
 										if(1 == parkMethod_pesR_Delay(150))
 										{
@@ -925,6 +941,30 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 											runState->carParkState = EIC;
 											#ifdef _DEBUG_U3_P
 											u3_printf("PARK_pesL_EIC\r\n");
+											#endif
+										}break;
+				case PARK_pesL_50:		
+										if(1 == parkMethod_pesL_Delay(50))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;
+				case PARK_pesL_100:		
+										if(1 == parkMethod_pesL_Delay(100))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;
+				case PARK_pesL_150:		
+										if(1 == parkMethod_pesL_Delay(150))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
 											#endif
 										}break;
 				case PARK_pesL_200:		
@@ -1041,6 +1081,7 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 				runState->carParkState=NTBE;	
 		}
 }
+
 
 /*
 

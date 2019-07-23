@@ -334,10 +334,10 @@ u8 BlockHandleMethod_down_27_26()
 		gl_time=0;
 		flag=6;
 	}
-	else if(6==flag && gl_time>120)
+	else if(6==flag && gl_time>110)
 	{
-		speedAdjustment(0,0);
-		delay_ms(500);
+//		speedAdjustment(0,0);
+//		delay_ms(500);
 		glHello_control.linkInform.findLineWays = save; 
 		findLineFlag = 0;
 		Time7(STOP); //打开定时器
@@ -432,7 +432,7 @@ float Monitor_ROLL()
 //		led0_flash();
 		flag=1;
 	}
-	else if(1==flag&&gl_time>90)         
+	else if(1==flag&&gl_time>100)         
 	{
 //		temp = Monitor_ROLL();
 //		if( temp > -10)               //如果车在跷跷板的另外一端则继续盲走后置flag=2
@@ -1145,7 +1145,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 		gl_time=0;
 		flag=2;
 	}
-	else if(2==flag&&gl_time>280)
+	else if(2==flag&&gl_time>240)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);

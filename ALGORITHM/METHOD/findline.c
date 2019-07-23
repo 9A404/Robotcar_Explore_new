@@ -22,7 +22,7 @@ void flMethod_default()
 			speedRec_Init(&glmotorSpeed,2150,2200); 																				//对初始速度进行设定
 		#else
 			PID_Init(&glsensorPID,20,3500,200,0,650);																					//对速度PID的参数进行初始化设置
-			speedRec_Init(&glmotorSpeed,2800,2900); 																				//对初始速度进行设定
+			speedRec_Init(&glmotorSpeed,2750,2800); 																				//对初始速度进行设定
 		#endif
 		
 		findLineFlag=1;
