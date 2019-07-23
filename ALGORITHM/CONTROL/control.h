@@ -27,8 +27,8 @@ typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,	\
 							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back}seekNodeWay;
 
 /*停车方法*/
-typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\
-							PARK_default,PARK_pesL,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,	\
+typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_150,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\
+							PARK_default,PARK_pesL,PARK_pesL_150,PARK_pesL_200,PARK_pesL_250,PARK_pesL_300,PARK_pesL_350,PARK_pesL_400,	\
 							PARK_PesPlatform,PARK_Door,PARK_start,PARK_pesR_45,PARK_pesL_45,PARK_pesR_No,PARK_pesL_No,PARK_pesL_back,PARK_pesR_back}carPark;
 
 /*车头旋转方法*/

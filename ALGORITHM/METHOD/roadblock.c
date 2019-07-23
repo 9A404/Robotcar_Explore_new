@@ -432,7 +432,7 @@ float Monitor_ROLL()
 //		led0_flash();
 		flag=1;
 	}
-	else if(1==flag&&gl_time>120)         
+	else if(1==flag&&gl_time>110)         
 	{
 //		temp = Monitor_ROLL();
 //		if( temp > -10)               //如果车在跷跷板的另外一端则继续盲走后置flag=2
@@ -484,6 +484,7 @@ float Monitor_ROLL()
 		else                         //否则返回1完成障碍任务
 		{
 			flag=0;
+			Turn_Flag=0;
 			return 1;
 		}
 	}
