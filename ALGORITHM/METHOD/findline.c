@@ -352,7 +352,7 @@ void flMethod_sword()
 	int rank;
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
-		PID_Init(&glsensorPID,20,1600,100,0,50);																					//对速度PID的参数进行初始化设置
+		PID_Init(&glsensorPID,20,1600,100,0,0);																					//对速度PID的参数进行初始化设置
 		speedRec_Init(&glmotorSpeed,1310,1400); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}

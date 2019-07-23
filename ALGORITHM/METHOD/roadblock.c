@@ -302,6 +302,7 @@ u8 BlockHandleMethod_down_27_26()
 	
 	if(flag == 0)
 	{
+		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
 		findLineFlag = 0;
 		flag = 1;
@@ -334,7 +335,7 @@ u8 BlockHandleMethod_down_27_26()
 		gl_time=0;
 		flag=6;
 	}
-	else if(6==flag && gl_time>200)
+	else if(6==flag && gl_time>150)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
