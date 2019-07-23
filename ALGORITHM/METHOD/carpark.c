@@ -121,8 +121,8 @@ u8 parkMethod_pesL()
 	}
 	if(0==PES_L && 1==flag)
 	{	
-    speedAdjustment(-1000,-1000); 
-		delay_ms(30);
+//    speedAdjustment(-1500,-1500); 
+//		delay_ms(30);
 		
 		flag = 0;
 			
@@ -157,8 +157,8 @@ u8 parkMethod_pesR()
 	}
 	if(0==PES_R && 1==flag)
 	{
-//		speedAdjustment(-2000,-2000); 
-//		delay_ms(15);
+		speedAdjustment(-2000,-2000); 
+		delay_ms(25);
 		flag = 0;
 		return 1 ;
 	}
@@ -288,7 +288,7 @@ u8 parkMethod_pesPlatform()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		glHello_control.linkInform.findLineWays = NFL;
+		glHello_control.linkInform.findLineWays = NFL_slow;
 		findLineFlag =0;
 		flag=1;
 	}
@@ -461,8 +461,8 @@ u8 parkMethod_pesL_noline()
 	if(0==PES_L && 1==flag)
 	{
 		/*停车*/
-		speedAdjustment(-3500,-3500); 
-		delay_ms(25);
+		speedAdjustment(-4000,-4000); 
+		delay_ms(30);
 //		speedAdjustment(0,0);
 		flag = 0;
 		return 1 ;

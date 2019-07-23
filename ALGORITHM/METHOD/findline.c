@@ -22,7 +22,7 @@ void flMethod_default()
 			speedRec_Init(&glmotorSpeed,2150,2200); 																				//对初始速度进行设定
 		#else
 			PID_Init(&glsensorPID,20,3500,200,0,650);																					//对速度PID的参数进行初始化设置
-			speedRec_Init(&glmotorSpeed,3400,3500); 																				//对初始速度进行设定
+			speedRec_Init(&glmotorSpeed,2800,2900); 																				//对初始速度进行设定
 		#endif
 		
 		findLineFlag=1;
@@ -249,7 +249,7 @@ void flMethod_brige_down()
 	int rank;
 	if(findLineFlag == 0)   //保证每个路段初始化一次
 	{
-		PID_Init(&glsensorPID,14,2500,400,0,0);																					//对速度PID的参数进行初始化设置
+		PID_Init(&glsensorPID,14,2500,200,0,0);																					//对速度PID的参数进行初始化设置
 		speedRec_Init(&glmotorSpeed,1500,1500); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
@@ -274,7 +274,7 @@ void flMethod_UpPlatform(void)
 	int rank;
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
-		PID_Init(&glsensorPID,20,2500,200,0,200);																					//对速度PID的参数进行初始化设置
+		PID_Init(&glsensorPID,20,2500,150,0,200);																					//对速度PID的参数进行初始化设置
 		speedRec_Init(&glmotorSpeed,2320,2400); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
@@ -353,8 +353,8 @@ void flMethod_sword()
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
 
-		PID_Init(&glsensorPID,20,1600,100,0,50);																					//对速度PID的参数进行初始化设置
-		speedRec_Init(&glmotorSpeed,1310,1400); 																				//对初始速度进行设定
+		PID_Init(&glsensorPID,20,1600,120,0,0);																					//对速度PID的参数进行初始化设置
+		speedRec_Init(&glmotorSpeed,1340,1400); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
 	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
@@ -487,8 +487,8 @@ void flMethod_right()
 	int rank;
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
-		PID_Init(&glsensorPID,20,3500,220,0,0);																					//对速度PID的参数进行初始化设置
-		speedRec_Init(&glmotorSpeed,2180,1000); 																				//对初始速度进行设定2200+200
+		PID_Init(&glsensorPID,20,4000,120,0,0);																					//对速度PID的参数进行初始化设置
+		speedRec_Init(&glmotorSpeed,2080,1200); 																				//对初始速度进行设定2200+200
 		findLineFlag=1;
 	}
 	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量

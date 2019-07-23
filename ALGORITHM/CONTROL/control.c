@@ -863,6 +863,14 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 											u3_printf("PARK_pesR_EIC\r\n");
 											#endif
 										}break;
+				case PARK_pesR_150:		
+										if(1 == parkMethod_pesR_Delay(150))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;
 				case PARK_pesR_200:		
 										if(1 == parkMethod_pesR_Delay(200))
 										{

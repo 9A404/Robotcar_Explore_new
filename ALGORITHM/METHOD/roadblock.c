@@ -144,8 +144,7 @@ u8 BlockHandleMethod_Brige()
 	}
 	if(2==flag && 1==identifyCrossingBrige_Top())
 	{
-		glHello_control.linkInform.findLineWays = FL_brigedown
-		;
+		glHello_control.linkInform.findLineWays = FL_brigedown;
 	  findLineFlag = 0;
 		flag=3;
 	}
@@ -302,6 +301,7 @@ u8 BlockHandleMethod_down_27_26()
 	
 	if(flag == 0)
 	{
+		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
 		findLineFlag = 0;
 		flag = 1;
@@ -334,10 +334,10 @@ u8 BlockHandleMethod_down_27_26()
 		gl_time=0;
 		flag=6;
 	}
-	else if(6==flag && gl_time>200)
+	else if(6==flag && gl_time>120)
 	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
+		speedAdjustment(0,0);
+		delay_ms(500);
 		glHello_control.linkInform.findLineWays = save; 
 		findLineFlag = 0;
 		Time7(STOP); //打开定时器
@@ -432,7 +432,7 @@ float Monitor_ROLL()
 //		led0_flash();
 		flag=1;
 	}
-	else if(1==flag&&gl_time>80)         
+	else if(1==flag&&gl_time>90)         
 	{
 //		temp = Monitor_ROLL();
 //		if( temp > -10)               //如果车在跷跷板的另外一端则继续盲走后置flag=2
