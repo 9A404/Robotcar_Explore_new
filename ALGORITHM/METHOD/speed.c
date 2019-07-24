@@ -92,6 +92,8 @@ u8 Speed_commonMethod(u16 time){
 	else if(2==flag && gl_time > time)
 	{
 		Time7(STOP);
+//		speedAdjustment(0,0);
+//		delay_ms(500);
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays = FL_default;
 		findLineFlag = 0;

@@ -288,7 +288,7 @@ u8 parkMethod_pesPlatform()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		glHello_control.linkInform.findLineWays = NFL_slow;
+		glHello_control.linkInform.findLineWays = NFL;
 		findLineFlag =0;
 		flag=1;
 	}
