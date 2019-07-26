@@ -334,7 +334,7 @@ u8 BlockHandleMethod_down_27_26()
 		gl_time=0;
 		flag=6;
 	}
-	else if(6==flag && gl_time>110)
+	else if(6==flag && gl_time>120)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
@@ -1145,7 +1145,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 		gl_time=0;
 		flag=2;
 	}
-	else if(2==flag&&gl_time>240)
+	else if(2==flag&&gl_time>290)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
