@@ -10,13 +10,13 @@ extern u8 keyFlag;
 
 typedef struct{
 	
-	u8 curIndex;				// µ±Ç°½çÃæË÷Òı
-	u8 downIndex;				// ÏòÏÂ°´¼üĞèÒªÌø×ªµÄË÷Òı
-	u8 upIndex;					// ÏòÉÏ°´¼üĞèÒªÌø×ªµÄË÷Òı
-	u8 enterIndex;			// È·ÈÏ°´¼üĞèÒªÌø×ªµÄË÷Òı
-	u8 escIndex;				// ·µ»Ø°´¼üĞèÒªÌø×ªµÄË÷Òı
-//	excState state;     //Ö´ĞĞ×´Ì¬ 
-	void (*function)(); // µ±Ç°Ë÷ÒıÖ´ĞĞº¯ÊıµÄÈë¿ÚµØÖ·
+	u8 curIndex;				// å½“å‰ç•Œé¢ç´¢å¼•
+	u8 downIndex;				// å‘ä¸‹æŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+	u8 upIndex;					// å‘ä¸ŠæŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+	u8 enterIndex;			// ç¡®è®¤æŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+	u8 escIndex;				// è¿”å›æŒ‰é”®éœ€è¦è·³è½¬çš„ç´¢å¼•
+//	excState state;     //æ‰§è¡ŒçŠ¶æ€ 
+	void (*function)(); // å½“å‰ç´¢å¼•æ‰§è¡Œå‡½æ•°çš„å…¥å£åœ°å€
 		
 }myGUIIndexTypeDef;
 
@@ -27,7 +27,6 @@ void displayControl(controlCenterTypeDef *controlp);
 
 
 #endif
-
 
 
 

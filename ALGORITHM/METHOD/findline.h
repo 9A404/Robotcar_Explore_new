@@ -3,28 +3,34 @@
 #include "sys.h"
 #include "myconfig.h"
 
-void flMethod_default(void);    //Ä¬ÈÏÑ²Ïß·½·¨   3300
-void flMethod_middle(void);    //ÖĞËÙÑ²Ïß·½·¨    4500
-void flMethod_brige(void);			//¹ıÇÅÑ²Ïß
-void flMethod_brige_up(void);   //ÉÏÇÅĞ±ÆÂÊ±µÄÑ²Ïß·½·¨
-void flMethod_brige_down(void); //ÉÏÇÅĞ±ÆÂÊ±µÄÑ²Ïß·½·¨
-void flMethod_slow(void);				//ÂıËÙÑ²Ïß
-void flMethod_slowest(void);				//ÂıËÙÑ²Ïß
-void flMethod_UpPlatform(void);//ÉÏÆ½Ì¨Ñ²Ïß
-void flMethod_DownPlatform(void);//ÏÂÆ½Ì¨Ñ²Ïß
-void flMethod_quick(void);      //¿ìËÙÑ²Ïß        5500
-void flMethod_stop(void);				//Í£³µÑ²Ïß
-void flMethod_quickest(void);   //³¬¿ìËÙÑ²Ïß       6800
-void flMethod_upPeak(void);     //ÉÏÖé·åÑ²Ïß
-void flMethod_downPeak(void);   //ÏÂÖé·åÑ²Ïß
-void flMethod_left(void);       //Æ«×óÑ²Ïß
-void flMethod_right(void);      //Æ«ÓÒÑ²Ïß
-void flMethod_node(void);      //Ô²±ßÑ²Ïß·½·¨
-void flMethod_43_44(void);      //Ô²±ßÑ²Ïß·½·¨
-void flMethod_16_44(void);      //Ô²±ßÑ²Ïß·½·¨
-void flMethod_circular(void);      //Ô²±ßÑ²Ïß·½·¨
-void flMethod_NFL(void);        //Ñ­½Ç¶È·½·¨
-void flMethod_NFL_slow(void);        //Ñ­½Ç¶È·½·¨
+void flMethod_default(void);    //é»˜è®¤å·¡çº¿æ–¹æ³•   3300
+void flMethod_middle(void);    //ä¸­é€Ÿå·¡çº¿æ–¹æ³•    4500
+void flMethod_brige(void);			//è¿‡æ¡¥å·¡çº¿
+void flMethod_brige_up(void);   //ä¸Šæ¡¥æ–œå¡æ—¶çš„å·¡çº¿æ–¹æ³•
+void flMethod_brige_down(void); //ä¸Šæ¡¥æ–œå¡æ—¶çš„å·¡çº¿æ–¹æ³•
+void flMethod_slow(void);				//æ…¢é€Ÿå·¡çº¿
+void flMethod_slowest(void);				//æ…¢é€Ÿå·¡çº¿
+void flMethod_UpPlatform(void);//ä¸Šå¹³å°å·¡çº¿
+void flMethod_DownPlatform(void);//ä¸‹å¹³å°å·¡çº¿
+void flMethod_quick(void);      //å¿«é€Ÿå·¡çº¿        5500
+void flMethod_stop(void);				//åœè½¦å·¡çº¿
+void flMethod_quickest(void);   //è¶…å¿«é€Ÿå·¡çº¿       6800
+void flMethod_upPeak(void);     //ä¸Šç å³°å·¡çº¿
+void flMethod_downPeak(void);   //ä¸‹ç å³°å·¡çº¿
+void flMethod_left(void);       //åå·¦å·¡çº¿
+void flMethod_right(void);      //åå³å·¡çº¿
+void flMethod_node(void);      //åœ†è¾¹å·¡çº¿æ–¹æ³•
+void flMethod_43_44(void);      //åœ†è¾¹å·¡çº¿æ–¹æ³•
+void flMethod_16_44(void);      //åœ†è¾¹å·¡çº¿æ–¹æ³•
+void flMethod_circular(void);      //åœ†è¾¹å·¡çº¿æ–¹æ³•
+void flMethod_NFL(void);        //å¾ªè§’åº¦æ–¹æ³•
+void flMethod_NFL_slow(void);        //å¾ªè§’åº¦æ–¹æ³•
+void flMethod_Encoder(void);
+void No_flMethod(void);
+void No_flMethod_Slow(void);
+void No_flMethod_Back(void);
+void flMethod_sword(void);
+void flMethod_sword_run(void);
 #endif
 
 

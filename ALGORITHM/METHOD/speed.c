@@ -1,18 +1,18 @@
 #include "speed.h"
 #include "common_time.h"
 /*
-	*¼ÓËÙÈÎÎñ·½·¨¼¯ºÏ
-	*×÷Õß£º@Ô¬è÷´Ï
+	*åŠ é€Ÿä»»åŠ¡æ–¹æ³•é›†åˆ
+	*ä½œè€…ï¼š@è¢æ¢“èª
 */
 
 /*
 
-* º¯Êý½éÉÜ£ºÏÂÌ¨¼ÓËÙ·½·¨
-* ÊäÈë²ÎÊý£º¼ÓËÙÊ±¼ätime
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º1(¼ÓËÙÍê³É)0£¨¼ÓËÙ»¹Ã»Íê³É£©
-* ÆäËû	£º
-* ×÷Õß    £º@Ô¬è÷´Ï
+* å‡½æ•°ä»‹ç»ï¼šä¸‹å°åŠ é€Ÿæ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šåŠ é€Ÿæ—¶é—´time
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š1(åŠ é€Ÿå®Œæˆ)0ï¼ˆåŠ é€Ÿè¿˜æ²¡å®Œæˆï¼‰
+* å…¶ä»–	ï¼š
+* ä½œè€…    ï¼š@è¢æ¢“èª
 
 */
 u8 Speed_downMethod(u16 time){
@@ -40,22 +40,22 @@ u8 Speed_downMethod(u16 time){
 	}
 	else if(5==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=6;
 	}
 	else if(6==flag && gl_time > 20)
 	{
 		gl_time=0;
-		glHello_control.linkInform.findLineWays = FL_quickest;  //ÇÐ»»µ½³¬¸ßËÙÑ²Ïß
+		glHello_control.linkInform.findLineWays = FL_quickest;  //åˆ‡æ¢åˆ°è¶…é«˜é€Ÿå·¡çº¿
 		findLineFlag = 0;
 		flag = 7;
 	}	
 	else if(7 == flag && gl_time > time)
 	{	
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
-		glHello_control.linkInform.findLineWays = save;  //ÇÐ»»µ½È±Ê¡Ñ²Ïß
+		glHello_control.linkInform.findLineWays = save;  //åˆ‡æ¢åˆ°ç¼ºçœå·¡çº¿
 		findLineFlag = 0;
 		flag = 0;
 		return 1;
@@ -66,19 +66,19 @@ u8 Speed_downMethod(u16 time){
 
 /*
 
-* º¯Êý½éÉÜ£ºÆÕÍ¨¼ÓËÙ·½·¨
-* ÊäÈë²ÎÊý£º¼ÓËÙÊ±¼ätime
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º1(¼ÓËÙÍê³É)0£¨¼ÓËÙ»¹Ã»Íê³É£©
-* ÆäËû	£º
-* ×÷Õß    £º@Ô¬è÷´Ï
+* å‡½æ•°ä»‹ç»ï¼šæ™®é€šåŠ é€Ÿæ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šåŠ é€Ÿæ—¶é—´time
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š1(åŠ é€Ÿå®Œæˆ)0ï¼ˆåŠ é€Ÿè¿˜æ²¡å®Œæˆï¼‰
+* å…¶ä»–	ï¼š
+* ä½œè€…    ï¼š@è¢æ¢“èª
 
 */
 u8 Speed_commonMethod(u16 time){
 	static u8 flag=0;
 	if(flag==0)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=1;
 	}
@@ -91,9 +91,11 @@ u8 Speed_commonMethod(u16 time){
 	}
 	else if(2==flag && gl_time > time)
 	{
-		Time3(STOP);
+		Time7(STOP);
+//		speedAdjustment(0,0);
+//		delay_ms(500);
 		gl_time = 0;
-		glHello_control.linkInform.findLineWays = FL_slow;
+		glHello_control.linkInform.findLineWays = FL_default;
 		findLineFlag = 0;
 		flag=0;
 		return 1;
@@ -103,12 +105,12 @@ u8 Speed_commonMethod(u16 time){
 
 /*
 
-* º¯Êý½éÉÜ£ºÓÃÓÚÕ¼ÓÃÊ±¼ä£¬´¦Àí¸´ÔÓ½Úµã
-* ÊäÈë²ÎÊý£ºÕ¼ÓÃÊ±¼ätime
-* Êä³ö²ÎÊý£º
-* ·µ»ØÖµ  £º1(Õ¼ÓÃÍê³É)0£¨Õ¼ÓÃ»¹Ã»Íê³É£©
-* ÆäËû	£º
-* ×÷Õß    £º@Ô¬è÷´Ï
+* å‡½æ•°ä»‹ç»ï¼šç”¨äºŽå ç”¨æ—¶é—´ï¼Œå¤„ç†å¤æ‚èŠ‚ç‚¹
+* è¾“å…¥å‚æ•°ï¼šå ç”¨æ—¶é—´time
+* è¾“å‡ºå‚æ•°ï¼š
+* è¿”å›žå€¼  ï¼š1(å ç”¨å®Œæˆ)0ï¼ˆå ç”¨è¿˜æ²¡å®Œæˆï¼‰
+* å…¶ä»–	ï¼š
+* ä½œè€…    ï¼š@è¢æ¢“èª
 
 */
 u8 Take_up_time(u16 time){
@@ -116,13 +118,13 @@ u8 Take_up_time(u16 time){
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
+		Time7(START); //æ‰“å¼€å®šæ—¶å™¨
 		gl_time=0;
 		flag=1;
 	}
 	if(gl_time > time)
 	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
+		Time7(STOP); //å…³é—­å®šæ—¶å™¨
 		gl_time = 0;
 		flag=0;
 		return 1;

@@ -3,15 +3,15 @@
 
 
 
-/************************************************ÇÅ***********************************************************/
+/************************************************æ¡¥***********************************************************/
 /*
 
-* º¯Êı½éÉÜ£ºÊ¶±ğÊÇ·ñÎªÈ«0
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÂ·ÕÏ£©0£¨Î´µ½´ïÂ·ÕÏ£©
-* ÆäËû		£º´«¸ĞÆ÷È«Îª0µÄÊ±ºò
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè¯†åˆ«æ˜¯å¦ä¸ºå…¨0
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾è·¯éšœï¼‰0ï¼ˆæœªåˆ°è¾¾è·¯éšœï¼‰
+* å…¶ä»–		ï¼šä¼ æ„Ÿå™¨å…¨ä¸º0çš„æ—¶å€™
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 identifyALL_Zero()
@@ -25,12 +25,12 @@ u8 identifyALL_Zero()
 
 /*
 
-* º¯Êı½éÉÜ£ºµ½ÇÅÍ·µ×²¿Ê¶±ğ·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÂ·ÕÏ£©0£¨Î´µ½´ïÂ·ÕÏ£©
-* ÆäËû		£º´«¸ĞÆ÷È«Îª0µÄÊ±ºò
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåˆ°æ¡¥å¤´åº•éƒ¨è¯†åˆ«æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾è·¯éšœï¼‰0ï¼ˆæœªåˆ°è¾¾è·¯éšœï¼‰
+* å…¶ä»–		ï¼šä¼ æ„Ÿå™¨å…¨ä¸º0çš„æ—¶å€™
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 identifyComingBrige_Bottom()
@@ -48,12 +48,12 @@ u8 identifyComingBrige_Bottom()
 
 /*
 
-* º¯Êı½éÉÜ£ºµ½ÇÅÍ·¶¥²¿Ê¶±ğ·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÂ·ÕÏ£©0£¨Î´µ½´ïÂ·ÕÏ£©
-* ÆäËû		£º´«¸ĞÆ÷È«Îª0µÄÊ±ºò
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåˆ°æ¡¥å¤´é¡¶éƒ¨è¯†åˆ«æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾è·¯éšœï¼‰0ï¼ˆæœªåˆ°è¾¾è·¯éšœï¼‰
+* å…¶ä»–		ï¼šä¼ æ„Ÿå™¨å…¨ä¸º0çš„æ—¶å€™
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 identifyComingBrige_Top()
@@ -72,12 +72,12 @@ u8 identifyComingBrige_Top()
 
 /*
 
-* º¯Êı½éÉÜ£ºµ½ÇÅÎ²¶¥²¿Ê¶±ğ·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÇÅÎ²£©0£¨Î´µ½´ïÇÅÎ²£©
-* ÆäËû		£º´«¸ĞÆ÷È«Îª1µÄÊ±ºò
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåˆ°æ¡¥å°¾é¡¶éƒ¨è¯†åˆ«æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾æ¡¥å°¾ï¼‰0ï¼ˆæœªåˆ°è¾¾æ¡¥å°¾ï¼‰
+* å…¶ä»–		ï¼šä¼ æ„Ÿå™¨å…¨ä¸º1çš„æ—¶å€™
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 identifyCrossingBrige_Top()
@@ -95,12 +95,12 @@ u8 identifyCrossingBrige_Top()
 }
 /*
 
-* º¯Êı½éÉÜ£ºµ½ÇÅÎ²µ×²¿²¿Ê¶±ğ·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÇÅÎ²£©0£¨Î´µ½´ïÇÅÎ²£©
-* ÆäËû		£º´«¸ĞÆ÷È«Îª1µÄÊ±ºò
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåˆ°æ¡¥å°¾åº•éƒ¨éƒ¨è¯†åˆ«æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾æ¡¥å°¾ï¼‰0ï¼ˆæœªåˆ°è¾¾æ¡¥å°¾ï¼‰
+* å…¶ä»–		ï¼šä¼ æ„Ÿå™¨å…¨ä¸º1çš„æ—¶å€™
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 
@@ -118,12 +118,12 @@ u8 identifyCrossingBrige_Bottom()
 }
 /*
 
-* º¯Êı½éÉÜ£ºÇÅÂ·ÕÏ´¦Àí·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º½«Ñ²Ïß·½·¨ÇĞ»»³É¹ıÇÅµÄÑ²Ïß
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ¡¥è·¯éšœå¤„ç†æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šå°†å·¡çº¿æ–¹æ³•åˆ‡æ¢æˆè¿‡æ¡¥çš„å·¡çº¿
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_Brige()
@@ -144,8 +144,7 @@ u8 BlockHandleMethod_Brige()
 	}
 	if(2==flag && 1==identifyCrossingBrige_Top())
 	{
-		glHello_control.linkInform.findLineWays = FL_brigedown
-		;
+		glHello_control.linkInform.findLineWays = FL_brigedown;
 	  findLineFlag = 0;
 		flag=3;
 	}
@@ -158,172 +157,141 @@ u8 BlockHandleMethod_Brige()
 	}
 	
 	return 0;
-//static findLine save;
-//	static u8 flag=0;
-//     if(0 == flag)
-//	 { 
-//		 save = glHello_control.linkInform.findLineWays;
-//		 Time3(START);
-//		 gl_time = 0;
-//      flag = 1;		 
-//	 }
-//	else if(1==flag && gl_time > 40)         //¦Ì?¡ä???¨ª¡¤¦Ì¡Á2?
-//	{   
-////		speedAdjustment(0,0);
-////		while(1);
-//	//	delay_ms(500);
-//		glHello_control.linkInform.findLineWays = FL_angle; 
-//		findLineFlag = 0;
-//		angle_flag = 0;
-//		flag = 2;
-//	}
-//	else if(2==flag && gl_time > 140 )          //?¨²??¨ª¡¤??¨¦?
-//	{
-//		
-////	k 
-//		glHello_control.linkInform.findLineWays = FL_brige; 
-//		findLineFlag = 0;
-//		flag=3;
-//	}
-//	else if(3==flag && gl_time > 255)          //?¨²??¨ª¡¤?£¤2?
-//	{
-////		speedAdjustment(0,0);
-////     	while(1);
-////		delay_ms(500);
-//		flag=4;
-//		Time3(STOP);
-//	}
-//	else if( 4 == flag )  
-//	{
-//     Time3(START);
-//	 gl_time = 0;
-//     glHello_control.linkInform.findLineWays = FL_angle;
-//	 findLineFlag = 0; 
-//     angle_flag = 0;
-//	 flag = 5; 
-//	}
-//  	//?¨²??¨¦?
-//	else if(5==flag && gl_time > 105)             //?¨²???2?£¤2?
-//	{
-////	    speedAdjustment(0,0);
-////     	while(1);
-//		glHello_control.linkInform.findLineWays = save;
-//	    findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//		
-//	}
-////	if(6==flag && 0==PES_Platform)  flag=6;
-////	if(6==flag && 1==PES_Platform)        //?¨²???2¦Ì¡Á2?
-////	{
-////		glHello_control.linkInform.findLineWays = save;
-////	  findLineFlag = 0;
-////		flag=0;
-////		return 1;
-////	}
-////	
-//	return 0;
 }
-/************************************************ÇÅ***********************************************************/
+/************************************************æ¡¥***********************************************************/
 
-/***************************************************ÃÅ********************************************************/
+/***************************************************é—¨********************************************************/
 /*
 
-* º¯Êı½éÉÜ£º¹ıÃÅ´¦Àíº¯Êı
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(ÃÅ¿ª»òÕß¸üĞÂÁËÏßÂ·)0£¨ÃÅ¹ØÇÒÃ»ÓĞ¸üĞÂÏßÂ·£©
-* ÆäËû		£º
-* ×÷Õß    £º@³Â
+* å‡½æ•°ä»‹ç»ï¼šè¿‡é—¨å¤„ç†å‡½æ•°ï¼ˆå¼€é—¨çŠ¶æ€ä¸éœ€è¦æ’ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(é—¨å¼€æˆ–è€…æ›´æ–°äº†çº¿è·¯)0ï¼ˆé—¨å…³ä¸”æ²¡æœ‰æ›´æ–°çº¿è·¯ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@é™ˆ
 
 */
 u8 BlockHandleMethod_DOOR(void)
 {
-	static u8 flag=0;     //ÃÅ¿ª±êÖ¾Î»  
+	static u8 flag=0;     
 
 	DoorFlag=1;
 	if(0==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=1;
 	}
 	if(1==flag && 0 == PES_H)
 	{
 		rotAngle_Right(180);
-		runMethodUpdate(runMethod,0,runMethodTableDoorAuto);   //39ÃÅ¹Ø±Õ½øĞĞµÚÒ»´Î¸üĞÂÂ·Ïß
-		DoorFlag_2=1;
-		Control_Init(&glHello_control,runMethod);     //³õÊ¼»¯¿ØÖÆÌ¨
-		runStateInit(&glrunState,&glHello_control);		//¸ù¾İ¿ØÖÆÌ¨ÆğÊ¼Â·¶Î³õÊ¼»¯ÔËĞĞ×´Ì¬
+		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto);   
+		if(1 == DoorFlag_2)
+		{
+			DoorFlag_2=2;
+		}
+		if(0 == DoorFlag_2)
+		{
+			DoorFlag_2=1;
+		}
+		Control_Init(&glHello_control,runMethod);     //åˆå§‹åŒ–æ§åˆ¶å°
+		runStateInit(&glrunState,&glHello_control);		//æ ¹æ®æ§åˆ¶å°èµ·å§‹è·¯æ®µåˆå§‹åŒ–è¿è¡ŒçŠ¶æ€
 		flag=0;
 		return 1;
 	}
 	if(1==flag && gl_time>Door_Time)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
-		led1_flash();
-		glHello_control.linkInform.findLineWays = FL_default;  //ÇĞ»»µ½È±Ê¡Ñ²Ïß
+//		led1_flash();
+		glHello_control.linkInform.findLineWays = FL_default;  //åˆ‡æ¢åˆ°ç¼ºçœå·¡çº¿
 		findLineFlag = 0;
 		flag=0;
 		return 1;
 	}
 	return 0;
 }
+
 /*
 
-* º¯Êı½éÉÜ£º¹ıÃÅ´¦Àíº¯Êı
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(ÃÅ¿ª»òÕß¸üĞÂÁËÏßÂ·)0£¨ÃÅ¹ØÇÒÃ»ÓĞ¸üĞÂÏßÂ·£©
-* ÆäËû		£º
-* ×÷Õß    £º@³Â
+* å‡½æ•°ä»‹ç»ï¼šè¿‡é—¨å¤„ç†å‡½æ•°ï¼ˆå¼€é—¨çŠ¶æ€éœ€è¦æ’ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(é—¨å¼€æˆ–è€…æ›´æ–°äº†çº¿è·¯)0ï¼ˆé—¨å…³ä¸”æ²¡æœ‰æ›´æ–°çº¿è·¯ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@panshao
 
 */
-u8 BlockHandleMethod_DOOR_2(void)
+u8 BlockHandleMethod_DOOR_Click(void)
 {
-	static u8 flag1=0;     //ÃÅ¿ª±êÖ¾Î»  
-
-	if(0==flag1)
+	static u8 flag =0;
+	DoorFlag = 1;
+	if(0==flag && 0 == PES_H)
 	{
-		Time3(START);
-		gl_time=0;
-		flag1=1;
-	}
-	if(1==flag1 && 0 == PES_H)
-	{
-		rotAngle_Right(180);
-		runMethodUpdate(runMethod,1,runMethodTableDoorAuto);  //40ÃÅ¹Ø±Õ½øĞĞµÚ¶ş´Î¸üĞÂÂ·Ïß
-		DoorFlag_2=2;
-		Control_Init(&glHello_control,runMethod);     //³õÊ¼»¯¿ØÖÆÌ¨
-		runStateInit(&glrunState,&glHello_control);		//¸ù¾İ¿ØÖÆÌ¨ÆğÊ¼Â·¶Î³õÊ¼»¯ÔËĞĞ×´Ì¬
-		flag1=0;
-		return 1;
-
-	}
-	if(1==flag1 && gl_time>Door_Time_2)
-	{
-		Time3(STOP);
-		gl_time = 0;
-		led1_flash();
-		glHello_control.linkInform.findLineWays = FL_default;  //ÇĞ»»µ½È±Ê¡Ñ²Ïß
+		glHello_control.linkInform.findLineWays = FL_stop;
 		findLineFlag = 0;
-		flag1=0;
+		flag = 1;
+	}
+	if(1==flag && 1==Collision)
+	{
+		speedAdjustment(-1500,-1500);
+		delay_ms(200);
+		speedAdjustment(0,0);
+		delay_ms(1000);
+//		Time7(START);
+//		gl_time = 0;
+		flag = 2;
+	}
+	if(2==flag && 0==PES_H)	//é—¨æœªè¢«æ’å¼€
+	{
+//		Time7(STOP);
+//		gl_time = 0;
+//		speedAdjustment(-1500,-1500);
+//		
+//		delay_ms(200);
+		rotAngle_Right(180);
+		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto); 
+		if(1 == DoorFlag_2)
+		{
+			DoorFlag_2=2;
+		}
+		if(0 == DoorFlag_2)
+		{
+			DoorFlag_2=1;
+		}
+		Control_Init(&glHello_control,runMethod);     //åˆå§‹åŒ–æ§åˆ¶å°
+		runStateInit(&glrunState,&glHello_control);		//æ ¹æ®æ§åˆ¶å°èµ·å§‹è·¯æ®µåˆå§‹åŒ–è¿è¡ŒçŠ¶æ€
+		flag=0;
+		return 1;
+	}
+	if(2==flag && 1==PES_H)	//é—¨è¢«æ’å¼€
+	{
+//		Time7(STOP);
+//		gl_time = 0;
+//		led1_flash();
+		glHello_control.linkInform.findLineWays = FL_default;  //åˆ‡æ¢åˆ°ç¼ºçœå·¡çº¿
+		findLineFlag = 0;
+		flag=0;
 		return 1;
 	}
 	return 0;
 }
-/***************************************************ÃÅ********************************************************/
 
-/**************************************************Æ½Ì¨********************************************************/
+
+
+
+
+/***************************************************é—¨********************************************************/
+
+/**************************************************å¹³å°********************************************************/
 /*
 
-* º¯Êı½éÉÜ£º´¦Àí7ºÅÆ½Ì¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Íê³É)0£¨Î´Íê³É£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä»27åˆ°26
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(å®Œæˆ)0ï¼ˆæœªå®Œæˆï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_down_27_26()
@@ -333,7 +301,9 @@ u8 BlockHandleMethod_down_27_26()
 	
 	if(flag == 0)
 	{
+		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag && 1==PES_Platform)
@@ -360,17 +330,17 @@ u8 BlockHandleMethod_down_27_26()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = FL_slow; 
 		findLineFlag = 0;
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
+		Time7(START); //æ‰“å¼€å®šæ—¶å™¨
 		gl_time=0;
 		flag=6;
 	}
-	else if(6==flag && gl_time>200)
+	else if(6==flag && gl_time>120)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = save; 
 		findLineFlag = 0;
-		Time3(STOP); //´ò¿ª¶¨Ê±Æ÷
+		Time7(STOP); //æ‰“å¼€å®šæ—¶å™¨
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -380,12 +350,12 @@ u8 BlockHandleMethod_down_27_26()
 }
 /*
 
-* º¯Êı½éÉÜ£º¼ì²âÊÇ·ñÍ¨¹ıĞ±ÆÂ£¨·­¹ö½Ç£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º·­¹ö½Ç
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ£€æµ‹æ˜¯å¦é€šè¿‡æ–œå¡ï¼ˆç¿»æ»šè§’ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šç¿»æ»šè§’
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 float Monitor_ROLL()
@@ -397,19 +367,19 @@ float Monitor_ROLL()
 		temp=glRoll;
 	#else
 		for(i=0;i<50;i++)
-			MPU6050_Pose();				//¸üĞÂÅ·À­½Ç
+			MPU6050_Pose();				//æ›´æ–°æ¬§æ‹‰è§’
 		temp=glPitch;
 	#endif
 	return temp;
 }
 /*
 
-* º¯Êı½éÉÜ:Â·ÕÏ¶Á½Ç¶È·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º½«Ñ²Ïß·½·¨ÇĞ»»³É¹ıÇÅµÄÑ²Ïß
-* ×÷Õß    £ºÄã²Â
+* å‡½æ•°ä»‹ç»:è·¯éšœè¯»è§’åº¦æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šå°†å·¡çº¿æ–¹æ³•åˆ‡æ¢æˆè¿‡æ¡¥çš„å·¡çº¿
+* ä½œè€…    ï¼šä½ çŒœ
 
 */
  u8 Angle_read()
@@ -417,18 +387,18 @@ float Monitor_ROLL()
   static u8 flag=0;
 	if(flag == 0)
 	{
-	  Time3(START);
+	  Time7(START);
 		gl_time = 0;
 		flag = 1;
 	}
 	else if(flag == 1 && gl_time>80)
 	{
-		Time3(STOP);
+		Time7(STOP);
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
-		angle_read = setYaw(glYaw,90);
-		angle_read_back = setYaw(glYaw,-75);		
+		angle_read = setYaw(glYaw,94);
+		angle_read_back = setYaw(glYaw,-78);		
 		flag = 0;  
 		return 1;
 	}
@@ -438,12 +408,12 @@ float Monitor_ROLL()
 
 /*
 
-* º¯Êı½éÉÜ£º¹ıõÎõÎ°å
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Íê³É)0£¨Î´Íê³É£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡è··è··æ¿
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(å®Œæˆ)0ï¼ˆæœªå®Œæˆï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—
 
 */
  u8 BlockHandleMethod_Seesaw()
@@ -451,10 +421,10 @@ float Monitor_ROLL()
 //	static findLine save;
 	static u8 flag=0,Turn_Flag=0;
 	float temp;
-	if(0==flag)                //ÔÚÕÒµãÈÎÎñÖĞ½«³µ°ÚÕıºóÑÓÊ±Ö±×ß
+	if(0==flag)                //åœ¨æ‰¾ç‚¹ä»»åŠ¡ä¸­å°†è½¦æ‘†æ­£åå»¶æ—¶ç›´èµ°
 	{	
 //		speedAdjustment(2450,2200);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		glHello_control.linkInform.findLineWays = FL_angle;
     angle_flag = 0; 		
@@ -465,7 +435,7 @@ float Monitor_ROLL()
 	else if(1==flag&&gl_time>100)         
 	{
 //		temp = Monitor_ROLL();
-//		if( temp > -10)               //Èç¹û³µÔÚõÎõÎ°åµÄÁíÍâÒ»¶ËÔò¼ÌĞøÃ¤×ßºóÖÃflag=2
+//		if( temp > -10)               //å¦‚æœè½¦åœ¨è··è··æ¿çš„å¦å¤–ä¸€ç«¯åˆ™ç»§ç»­ç›²èµ°åç½®flag=2
 //		{
 //			//flag++;
 //			// ("glPitch%0.2f\r\n",temp);
@@ -475,7 +445,7 @@ float Monitor_ROLL()
 //			//led_flash();
 //			flag=2;
 //		}
-//		else                         //Èç¹û³µ»¹Ã»ÓĞµ½Ôò¼ÌĞøÃ¤×ß
+//		else                         //å¦‚æœè½¦è¿˜æ²¡æœ‰åˆ°åˆ™ç»§ç»­ç›²èµ°
 //		{
 //			speedAdjustment(2000,2120);
 //		
@@ -487,7 +457,7 @@ float Monitor_ROLL()
 
 //			//u3_printf("glPitch%0.2f\r\n",glPitch);
 //		}
-		Time3(STOP);
+		Time7(STOP);
 		speedAdjustment(0,0);
 		delay_ms(500);	
 //		led0_flash();
@@ -497,23 +467,24 @@ float Monitor_ROLL()
 		findLineFlag = 0;
 		if(temp>-10)
 		{
-			speedAdjustment(2000,2000);
+			speedAdjustment(1690,1800);
 			flag=2;
 		}
 			
 		
 	}
-	else if(2 == flag)                //³µ×ÓÔÚõÎõÎ°åµÄÁíÍâÒ»¶ËÔòÏÈ¼ì²â´«¸ĞÆ÷ÓĞÃ»ÓĞÔÚ°×ÏßÉÏ
+	else if(2 == flag)                //è½¦å­åœ¨è··è··æ¿çš„å¦å¤–ä¸€ç«¯åˆ™å…ˆæ£€æµ‹ä¼ æ„Ÿå™¨æœ‰æ²¡æœ‰åœ¨ç™½çº¿ä¸Š
 	{
-		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿	
+		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡	
 		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<3) 
 		{
-			rotAngle_Left(20);             //Èç¹û²»ÔÚ°×ÏßÔò×ó×ª20¶È£¬´ó¶àÊıÇé¿öÏÂÊÇ³µ×ÓÆ«ÓÒ£¬¹Ê×ó×ª
+			rotAngle_Left(20);             //å¦‚æœä¸åœ¨ç™½çº¿åˆ™å·¦è½¬20åº¦ï¼Œå¤§å¤šæ•°æƒ…å†µä¸‹æ˜¯è½¦å­åå³ï¼Œæ•…å·¦è½¬
 			Turn_Flag++;
 		}
-		else                         //·ñÔò·µ»Ø1Íê³ÉÕÏ°­ÈÎÎñ
+		else                         //å¦åˆ™è¿”å›1å®Œæˆéšœç¢ä»»åŠ¡
 		{
 			flag=0;
+			Turn_Flag=0;
 			return 1;
 		}
 	}
@@ -522,12 +493,12 @@ float Monitor_ROLL()
 }
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÆ½Ì¨´¦Àí·½·¨£¨¹âµç¿ª¹Ø£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£ºÏÂÍêÆ½Ì¨²ÅÑ²Ïß
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹å¹³å°å¤„ç†æ–¹æ³•ï¼ˆå…‰ç”µå¼€å…³ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šä¸‹å®Œå¹³å°æ‰å·¡çº¿
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_Platform ()
@@ -539,6 +510,7 @@ u8 BlockHandleMethod_Platform ()
 	{
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag&&1==PES_Platform)
@@ -561,62 +533,40 @@ u8 BlockHandleMethod_Platform ()
 }
 
 
-u8  BlockHandleMethod_Platform_37_15 ()
-{
-		static findLine save;
-	static u8 flag=0;
-	
-	if(flag == 0)
-	{
-		save = glHello_control.linkInform.findLineWays;
-		glHello_control.linkInform.findLineWays =NFL;
-		flag = 1;
-	}
-	else if(1==flag&&1==PES_Platform)
-	{
-		glHello_control.linkInform.findLineWays = FL_DownPlatform; 
-		findLineFlag = 0;
-		flag=2;
-	}
-	else if(2==flag&&0==PES_Platform)  flag=3;
-	else if(3==flag&&1==PES_Platform)  flag=4;
-	else if(0==PES_Platform && 4==flag)
-	{
-		glHello_control.linkInform.findLineWays = save; 
-		findLineFlag = 0;
-		Time3(START);
-		gl_time=0;
-		flag=5;
-	}
-	else if(5 == flag && gl_time > 20)
-	{
-		flag = 6;
-		gl_time=0;
-		glHello_control.linkInform.findLineWays = FL_quickest;  //ÇĞ»»µ½³¬¸ßËÙÑ²Ïß
-		findLineFlag = 0;
-	}
-	else if(6 == flag && gl_time > 70)
-	{	
-		speedAdjustment(0,0);
-		delay_ms(500);
-		Time3(STOP);
-		flag = 0;
-		gl_time = 0;
-		glHello_control.linkInform.findLineWays = FL_default;  //ÇĞ»»µ½È±Ê¡Ñ²Ïß
-		findLineFlag = 0;
-		return 1;
-	}	
-		return 0;
 
-}
 /*
 
-* º¯Êı½éÉÜ£º¹ıÉ½Çğ·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£ºÎŞ
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡åˆ€å±±æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šæ— 
+* ä½œè€…    ï¼španshao
+
+*/
+u8 BlockHandleMethod_Sword ()
+{
+	if(calculateNum(glsensor_dig_value) == 0)
+	{
+		speedAdjustment(1310,2500);
+		delay_ms(300);
+		glHello_control.linkInform.findLineWays = FL_default;   
+			findLineFlag = 0;
+		return 1;
+	}
+		return 0;
+}
+
+
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šè¿‡å±±ä¸˜æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šæ— 
+* ä½œè€…    ï¼š@æ—
 
 */
 u8 BlockHandleMethod_Slope ()
@@ -628,23 +578,23 @@ u8 BlockHandleMethod_Slope ()
 		save=glHello_control.linkInform.findLineWays;
 		flag=1;
 	}
-	else if(1 == flag&&1 == PES_Platform)          //Ç°ÏÂ¹âµç¿ª¹Ø²»ÁÁ´ú±íµ½´ïÉ½Çğµ×²¿
+	else if(1 == flag&&1 == PES_Platform)          //å‰ä¸‹å…‰ç”µå¼€å…³ä¸äº®ä»£è¡¨åˆ°è¾¾å±±ä¸˜åº•éƒ¨
 	{
 			glHello_control.linkInform.findLineWays = FL_UpPlatform;   
 			findLineFlag = 0;
 			flag=2;	
 	}
-	else if(2==flag&&0==PES_Platform)         //Ç°ÏÂ¹âµç¿ª¹ØÁÁ´ú±íµ½´ïÉ½Çğ¶¥²¿
+	else if(2==flag&&0==PES_Platform)         //å‰ä¸‹å…‰ç”µå¼€å…³äº®ä»£è¡¨åˆ°è¾¾å±±ä¸˜é¡¶éƒ¨
 	{
 		glHello_control.linkInform.findLineWays = FL_DownPlatform;   
 		findLineFlag = 0;
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
+		Time7(START); //æ‰“å¼€å®šæ—¶å™¨
 		gl_time=0;
 		flag=3;
 	}
 	else if(gl_time>260 && 3==flag)
 	{
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
+		Time7(STOP); //å…³é—­å®šæ—¶å™¨
 		gl_time = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(1000);
@@ -656,17 +606,17 @@ u8 BlockHandleMethod_Slope ()
 		return 0;
 
 }
-/***********************************************Æ½Ì¨********************************************************/
+/***********************************************å¹³å°********************************************************/
 
-/**********************************************Æğµãµ²°å*****************************************************/
+/**********************************************èµ·ç‚¹æŒ¡æ¿*****************************************************/
 /*
 
-* º¯Êı½éÉÜ£ºµ²°åÅĞ¶Ï
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1£¨µ½´ïÂ·ÕÏ£©0£¨Î´µ½´ïÂ·ÕÏ£©
-* ÆäËû		£ºÇ°·½¹âµçÃ»ÓĞ¼ì²âµ½¾Í³ö·¢
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæŒ¡æ¿åˆ¤æ–­
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1ï¼ˆåˆ°è¾¾è·¯éšœï¼‰0ï¼ˆæœªåˆ°è¾¾è·¯éšœï¼‰
+* å…¶ä»–		ï¼šå‰æ–¹å…‰ç”µæ²¡æœ‰æ£€æµ‹åˆ°å°±å‡ºå‘
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 static u8 BlockHandleMethod_Baffle()
@@ -675,7 +625,7 @@ static u8 BlockHandleMethod_Baffle()
 	if(flag == 0)
 	{	
 		speedAdjustment(0,0);	
-				/*·½±ãµ÷ÊÔ*/
+				/*æ–¹ä¾¿è°ƒè¯•*/
 		#ifdef _DJ_CONTROL_
 	  sgAngleControl(HEAD,H_L);
 	  delay_ms(400);
@@ -706,12 +656,12 @@ static u8 BlockHandleMethod_Baffle()
 
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÆğµã´¦Àí·½·¨(ÀûÓÃµ×ÏÂ¹âµç¿ª¹Ø+¼ì²âµ²°å)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£ºÏÂÍêÆ½Ì¨²ÅÑ²Ïß
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹èµ·ç‚¹å¤„ç†æ–¹æ³•(åˆ©ç”¨åº•ä¸‹å…‰ç”µå¼€å…³+æ£€æµ‹æŒ¡æ¿)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šä¸‹å®Œå¹³å°æ‰å·¡çº¿
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_Platform_1 ()
@@ -723,6 +673,7 @@ u8 BlockHandleMethod_Platform_1 ()
 		//u3_printf("Baffle+NFL");
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag&&1==PES_Platform)
@@ -743,302 +694,19 @@ u8 BlockHandleMethod_Platform_1 ()
 	}
 		return 0;
 }
-/**********************************************Æğµãµ²°å*****************************************************/
+/**********************************************èµ·ç‚¹æŒ¡æ¿*****************************************************/
 
-/************************************************¶¨Ê±********************************************************/
-/*
 
-* º¯Êı½éÉÜ£º¶¨Ê±(¸´ÔÓ½Úµã´¦Àí·½·¨)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_TIME()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 50)
-	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
+/*****************************************************æ–œå¡***************************************************/
 
 /*
 
-* º¯Êı½éÉÜ£º¶¨Ê±(ÓÃÓÚ2-5¼õËÙ°å)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_TIME_1()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 200)
-	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-
-/*
-
-* º¯Êı½éÉÜ£º¶¨Ê±(ÓÃÓÚ26-27¼õËÙ°å)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_TIME_2()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
-	}
-	if(1==flag && gl_time > 200)
-	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag=2;
-	}
-	if(2==flag && 0==PES_Platform) 
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=3;
-	}
-	if(3==flag &&1==PES_Platform)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays=FL_upPeak;
-		findLineFlag = 0;
-		flag=4;
-	}
-	if(4==flag && 0==PES_Platform) flag=5;
-	if(5==flag && 1==PES_Platform) 
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-
-/*
-
-* º¯Êı½éÉÜ£º¶¨Ê±(±¸ÓÃ)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_TIME_44_43()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
-	}
-	if(gl_time > 20)
-	{	
-		led1_flash();
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}
-		
-	return 0;
-
-}
-/************************************************¶¨Ê±********************************************************/
-
-/**************************************************ÌİĞÎ¾°µã**************************************************/
-/*
-
-* º¯Êı½éÉÜ£º01ÌİĞÎ¾°µã´¦Àí·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_Trapezoid_1()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START);					 //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag = 1;
-	}
-	
-	if(1==flag && gl_time>30)
-	{
-		flag = 2;
-		gl_time = 0;
-	}
-	
-	else if(2 == flag)
-	{
-		glHello_control.linkInform.findLineWays = FL_quickest; 
-		findLineFlag = 0;
-		flag = 3;
-	}
-	else if(3==flag && gl_time>S_TIME_6_8)  //¼ÓËÙÊ±¼ä
-	{
-		glHello_control.linkInform.findLineWays = FL_slow;
-	  findLineFlag = 0;
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag = 4;
-	}
-	else if(4==flag && 0==PES_H)
-	{
-		glHello_control.linkInform.findLineWays = FL_stop;
-	  findLineFlag = 0;
-		flag = 0;
-		return 1;	
-	}
-	return 0;
-}
-	
-
-/*
-
-* º¯Êı½éÉÜ£º02ÌİĞÎ¾°µã´¦Àí·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_Trapezoid_2(void)
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
-	}
-	if(1==flag && gl_time>20)
-	{
-		flag = 2;
-		gl_time = 0;
-	}
-	
-	else if(2 == flag)
-	{
-		glHello_control.linkInform.findLineWays = FL_quickest; 
-		findLineFlag = 0;
-		flag = 3;	
-
-	}
-	else if(3==flag && gl_time>S_TIME_10_11)
-	{
-		glHello_control.linkInform.findLineWays = FL_slow;
-	  findLineFlag = 0;
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag = 4;
-	}
-	else if(4==flag && 0==PES_H)
-	{
-		glHello_control.linkInform.findLineWays = FL_stop;
-	  findLineFlag = 0;
-		flag = 0;
-		return 1;	
-	}
-	return 0;
-}
-
-
-/*
-
-* º¯Êı½éÉÜ£º05¡¢06¡¢07¡¢08ÌİĞÎ¾°µã´¦Àí·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
-
-*/
-u8 BlockHandleMethod_Trapezoid_3()
-{
-	static u8 flag=0;
-	if(0==flag)
-	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		flag=1;
-		gl_time=0;
-	}
-	if(gl_time > 50)
-	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
-		flag=0;
-		return 1;
-	}		
-	return 0;
-}
-
-/**************************************************ÌİĞÎ¾°µã**************************************************/
-
-/*****************************************************Ğ±ÆÂ***************************************************/
-
-/*
-
-* º¯Êı½éÉÜ£º¼ì²âÊÇ·ñÍ¨¹ıĞ±ÆÂ£¨·­¹ö½Ç£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º·­¹ö½Ç
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ£€æµ‹æ˜¯å¦é€šè¿‡æ–œå¡ï¼ˆç¿»æ»šè§’ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šç¿»æ»šè§’
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 float CrossingTILT_ROLL()
@@ -1050,18 +718,18 @@ float CrossingTILT_ROLL()
 	#else
 	for(i=0;i<50;i++)	
 		MPU6050_Pose();
-	#endif				//¸üĞÂÅ·À­½Ç
+	#endif				//æ›´æ–°æ¬§æ‹‰è§’
 	temp=glPitch;
 	return temp;
 }
 
 /*
-* º¯Êı½éÉÜ£ºÓÒ×ªÇãĞ±Â·ÃæÂ·ÕÏ´¦Àí·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ| @³Â
+* å‡½æ•°ä»‹ç»ï¼šå³è½¬å€¾æ–œè·¯é¢è·¯éšœå¤„ç†æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—| @é™ˆ
 
 */
 
@@ -1072,14 +740,14 @@ u8 BlockHandleMethod_GO_Tilt_R()
 	{
 		if(0==flag1)
 		{
-			Time3(START);
+			Time7(START);
 			gl_time=0;
 			flag1=1;
 		}
 		if(gl_time>30 &&1==flag1)
 		{
 			
-			Time3(STOP);
+			Time7(STOP);
 			gl_time=0;
 			flag=1;
 			flag1=0;
@@ -1110,100 +778,32 @@ u8 BlockHandleMethod_GO_Tilt_R()
 	}
 	return 0;
 }
-//	static u8 flag;
-//	if(0==flag && 0==PES_Platform)  flag=1;
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-//		speedAdjustment(2000,2000);
-//		delay_ms(280);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(0,0);
-//		delay_ms(50);
-//		rotAngle_UR(80);
-//		speedAdjustment(2000,2000);
-//		delay_ms(450);
-//		speedAdjustment(0,0);
-//		flag=3;
-//	}	
-//	else if(3==flag && 0==PES_Platform)
-//	{
-//		glHello_control.linkInform.findLineWays = FL_slow;
-//		findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
-
 
 /*
-* º¯Êı½éÉÜ£º×ó×ªÇãĞ±Â·ÃæÂ·ÕÏ´¦Àí·½·¨(Ç°Íù)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ| @³Â
+* å‡½æ•°ä»‹ç»ï¼šå·¦è½¬å€¾æ–œè·¯é¢è·¯éšœå¤„ç†æ–¹æ³•(å‰å¾€)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—| @é™ˆ
 
 */
 u8 BlockHandleMethod_GO_Tilt_L()
 {
-//	static u8 flag,flag1=0;
-//	if(0==flag && 0==PES_Platform)  
-//	{
-//		if(0==flag1)
-//		{
-//			Time3(START);
-//			gl_time=0;
-//			flag1=1;
-//		}
-//		if(gl_time>30 &&1==flag1)
-//		{
-//			
-//			Time3(STOP);
-//			gl_time=0;
-//			flag=1;
-//			flag1=0;
-//		}
-//	}
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-//		speedAdjustment(2000,1950);
-//		delay_ms(260);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(0,0);
-//		delay_ms(50);
-//		rotAngle_UL(90);
-//		speedAdjustment(2000,2000);
-//		delay_ms(450);
-//		speedAdjustment(0,0);
-//		flag=3;
-//	}	
-//	else if(3==flag && 0==PES_Platform)
-//	{
-//		glHello_control.linkInform.findLineWays = FL_default;
-//		findLineFlag = 0;
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
+
 	static u8 flag,flag1=0;
 	if(0==flag && 0==PES_Platform)  
 	{
 		if(0==flag1)
 		{
-			Time3(START);
+			Time7(START);
 			gl_time=0;
 			flag1=1;
 		}
 		if(gl_time>30 &&1==flag1)
 		{
 			
-			Time3(STOP);
+			Time7(STOP);
 			gl_time=0;
 			flag=1;
 			flag1=0;
@@ -1211,7 +811,7 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	}
 	else if(1==flag && 1==PES_Platform)
 	{		
-    Time3(START);
+    Time7(START);
 		gl_time=0;
 		glHello_control.linkInform.findLineWays = FL_angle;
 		findLineFlag = 0;
@@ -1220,7 +820,7 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	}
 	else if(2==flag && gl_time>12)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		rotAngle_UL(80);
 		speedAdjustment(2000,2000);
 		delay_ms(450);
@@ -1233,12 +833,12 @@ u8 BlockHandleMethod_GO_Tilt_L()
 	return 0;
 }
 /*
-* º¯Êı½éÉÜ£ºÇãĞ±Â·ÃæÂ·ÕÏ´¦Àí·½·¨£¨»Ø£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ| @³Â
+* å‡½æ•°ä»‹ç»ï¼šå€¾æ–œè·¯é¢è·¯éšœå¤„ç†æ–¹æ³•ï¼ˆå›ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—| @é™ˆ
 
 */
 
@@ -1248,12 +848,12 @@ u8 BlockHandleMethod_BACK_TILT_R()
 	if(0==flag && 0==PES_Platform)
 	{		
 		flag=1;
-		Time3(START);
+		Time7(START);
 		gl_time = 0 ;
 	}
 	else if(1==flag && 1==PES_Platform && gl_time > 30)
 	{
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0 ;
 		speedAdjustment(2000,1950);
 		delay_ms(580);
@@ -1268,12 +868,12 @@ u8 BlockHandleMethod_BACK_TILT_R()
 
 
 /*
-* º¯Êı½éÉÜ£º×ó¹ÕÇãĞ±Â·ÃæÂ·ÕÏ´¦Àí·½·¨£¨»Ø£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º½«Ñ²Ïß·½·¨ÇĞ»»³É¹ıÇÅµÄÑ²Ïß
-* ×÷Õß    £º@ÁÖ| @³Â
+* å‡½æ•°ä»‹ç»ï¼šå·¦æ‹å€¾æ–œè·¯é¢è·¯éšœå¤„ç†æ–¹æ³•ï¼ˆå›ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šå°†å·¡çº¿æ–¹æ³•åˆ‡æ¢æˆè¿‡æ¡¥çš„å·¡çº¿
+* ä½œè€…    ï¼š@æ—| @é™ˆ
 
 */
 
@@ -1296,43 +896,16 @@ u8 BlockHandleMethod_BACK_TILT_L()
 }
 
 /*
-* º¯Êı½éÉÜ£º´©¹ıÕû¸öĞ±ÆÂ
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ| @³Â
+* å‡½æ•°ä»‹ç»ï¼šç©¿è¿‡æ•´ä¸ªæ–œå¡
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—| @é™ˆ
 
 */
 u8 BlockHandleMethod_Crossing_All_TILT()
 {
-//	if(1 == PES_Platform)
-//	{
-//		speedAdjustment(2000,2000);
-//		delay_ms(1000);
-//		delay_ms(400);
-//		return 1;
-//	}
-//		return 0;
-//	static u8 flag;
-//	if(0==flag && 0==PES_Platform)  flag=1;
-//	else if(1==flag && 1==PES_Platform)
-//	{	
-////		speedAdjustment(0,0);
-////		delay_ms(500);
-//		speedAdjustment(2000,2000);
-//		delay_ms(550);
-//		flag=2;
-//	}
-//	else if(2==flag && 0==PES_Platform)
-//	{
-//		speedAdjustment(2000,2000);
-//		delay_ms(1000);
-//		flag=0;
-//		return 1;
-//	}
-//	return 0;
-
 	static u8 flag;
 	if(0==flag && 0==PES_Platform)  
 	{
@@ -1340,10 +913,10 @@ u8 BlockHandleMethod_Crossing_All_TILT()
 	}     	
 	else if(1==flag && 1==PES_Platform)
 	{	
-		Time3(START);	//´ò¿ª¶¨Ê±Æ÷
+		Time7(START);	//æ‰“å¼€å®šæ—¶å™¨
 		gl_time=0;
 //		led0_flash();
-//		Time3(STOP); 
+//		Time7(STOP); 
 		glHello_control.linkInform.findLineWays = FL_angle;
 		findLineFlag = 0;
 		angle_flag = 0;
@@ -1355,7 +928,7 @@ u8 BlockHandleMethod_Crossing_All_TILT()
 //		led1_flash();
 		glHello_control.linkInform.findLineWays = FL_slow;
 		findLineFlag = 0; 
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
+		Time7(STOP); //å…³é—­å®šæ—¶å™¨
 
 //		speedAdjustment(0,0);
 //		while(1);
@@ -1366,15 +939,15 @@ u8 BlockHandleMethod_Crossing_All_TILT()
 	}
 	return 0;
 }
-/*************************************************Öé·å**********************************************************/
+/*************************************************ç å³°**********************************************************/
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÖé·å
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¼ì²âµ½)0£¨Î´¼ì²âµ½£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸Šç å³°
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(æ£€æµ‹åˆ°)0ï¼ˆæœªæ£€æµ‹åˆ°ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_Peak()
@@ -1426,12 +999,12 @@ u8 BlockHandleMethod_Peak()
 	
 }
 /*
-* º¯Êı½éÉÜ£ºÏÂÖé·å·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Íê³É)0£¨Î´Íê³É£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹ç å³°æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(å®Œæˆ)0ï¼ˆæœªå®Œæˆï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 BlockHandleMethod_downPlatform()
@@ -1443,11 +1016,12 @@ u8 BlockHandleMethod_downPlatform()
 	{
 		speedAdjustment(0,0);
 		delay_ms(200);
-	//	DangerFlag=1;            //½«Î£ÏÕĞÅºÅ±êÖ¾Î»ÖÃÎª1
-		Time3(START);
+	//	DangerFlag=1;            //å°†å±é™©ä¿¡å·æ ‡å¿—ä½ç½®ä¸º1
+		Time7(START);
 		gl_time=0;
 		save = glHello_control.linkInform.findLineWays;
 		glHello_control.linkInform.findLineWays =NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag && 1==PES_Platform)
@@ -1464,6 +1038,7 @@ u8 BlockHandleMethod_downPlatform()
 //		speedAdjustment(0,0);
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = NFL; 
+		findLineFlag = 0;
 		flag = 4;
 
 	}
@@ -1488,7 +1063,7 @@ u8 BlockHandleMethod_downPlatform()
 	{
 		if(1==danger24_23())
 		{
-			Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
+			Time7(STOP); //å…³é—­å®šæ—¶å™¨
 			gl_time = 0;
 		}
 	}
@@ -1497,18 +1072,18 @@ u8 BlockHandleMethod_downPlatform()
 
 }
 
-//***************************************************¼õËÙ°å****************************************//
+//***************************************************å‡é€Ÿæ¿****************************************//
 /*
 
-* º¯Êı½éÉÜ£º¹ı¼õËÙ°å1(ÓÃµ×ÏÂ¹âµç¿ª¹Ø)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¼ì²âµ½)0£¨Î´¼ì²âµ½£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡å‡é€Ÿæ¿1ä¸ª(ç”¨åº•ä¸‹å…‰ç”µå¼€å…³)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(æ£€æµ‹åˆ°)0ï¼ˆæœªæ£€æµ‹åˆ°ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—
 
 */
-u8 BlockHandleMethod_S_BOARD_1()
+u8 BlockHandleMethod_S_BOARD()
 {
 	static findLine save;
 	static u8 flag=0;
@@ -1523,7 +1098,7 @@ u8 BlockHandleMethod_S_BOARD_1()
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=2;
 	}
@@ -1533,7 +1108,7 @@ u8 BlockHandleMethod_S_BOARD_1()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =FL_slow;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -1543,56 +1118,12 @@ u8 BlockHandleMethod_S_BOARD_1()
 
 /*
 
-* º¯Êı½éÉÜ£º¹ı¼õËÙ°å2(ÓÃµ×ÏÂ¹âµç¿ª¹Ø)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¼ì²âµ½)0£¨Î´¼ì²âµ½£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ
-
-*/
-u8 BlockHandleMethod_S_BOARD_2()
-{
-//	static findLine save;
-	static u8 flag=0;
-	if(0==flag)
-	{
-	//	save = glHello_control.linkInform.findLineWays;
-		flag = 1;
-	}
-	if(1==flag&&0==PES_Platform) flag=2;
-	if(2==flag&&1==PES_Platform)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays =FL_slow;
-		findLineFlag = 0;
-		Time3(START);
-		gl_time=0;
-		flag = 3;
-	}
-	if(3==flag&&gl_time>150)
-	{
-//		speedAdjustment(0,0);
-//		delay_ms(500);
-		glHello_control.linkInform.findLineWays =FL_default;
-		findLineFlag = 0;
-		Time3(STOP);
-		gl_time=0;
-		flag=0;
-		return 1;
-	}
-	return 0;
-}
-
-/*
-
-* º¯Êı½éÉÜ£º¹ıË«ÖØ¼õËÙ°å(ÓÃµ×ÏÂ¹âµç¿ª¹Ø)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¼ì²âµ½)0£¨Î´¼ì²âµ½£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šè¿‡åŒé‡å‡é€Ÿæ¿(ç”¨åº•ä¸‹å…‰ç”µå¼€å…³)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(æ£€æµ‹åˆ°)0ï¼ˆæœªæ£€æµ‹åˆ°ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼španshao
 
 */
 u8 BlockHandleMethod_S_BOARD_Double()
@@ -1610,17 +1141,17 @@ u8 BlockHandleMethod_S_BOARD_Double()
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag=2;
 	}
-	else if(2==flag&&gl_time>280)
+	else if(2==flag&&gl_time>290)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays =save;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=0;
 		return 1;
@@ -1628,19 +1159,14 @@ u8 BlockHandleMethod_S_BOARD_Double()
 	return 0;
 }
 
-
-
-
-
-
 /*
 
-* º¯Êı½éÉÜ£º´Ó26µ½27(ÓÃµ×ÏÂ¹âµç¿ª¹Ø)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(¼ì²âµ½)0£¨Î´¼ì²âµ½£©
-* ÆäËû		£º
-* ×÷Õß    £º@ÁÖ
+* å‡½æ•°ä»‹ç»ï¼šä»26åˆ°27(ç”¨åº•ä¸‹å…‰ç”µå¼€å…³)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(æ£€æµ‹åˆ°)0ï¼ˆæœªæ£€æµ‹åˆ°ï¼‰
+* å…¶ä»–		ï¼š
+* ä½œè€…    ï¼š@æ—
 
 */
 u8 BlockHandleMethod_26_27()
@@ -1649,7 +1175,7 @@ u8 BlockHandleMethod_26_27()
 	static u8 flag=0;
 	if(0==flag)
 	{
-		Time3(START);
+		Time7(START);
 		gl_time = 0;
 		save = glHello_control.linkInform.findLineWays;
 		flag = 1;
@@ -1659,11 +1185,11 @@ u8 BlockHandleMethod_26_27()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time3(STOP);
+		Time7(STOP);
 		gl_time = 0;
 		glHello_control.linkInform.findLineWays =FL_slowest;
 		findLineFlag = 0;
-		Time3(START);
+		Time7(START);
 		gl_time=0;
 		flag = 3;
 	}
@@ -1674,7 +1200,7 @@ u8 BlockHandleMethod_26_27()
 //		led0_flash();
 		glHello_control.linkInform.findLineWays =FL_slowest;
 		findLineFlag = 0;
-		Time3(STOP);
+		Time7(STOP);
 		gl_time=0;
 		flag=4;
 	}
@@ -1692,78 +1218,112 @@ u8 BlockHandleMethod_26_27()
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
+		glHello_control.linkInform.findLineWays =save;
+		findLineFlag = 0;
 		flag=0;
 		return 1;
 	}
 	return 0;
 }
-/*
-* º¯Êı½éÉÜ£º½öÓÃÔÚ43-44Õâ¸öµØ·½£¬ÓÒ±ß´«¸ĞÆ÷ÕÒµã
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@³Âhzihaio
-
-*/
-u8 BlockHandleMethod_PESR(void)
-	{
-//		static u8 flag=0;
-//	if(0 == flag)
-//	{
-//		pes_R=0;
-//	//	pesRSwitch(START);//¿ªÖĞ¶Ï
-//		//glHello_control.linkInform.findLineWays = FL_stop;
-//		flag = 1;
-//	}
-//	if(1==pes_R && 1==flag)
-//	{	
-//	//	pesRSwitch(STOP);//¹ØÖĞ¶Ï
-//		//speedAdjustment(0,0);
-//		pes_R=0;
-//		flag = 0;	
-//		return 1;
-//	}
-//		
-//	return 0;
-		if(1==PES_R)	return 1;
-		return 0;
-}
 
 /*
 
-* º¯Êı½éÉÜ£º¶¨Ê±(±¸ÓÃ)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º1(Â·ÕÏ½â¾ö)0£¨Â·ÕÏÎ´½â¾ö£©
-* ÆäËû		£º
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šç›´è¿‡åˆ€å±±å¤„ç†æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+* å…¶ä»–		ï¼šå°†å·¡çº¿æ–¹æ³•åˆ‡æ¢æˆåˆ€å±±çš„å·¡çº¿
+* ä½œè€…    ï¼š@run
 
 */
-u8 BlockHandleMethod_TIME_45_46()
+u8 BlockHandleMethod_Sword_RUN()
 {
 	static u8 flag=0;
-	if(0==flag)
+	if(0==flag && 1==identifyComingBrige_Bottom())
 	{
-		Time3(START); //´ò¿ª¶¨Ê±Æ÷
-		gl_time=0;
-		flag=1;
+	//	save = glHello_control.linkInform.findLineWays;
+		glHello_control.linkInform.findLineWays = FL_sword_run; 
+		findLineFlag = 0;
+		flag = 1;
 	}
-	if(gl_time > 80)
-	{	
-		Time3(STOP); //¹Ø±Õ¶¨Ê±Æ÷
-		gl_time = 0;
+	if(1==flag && 1==identifyComingBrige_Top())
+	{
+		glHello_control.linkInform.findLineWays = FL_sword_run; 
+		findLineFlag = 0;
+		flag=2;
+	}
+	if(2==flag && 1==identifyCrossingBrige_Top())
+	{
+		glHello_control.linkInform.findLineWays = FL_sword_run;
+	  findLineFlag = 0;
+		flag=3;
+	}
+	if(3==flag && 1==identifyCrossingBrige_Bottom())
+	{
+		glHello_control.linkInform.findLineWays = FL_slow;
+	  findLineFlag = 0;
 		flag=0;
-		#ifdef LED_Debug
-		led_flash();
-		#endif
 		return 1;
 	}
-		
+	
 	return 0;
-
 }
 
+
+
+///*
+
+//* å‡½æ•°ä»‹ç»ï¼šç›´è¿‡åˆ€å±±å¤„ç†æ–¹æ³•
+//* è¾“å…¥å‚æ•°ï¼šæ— 
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼š1(è·¯éšœè§£å†³)0ï¼ˆè·¯éšœæœªè§£å†³ï¼‰
+//* å…¶ä»–		ï¼šå°†å·¡çº¿æ–¹æ³•åˆ‡æ¢æˆåˆ€å±±çš„å·¡çº¿
+//* ä½œè€…    ï¼š@run
+
+//*/
+//u8 BlockHandleMethod_Sword_RUN()
+//{
+//	static findLine save;
+//	static u8 flag=0;
+//	if(0==flag)
+//	{
+//		save = glHello_control.linkInform.findLineWays;
+//		flag = 1;
+//	}
+//	else if(1==flag&&1==PES_Platform) 
+//	{
+//		glHello_control.linkInform.findLineWays =FL_sword_run;
+//		findLineFlag = 0;
+////		speedAdjustment(0,0);
+////		delay_ms(500);
+//		Time7(START);
+//		gl_time=0;
+//		flag=2;
+//	}
+//	else if(2==flag&&0==PES_Platform)
+//	{
+////		speedAdjustment(0,0);
+////		delay_ms(500);
+//		glHello_control.linkInform.findLineWays =FL_sword_run;
+//		findLineFlag = 0;
+//	//	Time7(STOP);
+//	//	gl_time=0;
+//		flag=3;		
+//	}
+//  else if(3==flag&&1==PES_Platform)
+//	{
+//		speedAdjustment(0,0);
+//		delay_ms(1000);
+//		glHello_control.linkInform.findLineWays =FL_slow;
+//		findLineFlag = 0;
+//		Time7(STOP);
+//		gl_time=0;
+//		flag=0;
+//		return 1;
+//	}
+//  
+//	return 0;
+//}
 
 
 

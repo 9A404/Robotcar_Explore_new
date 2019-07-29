@@ -3,26 +3,26 @@
 
 #include "sys.h"
 
-/*PIDµ÷½ÚÆ÷*/
+/*PIDè°ƒèŠ‚å™¨*/
 typedef struct{
 	
-	int setVaule; 	//Éè¶¨Ä¿±ê
-	int kp;        //±ÈÀı³£Êı
-	int ki;   			//»ı·Ö³£Êı
-	int kd;				//Î¢·Ö³£Êı
+	int setVaule; 	//è®¾å®šç›®æ ‡
+	int kp;        //æ¯”ä¾‹å¸¸æ•°
+	int ki;   			//ç§¯åˆ†å¸¸æ•°
+	int kd;				//å¾®åˆ†å¸¸æ•°
 	
 	int lastError;	//Error[-1]
 	int prevError;	//Error[-2]
-	int sumerror;	//Îó²îÀÛ¼Ó
+	int sumerror;	//è¯¯å·®ç´¯åŠ 
 	
-	int limit;		//ÏŞÖÆÖµ
+	int limit;		//é™åˆ¶å€¼
 	
 }PIDTypeDef;
 
 void PID_Init(PIDTypeDef *pidRegulator,int setVaule,int limit,int kp,int ki,int kd);
-int incrementalPIDcalc(PIDTypeDef *p,int nextVaule);	//ÔöÁ¿Ê½PID
-int positionPIDCalc(PIDTypeDef *p,int nextVaule);			//Î»ÖÃÊ½PID
-int positionPIDCalc_rotAngle(PIDTypeDef *p,int err);  // Ğı×ªÓÃµÄÎ»ÖÃÊ½PID
+int incrementalPIDcalc(PIDTypeDef *p,int nextVaule);	//å¢é‡å¼PID
+int positionPIDCalc(PIDTypeDef *p,int nextVaule);			//ä½ç½®å¼PID
+int positionPIDCalc_rotAngle(PIDTypeDef *p,int err);  // æ—‹è½¬ç”¨çš„ä½ç½®å¼PID
 
 #endif
 

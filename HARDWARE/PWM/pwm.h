@@ -2,7 +2,7 @@
 #define __PWM_H
 
 #include "sys.h"
-/*记录当前左右电机的速度*/
+/*璁板綍褰撳墠宸﹀彸鐢垫満鐨勯�熷害*/
 typedef struct{
 	
 	int leftSpeed;
@@ -10,10 +10,10 @@ typedef struct{
 	
 }motorSpeedTypeDef;
 
-/*舵机编号*/
+/*鑸垫満缂栧彿*/
 typedef enum {HEAD , L_ARM , R_ARM}SgNumber;
 
-/*舵机转过角度*/
+/*鑸垫満杞繃瑙掑害*/
 typedef enum {L_UP = 450,L_DOWN = 700,R_DOWN = 310,R_UP = 600,H_MID = 660,H_L=960,H_R=360}RotationAngle;
 
 void motor_PWM_Init(void);

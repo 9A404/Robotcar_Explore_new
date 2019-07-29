@@ -2,7 +2,7 @@
 #define __BELL_H_
 
 #define BELL PEout(14)	// PE14
-void Bell_Init(void);   //³õÊ¼»¯·äÃùÆ÷
+void Bell_Init(void);   //åˆå§‹åŒ–èœ‚é¸£å™¨
 
 
 #endif

@@ -3,60 +3,38 @@
 #include "sys.h"
 #include "myconfig.h"
 
-u8 BlockHandleMethod_Brige(void);      //¹ıÇÅ´¦Àí
-u8 BlockHandleMethod_DOOR(void);      //¹ıÃÅ1´¦Àí
-u8 BlockHandleMethod_DOOR_2(void);
-//u8 BlockHandleMethod_DOORBack(void);   //»Ø¼Ò¹ıÃÅ´¦Àí
-u8 BlockHandleMethod_Platform (void);	 //Æ½Ì¨¾°µã
-u8 BlockHandleMethod_Platform_1 (void); //Æğµã
-u8 BlockHandleMethod_Peak(void); //ÉÏÖé·å¾°µã
-u8 BlockHandleMethod_downPlatform(void);//ÏÂÖé·å
-u8 BlockHandleMethod_S_BOARD_1(void);//¼õËÙ°å1
-u8 BlockHandleMethod_S_BOARD_2(void);//¼õËÙ°å2
-u8 BlockHandleMethod_S_BOARD_Double(void);
-u8 BlockHandleMethod_26_27(void);//26µ½27½Úµã
+u8 BlockHandleMethod_Brige(void);      //è¿‡æ¡¥å¤„ç†
+u8 BlockHandleMethod_DOOR(void);      //è¿‡é—¨å¤„ç†(é—¨å¼€çŠ¶æ€ä¸éœ€è¦æ’)
+u8 BlockHandleMethod_DOOR_Click(void);//è¿‡é—¨å¤„ç†ï¼ˆé—¨å¼€çŠ¶æ€éœ€è¦æ’ï¼‰
+u8 BlockHandleMethod_Platform (void);	 //å¹³å°æ™¯ç‚¹
+u8 BlockHandleMethod_Platform_1 (void); //èµ·ç‚¹
+u8 BlockHandleMethod_Peak(void); //ä¸Šç å³°æ™¯ç‚¹
+u8 BlockHandleMethod_downPlatform(void);//ä¸‹ç å³°
+u8 BlockHandleMethod_S_BOARD(void);//å‡é€Ÿæ¿1ä¸ª
+u8 BlockHandleMethod_S_BOARD_Double(void);//å‡é€Ÿæ¿2ä¸ª
+u8 BlockHandleMethod_26_27(void);//26åˆ°27èŠ‚ç‚¹
 u8 Angle_read(void);
+u8 BlockHandleMethod_Sword (void);
 u8 BlockHandleMethod_Seesaw(void);
-u8 BlockHandleMethod_Slope(void);      //É½Çğ
+u8 BlockHandleMethod_Slope(void);      //å±±ä¸˜
 u8 BlockHandleMethod_down_27_26(void);
 u8 BlockHandleMethod_S_BOARD_Double(void);
+u8 BlockHandleMethod_Sword_RUN(void);
 
 
-u8 BlockHandleMethod_TIME(void);			 //¸´ÔÓ¾°µã
-u8 BlockHandleMethod_TIME_1(void);
-u8 BlockHandleMethod_TIME_2(void);
-u8 BlockHandleMethod_TIME_44_43(void);
-u8 BlockHandleMethod_TIME_45_46();
 
 u8 BlockHandleMethod_Trapezoid_1(void);
-u8 BlockHandleMethod_Trapezoid_2(void);	 //ÌİĞÎ¾°µã
+u8 BlockHandleMethod_Trapezoid_2(void);	 //æ¢¯å½¢æ™¯ç‚¹
 u8 BlockHandleMethod_Trapezoid_3(void);
 
-u8 BlockHandleMethod_GO_Tilt_R(void);     //Ç°ÍùÓÒ×ªĞ±ÆÂ¾°µã
-u8 BlockHandleMethod_GO_Tilt_L(void);     //Ç°Íù×ó×ªĞ±ÆÂ¾°µã 
+u8 BlockHandleMethod_GO_Tilt_R(void);     //å‰å¾€å³è½¬æ–œå¡æ™¯ç‚¹
+u8 BlockHandleMethod_GO_Tilt_L(void);     //å‰å¾€å·¦è½¬æ–œå¡æ™¯ç‚¹ 
 
-u8 BlockHandleMethod_BACK_TILT_R(void);   //·µ»ØÓÒ×ªĞ±ÆÂ
-u8 BlockHandleMethod_BACK_TILT_L(void);		//·µ»Ø×ó×ªĞ±ÆÂ
-u8 BlockHandleMethod_Crossing_All_TILT(void); //´©¹ıÕû¸öĞ±ÆÂ
+u8 BlockHandleMethod_BACK_TILT_R(void);   //è¿”å›å³è½¬æ–œå¡
+u8 BlockHandleMethod_BACK_TILT_L(void);		//è¿”å›å·¦è½¬æ–œå¡
+u8 BlockHandleMethod_Crossing_All_TILT(void); //ç©¿è¿‡æ•´ä¸ªæ–œå¡
 u8 BlockHandleMethod_Slope (void);
 
-u8 BlockHandleMethod_speedtime_8_6(void);  //¼ÓËÙÊ±¼ä
-u8 BlockHandleMethod_speedtime_11_10(void);  //¼ÓËÙÊ±¼ä
-u8 BlockHandleMethod_speedtime_7_12(void);  //¼ÓËÙÊ±¼ä
-u8 BlockHandleMethod_speedtime_36_17(void);
-u8 BlockHandleMethod_speedtime_17_37(void);
-u8 BlockHandleMethod_speedtime_14_37(void);
-u8 BlockHandleMethod_speedtime_38_37(void);
-u8 BlockHandleMethod_speedtime_10_12(void);
-u8 BlockHandleMethod_speedtime_6_7(void);
-u8 BlockHandleMethod_speedtime_15_37(void);
-u8 BlockHandleMethod_speedtime_44_37(void);
-u8 BlockHandleMethod_speedtime_36_37(void);
-u8 BlockHandleMethod_speedtime_14_44(void);
-u8 BlockHandleMethod_PESR(void);
-u8 BlockHandleMethod_speedtime_9_30(void);
-u8 BlockHandleMethod_speedtime_39_30(void);
-u8 BlockHandleMethod_Platform_37_15(void);
 #endif
 
 

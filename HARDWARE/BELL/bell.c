@@ -4,12 +4,12 @@
 void Bell_Init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
- 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);	//Ê¹ÄÜPORTCÊ±ÖÓ
+ 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);	//ä½¿èƒ½PORTCæ—¶é’Ÿ
 	/*PE14*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_14;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 				//ÉèÖÃ³ÉÍÆÍìÊä³ö
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 				//è®¾ç½®æˆæ¨æŒ½è¾“å‡º
  	GPIO_Init(GPIOE, &GPIO_InitStructure);
-	 GPIO_SetBits(GPIOE,GPIO_Pin_14);						 //PE.14 Êä³ö¸ß
+	 GPIO_SetBits(GPIOE,GPIO_Pin_14);						 //PE.14 è¾“å‡ºé«˜
 }
 
 

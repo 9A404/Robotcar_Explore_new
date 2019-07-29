@@ -4,47 +4,47 @@
 
 /*
 
-* º¯Êı½éÉÜ£º°´¼üGPIOÅäÖÃ
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæŒ‰é”®GPIOé…ç½®
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void keyInit(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC|RCC_APB2Periph_GPIOD|RCC_APB2Periph_GPIOE,ENABLE);
-	/*ÅäÖÃGPIOC*/
+	/*é…ç½®GPIOC*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_10|GPIO_Pin_11|GPIO_Pin_12|GPIO_Pin_13;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
  	GPIO_Init(GPIOC, &GPIO_InitStructure);	
-	/*ÅäÖÃGPIOD*/
+	/*é…ç½®GPIOD*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
  	GPIO_Init(GPIOD, &GPIO_InitStructure);		
 
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_15;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
  	GPIO_Init(GPIOE, &GPIO_InitStructure);		
 }
 
 /*
 
-* º¯Êı½éÉÜ£º°´¼üÉ¨Ãè
-* ÊäÈë²ÎÊı£ºmode:0,²»Ö§³ÖÁ¬Ğø°´;1,Ö§³ÖÁ¬Ğø°´;
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºKEY
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæŒ‰é”®æ‰«æ
+* è¾“å…¥å‚æ•°ï¼šmode:0,ä¸æ”¯æŒè¿ç»­æŒ‰;1,æ”¯æŒè¿ç»­æŒ‰;
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šKEY
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 u8 keyScan(u8 mode)
 {
-	static u8 key_up=1;//°´¼ü°´ËÉ¿ª±êÖ¾
-	if(mode)key_up=1;  //Ö§³ÖÁ¬°´		  
+	static u8 key_up=1;//æŒ‰é”®æŒ‰æ¾å¼€æ ‡å¿—
+	if(mode)key_up=1;  //æ”¯æŒè¿æŒ‰		  
 	if(key_up&&(KEY0==0||KEY1==0||KEY2==0||KEY3==0||KEY4==0))
 	{
-		delay_ms(10);//È¥¶¶¶¯ 
+		delay_ms(10);//å»æŠ–åŠ¨ 
 		key_up=0;
 		if(KEY0==0)			return KEY0_UP;
 		else if(KEY1==0)return KEY1_DOWN;
@@ -70,37 +70,37 @@ u8 keyScan(u8 mode)
 
 
 
-/************************************°´¼üÖĞ¶Ï³õÊ¼»¯³ÌĞò*****************************************/
+/************************************æŒ‰é”®ä¸­æ–­åˆå§‹åŒ–ç¨‹åº*****************************************/
 ///*
 
-//* º¯Êı½éÉÜ£º°´¼üGPIOÅäÖÃ
-//* ÊäÈë²ÎÊı£ºÎŞ
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šæŒ‰é”®GPIOé…ç½®
+//* è¾“å…¥å‚æ•°ï¼šæ— 
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 //static void GPIOConfig(void)
 //{
 //	GPIO_InitTypeDef GPIO_InitStructure;
 //	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC|RCC_APB2Periph_GPIOD,ENABLE);
-//	/*ÅäÖÃGPIOC*/
+//	/*é…ç½®GPIOC*/
 //	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_10|GPIO_Pin_11|GPIO_Pin_12|GPIO_Pin_13;
-//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
 // 	GPIO_Init(GPIOC, &GPIO_InitStructure);	
-//	/*ÅäÖÃGPIOD*/
+//	/*é…ç½®GPIOD*/
 //	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;
-//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
 // 	GPIO_Init(GPIOD, &GPIO_InitStructure);				
 //}
 
 ///*
 
-//* º¯Êı½éÉÜ£º°´¼üÍâ²¿ÖĞ¶ÏÅäÖÃ
-//* ÊäÈë²ÎÊı£ºÎŞ
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šæŒ‰é”®å¤–éƒ¨ä¸­æ–­é…ç½®
+//* è¾“å…¥å‚æ•°ï¼šæ— 
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 //void keyInit(void)
@@ -110,51 +110,51 @@ u8 keyScan(u8 mode)
 //	
 //	GPIOConfig();
 
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);//Íâ²¿ÖĞ¶Ï£¬ĞèÒªÊ¹ÄÜAFIOÊ±ÖÓ
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);//å¤–éƒ¨ä¸­æ–­ï¼Œéœ€è¦ä½¿èƒ½AFIOæ—¶é’Ÿ
 //	/*PC10*/
 //	EXTI_ClearITPendingBit(EXTI_Line10);  
-//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource10);//PC10  ÎªGPIOCµÄPIN10 
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line10; //PC10£¬Îª£ºEXTI_Line10  
+//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource10);//PC10  ä¸ºGPIOCçš„PIN10 
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line10; //PC10ï¼Œä¸ºï¼šEXTI_Line10  
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	/*PC11*/
 //	EXTI_ClearITPendingBit(EXTI_Line11);  
-//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource11);//PC11  ÎªGPIOCµÄPIN10 
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line11; //PC11£¬Îª£ºEXTI_Line11  
+//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource11);//PC11  ä¸ºGPIOCçš„PIN10 
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line11; //PC11ï¼Œä¸ºï¼šEXTI_Line11  
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	/*PC12*/
 //	EXTI_ClearITPendingBit(EXTI_Line12);  
-//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource12);//PC12  ÎªGPIOCµÄPIN12
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line12; //PC12£¬Îª£ºEXTI_Line12 
+//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource12);//PC12  ä¸ºGPIOCçš„PIN12
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line12; //PC12ï¼Œä¸ºï¼šEXTI_Line12 
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	/*PC13*/
 //	EXTI_ClearITPendingBit(EXTI_Line13);  
-//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource13);//PC13  ÎªGPIOCµÄPIN13
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line13; //PC13£¬Îª£ºEXTI_Line13  
+//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource13);//PC13  ä¸ºGPIOCçš„PIN13
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line13; //PC13ï¼Œä¸ºï¼šEXTI_Line13  
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	/*PD0*/
 //	EXTI_ClearITPendingBit(EXTI_Line0);  
-//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOD,GPIO_PinSource0);//PD0  ÎªGPIODµÄPIN0
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line0; //PD0£¬Îª£ºEXTI_Line0 
+//  GPIO_EXTILineConfig(GPIO_PortSourceGPIOD,GPIO_PinSource0);//PD0  ä¸ºGPIODçš„PIN0
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line0; //PD0ï¼Œä¸ºï¼šEXTI_Line0 
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	
 //	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;  
-//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 3;  //ÇÀ¶ÏÓÅÏÈ¼¶
-//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 3;         //ÏìÓ¦ÓÅÏÈ¼¶
+//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 3;  //æŠ¢æ–­ä¼˜å…ˆçº§
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 3;         //å“åº”ä¼˜å…ˆçº§
 //  NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;     
 //  NVIC_Init(&NVIC_InitStructure); 
 //	
@@ -168,48 +168,48 @@ u8 keyScan(u8 mode)
 
 //void EXTI15_10_IRQHandler(void)
 //{
-//	if(EXTI_GetITStatus(EXTI_Line10) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï£¬ÓÃÓÚ¶à¸öÖĞ¶Ï
+//	if(EXTI_GetITStatus(EXTI_Line10) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­ï¼Œç”¨äºå¤šä¸ªä¸­æ–­
 //	{
 //		
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line10);       			//ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line10);       			//æ¸…ä¸­æ–­  
 //	}
 //	
-//	if(EXTI_GetITStatus(EXTI_Line11) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï£¬ÓÃÓÚ¶à¸öÖĞ¶Ï
+//	if(EXTI_GetITStatus(EXTI_Line11) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­ï¼Œç”¨äºå¤šä¸ªä¸­æ–­
 //	{
 //		
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line11);      			 //ÇåÖĞ¶Ï  
-//	}
-//	
-//	
-//	if(EXTI_GetITStatus(EXTI_Line12) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï£¬ÓÃÓÚ¶à¸öÖĞ¶Ï
-//	{
-//		
-//		
-//		EXTI_ClearITPendingBit(EXTI_Line12);      			 //ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line11);      			 //æ¸…ä¸­æ–­  
 //	}
 //	
 //	
-//	if(EXTI_GetITStatus(EXTI_Line13) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï£¬ÓÃÓÚ¶à¸öÖĞ¶Ï
+//	if(EXTI_GetITStatus(EXTI_Line12) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­ï¼Œç”¨äºå¤šä¸ªä¸­æ–­
 //	{
 //		
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line13);      			 //ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line12);      			 //æ¸…ä¸­æ–­  
+//	}
+//	
+//	
+//	if(EXTI_GetITStatus(EXTI_Line13) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­ï¼Œç”¨äºå¤šä¸ªä¸­æ–­
+//	{
+//		
+//		
+//		EXTI_ClearITPendingBit(EXTI_Line13);      			 //æ¸…ä¸­æ–­  
 //	}
 
 //}
 
-///*PD0 ´¥·¢Íâ²¿ÖĞ¶Ï*/
+///*PD0 è§¦å‘å¤–éƒ¨ä¸­æ–­*/
 //void EXTI0_IRQHandler(void)
 //{
-//		if(EXTI_GetITStatus(EXTI_Line0) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï
+//		if(EXTI_GetITStatus(EXTI_Line0) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­
 //	{
 //		delay_ms(10);
 //		key0_Flag++;
 //		if(3 == key0_Flag)key0_Flag = 0;
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line0);       			//ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line0);       			//æ¸…ä¸­æ–­  
 //	}
 //	
 //}

@@ -2,21 +2,21 @@
 #define __MYIIC_H__
 #include "sys.h"
 //////////////////////////////////////////////////////////////////////////////////	 
-//IIC Çý¶¯º¯Êý	   
-//ÐÞ¸ÄÈÕÆÚ:2014/3/10 
-//°æ±¾£ºV1.0
+//IIC é©±åŠ¨å‡½æ•°	   
+//ä¿®æ”¹æ—¥æœŸ:2014/3/10 
+//ç‰ˆæœ¬ï¼šV1.0
 //All rights reserved
 ////////////////////////////////////////////////////////////////////////////////// 	  
 
    	   		   
-//IO·½ÏòÉèÖÃ
+//IOæ–¹å‘è®¾ç½®
 #define SDA_IN()  {GPIOD->CRH&=0XFFFF0FFF;GPIOD->CRH|=8<<12;}
 #define SDA_OUT() {GPIOD->CRH&=0XFFFF0FFF;GPIOD->CRH|=3<<12;}
 
-//IO²Ù×÷º¯Êý	 
+//IOæ“ä½œå‡½æ•°	 
 #define IIC_SCL    PDout(12) //SCL
 #define IIC_SDA    PDout(11) //SDA	 
-#define READ_SDA   PDin(11)  //ÊäÈëSDA 
+#define READ_SDA   PDin(11)  //è¾“å…¥SDA 
 
 #define true 1
 #define false 0 
@@ -24,11 +24,11 @@
 #define TRUE  0
 #define FALSE -1
 
-#define  I2C_Direction_Transmitter      ((uint8_t)0x00)	//Ð´
-#define  I2C_Direction_Receiver         ((uint8_t)0x01)	//¶Á
+#define  I2C_Direction_Transmitter      ((uint8_t)0x00)	//å†™
+#define  I2C_Direction_Receiver         ((uint8_t)0x01)	//è¯»
 
-//IICËùÓÐ²Ù×÷º¯Êý
-void IIC_Init(void);  //³õÊ¼»¯IICµÄIO¿Ú				 
+//IICæ‰€æœ‰æ“ä½œå‡½æ•°
+void IIC_Init(void);  //åˆå§‹åŒ–IICçš„IOå£				 
 u8 IIC_Write_Buffer(u8 addr, u8 reg, u8 len, u8 * data);
 int IIC_Write(u8 addr, u8 reg, u8 len, u8* data);
 u8 IIC_Read_Buffer(u8 addr, u8 reg, u8 len, u8* buf);

@@ -3,27 +3,27 @@
 
 /*
 
-* º¯Êı½éÉÜ£º¹âµç´«¸ĞÆ÷³õÊ¼»¯
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £ºÎŞ
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå…‰ç”µä¼ æ„Ÿå™¨åˆå§‹åŒ–
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 
 void pesInit(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
- 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);	//Ê¹ÄÜPORTCÊ±ÖÓ
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);	//Ê¹ÄÜPORTAÊ±ÖÓ
-	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);	//Ê¹ÄÜPORTBÊ±ÖÓ
-	/*PC2¡¢PC3*/
+ 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);	//ä½¿èƒ½PORTCæ—¶é’Ÿ
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);	//ä½¿èƒ½PORTAæ—¶é’Ÿ
+	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);	//ä½¿èƒ½PORTBæ—¶é’Ÿ
+	/*PC2ã€PC3*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
  	GPIO_Init(GPIOC, &GPIO_InitStructure);
 	/*PA15*/
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_7|GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
  	GPIO_Init(GPIOE, &GPIO_InitStructure);
 }
 
@@ -31,38 +31,38 @@ void pesInit(void)
 
 ///*
 
-//* º¯Êı½éÉÜ£º¹âµç´«¸ĞÆ÷IO¿ÚÅäÖÃ
-//* ÊäÈë²ÎÊı£ºÎŞ
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šå…‰ç”µä¼ æ„Ÿå™¨IOå£é…ç½®
+//* è¾“å…¥å‚æ•°ï¼šæ— 
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 
 //static void GPIOConfig(void)
 //{
 //	GPIO_InitTypeDef GPIO_InitStructure;
-// 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);	//Ê¹ÄÜPORTCÊ±ÖÓ
-//	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);	//Ê¹ÄÜPORTAÊ±ÖÓ
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);	//Ê¹ÄÜPORTEÊ±ÖÓ
-//	/*PC2¡¢PC3¡¢PC4*/
+// 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);	//ä½¿èƒ½PORTCæ—¶é’Ÿ
+//	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);	//ä½¿èƒ½PORTAæ—¶é’Ÿ
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);	//ä½¿èƒ½PORTEæ—¶é’Ÿ
+//	/*PC2ã€PC3ã€PC4*/
 //	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;
-//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
 // 	GPIO_Init(GPIOC, &GPIO_InitStructure);
-//	/*PE7¡¢PE8*/
+//	/*PE7ã€PE8*/
 //	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_7|GPIO_Pin_8;
-//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//ÉèÖÃ³ÉÉÏÀ­ÊäÈë
+//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 				//è®¾ç½®æˆä¸Šæ‹‰è¾“å…¥
 // 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 //	
 //}
 
 ///*
 
-//* º¯Êı½éÉÜ£º×óÓÒ¹âµçÍâ²¿ÖĞ¶ÏÅäÖÃ
-//* ÊäÈë²ÎÊı£ºÎŞ
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šå·¦å³å…‰ç”µå¤–éƒ¨ä¸­æ–­é…ç½®
+//* è¾“å…¥å‚æ•°ï¼šæ— 
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 //void pesInit(void)
@@ -72,60 +72,60 @@ void pesInit(void)
 //	
 //	GPIOConfig();
 //	
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);//Íâ²¿ÖĞ¶Ï£¬ĞèÒªÊ¹ÄÜAFIOÊ±ÖÓ
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);//å¤–éƒ¨ä¸­æ–­ï¼Œéœ€è¦ä½¿èƒ½AFIOæ—¶é’Ÿ
 //	
 //	/*PC2*/
 //	EXTI_ClearITPendingBit(EXTI_Line2);  
 //  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource2);//PC8
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line2; //PC2£¬Îª£ºEXTI_Line2 
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line2; //PC2ï¼Œä¸ºï¼šEXTI_Line2 
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	
 //	/*PC3*/
 //	EXTI_ClearITPendingBit(EXTI_Line3);  
 //  GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource3);//PC3
-//  EXTI_InitStructure.EXTI_Line= EXTI_Line3; //PC3£¬Îª£ºEXTI_Line3 
+//  EXTI_InitStructure.EXTI_Line= EXTI_Line3; //PC3ï¼Œä¸ºï¼šEXTI_Line3 
 //  EXTI_InitStructure.EXTI_Mode= EXTI_Mode_Interrupt;   
-//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ÖĞ¶Ï·½Ê½ÎªÏÂ½µÑØ´¥·¢
+//  EXTI_InitStructure.EXTI_Trigger= EXTI_Trigger_Falling;   //ä¸­æ–­æ–¹å¼ä¸ºä¸‹é™æ²¿è§¦å‘
 //	EXTI_InitStructure.EXTI_LineCmd=ENABLE;  
 //  EXTI_Init(&EXTI_InitStructure);
 //	
 //	NVIC_InitStructure.NVIC_IRQChannel = EXTI2_IRQn;  
-//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 1;  //ÇÀ¶ÏÓÅÏÈ¼¶
-//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 1;         //ÏìÓ¦ÓÅÏÈ¼¶
+//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 1;  //æŠ¢æ–­ä¼˜å…ˆçº§
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 1;         //å“åº”ä¼˜å…ˆçº§
 //  NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;     
 //  NVIC_Init(&NVIC_InitStructure);
 //	
 //	NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;  
-//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 1;  //ÇÀ¶ÏÓÅÏÈ¼¶
-//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 1;         //ÏìÓ¦ÓÅÏÈ¼¶
+//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 1;  //æŠ¢æ–­ä¼˜å…ˆçº§
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority= 1;         //å“åº”ä¼˜å…ˆçº§
 //  NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;     
 //  NVIC_Init(&NVIC_InitStructure);	
 //}
 
-///*PC3 ´¥·¢Íâ²¿ÖĞ¶Ï*/
+///*PC3 è§¦å‘å¤–éƒ¨ä¸­æ–­*/
 //void EXTI3_IRQHandler(void)
 //{
-//		if(EXTI_GetITStatus(EXTI_Line3) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï
+//		if(EXTI_GetITStatus(EXTI_Line3) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­
 //	{
 //		pes_R = 1;
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line3);       			//ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line3);       			//æ¸…ä¸­æ–­  
 //	}
 //	
 //}
 
 
-///*PC2 ´¥·¢Íâ²¿ÖĞ¶Ï*/
+///*PC2 è§¦å‘å¤–éƒ¨ä¸­æ–­*/
 //void EXTI2_IRQHandler(void)
 //{
-//		if(EXTI_GetITStatus(EXTI_Line2) != RESET)         //ÕâÀïÎªÅĞ¶ÏÏàÓ¦µÄÖĞ¶ÏºÅÊÇ·ñ½øÈëÖĞ¶Ï
+//		if(EXTI_GetITStatus(EXTI_Line2) != RESET)         //è¿™é‡Œä¸ºåˆ¤æ–­ç›¸åº”çš„ä¸­æ–­å·æ˜¯å¦è¿›å…¥ä¸­æ–­
 //	{
 //		pes_L = 1;
 //		
-//		EXTI_ClearITPendingBit(EXTI_Line2);       			//ÇåÖĞ¶Ï  
+//		EXTI_ClearITPendingBit(EXTI_Line2);       			//æ¸…ä¸­æ–­  
 //	}
 //	
 //}
@@ -134,11 +134,11 @@ void pesInit(void)
 
 ///*
 
-//* º¯Êı½éÉÜ£º×ó¹âµçÍâ²¿ÖĞ¶Ï¿ª¹Ø(PC2)
-//* ÊäÈë²ÎÊı£º¿ªÊ¼£ºnewState==START£¬Í£Ö¹£ºnewState==STOP
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šå·¦å…‰ç”µå¤–éƒ¨ä¸­æ–­å¼€å…³(PC2)
+//* è¾“å…¥å‚æ•°ï¼šå¼€å§‹ï¼šnewState==STARTï¼Œåœæ­¢ï¼šnewState==STOP
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 //void pesLSwitch(SWITCHState newState)
@@ -154,11 +154,11 @@ void pesInit(void)
 
 ///*
 
-//* º¯Êı½éÉÜ£ºÓÒ¹âµçÍâ²¿ÖĞ¶Ï¿ª¹Ø(PC3)
-//* ÊäÈë²ÎÊı£º¿ªÊ¼£ºnewState==START£¬Í£Ö¹£ºnewState==STOP
-//* Êä³ö²ÎÊı£ºÎŞ
-//* ·µ»ØÖµ  £ºÎŞ
-//* ×÷Õß    £º@¶ÏÒä
+//* å‡½æ•°ä»‹ç»ï¼šå³å…‰ç”µå¤–éƒ¨ä¸­æ–­å¼€å…³(PC3)
+//* è¾“å…¥å‚æ•°ï¼šå¼€å§‹ï¼šnewState==STARTï¼Œåœæ­¢ï¼šnewState==STOP
+//* è¾“å‡ºå‚æ•°ï¼šæ— 
+//* è¿”å›å€¼  ï¼šæ— 
+//* ä½œè€…    ï¼š@æ–­å¿†
 
 //*/
 //void pesRSwitch(SWITCHState newState)

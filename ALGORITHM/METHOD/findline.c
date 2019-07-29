@@ -3,181 +3,181 @@
 
 /*
 
-* º¯Êı½éÉÜ£ºÈ±Ê¡Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šç¼ºçœå·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_default()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		//Ìõ¼ş±àÒëÑ¡Ôñµ÷ÊÔÓÃµÍËÙ¶È
+		//æ¡ä»¶ç¼–è¯‘é€‰æ‹©è°ƒè¯•ç”¨ä½é€Ÿåº¦
 		#ifdef _FINDLINE_DEBUG_
-			PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,2050,2200); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,2150,2200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#else
-			PID_Init(&glsensorPID,20,3500,200,0,650);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,3310,3500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,3500,200,0,650);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,2750,2800); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#endif
 		
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed+gldYaw);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed+gldYaw);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£º×îÂıËÙ¶ÈÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæœ€æ…¢é€Ÿåº¦å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_slowest()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2000,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1690,1800); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2000,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1720,1800); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÂıËÙ¶ÈÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šæ…¢é€Ÿåº¦å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_slow()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2050,2200); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2150,2200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÖĞËÙ¶ÈÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸­é€Ÿåº¦å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_middle()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-				//Ìõ¼ş±àÒëÑ¡Ôñµ÷ÊÔÓÃµÍËÙ¶È
+				//æ¡ä»¶ç¼–è¯‘é€‰æ‹©è°ƒè¯•ç”¨ä½é€Ÿåº¦
 		#ifdef _FINDLINE_DEBUG_
-			PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,2050,2200); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,2150,2200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#else
-			PID_Init(&glsensorPID,20,2500,200,0,600);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,4180,4500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,2500,200,0,600);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,4500,4500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#endif
 
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£º¿ìËÙ¶ÈÑ²Ïß·½·¨£¨ÓÃÓÚ¼ÓËÙ£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå¿«é€Ÿåº¦å·¡çº¿æ–¹æ³•ï¼ˆç”¨äºåŠ é€Ÿï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_quick()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-				//Ìõ¼ş±àÒëÑ¡Ôñµ÷ÊÔÓÃµÍËÙ¶È
+				//æ¡ä»¶ç¼–è¯‘é€‰æ‹©è°ƒè¯•ç”¨ä½é€Ÿåº¦
 		#ifdef _FINDLINE_DEBUG_
-			PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,2050,2200); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,2150,2200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#else
-			PID_Init(&glsensorPID,20,4000,230,0,1400);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,4640,5000); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,4000,230,0,1400);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,4940,5000); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#endif
 
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£º³¬¿ìËÙ¶ÈÑ²Ïß·½·¨£¨ÓÃÓÚ¼ÓËÙ£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè¶…å¿«é€Ÿåº¦å·¡çº¿æ–¹æ³•ï¼ˆç”¨äºåŠ é€Ÿï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_quickest()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		//Ìõ¼ş±àÒëÑ¡Ôñµ÷ÊÔÓÃµÍËÙ¶È
+		//æ¡ä»¶ç¼–è¯‘é€‰æ‹©è°ƒè¯•ç”¨ä½é€Ÿåº¦
 		#ifdef _FINDLINE_DEBUG_
-			PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,2050,2200); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,2150,2200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#else
-			PID_Init(&glsensorPID,20,5500,250,0,2800);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-			speedRec_Init(&glmotorSpeed,6145,6500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+			PID_Init(&glsensorPID,20,5500,250,0,2950);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+			speedRec_Init(&glmotorSpeed,6450,6500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		#endif
 		
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value&0x7FE);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value&0x7FE);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
@@ -185,410 +185,440 @@ void flMethod_quickest()
 
 /*
 
-* º¯Êı½éÉÜ£º¹ıÇÅÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè¿‡æ¡¥å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_brige()
 {
 	int rank;
-	if(findLineFlag == 0)   //±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)   //ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,14,2500,200,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2320,2500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,14,2500,200,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2420,2500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank_Brige(glsensor_dig_value); 															//¶ÔÊı×ÖÁ¿½øĞĞµÈ¼¶»®·Ö
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank_Brige(glsensor_dig_value); 															//å¯¹æ•°å­—é‡è¿›è¡Œç­‰çº§åˆ’åˆ†
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÇÅĞ±ÆÂÊ±µÄÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸Šæ¡¥æ–œå¡æ—¶çš„å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_brige_up()
 {
 	int rank;
-	if(findLineFlag == 0)   //±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)   //ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,14,2500,400,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1670,1800); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,14,2500,400,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1720,1800); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank_Brige_Up(glsensor_dig_value); 															//¶ÔÊı×ÖÁ¿½øĞĞµÈ¼¶»®·Ö
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank_Brige_Up(glsensor_dig_value); 															//å¯¹æ•°å­—é‡è¿›è¡Œç­‰çº§åˆ’åˆ†
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÇÅĞ±ÆÂÊ±µÄÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹æ¡¥æ–œå¡æ—¶çš„å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_brige_down()
 {
 	int rank;
-	if(findLineFlag == 0)   //±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)   //ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,14,2500,400,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1395,1500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,14,2500,200,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1500,1500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank_Brige_Down(glsensor_dig_value); 															//¶ÔÊı×ÖÁ¿½øĞĞµÈ¼¶»®·Ö
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank_Brige_Down(glsensor_dig_value); 															//å¯¹æ•°å­—é‡è¿›è¡Œç­‰çº§åˆ’åˆ†
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÌ¨Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸Šå°å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_UpPlatform(void)
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2230,2400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2500,150,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2320,2400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÌ¨Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹å°å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_DownPlatform(void)
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,1500,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1210,1300); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,1500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1210,1300); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÍ£³µÑ²Ïß·½·¨(Ö÷ÒªÓÃÓÚ½ÚµãÍ£³µºÍ×²ÌİÌ¨)
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåœè½¦å·¡çº¿æ–¹æ³•(ä¸»è¦ç”¨äºèŠ‚ç‚¹åœè½¦å’Œæ’æ¢¯å°)
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_stop()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,1000,100,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1310,1400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,1000,100,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1340,1400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
+
 /*
 
-* º¯Êı½éÉÜ£ºÉÏÖé·åÑ²Ïß·½·¨()
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šè¿‡åˆ€å±±å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
+
+*/
+void flMethod_sword()
+{
+	int rank;
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
+	{
+
+		PID_Init(&glsensorPID,20,1600,120,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1340,1400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
+		findLineFlag=1;
+	}
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank_Sword(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
+
+}
+
+
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šä¸Šç å³°å·¡çº¿æ–¹æ³•()
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_upPeak()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,3500,400,0,100);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2800,3000); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,3500,400,0,100);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2890,3000); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 
 /*
 
-* º¯Êı½éÉÜ£ºÏÂÖé·åÑ²Ïß·½·¨()
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šä¸‹ç å³°å·¡çº¿æ–¹æ³•()
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_downPeak()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2000,400,0,100);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1300,1400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2000,400,0,100);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1340,1400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºµ¹³µÑ²Ïß·½·¨(Ö÷ÒªÓÃÓÚ½ÚµãÍ£³µºÍ×²ÌİÌ¨)£¨2017-7-21²âÊÔÎ´Í¨¹ı£©
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå€’è½¦å·¡çº¿æ–¹æ³•(ä¸»è¦ç”¨äºèŠ‚ç‚¹åœè½¦å’Œæ’æ¢¯å°)ï¼ˆ2017-7-21æµ‹è¯•æœªé€šè¿‡ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_back()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,4000,250,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,-1940,-2000); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,4000,250,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,-2000,-1900); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=-sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=-sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 
 /*
 
-* º¯Êı½éÉÜ£ºÆ«×óÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåå·¦å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_left()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,4000,120,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1400,2080); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨2200+200
+		PID_Init(&glsensorPID,20,4000,120,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1400,2080); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š2200+200
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value & 0xF00);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed+gldYaw);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value & 0xF00);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed+gldYaw);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£ºÆ«ÓÒÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåå³å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_right()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,3500,80,0,0);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2080,1400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨2200+200
+		PID_Init(&glsensorPID,20,4000,120,0,0);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2080,1200); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š2200+200
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value & 0x00F);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value & 0x00F);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 
 /*
 
-* º¯Êı½éÉÜ£º¸´ÔÓ½ÚµãÑ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šå¤æ‚èŠ‚ç‚¹å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_node()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2000,300,0,400);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2320,2500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2000,300,0,400);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2420,2500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value&0X1F8);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value&0X1F8);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÔ²Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåœ†å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_circular()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,20,2000,500,0,400);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2230,2400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,20,2000,500,0,400);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2320,2400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£º43_44Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼š43_44å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_43_44()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,21,2000,200,0,400);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2300,2500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,21,2000,200,0,400);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2420,2500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value & 0X1F0);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value & 0X1F0);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÔ²Ñ²Ïß·½·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ÆäËû    £ºÃ¿¸ö·½·¨×îÖ÷ÒªµÄÇø±ğ£º1¡¢glmotorSpeed³õÊ¼ËÙ¶È 2¡¢glsensorPIDµÄP I DÈı¸ö²ÎÊı
-* ×÷Õß    £º@¶ÏÒä
+* å‡½æ•°ä»‹ç»ï¼šåœ†å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@æ–­å¿†
 
 */
 void flMethod_16_44()
 {
 	int rank;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,10,2000,300,0,400);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,1395,1500); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,10,2000,300,0,400);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,1500,1500); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
-	rank=sensorDigitalRank(glsensor_dig_value);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//Î»ÖÃÊ½¸Ä±äµç»úËÙ¶È
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
 
 }
 /*
 
-* º¯Êı½éÉÜ£ºÑ­½Ç¶ÈÅÜ·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ×÷Õß    £ºÄã²Â
+* å‡½æ•°ä»‹ç»ï¼šå¾ªè§’åº¦è·‘æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* ä½œè€…    ï¼šä½ çŒœ
 
 */
 void flMethod_NFL()
 {
 	int rank;
 	float err;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,18,2600,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2230,2400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,18,2600,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2320,2400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 
 	}
-	//glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
+	//glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
 	if(angle_flag == 0)
 	{ 
 		MPU6050_Pose_usart();
@@ -598,31 +628,31 @@ void flMethod_NFL()
 	MPU6050_Pose_usart();		  
 	err = errCalculation(glYaw,glsensor_angle);
 //		u3_printf("%d\n",glsensor_angle);
-	rank=rotangle_run(err);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
+	rank=rotangle_run(err);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);	
 }
 /*
 
-* º¯Êı½éÉÜ£ºÑ­½Ç¶ÈÅÜ·¨
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ
-* ·µ»ØÖµ  £º
-* ×÷Õß    £ºÄã²Â
+* å‡½æ•°ä»‹ç»ï¼šå¾ªè§’åº¦è·‘æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* ä½œè€…    ï¼šä½ çŒœ
 
 */
 void flMethod_NFL_slow()
 {
 	int rank;
 	float err;
-	if(findLineFlag == 0)//±£Ö¤Ã¿¸öÂ·¶Î³õÊ¼»¯Ò»´Î
+	if(findLineFlag == 0)//ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
 	{
-		PID_Init(&glsensorPID,18,2600,200,0,200);																					//¶ÔËÙ¶ÈPIDµÄ²ÎÊı½øĞĞ³õÊ¼»¯ÉèÖÃ
-		speedRec_Init(&glmotorSpeed,2230,2400); 																				//¶Ô³õÊ¼ËÙ¶È½øĞĞÉè¶¨
+		PID_Init(&glsensorPID,18,2600,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2320,2400); 																				//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
 		findLineFlag=1;
 
 	}
-	//glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ÓëãĞÖµ±È½Ïºó½«Ä£ÄâÁ¿×ª»¯³ÉÊı×ÖÁ¿
+	//glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
 	if(angle_flag == 0)
 	{ 
 		MPU6050_Pose_usart();
@@ -632,7 +662,115 @@ void flMethod_NFL_slow()
 	MPU6050_Pose_usart();		  
 	err = errCalculation(glYaw,glsensor_angle);
 //		u3_printf("%d\n",glsensor_angle);
-	rank=rotangle_run(err);                                    //·Ö¼¶
-	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //ËÙ¶ÈÎ»ÖÃÊ½PIDÊä³ö
+	rank=rotangle_run(err);                                    //åˆ†çº§
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);	
 }
+
+
+
+
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šä¸å·¡çº¿ï¼ˆï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼španshao
+
+*/
+void No_flMethod()
+{
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,1720,1800);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šä¸å·¡çº¿ï¼ˆæ…¢é€Ÿï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼španshao
+
+*/
+void No_flMethod_Slow()
+{
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,1300,1320);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šä¸å·¡çº¿ï¼ˆåé€€ï¼‰
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼španshao
+
+*/
+void No_flMethod_Back()
+{
+	
+	if(0 == findLineFlag)
+	{
+		speedRec_Init(&glmotorSpeed,-1500,-1500);
+		findLineFlag=1;
+	}
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šé—­ç¯ç¼–ç å™¨çš„ä½¿ç”¨ç¤ºä¾‹
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼šæ— 
+* ä½œè€…    ï¼šä½ çŒœ
+
+*/
+void flMethod_Encoder()
+{
+	speedRec_Init(&glmotorSpeed,2000,2000);
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,0);
+}
+
+
+/*
+
+* å‡½æ•°ä»‹ç»ï¼šç›´æ¥è¿‡åˆ€å±±å·¡çº¿æ–¹æ³•
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 
+* è¿”å›å€¼  ï¼š
+* å…¶ä»–    ï¼šæ¯ä¸ªæ–¹æ³•æœ€ä¸»è¦çš„åŒºåˆ«ï¼š1ã€glmotorSpeedåˆå§‹é€Ÿåº¦ 2ã€glsensorPIDçš„P I Dä¸‰ä¸ªå‚æ•°
+* ä½œè€…    ï¼š@run
+
+*/
+void flMethod_sword_run()
+{
+	int rank;
+	if(findLineFlag == 0)   //ä¿è¯æ¯ä¸ªè·¯æ®µåˆå§‹åŒ–ä¸€æ¬¡
+	{
+		PID_Init(&glsensorPID,20,2500,200,0,200);																					//å¯¹é€Ÿåº¦PIDçš„å‚æ•°è¿›è¡Œåˆå§‹åŒ–è®¾ç½®
+		speedRec_Init(&glmotorSpeed,2150,2200); 																					//å¯¹åˆå§‹é€Ÿåº¦è¿›è¡Œè®¾å®š
+		findLineFlag=1;
+	}
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//ä¸é˜ˆå€¼æ¯”è¾ƒåå°†æ¨¡æ‹Ÿé‡è½¬åŒ–æˆæ•°å­—é‡
+	rank=sensorDigitalRank_Sword_run(glsensor_dig_value); 															//å¯¹æ•°å­—é‡è¿›è¡Œç­‰çº§åˆ’åˆ†
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //é€Ÿåº¦ä½ç½®å¼PIDè¾“å‡º
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//ä½ç½®å¼æ”¹å˜ç”µæœºé€Ÿåº¦
+
+}
+
+
+
+

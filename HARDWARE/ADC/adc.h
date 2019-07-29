@@ -3,11 +3,11 @@
 
 #include "sys.h"
 
-/*·Ö¼¶¼ÇÂ¼±í*/
+/*åˆ†çº§è®°å½•è¡¨*/
 typedef	struct{
 
-	u16 digitalValue;    //Êı×ÖÁ¿
-	int	proportion  ;    //Êı×ÖÁ¿¶ÔÓ¦µÄ·İ¶î
+	u16 digitalValue;    //æ•°å­—é‡
+	int	proportion  ;    //æ•°å­—é‡å¯¹åº”çš„ä»½é¢
 }rankTypeDef;
 
 	
@@ -16,13 +16,17 @@ void ADC_ConvertOnce(void);
 unsigned char sampingStatus(void);
 unsigned short int sensorAD(u16 *sourceAnalog,const u16 *thresholdAnalog );
 int sensorDigitalRank(u16 digitalValue);
+int sensorDigitalRank_Sword(u16 digitalValue);
 int sensorDigitalRank_Brige(u16 digitalValue);
 int sensorDigitalRank_Brige_Up(u16 digitalValue);
 int sensorDigitalRank_Brige_Down(u16 digitalValue);
+
 int rotangle_run(float angle);
 int sensorDigitalRank_Peak(u16 digitalValue);
 
 int sensorDigitalRank_HR90(u16 digitalValue);
+
+int sensorDigitalRank_Sword_run(u16 digitalValue);
 
 //void tableExchang(rankTypeDef *rankInformationp,const rankTypeDef *refp);
 //void rankInformationInit(void);
