@@ -76,7 +76,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 						{35,36,FL_default,FREE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},{42,6,FL_default,DOOR_CLICK,NOSPEED,0,NOTSEEK,NOTPARK,HN_Rotate,0},	\
 						{44,43,FL_middle,FREE,NOSPEED,0,SEEK4,NOTPARK,HN_Rotate,0},{6,5,FL_default,FREE,COMMON_SPEED,40,SEEK_default,PARK_pesL,HR,90},	\
 						{34,30,FL_default,FREE,COMMON_SPEED,25,SEEK_DIGL,PARK_pesL_No,HL,90},{17,18,FL_default,FREE,COMMON_SPEED,60,SEEK_DIGL,PARK_pesL_No,HL,90},	\
-            {16,44,FL_slow,ANGLE,COMMON_SPEED,20,SEEK_default,PARK_pesR,HR_F,120},{17,20,FL_default,FREE,COMMON_SPEED,80,SEEK_DIGL,PARK_pesL_No,HL,90},		\
+            {16,44,FL_slow,ANGLE,NOSPEED,0,SEEK_default,PARK_pesR,HR_F,120},{17,20,FL_default,FREE,COMMON_SPEED,80,SEEK_DIGL,PARK_pesL_No,HL,90},		\
 						{9,5,FL_default,FREE,COMMON_SPEED,90,SEEK4,PARK_pesR_200,HL,135},
 					},	
 
