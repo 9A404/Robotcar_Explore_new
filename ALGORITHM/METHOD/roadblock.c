@@ -249,7 +249,7 @@ u8 BlockHandleMethod_DOOR_Click(void)
 //		speedAdjustment(-1500,-1500);
 //		
 //		delay_ms(200);
-		rotAngle_Right(180);
+//		rotAngle_Right(180);
 		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto); 
 		if(1 == DoorFlag_2)
 		{

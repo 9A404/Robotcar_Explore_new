@@ -73,7 +73,7 @@ void MPU6050_Init(void)
 //		else
 //		 	PrintChar("dmp_set_fifo_rate come across error ......\n");
 
-			run_self_test();		//×Ô¼ì
+			run_self_test();		//è‡ªæ£€
 			mpu_set_dmp_state(1);
 //		if(!mpu_set_dmp_state(1))
 //		 	PrintChar("mpu_set_dmp_state complete ......\n");
@@ -84,11 +84,11 @@ void MPU6050_Init(void)
 
 /*
 
-* º¯Êı½éÉÜ£ºmpu6050´®¿Ú°æ
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ	
-* ·µ»ØÖµ  £ºÈı¸ö½Ç¶ÈÖµ
-* ×÷Õß    £º@Î»Ê¤
+* å‡½æ•°ä»‹ç»ï¼šmpu6050ä¸²å£ç‰ˆ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 	
+* è¿”å›å€¼  ï¼šä¸‰ä¸ªè§’åº¦å€¼
+* ä½œè€…    ï¼š@ä½èƒœ
 
 */
 
@@ -109,26 +109,26 @@ void MPU6050_Pose_usart(void)
 		 }
 		 temp  =  i;
 		 i = 0;
-                  angle[0] = ((short)(USART1_RX_BUF[temp+25]<<8| USART1_RX_BUF[temp+24]))/32768.0*180;   //XÖá¹ö×ª½Ç£¨x Öá£©
-                  angle[1] = ((short)(USART1_RX_BUF[temp+27]<<8| USART1_RX_BUF[temp+26]))/32768.0*180;   //YÖá¸©Ñö½Ç£¨y Öá£©
-                  angle[2] = ((short)(USART1_RX_BUF[temp+29]<<8| USART1_RX_BUF[temp+28]))/32768.0*180;   //ZÖáÆ«º½½Ç£¨z Öá£©  
+                  angle[0] = ((short)(USART1_RX_BUF[temp+25]<<8| USART1_RX_BUF[temp+24]))/32768.0*180;   //Xè½´æ»šè½¬è§’ï¼ˆx è½´ï¼‰
+                  angle[1] = ((short)(USART1_RX_BUF[temp+27]<<8| USART1_RX_BUF[temp+26]))/32768.0*180;   //Yè½´ä¿¯ä»°è§’ï¼ˆy è½´ï¼‰
+                  angle[2] = ((short)(USART1_RX_BUF[temp+29]<<8| USART1_RX_BUF[temp+28]))/32768.0*180;   //Zè½´åèˆªè§’ï¼ˆz è½´ï¼‰  
            
 		glPitch=angle[0];
 		glRoll=angle[1];
 		glYaw=angle[2];
 		memset(USART1_RX_BUF,0,66);
 		USART_DMA_Enable(DMA1_Channel5);
-			//	printf("X½Ç¶È£º%.2f  Y½Ç¶È£º%.2f  Z½Ç¶È£º%.2f  XËÙ¶È£º%.2f  YËÙ¶È£º%.2f  ZËÙ¶È£º%.2f\r\n",angle[0],angle[1],angle[2],w[0],w[1],w[2]);
+			//	printf("Xè§’åº¦ï¼š%.2f  Yè§’åº¦ï¼š%.2f  Zè§’åº¦ï¼š%.2f  Xé€Ÿåº¦ï¼š%.2f  Yé€Ÿåº¦ï¼š%.2f  Zé€Ÿåº¦ï¼š%.2f\r\n",angle[0],angle[1],angle[2],w[0],w[1],w[2]);
  }
 
  
 /*
 
-* º¯Êı½éÉÜ£ºmpu6050i2c°æ
-* ÊäÈë²ÎÊı£ºÎŞ
-* Êä³ö²ÎÊı£ºÎŞ	
-* ·µ»ØÖµ  £ºÈı¸ö½Ç¶ÈÖµ
-* ×÷Õß    £º
+* å‡½æ•°ä»‹ç»ï¼šmpu6050i2cç‰ˆ
+* è¾“å…¥å‚æ•°ï¼šæ— 
+* è¾“å‡ºå‚æ•°ï¼šæ— 	
+* è¿”å›å€¼  ï¼šä¸‰ä¸ªè§’åº¦å€¼
+* ä½œè€…    ï¼š
 
 */
  

@@ -26,6 +26,7 @@
 #include "door.h"
 #include "danger.h"
 #include "speed.h"
+#include "encoder.h"
 
 //#define _DEBUG_
 //#define _DEBUG_U3_P		//调试串口三蓝牙打印
@@ -88,6 +89,7 @@ extern float glsetYaw;																		//储存设定的偏航角
 extern int gldSpeed;															//储存速度PID输出
 extern float angle_read_temp[5];
 extern float angle_read;
+extern float peak_angle;
 extern u8 findLineFlag;														//巡线方法初始化标志位
 extern u8 rotAngleFlag;                         //旋转方法初始化标志位
 
@@ -129,7 +131,7 @@ extern u8 SecondGameNum1;														//一键切换第二遍路线1（保守�
 extern u8 SecondGameNum2;														//一键切换第二遍路线2（高分路线）
 //extern u8 DangerFlag;                         //危险标志位
 
-
+extern u16 i;
 
 #endif
 

@@ -434,14 +434,14 @@ void flMethod_back()
 	int rank;
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
-		PID_Init(&glsensorPID,20,4000,250,0,0);																					//对速度PID的参数进行初始化设置
-		speedRec_Init(&glmotorSpeed,-2000,-1900); 																				//对初始速度进行设定
+		PID_Init(&glsensorPID,20,2500,50,0,500);																					//对速度PID的参数进行初始化设置
+		speedRec_Init(&glmotorSpeed,-2150,-2200); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
 	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
-	rank=-sensorDigitalRank(glsensor_dig_value);                                    //分级
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //分级
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
-	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,-gldSpeed);			//位置式改变电机速度
 
 }
 

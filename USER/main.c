@@ -84,6 +84,7 @@ float glsetYaw;                            	//储存设定的偏航角
 
 float angle_read_temp[5];
 float angle_read;
+float peak_angle;
 
 float glPitchbuff[2];											 	//俯仰角缓存区
 float gldif_Pitch;                         	//前后两次之差	  
@@ -104,6 +105,7 @@ u8 pes_R=0;																	//右边光电传感器状态
 
 u8 SecondGameNum1 = 0;											//一键切换第二遍路线1（保守路线）
 u8 SecondGameNum2 = 1;											//一键切换第二遍路线2（高分路线）
+u16 i;
 /*
 
 * 函数介绍：比赛
@@ -323,7 +325,11 @@ void Fun_SecondGameMethod2(void)
 /*********************************************************************************************************************/
 int main(void)
 {	
+   	
+	  u16 buff[12];
 		/************硬件初始化部分*****************************************************************************/	
+	  Encoder_Init_TIM2();
+//	TIM1_Read_Time(50);
 	  NVIC_Configuration();				//系统中断优先级分组抢占2：响应2	
 		delay_init();	    	  		//延时函数初始化	
 		Lcd_Init();             //TFT屏幕显示初始化
@@ -334,23 +340,33 @@ int main(void)
 		TIM7_Config(100-1,7200-1); // 定时器3定时周期为10ms
 		motor_PWM_Init();       //PWM初始化
 		uart_init(115200);			//串口1初始化	
-//		usart3_init(115200);			//串口DMA初始化函数		
+		usart3_init(115200);			//串口DMA初始化函数		
 		sg_PWM_Init();					//舵机初始化
 		keyInit();							//按键初始化
 	  pesInit();							//光电传感器初始化
 		ledInit();							//led初始化
-		//buzzerInit();         //蜂鸣器初始化
-		
+		//buzzerInit();        `` //蜂鸣器初始化
+		TIM1_Read_Time(50);
 		runMethodNum=sizeof(runMethodTable)/sizeof(runMethodTable[0]);
 		runMethodNumDoor=sizeof(runMethodTableDoor)/sizeof(runMethodTableDoor[0]);
 		runMethodNumDebug=sizeof(runMethodTableDebug)/sizeof(runMethodTableDebug[0]);
 		
 		while(1)
 		{
-			displayOperation();
-//			speedAdjustment(2150,2200);
+			u3_printf("dfsdfsdfsd");
+			speedAdjustment(-2100,-2200);
+//			flMethod_slow();
+//			i=Read_Encoder(2);
+			sprintf((char*)buff,"%d",TIM2->CNT);
+			Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+//			displayOperation();
+//			speedAdjustment(-2100,-2200);
 //			flMethod_slow();
 //			flMethod_sword();
+//  			rotAngle_Right(7);
+//			delay_ms(3000);
+//			 flMethod_default();
+//			flMethod_back();
 		}
 		
 }

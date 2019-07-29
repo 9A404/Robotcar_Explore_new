@@ -82,6 +82,7 @@ void TIM6_IRQHandler(void)
 	if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  //检查TIM6更新中断发生与否
     {
 			ADC_ConvertOnce();	
+//			i= Read_Encoder(2);
       TIM_ClearITPendingBit(TIM6, TIM_IT_Update);  //清除TIMx更新中断标志 
     }
 }

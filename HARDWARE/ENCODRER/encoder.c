@@ -107,13 +107,13 @@ void Encoder_Init_TIM2(void)
 
 */
 
-s16 Read_Encoder(u8 TIMX)
+u16 Read_Encoder(u8 TIMX)
 {
-   s16 Encoder_TIM;    
+   u16 Encoder_TIM;    
    switch(TIMX)
 	 {
-	   case 2:  Encoder_TIM= (short)TIM2 -> CNT;  TIM2 -> CNT=0;break;   //读取编码器的数据并清零
-		 case 3:  Encoder_TIM= (short)TIM3 -> CNT;  TIM3 -> CNT=0;break;	 //读取编码器的数据并清零
+	   case 2:  Encoder_TIM= (u16)TIM2 -> CNT;  TIM2 -> CNT=0;break;   //读取编码器的数据并清零
+		 case 3:  Encoder_TIM= (u16)TIM3 -> CNT;  TIM3 -> CNT=0;break;	 //读取编码器的数据并清零
 		 default:  Encoder_TIM=0;
 	 }
 		return Encoder_TIM;
@@ -136,19 +136,23 @@ void TIM1_Read_Time(u16 msec)
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);  ///使能TIM1时钟
 	
-	TIM_TimeBaseInitStructure.TIM_Period = 10 * msec; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到500为500ms
+	TIM_TimeBaseInitStructure.TIM_Period = 100-1; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到500为500ms
 	TIM_TimeBaseInitStructure.TIM_Prescaler = 7200-1; 											//设置用来作为TIMx时钟频率除数的预分频值  10Khz的计数频率  
-	TIM_TimeBaseInitStructure.TIM_ClockDivision = 0; 									//设置时钟分割:TDTS = Tck_tim
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; 									//设置时钟分割:TDTS = Tck_tim
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
+	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
 	
-	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE); 
-	NVIC_InitStructure.NVIC_IRQChannel=TIM1_UP_IRQn; //定时器2中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x01; //抢占优先级1
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x01; //子优先级3
-	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
+	TIM_ClearFlag(TIM1,TIM_FLAG_Update);
+	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE);
 	TIM_Cmd(TIM1, ENABLE);
+	
+//	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE); 
+//	NVIC_InitStructure.NVIC_IRQChannel=TIM1_UP_IRQn; //定时器2中断
+//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x01; //抢占优先级1
+//	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x01; //子优先级3
+//	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
+//	NVIC_Init(&NVIC_InitStructure);
 }
 
 
@@ -245,7 +249,13 @@ void TIM2_IRQHandler(void)
 	}				   
 	TIM2->SR&=~(1<<0);//清除中断标志位 	    
 }
-
+void TIM3_IRQHandler(void)
+{ 		    		  			    
+	if(TIM3->SR&0X0001)//溢出中断
+	{    				   				     	    	
+	}				   
+	TIM3->SR&=~(1<<0);//清除中断标志位 	    
+}
 /*
 
 * 函数介绍：TIM1的中断服务函数,闭环电机控制
@@ -255,26 +265,25 @@ void TIM2_IRQHandler(void)
 * 作者    ：panshao
 
 */
-void TIM3_IRQHandler(void)
-{ 		    		  			    
-	if(TIM3->SR&0X0001)//溢出中断
-	{    				   				     	    	
-	}				   
-	TIM3->SR&=~(1<<0);//清除中断标志位 	    
-}
 
-void TIM1_IRQHandler(void)
-{
-	if(TIM_GetFlagStatus(TIM1, TIM_FLAG_Update) != RESET)
-	{
-		TIM_Cmd(TIM1, DISABLE);
-		
-		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
-		
-		TIM_ClearITPendingBit(TIM1, TIM_FLAG_Update);
-		TIM_Cmd(TIM1, ENABLE);
-	}
-}
+
+//void TIM1_UP_IRQHandler(void)
+//{
+//	u16 buff[12];
+//	if(TIM_GetFlagStatus(TIM1, TIM_IT_Update) != RESET)
+//	{
+//		TIM_Cmd(TIM1, DISABLE);
+////		i= TIM2->CNT;
+////		TIM2->CNT = 0;
+//		
+//		sprintf((char*)buff,"%d",TIM2->CNT);
+//			Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+//////		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
+////		
+//		TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
+//		TIM_Cmd(TIM1, ENABLE);
+//	}
+//}
 
 
 

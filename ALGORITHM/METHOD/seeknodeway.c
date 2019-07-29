@@ -486,10 +486,9 @@ u8 seekNodeMethod_SeeSaw_2019()
 			for(int i=0;i<50;i++) MPU6050_Pose();
 			#endif
 		    err = errCalculation(glYaw,angle_read);
-		    if(err<0)err=-err;
-		
-		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
-		speedAdjustment(0,speed+2500);
+		  if(err<0)err=-err;	
+	    speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
+	    speedAdjustment(0,speed+2500);
 		}
 //		speedAdjustment(0,0);
 //		while(1);

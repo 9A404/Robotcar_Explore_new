@@ -250,6 +250,7 @@ u8 rotAngle_Left_F(float angle)
 		MPU6050_Pose();
 	#endif
 	set = setYaw(glYaw,-angle);
+	peak_angle= setYaw(glYaw,-180);
 	
 	err=errCalculation(glYaw,set);
 	if(err<0)err=-err;
