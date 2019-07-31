@@ -329,7 +329,7 @@ int main(void)
 	  u16 buff[12];
 		/************硬件初始化部分*****************************************************************************/	
 	  Encoder_Init_TIM2();
-//	TIM1_Read_Time(50);
+	  Encoder_Init_TIM3();
 	  NVIC_Configuration();				//系统中断优先级分组抢占2：响应2	
 		delay_init();	    	  		//延时函数初始化	
 		Lcd_Init();             //TFT屏幕显示初始化
@@ -337,7 +337,7 @@ int main(void)
 		ADC_DMA_Init();        	//ADC&DMA初始化
 		sampingTime_Init(150);	//采样周期为15ms对应的值为150 
 //		mpu6050_sampingTime_Init(80);//mpu6050采样周期8ms
-		TIM7_Config(100-1,7200-1); // 定时器3定时周期为10ms
+		TIM7_Config(100-1,7200-1); // 定时器3定··时周期为10ms
 		motor_PWM_Init();       //PWM初始化
 		uart_init(115200);			//串口1初始化	
 		usart3_init(115200);			//串口DMA初始化函数		
@@ -353,12 +353,13 @@ int main(void)
 		
 		while(1)
 		{
-			u3_printf("dfsdfsdfsd");
-			speedAdjustment(-2100,-2200);
+//			LED1=0;
+//			u3_printf("dfsdfsdfsd");
+			speedAdjustment(2100,2200);
 //			flMethod_slow();
 //			i=Read_Encoder(2);
-			sprintf((char*)buff,"%d",TIM2->CNT);
-			Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+//			sprintf((char*)buff,"%d",TIM2->CNT);
+//			Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
 //			displayOperation();
 //			speedAdjustment(-2100,-2200);
 //			flMethod_slow();
