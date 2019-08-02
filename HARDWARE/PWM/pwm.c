@@ -172,6 +172,10 @@ void motor_PWM_Init(void)
 */
 void speedAdjustment(int lspeed,int rspeed)
 {
+	L_speed=lspeed;
+	R_speed=rspeed;
+  encoder_expectation_L=k*lspeed;
+	encoder_expectation_R=k*rspeed;
 	  if(rspeed>0)   
 	{
 		TIM4->CCR4 = 0;         // PB9

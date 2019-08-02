@@ -6,7 +6,7 @@ s16	hall_R_counter;//对应TIM3计数值
 static s16 err_L_L,err_L_R,err_LL_L,err_LL_R,all_error_L,all_error_R;
 static s16 PWM_Increase_L,PWM_Increase_R;
 static s16 PWM_L = 0,PWM_R = 0;
-float Kp = 0.3;
+float Kp = -5;
 float Kd = 0.8;//3.5
 float Ki =0.05 ;
 /*
@@ -48,7 +48,7 @@ void Encoder_Init_TIM3(void)
   
   TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM的更新标志位
   TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-  TIM_SetCounter(TIM3,3000);
+  TIM_SetCounter(TIM3,0);
   TIM_Cmd(TIM3, ENABLE); 
 }
 
@@ -101,7 +101,7 @@ void Encoder_Init_TIM2(void)
   
   TIM_ClearFlag(TIM2, TIM_FLAG_Update);//清除TIM的更新标志位
   TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);	
-	TIM_SetCounter(TIM2,3000);//设定初值并使能编码器计数
+	TIM_SetCounter(TIM2,0);//设定初值并使能编码器计数
   TIM_Cmd(TIM2, ENABLE); 
 }
 
@@ -144,7 +144,7 @@ void TIM1_Read_Time(u16 msec)
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);  ///使能TIM1时钟
 	
-	TIM_TimeBaseInitStructure.TIM_Period = 50000-1; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到500为500ms
+	TIM_TimeBaseInitStructure.TIM_Period = 100-1; 												//设置在下一个更新事件装入活动的自动重装载寄存器周期的值	 计数到500为500ms
 	TIM_TimeBaseInitStructure.TIM_Prescaler = 7200-1; 											//设置用来作为TIMx时钟频率除数的预分频值  10Khz的计数频率  
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; 									//设置时钟分割:TDTS = Tck_tim
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
@@ -184,39 +184,42 @@ void close_loop_PD_control(s16 V_set_L,s16 V_set_R)
 		hall_L_counter = Read_Encoder(2);        //拿到测量返回值
 		
 	}
-	if(V_set_L<0)
-	{
-		
-		hall_L_counter = -Read_Encoder(2);        //拿到测量返回值	
-		V_set_L = -V_set_L;
-	}
+//	if(V_set_L<0)
+//	{
+//		
+//		hall_L_counter = -Read_Encoder(2);        //拿到测量返回值	
+//		V_set_L = -V_set_L;
+//	}
 	if(V_set_R>=0)
 	{
 		hall_R_counter = Read_Encoder(3); 
 	}
-	if(V_set_R<0)
-	{
-		hall_R_counter = -Read_Encoder(3); 
-		V_set_R=-V_set_R;
-	}
+//	if(V_set_R<0)
+//	{
+//		hall_R_counter = -Read_Encoder(3); 
+//		V_set_R=-V_set_R;
+//	}
 	err_L_L = V_set_L - hall_L_counter;       //误差等于设定速度减去测量速度
 	err_L_R = V_set_R - hall_R_counter;
 	PWM_Increase_L  = Kp * err_L_L +Kd * (err_L_L - err_LL_L);         //计算PWM应该修改的量
 	PWM_Increase_R  = Kp * err_L_R +Kd * (err_L_R - err_LL_R);
 	PWM_L += PWM_Increase_L;                 //计算PWM应该输出的量
 	PWM_R += PWM_Increase_R; 
-if(PWM_L>200)
+	PWM_L = PWM_L/0.2+L_speed;
+	PWM_R = PWM_R/0.2+R_speed;
+if(PWM_L>20)
 	{
-		PWM_L=200;
+		PWM_L=20;
 	}
-		if(PWM_R>200)
+		if(PWM_R>20)
 	{
-		PWM_R=200;
+		PWM_R=20;
 	}
 	if(V_set_L>=0)
 	{	
-		TIM_SetCompare1(TIM5, (uint16_t)PWM_L);
-		TIM_SetCompare2(TIM5, 0);
+//		TIM_SetCompare1(TIM5, (uint16_t)PWM_L);
+//		TIM_SetCompare2(TIM5, 0);
+		TIM4->CCR3 = PWM_L;
 		}//根据计算值修改PWM占空比
 	if(V_set_L<0)
 	{	
@@ -225,8 +228,9 @@ if(PWM_L>200)
 		}//根据计算值修改PWM占空比
 		if(V_set_R>=0)
 	{
-		TIM_SetCompare3(TIM5, (uint16_t)PWM_R);
-		TIM_SetCompare4(TIM5, 0);
+//		TIM_SetCompare3(TIM5, (uint16_t)PWM_R);
+//		TIM_SetCompare4(TIM5, 0);
+		TIM4->CCR2 = PWM_R;
 	}
 	if(V_set_R<0)
 	{
@@ -282,25 +286,40 @@ void TIM1_UP_IRQHandler(void)
 	if(TIM_GetFlagStatus(TIM1, TIM_IT_Update) != RESET)
 	{
   	TIM_Cmd(TIM1, DISABLE);
-//******************显示左轮脉冲数*******************************************
-		i= TIM_GetCounter(TIM2);		
-		TIM2->CNT = 3000;		
-		sprintf(buff,"%5d",i);
-		Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
-//******************显示右轮脉冲数*******************************************
-		i= TIM_GetCounter(TIM3);		
-		TIM3->CNT = 3000;		
-		sprintf(buff,"%5d",i);
-		Gui_DrawFont_GBK16(50,80,BLUE,WHITE,(const char*)buff);
+		TIM_Cmd(TIM2, DISABLE);
+		TIM_Cmd(TIM3, DISABLE);
+////******************显示左轮脉冲数*******************************************
+//		i= TIM_GetCounter(TIM2);		
+//		TIM2->CNT =0;		
+//		sprintf(buff,"%5d",i);
+//		Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+////******************显示右轮脉冲数*******************************************
+//		i= TIM_GetCounter(TIM3);		
+//		TIM3->CNT = 0;		
+//		sprintf(buff,"%5d",i);
+//		Gui_DrawFont_GBK16(50,80,BLUE,WHITE,(const char*)buff);
 //***************************************************************************		
-////		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
-//		
+//		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
+      close_loop_PD_control(encoder_expectation_L,encoder_expectation_R);		
 		TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
 		LED1=!LED1;
 
 		TIM_Cmd(TIM1, ENABLE);
+		TIM_Cmd(TIM2, ENABLE);
+		TIM_Cmd(TIM3, ENABLE);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -184,7 +184,7 @@ u8 BlockHandleMethod_DOOR(void)
 	}
 	if(1==flag && 0 == PES_H)
 	{
-		rotAngle_Right(180);
+//  	rotAngle_Right(180);
 		runMethodUpdate(runMethod,DoorFlag_2,runMethodTableDoorAuto);   
 		if(1 == DoorFlag_2)
 		{
@@ -478,7 +478,7 @@ float Monitor_ROLL()
 		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量	
 		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<3) 
 		{
-			rotAngle_Left(20);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
+			rotAngle_Left(30);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
 			Turn_Flag++;
 		}
 		else                         //否则返回1完成障碍任务
@@ -1145,7 +1145,7 @@ u8 BlockHandleMethod_S_BOARD_Double()
 		gl_time=0;
 		flag=2;
 	}
-	else if(2==flag&&gl_time>290)
+	else if(2==flag&&gl_time>300)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);

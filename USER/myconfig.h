@@ -131,9 +131,22 @@ extern u8 SecondGameNum1;														//一键切换第二遍路线1（保守�
 extern u8 SecondGameNum2;														//一键切换第二遍路线2（高分路线）
 //extern u8 DangerFlag;                         //危险标志位
 
-extern u16 i;
-
+extern u16 i;                                  //读编码器的脉冲数，用作中间值
+extern u16 encoder_expectation_L;              //左编码器10ms脉冲期望值
+extern u16 encoder_expectation_R;              //右编码器10ms脉冲期望值
+extern float k;                            //编码器10ms所计脉冲数与speedAdjustment函数中所设的CRR值为正比关系，系数为k
+extern int L_speed;                                      //记录左轮CRR设定值
+extern int R_speed;                                      //记录右轮CRR设定值
 #endif
+
+
+
+
+
+
+
+
+
 
 
 
