@@ -802,7 +802,29 @@ void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 								      	#ifdef LED_Debug
 									    	led_flash();
 								       	#endif
-						          	}break;								
+						          	}break;
+			case SEEK_11_10_9:if(1 == seekNodeMethod_11_10_9())
+							{
+								runState->seekNodeState=EIC;
+								#ifdef BlueTooth_Debug
+									u3_printf("SEEK_default_EIC\r\n");
+								#endif
+									
+								#ifdef LED_Debug
+									led_flash();
+								#endif
+						}break;		
+			case SEEK_10_9_14:if(1 == seekNodeMethod_10_9_14())
+							{
+								runState->seekNodeState=EIC;
+								#ifdef BlueTooth_Debug
+									u3_printf("SEEK_default_EIC\r\n");
+								#endif
+									
+								#ifdef LED_Debug
+									led_flash();
+								#endif
+							}break;							
 											
 											
 			default: 		break;

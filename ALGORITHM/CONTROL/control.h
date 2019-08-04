@@ -24,7 +24,7 @@ typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//下台加速，普
 
 /*找节点方法*/
 typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,	\
-							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back}seekNodeWay;
+							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back,SEEK_11_10_9,SEEK_10_9_14}seekNodeWay;
 
 /*停车方法*/
 typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_50,PARK_pesR_100,PARK_pesR_150,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\

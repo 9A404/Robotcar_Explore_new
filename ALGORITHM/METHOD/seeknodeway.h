@@ -15,6 +15,8 @@ u8 seekNodeMethod_digR(void );
 u8 seekNodeMethod_digL(void);
 u8 seekNodeMethod_SeeSaw_back(void);
 u8 seekNodeMethod_SeeSaw_2019(void);
+u8 seekNodeMethod_11_10_9();
+u8 seekNodeMethod_10_9_14();
 
 #endif
 

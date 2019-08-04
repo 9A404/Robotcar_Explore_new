@@ -476,7 +476,7 @@ float Monitor_ROLL()
 	else if(2 == flag)                //车子在跷跷板的另外一端则先检测传感器有没有在白线上
 	{
 		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量	
-		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<3) 
+		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<4) 
 		{
 			rotAngle_Left(30);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
 			Turn_Flag++;

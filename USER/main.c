@@ -11,7 +11,7 @@ const u16  brige_sensorThreshold[NUM_OF_SENSOR] = {900,900,900,900,900,900,900,9
 /*不过门路线*/
 const u8 runMethodTable[][100]=
 {
-	                            {20,18,19,18,17,14,34,30,50,28,25,26,27,26,25,28},
+	                            {1,2,3,4,3,5,6,8,6,7,12,10,11,10,9,14,16,44,45,46,47,46,48,43,16,17,18,19,18,20,21,22,23,24,23,25,26,27,26,25,28,50,49,37,15,31,32,31,30,34,35,36,35,14,9,5,2,1,2},
 ///*保守路线0 不过桥267*2=534	*/{1,2,5,6,8,6,7,12,10,11,10,9,5,2,1,2},				
 /*保守路线1  过桥	282*2=564	*/{1,2,3,4,3,5,6,8,6,7,12,10,11,10,9,31,32,31,30,34,35,36,35,14,16,44,45,46,47,46,48,43,16,17,20,21,22,23,24,23,25,26,27,26},	
 ///*高分路线2 不过桥484*2=968	*/{1,2,5,6,8,6,7,12,10,11,10,24,36,15,30,31,32,31,33,23,24,23,25,26,27,26,25,33,34,35,36,35,14,37,36,24,10,9,5,2,1,2},			
@@ -333,10 +333,10 @@ void Fun_SecondGameMethod2(void)
 int main(void)
 {	
    	
-	  u16 buff[12];
+	  char buff[12];
 		/************硬件初始化部分*****************************************************************************/	
-//	  Encoder_Init_TIM2();
-//	  Encoder_Init_TIM3();
+	  Encoder_Init_TIM2();
+	  Encoder_Init_TIM3();
 	  NVIC_Configuration();				//系统中断优先级分组抢占2：响应2	
 		delay_init();	    	  		//延时函数初始化	
 		Lcd_Init();             //TFT屏幕显示初始化
@@ -353,32 +353,26 @@ int main(void)
 	  pesInit();							//光电传感器初始化
 		ledInit();							//led初始化
 		//buzzerInit();         //蜂鸣器初始化
-//		TIM1_Read_Time(50);
+		TIM1_Read_Time(50);
 		runMethodNum=sizeof(runMethodTable)/sizeof(runMethodTable[0]);
 		runMethodNumDoor=sizeof(runMethodTableDoor)/sizeof(runMethodTableDoor[0]);
 		runMethodNumDebug=sizeof(runMethodTableDebug)/sizeof(runMethodTableDebug[0]);
-//		speedAdjustment(3000,3000);
+//    Encoder_RunNrad(5, 180);
 		while(1)
 		{
-//			LED1=0;
-//			u3_printf("dfsdfsdfsd");
-//			speedAdjustment(3000,3000);
-//			flMethod_slow();
-//			i=Read_Encoder(2);
-//			sprintf((char*)buff,"%d",TIM2->CNT);
-//			Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+
 			displayOperation();
-//			  speedAdjustment(0,0);
-//			 delay_ms(1000);
-//			 speedAdjustment(7000,7000);
-//			 delay_ms(1000);
-//			speedAdjustment(-2100,-2200);
-//			flMethod_slow();
-//			flMethod_sword();
-//  			rotAngle_Right(7);
-//			delay_ms(3000);
-//			 flMethod_default();
-//			flMethod_back();
+////******************显示左轮脉冲数*******************************************
+//		i= TIM_GetCounter(TIM2);		
+////		TIM2->CNT =0;		
+//		sprintf(buff,"%5d",i);
+//		Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+////******************显示右轮脉冲数*******************************************
+//		i= TIM_GetCounter(TIM3);		
+////		TIM3->CNT = 0;	                                                 	
+//		sprintf(buff,"%5d",i);
+//		Gui_DrawFont_GBK16(50,80,BLUE,WHITE,(const char*)buff);
+////***************************************************************************		
 		}
 		
 }

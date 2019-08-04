@@ -9,6 +9,11 @@ static s16 PWM_L = 0,PWM_R = 0;
 float Kp = -5;
 float Kd = 0.8;//3.5
 float Ki =0.05 ;
+
+unsigned int Encode_Target;					//保存目标位置信息
+unsigned int EncoderLeftCounter;			//保存当前位置信息
+int SpeedLeft;								//保存计算速度信息
+float EncoderCounterOneAngle = EncoderCounterOneCirCle / 360;
 /*
 
 * 函数介绍：将TIM3配置为编码器接口模式
@@ -41,7 +46,7 @@ void Encoder_Init_TIM3(void)
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; //TIM向上计数    
   TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);  //初始化定时器
   
-  TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3，下降沿捕获，TI1和TI2同时
+  TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_BothEdge, TIM_ICPolarity_BothEdge);//使用编码器模式3，下降沿捕获，TI1和TI2同时
   TIM_ICStructInit(&TIM_ICInitStructure);		//
   TIM_ICInitStructure.TIM_ICFilter = 0;
   TIM_ICInit(TIM3, &TIM_ICInitStructure);
@@ -94,7 +99,7 @@ void Encoder_Init_TIM2(void)
   TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);  //初始化定时器
   
   //使用编码器模式3，双通道，跳变沿计时
-	TIM_EncoderInterfaceConfig(TIM2, TIM_EncoderMode_TI12,TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
+	TIM_EncoderInterfaceConfig(TIM2, TIM_EncoderMode_TI12,TIM_ICPolarity_BothEdge, TIM_ICPolarity_BothEdge);
   TIM_ICStructInit(&TIM_ICInitStructure);		//
   TIM_ICInitStructure.TIM_ICFilter = 0;
   TIM_ICInit(TIM2, &TIM_ICInitStructure);
@@ -161,7 +166,8 @@ void TIM1_Read_Time(u16 msec)
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x01; //子优先级3
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
-	TIM_Cmd(TIM1, ENABLE);
+//	TIM_Cmd(TIM1, ENABLE);
+	TIM_Cmd(TIM1, DISABLE);  
 }
 
 
@@ -282,46 +288,139 @@ void TIM3_IRQHandler(void)
 
 void TIM1_UP_IRQHandler(void)
 {
-	char buff[12];
-	if(TIM_GetFlagStatus(TIM1, TIM_IT_Update) != RESET)
-	{
-  	TIM_Cmd(TIM1, DISABLE);
-		TIM_Cmd(TIM2, DISABLE);
-		TIM_Cmd(TIM3, DISABLE);
-////******************显示左轮脉冲数*******************************************
-//		i= TIM_GetCounter(TIM2);		
-//		TIM2->CNT =0;		
-//		sprintf(buff,"%5d",i);
-//		Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
-////******************显示右轮脉冲数*******************************************
-//		i= TIM_GetCounter(TIM3);		
-//		TIM3->CNT = 0;		
-//		sprintf(buff,"%5d",i);
-//		Gui_DrawFont_GBK16(50,80,BLUE,WHITE,(const char*)buff);
-//***************************************************************************		
-//		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
-      close_loop_PD_control(encoder_expectation_L,encoder_expectation_R);		
-		TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
-		LED1=!LED1;
+//	char buff[12];
+//	if(TIM_GetFlagStatus(TIM1, TIM_IT_Update) != RESET)
+//	{
+//  	TIM_Cmd(TIM1, DISABLE);
+//		TIM_Cmd(TIM2, DISABLE);
+//		TIM_Cmd(TIM3, DISABLE);
+//////******************显示左轮脉冲数*******************************************
+////		i= TIM_GetCounter(TIM2);		
+////		TIM2->CNT =0;		
+////		sprintf(buff,"%5d",i);
+////		Gui_DrawFont_GBK16(50,50,BLUE,WHITE,(const char*)buff);
+//////******************显示右轮脉冲数*******************************************
+////		i= TIM_GetCounter(TIM3);		
+////		TIM3->CNT = 0;		
+////		sprintf(buff,"%5d",i);
+////		Gui_DrawFont_GBK16(50,80,BLUE,WHITE,(const char*)buff);
+////***************************************************************************		
+////		close_loop_PD_control(glmotorSpeed.leftSpeed-(gldSpeed/2),glmotorSpeed.rightSpeed+(gldSpeed/2));
+//      close_loop_PD_control(encoder_expectation_L,encoder_expectation_R);		
+//		TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
+//		LED1=!LED1;
 
-		TIM_Cmd(TIM1, ENABLE);
-		TIM_Cmd(TIM2, ENABLE);
-		TIM_Cmd(TIM3, ENABLE);
+//		TIM_Cmd(TIM1, ENABLE);
+//		TIM_Cmd(TIM2, ENABLE);
+//		TIM_Cmd(TIM3, ENABLE);
+//	}
+  static unsigned int EncoderLeftLast;
+	int pwm_temp = 0;
+
+	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET) //检查指定的TIM中断发生与否
+	{
+		TIM_ClearITPendingBit(TIM1, TIM_IT_Update );  //清楚中断待处理位
+		EncoderLeftCounter = TIM_GetCounter(TIM2);		//获取当前位置
+				
+		/* 获取实际位置 与 实际位置 */
+		SpeedLeft = EncoderLeftCounter - EncoderLeftLast;		//测速时间，除以时间就浪费运算了
+		EncoderLeftLast = EncoderLeftCounter;			//保存当前位置
+		
+		/* 根据实际位置计算速度输出量 */
+		pwm_temp = Position_Right_PID();
+		pwm_temp = (100 - pwm_temp) * 10;
+		speedAdjustment(pwm_temp, pwm_temp);
+		
+		if(((Encode_Target - EncoderLeftCounter < 20) && (Encode_Target - EncoderLeftCounter > 0)) 
+			|| ((EncoderLeftCounter - Encode_Target < 20) && (EncoderLeftCounter - Encode_Target > 0)))
+		{
+			speedAdjustment(0, 0);
+			TIM_ITConfig(TIM1, TIM_IT_Update, DISABLE);
+			TIM_Cmd(TIM1, DISABLE);
+		}
 	}
 }
 
 
+/*********************************************************************
+ *  函数名称：如下
+ *  函数功能：设定编码器的目标位置，并打开编码器
+ *  形    参：circle:控制转动的圈数 angle：控制转动的角度
+ *	输    出：无
+ *  返回值：无
+ *  作者：paoshao
+ ********************************************************************/
+void Encoder_RunNrad(int circle, int angle)
+{
+	Encode_Target = 0;
+	TIM_SetCounter(TIM2, 0);
+	
+	Encode_Target += circle * EncoderCounterOneCirCle;
+	Encode_Target += angle * EncoderCounterOneAngle;
+	
+	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
+	TIM_Cmd(TIM1, ENABLE);
+}
+
+
+/*********************************************************************
+ *  函数名称：如下
+ *  函数功能：位置PID控制函数
+ *  形    参：无
+ *  输    出: 无
+ *  作者：paoshao
+ ********************************************************************/
+int Position_Right_PID(void)
+{ 	
+	int Position_KP=-5, Position_KI=0, Position_KD=0;
+	static int Bias, Pwm, Integral_bias, Last_Bias;
+
+	Bias = Encode_Target - EncoderLeftCounter;                                  //计算偏差
+	Integral_bias += Bias;	                                 //求出偏差
+	Pwm = Position_KP * Bias + Position_KI * Integral_bias + Position_KD * (Bias - Last_Bias);       //位置式PID控制器
+	Last_Bias = Bias;                                       //保存上一次的偏差
+	
+	if(Pwm > 20)
+		Pwm = 20;
+	if(Pwm < -20)
+		Pwm = -20;
+		
+	return Pwm;                                           //增量输出
+}
 
 
 
-
-
-
-
-
-
-
-
+///*********************************************************************
+// *  函数名称：如下
+// *  函数功能：编码器电机的输出速度控制
+// *  形    参：PWM
+// *  输    出：无
+// *  作    者：panshao
+// ********************************************************************/
+//void Motor_Speed(int PwmLeft, int PwmRight)
+//{
+//	if(PwmLeft > 0)
+//	{
+//		TIM_SetCompare3(TIM3, (100 - PwmLeft) * 10);
+//		GPIO_ResetBits(GPIOB, GPIO_Pin_6);
+//	}
+//	else if(PwmLeft <= 0)
+//	{
+//		TIM_SetCompare3(TIM3, (100 + PwmLeft) * 10);
+//		GPIO_SetBits(GPIOE, GPIO_Pin_0);
+//	}
+//	
+//	if(PwmRight > 0)
+//	{
+//		TIM_SetCompare4(TIM3, (100 - PwmRight) * 10);
+//		GPIO_ResetBits(GPIOE, GPIO_Pin_1);
+//	}
+//	else if(PwmRight <= 0)
+//	{
+//		TIM_SetCompare4(TIM3, (100 + PwmRight) * 10);
+//		GPIO_SetBits(GPIOE, GPIO_Pin_1);
+//	}
+//}
 
 
 

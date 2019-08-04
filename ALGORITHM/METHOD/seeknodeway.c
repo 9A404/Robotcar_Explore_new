@@ -498,7 +498,66 @@ u8 seekNodeMethod_SeeSaw_2019()
 	return 0;
 }
 
+/*
+
+* 函数介绍：特殊路段找点
+* 输入参数：
+* 输出参数：
+* 返回值  ：1（找到节点）0（没有找到节点）
+* 其他    ：找点方法思路，传感器最右的为1时为找到点
+* 作者    ：@袁梓聪
+*/
+
+u8 seekNodeMethod_11_10_9()
+{
+	static u8 flag=0;
+ if(seekNodeMethod_digR()){
+  flag=1;
+  Time7(START);
+  gl_time=0;
+ }
+ else if(1==flag && gl_time>15){
+  
+  //rotAngle_Left(45);
+  gl_time=0;
+  Time7(STOP);
+  flag=0;
+  return 1;
+ }
+ return 0; 
+}
 
 
+/*
 
-
+* 函数介绍：特殊路段找点
+* 输入参数：
+* 输出参数：
+* 返回值  ：1（找到节点）0（没有找到节点）
+* 其他    ：找点方法思路，传感器最右的为1时为找到点
+* 作者    ：@袁梓聪
+*/
+u8 seekNodeMethod_10_9_14()
+{
+	static u8 flag=0;
+ if((glsensor_dig_value&0x400) && (0==flag))
+  flag=1;
+ if(flag==1)
+ {
+  glHello_control.linkInform.findLineWays =FL_left; 
+  findLineFlag = 0;
+  flag=2;
+ }
+ if((2==flag) && (glsensor_dig_value&0x00f))
+ {
+  flag = 3;
+  
+ }
+ if(3==flag && 0==(glsensor_dig_value&0x00f))
+ {
+  flag = 0;
+  return 1;
+ }
+ 
+ return 0;
+}
