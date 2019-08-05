@@ -516,7 +516,7 @@ u8 seekNodeMethod_11_10_9()
   Time7(START);
   gl_time=0;
  }
- else if(1==flag && gl_time>15){
+ else if(1==flag && gl_time>5){
   
   //rotAngle_Left(45);
   gl_time=0;
