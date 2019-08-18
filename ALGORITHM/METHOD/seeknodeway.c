@@ -511,7 +511,7 @@ u8 seekNodeMethod_SeeSaw_2019()
 u8 seekNodeMethod_11_10_9()
 {
 	static u8 flag=0;
- if(seekNodeMethod_digR()){
+ if(seekNodeMethod_digL()){
   flag=1;
   Time7(START);
   gl_time=0;
