@@ -207,7 +207,7 @@ u8 seekNodeMethod_pesPlatform()
 	{
 		glHello_control.linkInform.findLineWays = NFL;
 		flag=0;
-		delay_ms(200);
+		delay_ms(150);
 		return 1;
 	}		
 	return 0;
@@ -256,13 +256,16 @@ u8 seekNodeMethod_Collision()
 	{
     glHello_control.linkInform.findLineWays = FL_stop;
 	  findLineFlag = 0;
-    
+		
+		Time7(START); //打开定时器
+		gl_time=0;
 		flag = 1;
 	}
 	
-	if(1==flag && 1==Collision)
+	if((1==flag && 1==Collision)||gl_time>150)
 	{
-		
+		Time7(STOP); //关闭定时器
+		gl_time=0;
 		speedAdjustment(-1500,-1500);
 		delay_ms(200);
     flag=0;
@@ -511,14 +514,14 @@ u8 seekNodeMethod_SeeSaw_2019()
 u8 seekNodeMethod_11_10_9()
 {
 	static u8 flag=0;
- if(seekNodeMethod_digL()){
+ if(parkMethod_pesL()){
   flag=1;
   Time7(START);
   gl_time=0;
  }
- else if(1==flag && gl_time>5){
-  
-  //rotAngle_Left(45);
+ else if(1==flag && gl_time>7){
+ 
+//  rotAngle_Right_F(45);
   gl_time=0;
   Time7(STOP);
   flag=0;

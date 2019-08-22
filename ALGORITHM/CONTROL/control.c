@@ -537,6 +537,24 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 									u3_printf("Angle_read_EIC\r\n");
 									#endif
 									}break;
+			case BODY_UP:if(1 == BlockHandleBODY_UP())										
+							{		runState->F_RoadBlockState = EIC;												
+									#ifdef _DEBUG_
+									led1_flash();
+									#endif
+									#ifdef _DEBUG_U3_P
+									u3_printf("BODY_UP_EIC\r\n");
+									#endif
+									}break;
+			case BODY_DOWN:if(1 == BlockHandleBODY_DOWN())										
+							{		runState->F_RoadBlockState = EIC;												
+									#ifdef _DEBUG_
+									led1_flash();
+									#endif
+									#ifdef _DEBUG_U3_P
+									u3_printf("BODY_DOWN_EIC\r\n");
+									#endif
+									}break;
 			default:  			break;
 		}
 	}

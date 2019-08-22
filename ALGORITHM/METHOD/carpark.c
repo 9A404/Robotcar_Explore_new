@@ -298,10 +298,14 @@ u8 parkMethod_pesPlatform()
 //		delay_ms(500);
 		glHello_control.linkInform.findLineWays = NFL_slow;
 		findLineFlag = 0;
+		Time7(START); //打开定时器
+		gl_time=0;
 		flag=2;
 	}
-	if(2==flag&&1==Collision)
+	if((2==flag&&1==Collision)||gl_time>150)		
 	{
+		Time7(STOP); //关闭定时器
+		gl_time=0;
 		flag=3;
 	}
 	else if(3==flag)

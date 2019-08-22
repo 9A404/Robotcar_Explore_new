@@ -19,6 +19,8 @@ u8 BlockHandleMethod_Seesaw(void);
 u8 BlockHandleMethod_Slope(void);      //山丘
 u8 BlockHandleMethod_down_27_26(void);
 u8 BlockHandleMethod_S_BOARD_Double(void);
+u8 BlockHandleBODY_UP(void);
+u8 blockHandleBODY_DOWN(void);
 
 
 

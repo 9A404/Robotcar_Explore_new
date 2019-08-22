@@ -397,8 +397,8 @@ float Monitor_ROLL()
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
-		angle_read = setYaw(glYaw,94);
-		angle_read_back = setYaw(glYaw,-78);		
+		angle_read = setYaw(glYaw,92);
+		angle_read_back = setYaw(glYaw,-82);		
 		flag = 0;  
 		return 1;
 	}
@@ -432,7 +432,7 @@ float Monitor_ROLL()
 //		led0_flash();
 		flag=1;
 	}
-	else if(1==flag&&gl_time>100)         
+	else if(1==flag&&gl_time>110)         
 	{
 //		temp = Monitor_ROLL();
 //		if( temp > -10)               //如果车在跷跷板的另外一端则继续盲走后置flag=2
@@ -470,15 +470,19 @@ float Monitor_ROLL()
 			speedAdjustment(1690,1800);
 			flag=2;
 		}
-			
-		
+		else
+		{
+	    speedAdjustment(2320,2400);
+			delay_ms(700);
+			flag=2;
+		}					
 	}
 	else if(2 == flag)                //车子在跷跷板的另外一端则先检测传感器有没有在白线上
 	{
 		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量	
 		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<4) 
 		{
-			rotAngle_Left(30);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
+			rotAngle_Left(20);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
 			Turn_Flag++;
 		}
 		else                         //否则返回1完成障碍任务
@@ -592,7 +596,7 @@ u8 BlockHandleMethod_Slope ()
 		gl_time=0;
 		flag=3;
 	}
-	else if(gl_time>260 && 3==flag)
+	else if(gl_time>200 && 3==flag)
 	{
 		Time7(STOP); //关闭定时器
 		gl_time = 0;
@@ -1225,6 +1229,49 @@ u8 BlockHandleMethod_26_27()
 	}
 	return 0;
 }
+
+/*
+
+* 函数介绍：身体雄起
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(到达障碍)0(未到达障碍)
+* 其他    ：无
+* 作者    :@断忆
+
+*/
+u8 BlockHandleBODY_UP()
+{
+	static u8 flag=0;
+	if(flag == 0)
+	{
+		sgAngleControl(BODY,B_UP);
+		return 1;
+	}  
+	  return 0;
+}
+
+/*
+
+* 函数介绍：身体倒下
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(到达障碍)0(未到达障碍)
+* 其他    ：无
+* 作者    :@断忆
+
+*/
+u8 BlockHandleBODY_DOWN()
+{
+	static u8 flag=0;
+	if(flag == 0)
+	{
+		sgAngleControl(BODY,B_DOWN);
+		return 1;
+	}  
+	  return 0;
+}
+
 
 
 

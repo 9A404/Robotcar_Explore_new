@@ -17,7 +17,7 @@ typedef enum {SWORD,FREE,ANGLE,BRIGE,DOOR,DOOR_CLICK,S_BOARD,S_BOARD_DOUBLE,SEES
 							BACK_TILT_R,BACK_TILT_L,SLOPE,PLATFORM,PLATFORM_1,Peak,TRAPEZOID_1,TRAPEZOID_2,TRAPEZOID_3,\
 							TIME,TIME_1,TIME_2,DOWNPLATFORM,ALL_TILT,\
 							DOWN27_26,Block_PESR,Platform_37_15,		
-							UP_26_27,TIME_45_46}typeRoadblock;	//无障碍、桥、门、减速带、跷跷板、倾斜路面、斜坡、平台景点、梯形景点、复杂节点定时                                                                                                                                  
+							UP_26_27,TIME_45_46,BODY_UP,BODY_DOWN}typeRoadblock;	//无障碍、桥、门、减速带、跷跷板、倾斜路面、斜坡、平台景点、梯形景点、复杂节点定时                                                                                                                                  
 
 /*加速类型*/
 typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//下台加速，普通加速，不加速，占时间（用于处理复杂节点)			
