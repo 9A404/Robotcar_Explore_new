@@ -345,7 +345,11 @@ int main(void)
 		runMethodNumDebug=sizeof(runMethodTableDebug)/sizeof(runMethodTableDebug[0]);
 		
 		while(1)
-		{
+		{																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
+//			sgAngleControl(L_ARM,L_DOWN);
+//	    delay_ms(1000);
+//	  	sgAngleControl(L_ARM,L_UP);
+//		  delay_ms(400);
 			displayOperation();
 		}
 		

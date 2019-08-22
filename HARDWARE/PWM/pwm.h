@@ -14,7 +14,7 @@ typedef struct{
 typedef enum {HEAD , L_ARM , R_ARM}SgNumber;
 
 /*舵机转过角度*/
-typedef enum {L_UP = 450,L_DOWN = 700,R_DOWN = 310,R_UP = 600,H_MID = 660,H_L=960,H_R=360}RotationAngle;
+typedef enum {L_UP = 700,L_DOWN = 360,R_DOWN = 360,R_UP = 700,H_MID = 660,H_L=960,H_R=360}RotationAngle;
 
 void motor_PWM_Init(void);
 void speedAdjustment(int lspeed,int rspeed);
