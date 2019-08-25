@@ -397,7 +397,7 @@ float Monitor_ROLL()
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
-		angle_read = setYaw(glYaw,92);
+		angle_read = setYaw(glYaw,94);
 		angle_read_back = setYaw(glYaw,-82);		
 		flag = 0;  
 		return 1;

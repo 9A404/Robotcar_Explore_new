@@ -514,7 +514,7 @@ u8 seekNodeMethod_SeeSaw_2019()
 u8 seekNodeMethod_11_10_9()
 {
 	static u8 flag=0;
- if(parkMethod_pesL()){
+ if(seekNodeMethod_pesL()){
   flag=1;
   Time7(START);
   gl_time=0;
