@@ -137,7 +137,7 @@ const map_linkInforTypeDef mapInformation[][NODEFORKNUM]={
 
 /*29节点*/{	{36,37,},	},
 
-/*30节点*/{	{34,35,FL_slow,S_BOARD_DOUBLE,COMMON_SPEED,20,SEEK4,PARK_pesR,HR,90},{50,28,FL_slow,SLOPE,NOSPEED,0,SEEK_DIGR,PARK_pesR_No,HR,90},	\
+/*30节点*/{	{34,35,FL_slow,S_BOARD_DOUBLE,NOSPEED,0,SEEK4,PARK_pesR,HR,90},{50,28,FL_slow,SLOPE,NOSPEED,0,SEEK_DIGR,PARK_pesR_No,HR,90},	\
 					},
 
 /*31节点*/{	{32,31,FL_slow,FREE,NOSPEED,0,SEEK_Collision,NOTPARK,HN_Rotate,0},{30,34,FL_slow,FREE,NOSPEED,0,SEEK_default,PARK_pesR_No,HR,90},	\
