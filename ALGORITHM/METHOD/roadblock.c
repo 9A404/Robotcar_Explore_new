@@ -480,7 +480,7 @@ float Monitor_ROLL()
 	else if(2 == flag)                //车子在跷跷板的另外一端则先检测传感器有没有在白线上
 	{
 		glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量	
-		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<4) 
+		if(calculateNum(glsensor_dig_value)<=1 && Turn_Flag<5) 
 		{
 			rotAngle_Left(20);             //如果不在白线则左转20度，大多数情况下是车子偏右，故左转
 			Turn_Flag++;
@@ -1074,6 +1074,49 @@ u8 BlockHandleMethod_downPlatform()
 		return 0;
 
 
+}
+//***************************************************平板****************************************//
+/*
+
+* 函数介绍：过平板1个(用底下光电开关)
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(检测到)0（未检测到）
+* 其他		：
+* 作者    ：@林
+
+*/
+u8 BlockHandleMethod_BOARD()
+{
+	static findLine save;
+	static u8 flag=0;
+	if(0==flag)
+	{
+		save = glHello_control.linkInform.findLineWays;
+		flag = 1;
+	}
+	else if(1==flag&&1==PES_Platform) 
+	{
+		glHello_control.linkInform.findLineWays =FL_slowest;
+		findLineFlag = 0;
+//		speedAdjustment(0,0);
+//		delay_ms(500);
+//		Time7(START);
+//		gl_time=0;
+//		flag=2;
+//	}
+//	else if(2==flag&&gl_time>150)
+//	{
+////		speedAdjustment(0,0);
+////		delay_ms(500);
+//		glHello_control.linkInform.findLineWays =FL_slow;
+//		findLineFlag = 0;
+//		Time7(STOP);
+//		gl_time=0;
+//		flag=0;
+		return 1;
+	}
+	return 0;
 }
 
 //***************************************************减速板****************************************//

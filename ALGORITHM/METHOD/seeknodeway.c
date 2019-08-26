@@ -388,7 +388,7 @@ u8 seekNodeMethod_digL()
 
 u8 seekNodeMethod_digR()
 {
-	if(0x003==(glsensor_dig_value&0x003))
+	if(0x004==(glsensor_dig_value&0x004))
 	{
 		return 1;
 	}

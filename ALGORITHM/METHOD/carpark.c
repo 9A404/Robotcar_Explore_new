@@ -121,7 +121,7 @@ u8 parkMethod_pesL()
 	}
 	if(0==PES_L && 1==flag)
 	{	
-    speedAdjustment(-1000,-1000); 
+    speedAdjustment(-1200,-1200); 
 		delay_ms(20);
 		
 		flag = 0;
