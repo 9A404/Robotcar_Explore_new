@@ -376,7 +376,7 @@ void flMethod_sword()
 * 作者    ：@断忆
 
 */
-void flMethod_upPeak()
+void flMethod_upPeak() 
 {
 	int rank;
 	if(findLineFlag == 0)//保证每个路段初始化一次
