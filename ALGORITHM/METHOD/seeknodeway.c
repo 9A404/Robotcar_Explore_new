@@ -207,7 +207,7 @@ u8 seekNodeMethod_pesPlatform()
 	{
 		glHello_control.linkInform.findLineWays = NFL;
 		flag=0;
-		delay_ms(150);
+		delay_ms(50);
 		return 1;
 	}		
 	return 0;
@@ -389,6 +389,26 @@ u8 seekNodeMethod_digL()
 u8 seekNodeMethod_digR()
 {
 	if(0x004==(glsensor_dig_value&0x004))
+	{
+		return 1;
+	}
+	return 0;	
+}
+
+/*
+
+* 函数介绍：传感器最右边找点
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：传感器最右的为1时为找到点
+* 作者    ：@袁梓聪
+
+*/
+
+u8 seekNodeMethod_digR2()
+{
+	if(0x002==(glsensor_dig_value&0x002))
 	{
 		return 1;
 	}

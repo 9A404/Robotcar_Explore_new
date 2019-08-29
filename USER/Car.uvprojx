@@ -510,11 +510,6 @@
               <FilePath>..\HARDWARE\TIMER\Timer.c</FilePath>
             </File>
             <File>
-              <FileName>pid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\PID\pid.c</FilePath>
-            </File>
-            <File>
               <FileName>usart3.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\USART3\usart3.c</FilePath>
@@ -523,6 +518,11 @@
               <FileName>mpu6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\MPU6050\mpu6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\PID\pid.c</FilePath>
             </File>
             <File>
               <FileName>myiic.c</FileName>

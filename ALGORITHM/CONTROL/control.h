@@ -10,7 +10,7 @@
 /*巡线方法*/
 typedef enum {FL_sword,FL_circular,FL_angle,FL_angle_slow,FL_node,FL_43_44,FL_16_44,FL_default,FL_middle,	\
 							FL_brige,FL_brigeup,FL_brigedown,FL_slow,FL_slowest,FL_quick,FL_stop,FL_quickest,	\
-							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL}findLine;
+							FL_upPeak,FL_downPeak,FL_UpPlatform,FL_DownPlatform,FL_left,FL_Right,NFL,NFL_slow,BACK_NFL,FL_s,FL_S}findLine;
 
 /*路障类型*/
 typedef enum {SWORD,FREE,ANGLE,BRIGE,DOOR,DOOR_CLICK,BOARD,S_BOARD,S_BOARD_DOUBLE,SEESAW,GO_TILT_R,GO_TILT_L,\
@@ -24,7 +24,7 @@ typedef enum {DOWN_SPEED,COMMON_SPEED,NOSPEED,TME}typeSpeed;//下台加速，普
 
 /*找节点方法*/
 typedef enum {SEEK_SeeSaw,SEEK_PESL,SEEK_PESR,SEEK3,SEEK4,SEEK_default,	\
-							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back,SEEK_11_10_9,SEEK_10_9_14}seekNodeWay;
+							NOTSEEK,SEEK_PesPlatform,SEEK_Collision,SEEK_DIGR,SEEK_DIGL,SEEK_SeeSaw_back,SEEK_11_10_9,SEEK_10_9_14,SEEK_DIGR2}seekNodeWay;
 
 /*停车方法*/
 typedef enum {NOTPARK,PARK1,PARK_pesR,PARK_pesR_50,PARK_pesR_100,PARK_pesR_150,PARK_pesR_200,PARK_pesR_250,PARK_pesR_300,PARK_pesR_350,PARK_pesR_400,	\

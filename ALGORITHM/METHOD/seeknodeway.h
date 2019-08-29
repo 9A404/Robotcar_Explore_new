@@ -12,6 +12,7 @@ u8 seekNodeMethod_pesPlatform(void);
 u8 seekNodeMethod_Collision(void);
 u8 seekNodeMethod_SeeSaw(void);
 u8 seekNodeMethod_digR(void );
+u8 seekNodeMethod_digR2(void );
 u8 seekNodeMethod_digL(void);
 u8 seekNodeMethod_SeeSaw_back(void);
 u8 seekNodeMethod_SeeSaw_2019(void);

@@ -74,6 +74,7 @@ extern unsigned char  USART1_RX_BUF[66];											//串口1 DMA缓存区
 /********************************传感器阈值******************************************************************/
 extern const unsigned short int  basic_sensorThreshold[NUM_OF_SENSOR]; //传感器阈值
 extern const  u16  brige_sensorThreshold[NUM_OF_SENSOR];//过桥阈值
+extern const  u16  brige_updown_sensorThreshold[NUM_OF_SENSOR];//上下桥阈值
 
 /*******************************常量表*******************************************************************/
 extern const map_linkInforTypeDef mapInformation[][NODEFORKNUM]; //地图信息数字化表

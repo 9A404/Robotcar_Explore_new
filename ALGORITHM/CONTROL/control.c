@@ -252,6 +252,7 @@ void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 			switch(controlp->linkInform.findLineWays)
 			{
 				case FL_default: 	 flMethod_default();break;
+				case FL_S:      	 flMethod_S();break;
 				case FL_node: 	 	 flMethod_node();break;
 				case FL_43_44: 	 	 flMethod_43_44();break;
 				case FL_16_44: 	 	 flMethod_16_44();break;
@@ -261,6 +262,7 @@ void findLine_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 				case FL_brigeup:   flMethod_brige_up();break;
 				case FL_brigedown: flMethod_brige_down();break;
 				case FL_slow:			 flMethod_slow();break;
+				case FL_s:			   flMethod_s();break;
 				case FL_slowest:			 flMethod_slowest();break;
 				case FL_UpPlatform:	flMethod_UpPlatform();break;
 				case FL_DownPlatform:	flMethod_DownPlatform();break;
@@ -799,6 +801,18 @@ void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 												#endif
 											}break;
        case SEEK_DIGR:if(1 == seekNodeMethod_digR())
+												{
+//												speedAdjustment(0,0);
+//												while(1);
+												runState->seekNodeState=EIC;
+												#ifdef _DEBUG_
+												led0_flash();
+												#endif
+												#ifdef _DEBUG_U3_P
+												u3_printf("SEEK_DIGR\r\n");
+												#endif
+											}break;
+			 case SEEK_DIGR2:if(1 == seekNodeMethod_digR2())
 												{
 //												speedAdjustment(0,0);
 //												while(1);

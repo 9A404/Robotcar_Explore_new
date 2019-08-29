@@ -35,6 +35,38 @@ void flMethod_default()
 }
 /*
 
+* 函数介绍：缺省巡线方法
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：
+* 其他    ：每个方法最主要的区别：1、glmotorSpeed初始速度 2、glsensorPID的P I D三个参数
+* 作者    ：@断忆
+
+*/
+void flMethod_S()
+{
+	int rank;
+	if(findLineFlag == 0)//保证每个路段初始化一次
+	{
+		//条件编译选择调试用低速度
+		#ifdef _FINDLINE_DEBUG_
+			PID_Init(&glsensorPID,20,2500,200,0,200);																					//对速度PID的参数进行初始化设置
+			speedRec_Init(&glmotorSpeed,2150,2200); 																				//对初始速度进行设定
+		#else
+			PID_Init(&glsensorPID,20,3500,400,0,850);																					//对速度PID的参数进行初始化设置
+			speedRec_Init(&glmotorSpeed,2950,3000); 																				//对初始速度进行设定
+		#endif
+		
+		findLineFlag=1;
+	}
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //分级
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed+gldYaw);			//位置式改变电机速度
+
+}
+/*
+
 * 函数介绍：最慢速度巡线方法
 * 输入参数：无
 * 输出参数：无
@@ -74,6 +106,31 @@ void flMethod_slow()
 	if(findLineFlag == 0)//保证每个路段初始化一次
 	{
 		PID_Init(&glsensorPID,20,2500,200,0,200);																					//对速度PID的参数进行初始化设置
+		speedRec_Init(&glmotorSpeed,2100,2200); 																				//对初始速度进行设定
+		findLineFlag=1;
+	}
+	glsensor_dig_value = sensorAD(glsensor_ad_value,basic_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	rank=sensorDigitalRank(glsensor_dig_value);                                    //分级
+	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
+	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
+
+}
+/*
+
+* 函数介绍：慢速度巡线方法
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：
+* 其他    ：每个方法最主要的区别：1、glmotorSpeed初始速度 2、glsensorPID的P I D三个参数
+* 作者    ：@断忆
+
+*/
+void flMethod_s()
+{
+	int rank;
+	if(findLineFlag == 0)//保证每个路段初始化一次
+	{
+		PID_Init(&glsensorPID,20,2500,400,0,400);																					//对速度PID的参数进行初始化设置
 		speedRec_Init(&glmotorSpeed,2100,2200); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
@@ -228,7 +285,7 @@ void flMethod_brige_up()
 		speedRec_Init(&glmotorSpeed,1720,1800); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_updown_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
 	rank=sensorDigitalRank_Brige_Up(glsensor_dig_value); 															//对数字量进行等级划分
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
@@ -253,7 +310,7 @@ void flMethod_brige_down()
 		speedRec_Init(&glmotorSpeed,1500,1500); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_updown_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
 	rank=sensorDigitalRank_Brige_Down(glsensor_dig_value); 															//对数字量进行等级划分
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度

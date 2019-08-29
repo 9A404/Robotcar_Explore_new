@@ -30,6 +30,8 @@ void No_flMethod(void);
 void No_flMethod_Slow(void);
 void No_flMethod_Back(void);
 void flMethod_sword(void);
+void flMethod_s(void);
+void flMethod_S(void);
 #endif
 
 
