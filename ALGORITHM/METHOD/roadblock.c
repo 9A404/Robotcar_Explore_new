@@ -132,7 +132,7 @@ u8 BlockHandleMethod_Brige()
 	if(0==flag && 1==identifyComingBrige_Bottom())
 	{
 	//	save = glHello_control.linkInform.findLineWays;
-		glHello_control.linkInform.findLineWays = FL_brigeup; 
+		glHello_control.linkInform.findLineWays = NFL; 
 		findLineFlag = 0;
 		flag = 1;
 	}
@@ -144,7 +144,7 @@ u8 BlockHandleMethod_Brige()
 	}
 	if(2==flag && 1==identifyCrossingBrige_Top())
 	{
-		glHello_control.linkInform.findLineWays = FL_brigedown;
+		glHello_control.linkInform.findLineWays = NFL;
 	  findLineFlag = 0;
 		flag=3;
 	}
