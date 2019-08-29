@@ -395,23 +395,23 @@ int sensorDigitalRank_Brige_Up(u16 digitalValue)
 	static int save=14;//保存当前值，以便下次使用
 	switch(digitalValue)
 	{
-		case 0xff:  temp=0;break;			// 000011111111
-	  case 0x8ff: temp=1;break;			// 100011111111
-		case 0x87f: temp=3;break;			// 100001111111
-		case 0xc7f: temp=5;break;			// 110001111111
+		case 0xfff-0xff:  temp=0;break;			// 000011111111
+	  case 0xfff-0x8ff: temp=1;break;			// 100011111111
+		case 0xfff-0x87f: temp=3;break;			// 100001111111
+		case 0xfff-0xc7f: temp=5;break;			// 110001111111
 		
-		case 0xc3f: temp=7;break;     // 110000111111
-		case 0xe3f: temp=10;break;    // 111000111111
-		case 0xe1f: temp=12;break;    // 111000011111
-		case 0xf0f: temp=14;break;    // 111100001111	中间
-		case 0xf87: temp=16;break;		// 111110000111
-		case 0xfc7: temp=18;break;    // 111111000111
-		case 0xfc3: temp=21;break;    // 111111000011
+		case 0xfff-0xc3f: temp=7;break;     // 110000111111
+		case 0xfff-0xe3f: temp=10;break;    // 111000111111
+		case 0xfff-0xe1f: temp=12;break;    // 111000011111
+		case 0xfff-0xf0f: temp=14;break;    // 111100001111	中间
+		case 0xfff-0xf87: temp=16;break;		// 111110000111
+		case 0xfff-0xfc7: temp=18;break;    // 111111000111
+		case 0xfff-0xfc3: temp=21;break;    // 111111000011
 		
-		case 0xfe3: temp=23;break;    // 111111100011
-		case 0xfe1: temp=25;break;		// 111111100001
-		case 0xff1: temp=27;break;		// 111111110001
-		case 0xff0: temp=28;break;		// 111111110000
+		case 0xfff-0xfe3: temp=23;break;    // 111111100011
+		case 0xfff-0xfe1: temp=25;break;		// 111111100001
+		case 0xfff-0xff1: temp=27;break;		// 111111110001
+		case 0xfff-0xff0: temp=28;break;		// 111111110000
 		default   : temp = save; break;//读到其他值的时候采用上次的值
 	}
 	
@@ -434,23 +434,23 @@ int sensorDigitalRank_Brige_Down(u16 digitalValue)
 	static int save=14;//保存当前值，以便下次使用
 	switch(digitalValue)
 	{
-		case 0xff:  temp=0;break;			// 000011111111
-	  case 0x8ff: temp=1;break;			// 100011111111
-		case 0x87f: temp=3;break;			// 100001111111
-		case 0xc7f: temp=5;break;			// 110001111111
+		case 0xfff-0xff:  temp=0;break;			// 000011111111
+	  case 0xfff-0x8ff: temp=1;break;			// 100011111111
+		case 0xfff-0x87f: temp=3;break;			// 100001111111
+		case 0xfff-0xc7f: temp=5;break;			// 110001111111
 		
-		case 0xc3f: temp=7;break;     // 110000111111
-		case 0xe3f: temp=10;break;    // 111000111111
-		case 0xe1f: temp=12;break;    // 111000011111
-		case 0xf0f: temp=14;break;    // 111100001111	中间
-		case 0xf87: temp=16;break;		// 111110000111
-		case 0xfc7: temp=18;break;    // 111111000111
-		case 0xfc3: temp=21;break;    // 111111000011
+		case 0xfff-0xc3f: temp=7;break;     // 110000111111
+		case 0xfff-0xe3f: temp=10;break;    // 111000111111
+		case 0xfff-0xe1f: temp=12;break;    // 111000011111
+		case 0xfff-0xf0f: temp=14;break;    // 111100001111	中间
+		case 0xfff-0xf87: temp=16;break;		// 111110000111
+		case 0xfff-0xfc7: temp=18;break;    // 111111000111
+		case 0xfff-0xfc3: temp=21;break;    // 111111000011
 		
-		case 0xfe3: temp=23;break;    // 111111100011
-		case 0xfe1: temp=25;break;		// 111111100001
-		case 0xff1: temp=27;break;		// 111111110001
-		case 0xff0: temp=28;break;		// 111111110000
+		case 0xfff-0xfe3: temp=23;break;    // 111111100011
+		case 0xfff-0xfe1: temp=25;break;		// 111111100001
+		case 0xfff-0xff1: temp=27;break;		// 111111110001
+		case 0xfff-0xff0: temp=28;break;		// 111111110000
 		default   : temp = save; break;//读到其他值的时候采用上次的值
 	}
 	

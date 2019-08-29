@@ -228,7 +228,7 @@ void flMethod_brige_up()
 		speedRec_Init(&glmotorSpeed,1670,1800); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_updown_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
 	rank=sensorDigitalRank_Brige_Up(glsensor_dig_value); 															//对数字量进行等级划分
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
@@ -253,7 +253,7 @@ void flMethod_brige_down()
 		speedRec_Init(&glmotorSpeed,1395,1500); 																				//对初始速度进行设定
 		findLineFlag=1;
 	}
-	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
+	glsensor_dig_value = sensorAD(glsensor_ad_value,brige_updown_sensorThreshold);  				//与阈值比较后将模拟量转化成数字量
 	rank=sensorDigitalRank_Brige_Down(glsensor_dig_value); 															//对数字量进行等级划分
 	gldSpeed=positionPIDCalc(&glsensorPID,rank);   //速度位置式PID输出
 	positionSpeedOut(glmotorSpeed.leftSpeed,glmotorSpeed.rightSpeed,gldSpeed);			//位置式改变电机速度
