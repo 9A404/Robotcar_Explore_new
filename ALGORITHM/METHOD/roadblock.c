@@ -1128,11 +1128,12 @@ u8 BlockHandleMethod_S_BOARD()
 */
 u8 BlockHandleMethod_TUNNEL()
 {
-//	static findLine save;
+	static findLine save;
 	static u8 flag=0;
-	if(0==flag)
+	if(0==flag && 0==PES_Platform)
 	{
-//		save = glHello_control.linkInform.findLineWays;
+		glHello_control.linkInform.findLineWays=FL_slow;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	else if(1==flag&&1==PES_Platform) 
@@ -1141,21 +1142,23 @@ u8 BlockHandleMethod_TUNNEL()
 		findLineFlag = 0;
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		Time7(START);
-		gl_time=0;
+//		Time7(START);
+//		gl_time=0;
 		flag=2;
 	}
-	else if(2==flag&&gl_time>100)
+	else if(2==flag && 0==PES_Platform)
+
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
-		glHello_control.linkInform.findLineWays =FL_slow;
+		glHello_control.linkInform.findLineWays =FL_default;
 		findLineFlag = 0;
-		Time7(STOP);
-		gl_time=0;
+//		Time7(STOP);
+//		gl_time=0;
 		flag=0;
 		return 1;
 	}
+	
 	return 0;
 }
 
