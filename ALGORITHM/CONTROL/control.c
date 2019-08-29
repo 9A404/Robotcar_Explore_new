@@ -537,6 +537,15 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 									u3_printf("Angle_read_EIC\r\n");
 									#endif
 									}break;
+			case TUNNEL:if(1 == BlockHandleMethod_TUNNEL())										
+							{		runState->F_RoadBlockState = EIC;												
+									#ifdef _DEBUG_
+									led1_flash();
+									#endif
+									#ifdef _DEBUG_U3_P
+									u3_printf("Angle_read_EIC\r\n");
+									#endif
+									}break;
 			default:  			break;
 		}
 	}
@@ -863,6 +872,15 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 											u3_printf("PARK_pesR_EIC\r\n");
 											#endif
 										}break;
+				case PARK_pesR_100:		
+									if(1 == parkMethod_pesR_Delay(100))
+									{
+										runState->carParkState = EIC;
+										#ifdef _DEBUG_U3_P
+										u3_printf("PARK_pesR_EIC\r\n");
+										#endif
+									}break;										
+
 				case PARK_pesR_150:		
 									if(1 == parkMethod_pesR_Delay(150))
 									{
@@ -927,6 +945,14 @@ void carPark_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runState
 											u3_printf("PARK_pesL_EIC\r\n");
 											#endif
 										}break;
+				case PARK_pesL_100:		
+										if(1 == parkMethod_pesL_Delay(100))
+										{
+											runState->carParkState = EIC;
+											#ifdef _DEBUG_U3_P
+											u3_printf("PARK_pesR_EIC\r\n");
+											#endif
+										}break;	
 				case PARK_pesL_150:		
 										if(1 == parkMethod_pesL_Delay(150))
 										{

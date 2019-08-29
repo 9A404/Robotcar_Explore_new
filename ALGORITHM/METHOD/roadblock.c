@@ -132,7 +132,7 @@ u8 BlockHandleMethod_Brige()
 	if(0==flag && 1==identifyComingBrige_Bottom())
 	{
 	//	save = glHello_control.linkInform.findLineWays;
-		glHello_control.linkInform.findLineWays = FL_brigeup; 
+		glHello_control.linkInform.findLineWays = NFL; 
 		findLineFlag = 0;
 		flag = 1;
 	}
@@ -144,8 +144,7 @@ u8 BlockHandleMethod_Brige()
 	}
 	if(2==flag && 1==identifyCrossingBrige_Top())
 	{
-		glHello_control.linkInform.findLineWays = FL_brigedown
-		;
+		glHello_control.linkInform.findLineWays = NFL;
 	  findLineFlag = 0;
 		flag=3;
 	}
@@ -398,8 +397,8 @@ float Monitor_ROLL()
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
-		angle_read = setYaw(glYaw,90);
-		angle_read_back = setYaw(glYaw,-75);		
+		angle_read = setYaw(glYaw,95);
+		angle_read_back = setYaw(glYaw,-78);		
 		flag = 0;  
 		return 1;
 	}
@@ -1104,6 +1103,49 @@ u8 BlockHandleMethod_S_BOARD()
 		flag=2;
 	}
 	else if(2==flag&&gl_time>150)
+	{
+//		speedAdjustment(0,0);
+//		delay_ms(500);
+		glHello_control.linkInform.findLineWays =FL_slow;
+		findLineFlag = 0;
+		Time7(STOP);
+		gl_time=0;
+		flag=0;
+		return 1;
+	}
+	return 0;
+}
+
+/*
+
+* 函数介绍：过减速板1个(用底下光电开关)
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(检测到)0（未检测到）
+* 其他		：
+* 作者    ：@林
+
+*/
+u8 BlockHandleMethod_TUNNEL()
+{
+//	static findLine save;
+	static u8 flag=0;
+	if(0==flag)
+	{
+//		save = glHello_control.linkInform.findLineWays;
+		flag = 1;
+	}
+	else if(1==flag&&1==PES_Platform) 
+	{
+		glHello_control.linkInform.findLineWays =FL_slowest;
+		findLineFlag = 0;
+//		speedAdjustment(0,0);
+//		delay_ms(500);
+		Time7(START);
+		gl_time=0;
+		flag=2;
+	}
+	else if(2==flag&&gl_time>100)
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);

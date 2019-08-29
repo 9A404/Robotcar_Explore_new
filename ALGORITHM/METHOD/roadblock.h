@@ -10,6 +10,7 @@ u8 BlockHandleMethod_Platform (void);	 //平台景点
 u8 BlockHandleMethod_Platform_1 (void); //起点
 u8 BlockHandleMethod_Peak(void); //上珠峰景点
 u8 BlockHandleMethod_downPlatform(void);//下珠峰
+u8 BlockHandleMethod_TUNNEL(void);//过隧道
 u8 BlockHandleMethod_S_BOARD(void);//减速板1个
 u8 BlockHandleMethod_S_BOARD_Double(void);//减速板2个
 u8 BlockHandleMethod_26_27(void);//26到27节点

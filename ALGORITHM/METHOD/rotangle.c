@@ -204,7 +204,7 @@ u8 rotAngle_Right_F(float angle)
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
 		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
-		speedAdjustment(speed+1200,-speed-1200);
+		speedAdjustment(speed+1000,-speed-1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
@@ -263,7 +263,7 @@ u8 rotAngle_Left_F(float angle)
 		if(err<0)err=-err;
 		//speed = 4500-(3500/angle)*(angle-err);
 		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
-		speedAdjustment(-speed-1200,speed+1200);
+		speedAdjustment(-speed-1000,speed+1000);
 		//u3_printf("glYaw:%0.2f err:%d\n",glYaw,err);
 	}
 	#else
