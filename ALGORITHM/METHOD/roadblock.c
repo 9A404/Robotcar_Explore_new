@@ -1219,7 +1219,6 @@ u8 BlockHandleMethod_TUNNEL()
 		flag=2;
 	}
 	else if(2==flag && 0==PES_Platform)
-
 	{
 //		speedAdjustment(0,0);
 //		delay_ms(500);
@@ -1230,7 +1229,6 @@ u8 BlockHandleMethod_TUNNEL()
 		flag=0;
 		return 1;
 	}
-	
 	return 0;
 }
 
